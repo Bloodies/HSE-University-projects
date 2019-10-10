@@ -7,7 +7,7 @@
     <ProjectGuid>{B0B66EBD-4D5E-420C-BEA0-1F79076C43D8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Слог_2._0</RootNamespace>
-    <AssemblyName>Слог_2._0</AssemblyName>
+    <AssemblyName>Слог 2.0</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
