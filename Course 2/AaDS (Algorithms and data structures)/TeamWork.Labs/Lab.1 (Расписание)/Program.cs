@@ -2,19 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Lab._1__Расписание_
 {
+    class Search_for_Bugs
+    {
+        //---Проверка ввода-------------------------------------------
+        public static int ProverkaVvoda()
+        {
+            int number;
+            bool res;
+            do
+            {
+                res = int.TryParse(Console.ReadLine(), out number);
+
+                if (res == false)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Некорректный ввод");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            } while (!res);
+            return number;
+        }
+        //------------------------------------------------------------
+    }
     class Program
     {
         public static int VvodNonNegative()
         {
-            Console.WriteLine("\n\tПожалуйста, введите натуральное число:");
+            Console.Write("Введите натуральное число: ");
             bool rightNonNegative;
+            int numberZahlen;
             do
             {
-                rightNonNegative = int.TryParse(Console.ReadLine(), out int numberZahlen);
+                rightNonNegative = int.TryParse(Console.ReadLine(), out numberZahlen);
                 if (numberZahlen < 1)
                 {
                     rightNonNegative = false;
@@ -22,8 +45,10 @@ namespace Lab._1__Расписание_
 
                 if (!rightNonNegative)
                 {
-                    Console.WriteLine("\n\t\aК сожалению, вы можете ввести только натуральное число.");
-                    Console.WriteLine("\n\tПопробуйте ввести число ещё раз:");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Можно вводить только целые положительные числа!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("\nПопробуйте ввести число ещё раз:");
                 }
                 else
                 {
@@ -31,78 +56,100 @@ namespace Lab._1__Расписание_
                 }
             }
             while (!rightNonNegative);
-
             return 0;
         }
-
-        public static void PrintConditions(int workCount, int workerCount, int[] workTime)
+        public static void PrintConditions(int workCount, int workerCount, double[] workTime)
         {
-            Console.WriteLine("\n\tУсловия задачи:");
+            Console.WriteLine("-------------------Условия задачи--------------------");
             for (int i = 0; i < workCount; i++)
             {
-                Console.WriteLine("\n\t{0} - {1}", (char)(65 + i), workTime[i]);
+                Console.WriteLine("\n\t{0} - {1}h", (char)(65 + i), workTime[i]);
             }
 
-            Console.WriteLine("\n\tКоличество работников: {0}", workerCount);
-            Console.WriteLine("\n\tМаксимальное время: {0}", workTime.Max());
-            Console.WriteLine("\n\tСреднее время: {0}\n", Math.Ceiling((double)workTime.Sum() / workerCount));
+            Console.WriteLine("\nКоличество работников: " + workerCount);
+            Console.WriteLine("Максимальное время: {0}h", workTime.Max());
+            Console.WriteLine("Среднее время: {0}h\n", (workTime.Sum() / workerCount));
         }
-
         static void Main()
         {
-            Console.WriteLine("\n\tВвод количества работ");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            double maxWorkTime;
+            int j = 0;
+
+            Console.WriteLine("----------------Ввод количества работ----------------\n");
             int workCount = VvodNonNegative();
-            int[] workTime = new int[workCount];
+            double[] workTime = new double[workCount];
             for (int i = 0; i < workCount; i++)
             {
-                Console.WriteLine("\n\tВведите время выполенния работы {0}", (char)(65 + i));
+                Console.WriteLine("\nВведите время выполенния работы {0}", (char)(65 + i));
                 workTime[i] = VvodNonNegative();
             }
 
-            Console.WriteLine("\n\tВвод количества работников");
+            Console.WriteLine("\n-------------Ввод количества работников-------------");
             int workerCount = VvodNonNegative();
-            int maxWorkTime;
-            if (workTime.Max() > Math.Ceiling((double)workTime.Sum() / workerCount))
-            {
-                maxWorkTime = workTime.Max();
-            }
-            else
-            {
-                maxWorkTime = (int)Math.Ceiling((double)workTime.Sum() / workerCount);
-            }
+            if (workTime.Max() > (workTime.Sum() / workerCount)) { maxWorkTime = workTime.Max(); }
+            else { maxWorkTime = (workTime.Sum() / workerCount); }
 
+            Console.Clear();
             PrintConditions(workCount, workerCount, workTime);
-            int j = 0;
+
+            Console.WriteLine("----------------------Решение-----------------------");
             for (int i = 0; i < workerCount; i++)
             {
-                Console.Write("\tРаботник {0}:", i + 1);
-                int deltaWorkTime = maxWorkTime;
+                Console.Write("Работник {0}:", i + 1);
+                double deltaWorkTime = maxWorkTime;
                 while (workTime.Sum() > 0 && deltaWorkTime > 0 && j < workCount)
                 {
                     if (deltaWorkTime >= workTime[j])
                     {
-                        Console.Write(
-                            " {0} ({1} - {2});",
-                            (char)(65 + j),
-                            maxWorkTime - deltaWorkTime,
-                            maxWorkTime - deltaWorkTime + workTime[j]);
+                        Console.Write(" {0} {3}h({1} - {2});", (char)(65 + j), maxWorkTime - deltaWorkTime, maxWorkTime - deltaWorkTime + workTime[j], (maxWorkTime - deltaWorkTime + workTime[j]) - (maxWorkTime - deltaWorkTime));
                         deltaWorkTime -= workTime[j];
                         workTime[j] = 0;
                         j++;
                     }
                     else
                     {
-                        Console.Write(" {0} ({1} - {2});", (char)(65 + j), maxWorkTime - deltaWorkTime, maxWorkTime);
+                        Console.Write(" {0} {3}h({1} - {2});", (char)(65 + j), maxWorkTime - deltaWorkTime, maxWorkTime, (maxWorkTime) - (maxWorkTime - deltaWorkTime));
                         workTime[j] -= deltaWorkTime;
                         deltaWorkTime = 0;
                     }
                 }
-
                 Console.WriteLine("\n");
             }
-
-            Console.WriteLine("\tДля завершения работы нажите любую клавишу...");
-            Console.ReadKey();
+            do
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("| Выберите действие:         |");
+                Console.WriteLine("| 9) Продолжить              |");
+                Console.WriteLine("| 0) Выход из консоли        |");
+                Console.WriteLine("------------------------------");
+                Console.Write("Действие: ");
+                int check = Search_for_Bugs.ProverkaVvoda();
+                switch (check)
+                {
+                    case 9:
+                        Main();
+                        break;
+                    case 0:
+                        Console.Clear();
+                        Console.WriteLine(" ");
+                        Console.Write("Завершение работы.");
+                        Thread.Sleep(300);
+                        Console.Write(".");
+                        Thread.Sleep(300);
+                        Console.Write(".");
+                        Thread.Sleep(300);
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Нужно выбрать из списка!");
+                        Console.ResetColor();
+                        continue;
+                }
+            } while (!true);
         }
     }
 }
