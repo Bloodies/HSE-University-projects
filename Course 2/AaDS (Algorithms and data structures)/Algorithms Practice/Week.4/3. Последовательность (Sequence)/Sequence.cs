@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1.Стек__Stack_
+namespace _3.Последовательность__Sequence_
 {
-    class Program
+    class Sequence
     {
         static void Main(string[] args)
         {
