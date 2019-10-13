@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2.Queue__Очередь_
 {
-    class Очередь
+    class Queue
     {
         static void Main(string[] args)
         {

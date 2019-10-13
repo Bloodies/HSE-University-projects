@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1.Stack__Стек_
 {
-    class Стек
+    class Stack
     {
         static void Main(string[] args)
         {

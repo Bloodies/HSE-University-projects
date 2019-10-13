@@ -9,20 +9,18 @@ namespace _3.Sequence__Последовательность_
 {
     class Program
     {
-        static public void Push(int n)
-        {
-
-        }
         static void Main(string[] args)
         {
-            StreamReader input = new StreamReader("input.txt");
-            StreamWriter output = new StreamWriter("output.txt");
-            int n = int.Parse(input.ReadLine());
+            //StreamReader input = new StreamReader("input.txt");
+            //StreamWriter output = new StreamWriter("output.txt");
+            //int n = int.Parse(input.ReadLine());
+            int n = int.Parse(Console.ReadLine());
             for (int i = 1; i <= n; i++)
             {
                 bool correct = true;
-                string line = input.ReadLine();
-                Stack<char> st = new Stack<char>();
+                //string line = input.ReadLine();
+                string line = Console.ReadLine();
+                Stack<char> str = new Stack<char>();
 
                 char ch;
                 for (int j = 0; j < line.Length; j++)
@@ -30,41 +28,45 @@ namespace _3.Sequence__Последовательность_
                     switch (line[j])
                     {
                         case '[':
-                            st.Push('[');
+                            str.Push('[');
                             break;
-
                         case '(':
-                            st.Push('(');
+                            str.Push('(');
                             break;
-
                         case ')':
-                            if (st.Count == 0) correct = false;
+                            if (str.Count == 0) correct = false;
                             else
                             {
-                                ch = st.Pop();
+                                ch = str.Pop();
                                 if (ch != '(') correct = false;
                             }
                             break;
-
                         case ']':
-                            if (st.Count == 0) correct = false;
+                            if (str.Count == 0) correct = false;
                             else
                             {
-                                ch = st.Pop();
+                                ch = str.Pop();
                                 if (ch != '[') correct = false;
                             }
                             break;
                     }
                     if (correct == false) break;
                 }
-                if (st.Count != 0) correct = false;
-                if (correct == true) output.WriteLine("YES");
-                else output.WriteLine("NO");
+                if (str.Count != 0) correct = false;
+                if (correct == true)
+                {
+                    //output.WriteLine("YES");
+                    Console.WriteLine("YES");
+                }
+                else
+                {
+                    //output.WriteLine("NO");
+                    Console.WriteLine("NO");
+                }
             }
-
-            input.Close();
-            output.Close();
-
+            //input.Close();
+            //output.Close();
+            //Console.ReadKey();
         }
     }
 }
