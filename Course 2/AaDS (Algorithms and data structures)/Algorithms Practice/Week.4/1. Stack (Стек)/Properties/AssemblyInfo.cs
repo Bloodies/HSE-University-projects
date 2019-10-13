@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("2. Очередь (Queue)")]
+[assembly: AssemblyTitle("1. Stack (Стек)")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("2. Очередь (Queue)")]
+[assembly: AssemblyProduct("1. Stack (Стек)")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("5a5b01df-49db-47c4-aef7-b434fdb4b3b4")]
+[assembly: Guid("56940f79-e5df-4720-9230-a99404cbdb52")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

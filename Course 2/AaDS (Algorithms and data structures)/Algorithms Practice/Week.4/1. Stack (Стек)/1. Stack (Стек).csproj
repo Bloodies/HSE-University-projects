@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5A5B01DF-49DB-47C4-AEF7-B434FDB4B3B4}</ProjectGuid>
+    <ProjectGuid>{56940F79-E5DF-4720-9230-A99404CBDB52}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_2.Очередь__Queue_</RootNamespace>
-    <AssemblyName>_2.Очередь__Queue_</AssemblyName>
+    <RootNamespace>_1.Stack__Стек_</RootNamespace>
+    <AssemblyName>_1.Stack__Стек_</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Quene.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
