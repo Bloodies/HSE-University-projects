@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1.Stack__Стек_
+namespace _2.Queue__Очередь_
 {
-    class Program
+    class Очередь
     {
         static void Main(string[] args)
         {

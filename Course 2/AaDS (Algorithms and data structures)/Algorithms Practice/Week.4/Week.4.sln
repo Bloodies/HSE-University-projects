@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Stack (Стек)", "1. Stack (Стек)\1. Stack (Стек).csproj", "{56940F79-E5DF-4720-9230-A99404CBDB52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Queue (Очередь)", "2. Queue (Очередь)\2. Queue (Очередь).csproj", "{E24C9064-FB8B-4EE7-94AF-00A96403962B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Sequence (Последовательность)", "3. Sequence (Последовательность)\3. Sequence (Последовательность).csproj", "{647A94B4-5A94-4D2C-8110-41594C4DC34F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{56940F79-E5DF-4720-9230-A99404CBDB52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56940F79-E5DF-4720-9230-A99404CBDB52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56940F79-E5DF-4720-9230-A99404CBDB52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E24C9064-FB8B-4EE7-94AF-00A96403962B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E24C9064-FB8B-4EE7-94AF-00A96403962B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E24C9064-FB8B-4EE7-94AF-00A96403962B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E24C9064-FB8B-4EE7-94AF-00A96403962B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{647A94B4-5A94-4D2C-8110-41594C4DC34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{647A94B4-5A94-4D2C-8110-41594C4DC34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{647A94B4-5A94-4D2C-8110-41594C4DC34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{647A94B4-5A94-4D2C-8110-41594C4DC34F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
