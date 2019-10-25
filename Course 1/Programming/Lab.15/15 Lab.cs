@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab._4
+namespace Lab._15
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
         }
     }
