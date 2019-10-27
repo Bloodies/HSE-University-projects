@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1.Bunch__Куча_
+namespace _4.Delete_from_AVL_tree__Удаление_
 {
     class Program
     {
