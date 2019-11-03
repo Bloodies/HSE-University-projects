@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace _1.Binary_search__Двоичный_поиск_
+namespace _5.Correct__Проверка_корректности_
 {
-    class Program
+    class Correct
     {
         static void Main()
         {
