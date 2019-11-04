@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace _1.Balance_check__Проверка_баланса_
+namespace _2.Turn_left__Левый_поворот_
 {
-    class Program
+    class Turn_test
     {
-        static void Main()
-        {
-        }
     }
 }

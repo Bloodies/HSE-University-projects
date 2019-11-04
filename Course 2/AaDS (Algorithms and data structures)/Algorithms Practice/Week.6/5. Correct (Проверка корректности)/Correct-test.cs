@@ -9,7 +9,7 @@ namespace _5.Correct__Проверка_корректности_
 {
     class Correct_test
     {
-        static void Main(string[] args)
+        static void Main()
         {
             StreamReader str = new StreamReader("input.txt");
             StreamWriter stwr = new StreamWriter("output.txt");

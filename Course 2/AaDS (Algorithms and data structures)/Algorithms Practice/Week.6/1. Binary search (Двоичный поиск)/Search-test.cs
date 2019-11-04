@@ -90,6 +90,4 @@ namespace _1.Binary_search__Двоичный_поиск_
             output.Close();
         }
     }
-    
 }
-

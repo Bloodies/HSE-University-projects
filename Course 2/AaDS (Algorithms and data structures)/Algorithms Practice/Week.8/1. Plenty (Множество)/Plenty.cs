@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2.Turn_left__Левый_поворот_
+namespace _1.Plenty__Множество_
 {
-    class Program
+    class Plenty
     {
         static void Main()
         {

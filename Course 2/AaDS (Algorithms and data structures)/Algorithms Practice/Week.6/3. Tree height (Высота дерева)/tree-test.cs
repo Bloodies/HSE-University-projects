@@ -9,19 +9,19 @@ namespace _3.Tree_height__Высота_дерева_
 {
     class Tree_test
     {
-        /* public static int CalcHigh(ref int [,] roots, int i)
-{
-if (roots[i, 1] == -1 && roots[i, 2] == -1)
-return 1;
-if (roots[i, 1] == -1)
-return 1 + CalcHigh(ref roots, roots[i, 2]);
-if (roots[i, 2] == -1)
-return 1 + CalcHigh(ref roots, roots[i, 1]);
-return 1 + Math.Max(CalcHigh(ref roots, roots[i, 1]), CalcHigh(ref roots, roots[i, 2]));
 
-} */
+        //public static int CalcHigh(ref int[,] roots, int i)
+        //{
+        //    if (roots[i, 1] == -1 && roots[i, 2] == -1)
+        //        return 1;
+        //    if (roots[i, 1] == -1)
+        //        return 1 + CalcHigh(ref roots, roots[i, 2]);
+        //    if (roots[i, 2] == -1)
+        //        return 1 + CalcHigh(ref roots, roots[i, 1]);
+        //    return 1 + Math.Max(CalcHigh(ref roots, roots[i, 1]), CalcHigh(ref roots, roots[i, 2]));
+        //}
 
-        static void Main(string[] args)
+        static void Main()
         {
             StreamReader str = new StreamReader("input.txt");
             StreamWriter stwr = new StreamWriter("output.txt");
@@ -95,7 +95,6 @@ return 1 + Math.Max(CalcHigh(ref roots, roots[i, 1]), CalcHigh(ref roots, roots[
             stwr.Write(h);
             stwr.Close();
             str.Close();
-
         }
     }
 }
