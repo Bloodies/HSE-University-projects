@@ -9,5 +9,8 @@ namespace _4.Delete_from_AVL_tree__Удаление_
 {
     class Delete_test
     {
+        static void Main()
+        {
+        }
     }
 }

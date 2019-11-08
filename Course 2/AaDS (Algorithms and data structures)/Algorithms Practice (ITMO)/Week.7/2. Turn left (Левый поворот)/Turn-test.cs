@@ -9,5 +9,8 @@ namespace _2.Turn_left__Левый_поворот_
 {
     class Turn_test
     {
+        static void Main()
+        {
+        }
     }
 }

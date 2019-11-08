@@ -9,5 +9,8 @@ namespace _3.Insert_into_AVL_tree__Вставка_
 {
     class Insert_test
     {
+        static void Main()
+        {
+        }
     }
 }
