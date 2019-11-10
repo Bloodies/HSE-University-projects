@@ -31,7 +31,6 @@ namespace _2.Turn_left__Левый_поворот_
         public TreeNode<T> Parent { get; set; }
         public TreeNode<T> Left { get; set; }
         public TreeNode<T> Right { get; set; }
-
         private long Depth { get; set; }
         public long Height { get; private set; }
 
@@ -70,6 +69,7 @@ namespace _2.Turn_left__Левый_поворот_
 
             //One child
             if ((item.Left == null) ^ (item.Right == null))
+            {
                 if (item.Left != null)
                 {
                     if (parent != null)
@@ -100,7 +100,7 @@ namespace _2.Turn_left__Левый_поворот_
                     item.Right.Parent = parent;
                     return Balance(item.Right);
                 }
-
+            }
 
             //Two child
             if ((item.Left != null) && (item.Right != null))
