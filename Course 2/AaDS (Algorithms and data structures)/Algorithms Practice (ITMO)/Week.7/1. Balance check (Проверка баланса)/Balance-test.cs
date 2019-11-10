@@ -7,62 +7,107 @@ using System.IO;
 
 namespace _1.Balance_check__Проверка_баланса_
 {
-    class Balance_test
+    public class main
     {
-        private static (int, int, int)[] nodes;
-        private static StreamWriter output = new StreamWriter("output.txt");
+        public static void Main(string[] args)
+        {
+            using (var sw = new StreamWriter("output.txt"))
+            {
+                var stdin = File.ReadAllLines("input.txt");
+                var n = long.Parse(stdin[0]);
+                var tree = new Tree(n);
+                tree.Parse(stdin);
 
-        private static void BigStackMain()
-        {
-            Height_tree(0);
-            for (int i = 0; i < nodes.Length; i++)
-            {
-                output.WriteLine(NodeBalance(i));
+                for (int i = 0; i < n; i++)
+                    sw.WriteLine(TreeNode<long>.GetBalance(tree.Nodes[i]));
+
             }
-            output.Close();
         }
-        private static int Height_tree(int numberNode)
+    }
+
+    public class Tree
+    {
+        public TreeNode<long>[] Nodes { get; private set; }
+        private long _nodesCount;
+        List<TreeNode<long>> _leafs = new List<TreeNode<long>>();
+
+
+        public Tree(long n)
         {
-            int leftHeight = 0, rightHeight = 0;
-            if (nodes[numberNode].Item1 != 0)
-            {
-                leftHeight = Height_tree(nodes[numberNode].Item1 - 1);
-            }
-            if (nodes[numberNode].Item2 != 0)
-            {
-                rightHeight = Height_tree(nodes[numberNode].Item2 - 1);
-            }
-            nodes[numberNode].Item3 = Math.Max(leftHeight, rightHeight) + 1;
-            return Math.Max(leftHeight, rightHeight) + 1;
+            _nodesCount = n;
+            this.Nodes = new TreeNode<long>[n];
         }
-        public static int NodeBalance(int numberNode)
+        //Parsing
+        public void Parse(string[] stdin)
         {
-            int leftHeight = 0, 
-                rightHeight = 0;
-            if (nodes[numberNode].Item1 != 0)
+            for (int i = 1; i <= _nodesCount; i++)
             {
-                leftHeight = nodes[nodes[numberNode].Item1 - 1].Item3;
+                var temp = stdin[i].Split(' ').Select(x => long.Parse(x)).ToArray();
+
+                if (this.Nodes[i - 1] == null)
+                    this.Nodes[i - 1] = new TreeNode<long>();
+                this.Nodes[i - 1].Key = temp[0];
+                //Left child
+                if (temp[1] != 0)
+                {
+                    if (this.Nodes[temp[1] - 1] == null)
+                        this.Nodes[temp[1] - 1] = new TreeNode<long>()
+                        {
+                            Parent = this.Nodes[i - 1]
+                        };
+                    this.Nodes[i - 1].Left = this.Nodes[temp[1] - 1];
+                }
+                //Right child
+                if (temp[2] != 0)
+                {
+                    if (temp[2] != 0 && this.Nodes[temp[2] - 1] == null)
+                        this.Nodes[temp[2] - 1] = new TreeNode<long>() { Parent = this.Nodes[i - 1] };
+                    this.Nodes[i - 1].Right = this.Nodes[temp[2] - 1];
+                }
+
+                //Calc Height
+                if (temp[1] == 0 & temp[2] == 0)
+                {
+                    TreeNode<long> leaf = this.Nodes[i - 1];
+                    Stack<TreeNode<long>> curr = new Stack<TreeNode<long>>();
+                    while (leaf != null)
+                    {
+                        curr.Push(leaf);
+                        leaf = leaf.Parent;
+                    }
+                    while (curr.Count != 0)
+                    {
+                        leaf = curr.Pop();
+                        if (leaf.Height < curr.Count)
+                            leaf.Height = curr.Count;
+                    }
+                }
             }
-            if (nodes[numberNode].Item2 != 0)
-            {
-                rightHeight = nodes[nodes[numberNode].Item2 - 1].Item3;
-            }
-            return rightHeight - leftHeight;
         }
-        static void Main()
+    }
+
+    public class TreeNode<T> where T : IComparable<T>
+    {
+        public T Key { get; set; }
+        public TreeNode<T> Parent { get; set; }
+        public TreeNode<T> Left { get; set; }
+        public TreeNode<T> Right { get; set; }
+
+        public long Height { get; set; }
+
+        public static long GetBalance(TreeNode<T> tree)
         {
-            StreamReader input = new StreamReader("input.txt");
-            int length = int.Parse(input.ReadLine());
-            nodes = new (int, int, int)[length];
-            string[] tokens;
-            for (int i = 0; i < length; i++)
-            {
-                tokens = input.ReadLine().Split(' ');
-                nodes[i] = (int.Parse(tokens[1]), int.Parse(tokens[2]), 0);
-            }
-            input.Close();
-            Thread newThread = new Thread(BigStackMain, 100000000);
-            newThread.Start();
+            if (tree == null)
+                throw new ArgumentNullException("Tree does not exist!");
+
+            if (tree.Left != null && tree.Right != null)
+                return tree.Right.Height - tree.Left.Height;
+            if (tree.Left == null && tree.Right != null)
+                return tree.Right.Height + 1;
+            if (tree.Left != null && tree.Right == null)
+                return -1 - tree.Left.Height;
+            else
+                return 0;
         }
     }
 }
