@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>_1.Balance_check__Проверка_баланса_</RootNamespace>
     <AssemblyName>_1.Balance_check__Проверка_баланса_</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>_1.Balance_check__Проверка_баланса_.Balance</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
