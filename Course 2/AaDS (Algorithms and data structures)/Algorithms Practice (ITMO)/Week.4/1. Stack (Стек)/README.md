@@ -24,4 +24,4 @@ __________________
 
 Пример
 
-![none](University.Projects\Course 2\AaDS (Algorithms and data structures)\Algorithms Practice (ITMO)\Resources\result_w1_t1.png)
+![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w1_t1.png)
