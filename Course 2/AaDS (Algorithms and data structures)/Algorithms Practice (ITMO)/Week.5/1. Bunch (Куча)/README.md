@@ -13,6 +13,7 @@
 
 * если ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w2_t1_2.png);  
 * если ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w2_t1_3.png).  
+
 Дан массив целых чисел. Определите, является ли он неубывающей пирамидой.
 __________________
 Формат входного файла
