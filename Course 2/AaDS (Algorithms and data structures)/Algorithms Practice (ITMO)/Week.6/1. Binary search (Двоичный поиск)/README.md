@@ -15,7 +15,7 @@ __________________
 Формат выходного файла
 Для каждого запроса выведите в отдельной строке номер (индекс) первого и последнего вхождения этого числа в массив. Ecли числа в массиве нет, выведите два раза ***-1***.
 
-Пример
+Пример  
 ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w6_t1.png)
 __________________
 Результат
