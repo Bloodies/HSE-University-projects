@@ -16,10 +16,10 @@
 
 Дан массив целых чисел. Определите, является ли он неубывающей пирамидой.
 __________________
-Формат входного файла
+Формат входного файла  
 Первая строка входного файла содержит целое число ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w5_t1_3.png). Вторая строка содержит  целых чисел, по модулю не превосходящих ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w5_t1_5.png).
 
-Формат выходного файла
+Формат выходного файла  
 Выведите «YES», если массив является неубывающей пирамидой, и «NO» в противном случае.
 
 Пример
