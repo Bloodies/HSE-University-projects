@@ -6,6 +6,7 @@
 
 <details>
 <summary>English version</summary>
+
 # Tasks from the course "Algorithms and data structures"
 
 ### The course was conducted by a second-year Software engineering student from "HSE-Perm".
