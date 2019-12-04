@@ -1,29 +1,29 @@
 Задание взято с сайта с онлайн курсами ([openedu.ru](https://courses.openedu.ru))
 
-# Задние 1 "Множество" (8 неделя)
+# Задние 3 "Быстрый поиск подстроки в строке" (9 неделя)
 | Имя входного файла: | input.txt |
 |:--------------------:|:----------:|
 | Имя выходного файла: | output.txt |
 | Ограничение по времени: | 2 секунды |
 | Ограничение по памяти: | 256 мегабайт |
 
-Реализуйте множество с операциями «добавление ключа», «удаление ключа», «проверка существования ключа».
+Даны строки ***p*** и ***t***. Требуется найти все вхождения строки ***p*** в строку ***t*** в качестве подстроки.
 __________________
 Формат входного файла  
-В первой строке входного файла находится строго положительное целое число операций ***N***, не превышающее ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w8_t1_1.png). В каждой из последующих ***N*** строк находится одна из следующих операций:
-
-A ***x*** — добавить элемент  в множество. Если элемент уже есть в множестве, то ничего делать не надо.
-D ***x*** — удалить элемент ***x***. Если элемента ***x*** нет, то ничего делать не надо.
-? ***x*** — если ключ ***x*** есть в множестве, выведите Y, если нет, то выведите N.
-Аргументы указанных выше операций — целые числа, не превышающие по модулю ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w8_t1_2.png).
+Первая строка входного файла содержит ***p***, вторая — ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w9_t3_1.png). Строки состоят из букв латинского алфавита.
 
 Формат выходного файла  
-Выведите последовательно результат выполнения всех операций «?». Следуйте формату выходного файла из примера.
+В первой строке выведите число вхождений строки ***p*** в строку ***t***. Во второй строке выведите в возрастающем порядке номера символов строки ***t***, с которых начинаются вхождения ***p***. Символы нумеруются с единицы.
 
 Пример
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w8_t1.png)
+![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w9_t3.png)
+
+Примечание  
+Данная задача сдается в режиме прокторинга. Число баллов, назначаемых за решение задачи, определяется числом тестов, которые пройдет это решение. Если Вы отправили несколько решений, засчитывается последнее из них.
+
+В данной задаче все тесты достаточно большие. За решения, рассчитанные на работу с короткими строками, не предусмотрены фиксированные частичные баллы, так как такие решения оцениваются в задаче «Наивный поиск подстроки в строке». Тем не менее, и в этой задаче алгоритмы и реализации, недостаточно эффективные для того, чтобы пройти все возможные тесты, могут получить частичные баллы.
 __________________
 Результат
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w8_t1.png)
+![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w9_t3.png)
