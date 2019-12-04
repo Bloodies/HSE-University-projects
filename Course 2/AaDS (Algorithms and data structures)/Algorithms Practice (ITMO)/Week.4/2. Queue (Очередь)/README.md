@@ -17,15 +17,15 @@
 Гарантируется, что размер стека в процессе выполнения команд не превысит 10^6 элементов. 
 __________________
 Формат входного файла
-В первой строке входного файла содержится ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w1_t1-t2_1.png) — число команд. Каждая последующая строка исходного файла содержит ровно одну команду.
+В первой строке входного файла содержится ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w4_t1-t2_1.png) — число команд. Каждая последующая строка исходного файла содержит ровно одну команду.
 
 Формат выходного файла
 Выведите числа, которые удаляются из стека с помощью команды "−", по одному в каждой строке. Числа нужно выводить в том порядке, в котором они были извлечены из стека. Гарантируется, что изъятий из пустого стека не производится.
 
 Пример
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w1_t2.png)
+![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w4_t2.png)
 __________________
 Результат
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w1_t2.png)
+![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w4_t2.png)
