@@ -34,10 +34,8 @@ namespace _3.Quick_search__Быстрый_поиск_
                     }
                 }
             }
-
             return prefixes;
         }
-
         private static List<int> FindSubString(string subStr, string goalStr)
         {
             var listPositions = new List<int>();
@@ -68,12 +66,8 @@ namespace _3.Quick_search__Быстрый_поиск_
                     j = prefixes[j - 1];
                 }
             }
-
             return listPositions;
         }
-
-
-
         static void Main()
         {
             StreamReader input = new StreamReader("input.txt");
@@ -87,7 +81,6 @@ namespace _3.Quick_search__Быстрый_поиск_
             {
                 output.Write(position + 1 + " ");
             }
-
             output.Close();
         }
     }
