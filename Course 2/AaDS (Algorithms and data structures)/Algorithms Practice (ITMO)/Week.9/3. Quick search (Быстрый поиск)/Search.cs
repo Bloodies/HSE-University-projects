@@ -13,18 +13,18 @@ namespace _3.Quick_search__Быстрый_поиск_
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
+            Text.Task();
             //StreamReader input = new StreamReader("input.txt");
             //StreamWriter output = new StreamWriter("output.txt");
             //string subStr = input.ReadLine();
             //string goalStr = input.ReadLine();
-            Text.Task();
             Console.WriteLine("Вводите данные как показано выше");
             Console.WriteLine("\nВходные данные:");
             string subStr = Console.ReadLine();
             string goalStr = Console.ReadLine();
-            var listPositions = Program.FindSubString(subStr, goalStr);
-            //output.WriteLine(listPositions.Count);
+            var listPositions = Program.FindSubString(subStr, goalStr);            
             Console.WriteLine("\nВыходные данные:");
+            //output.WriteLine(listPositions.Count);
             Console.WriteLine(listPositions.Count);
             foreach (int position in listPositions)
             {
@@ -112,7 +112,7 @@ namespace _3.Quick_search__Быстрый_поиск_
                 }
             } while (!true);
         }
-    }        
+    }
     public class Program
     {
         public static int[] BuildPrefix(string str)
