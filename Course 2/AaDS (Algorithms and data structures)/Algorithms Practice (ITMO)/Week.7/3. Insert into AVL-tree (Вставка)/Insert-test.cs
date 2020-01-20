@@ -39,7 +39,6 @@ namespace _3.Insert_into_AVL_tree__Вставка_
             public TreeNode<T> Parent { get; set; }
             public TreeNode<T> Left { get; set; }
             public TreeNode<T> Right { get; set; }
-
             private long Depth { get; set; }
             public long Height { get; private set; }
 

@@ -7,21 +7,21 @@ using System.IO;
 
 namespace _2.Turn_left__Левый_поворот_
 {
-    public class main
+    public class Main_program_test
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            using (var sw = new StreamWriter("output.txt"))
+            using (var output = new StreamWriter("output.txt"))
             {
-                string[] stdin = File.ReadAllLines("input.txt");
+                string[] input = File.ReadAllLines("input.txt");
 
                 TreeNode<long> root = null;
-                for (int i = 1; i < stdin.Length; i++)
-                    root = TreeNode<long>.Insert(root, new TreeNode<long> { Key = long.Parse(stdin[i].Split(' ')[0]) });
+                for (int i = 1; i < input.Length; i++)
+                    root = TreeNode<long>.Insert(root, new TreeNode<long> { Key = long.Parse(input[i].Split(' ')[0]) });
 
                 root = TreeNode<long>.Balance(root);
-                sw.WriteLine(stdin[0]);
-                TreeNode<long>.PrintTree(sw, root);
+                output.WriteLine(input[0]);
+                TreeNode<long>.PrintTree(output, root);
             }
         }
     }

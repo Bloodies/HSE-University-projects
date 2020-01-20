@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>_1.Balance_check__Проверка_баланса_.Balance</StartupObject>
+    <StartupObject>_1.Balance_check__Проверка_баланса_.Main_program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Balance-test.cs" />
     <Compile Include="Balance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

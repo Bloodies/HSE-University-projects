@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>_3.Insert_into_AVL_tree__Вставка_.Insert_test.Main_program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Insert-test.cs" />
     <Compile Include="Insert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
