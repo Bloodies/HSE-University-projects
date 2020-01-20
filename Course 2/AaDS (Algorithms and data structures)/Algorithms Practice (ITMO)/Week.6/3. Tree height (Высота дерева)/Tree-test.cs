@@ -23,9 +23,9 @@ namespace _3.Tree_height__Высота_дерева_
 
         static void Main()
         {
-            StreamReader str = new StreamReader("input.txt");
-            StreamWriter stwr = new StreamWriter("output.txt");
-            int n = int.Parse(str.ReadLine());
+            StreamReader input = new StreamReader("input.txt");
+            StreamWriter output = new StreamWriter("output.txt");
+            int n = int.Parse(input.ReadLine());
 
             int[,] roots = new int[n, 4];
             //0 - h
@@ -34,7 +34,7 @@ namespace _3.Tree_height__Высота_дерева_
             //3 - parent
             for (int i = 0; i < n; i++)
             {
-                string[] line = str.ReadLine().Split(' ');
+                string[] line = input.ReadLine().Split(' ');
                 roots[i, 0] = 0;
                 roots[i, 1] = int.Parse(line[1]) - 1;
                 roots[i, 2] = int.Parse(line[2]) - 1;
@@ -92,9 +92,9 @@ namespace _3.Tree_height__Высота_дерева_
             {
                 h = Math.Max(roots[i, 0], h);
             }
-            stwr.Write(h);
-            stwr.Close();
-            str.Close();
+            output.Write(h);
+            output.Close();
+            input.Close();
         }
     }
 }

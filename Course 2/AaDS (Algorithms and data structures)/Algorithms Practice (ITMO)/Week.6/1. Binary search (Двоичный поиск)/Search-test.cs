@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-
-
-
 namespace _1.Binary_search__Двоичный_поиск_
 {
     class Search_test
