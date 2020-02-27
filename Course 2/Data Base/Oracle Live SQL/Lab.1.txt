@@ -1,0 +1,189 @@
+--Заполнение-базы-данных---------------------------------------------------------------------------
+--1)-Создание-таблицы-с-шефами---------------------------------------------------------------------
+create table chefs                                                 --инициализация таблицы с шефами
+( chef_id number not null,
+  chef_name varchar2(50) not null,
+  chef_birth_date date not null
+);
+
+create index ch_name         --индекс с именами, так как в будущем будем выбирать среди имен
+  on chefs(chef_name);
+  
+create index ch_date         --индекс с днями рождений, так как в будущем будем искать даты
+  on chefs(chef_birth_date);
+  
+--заполнение таблицы/базы данных-------------------------------
+insert into chefs(chef_id, chef_name, chef_birth_date) values 
+  (0,'Иванов Иван', to_date('25.01.1978', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values
+  (1,'Данилов Данил', to_date('10.02.2003', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values
+  (2,'Андреев Андрей', to_date('17.03.1982', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values 
+  (3,'Павлов Павел', to_date('08.05.1978', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values
+  (4,'Сергеев Сергей', to_date('09.07.1997', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values
+  (5,'Дмитриев Дмитрий', to_date('21.09.2002', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values 
+  (6,'Полинова Полина', to_date('10.02.2000', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values
+  (7,'Паприкова Анастасия', to_date('06.10.2001', 'dd.mm.yyyy'));
+
+insert into chefs(chef_id, chef_name, chef_birth_date) values
+  (8,'Олег Григорьев', to_date('04.10.1990', 'dd.mm.yyyy'));
+  
+insert into chefs(chef_id, chef_name, chef_birth_date) values
+  (9,'Славный Друже', to_date('04.10.1990', 'dd.mm.yyyy'));  
+------------------------------------------------------------------------------------------------------
+--2)Создание-таблицы-со-скиллами----------------------------------------------------------------------
+create table cooking_skills                                        --инициализация таблицы со скиллами
+( skill_id number(10) not null,
+  skill_name varchar2(50) not null
+);
+
+create index skill_tag                                             --названия блюд
+  on cooking_skills(skill_name);
+  
+--заполнение таблицы--------
+/*
+insert into cooking_skills
+  (skill_id, skill_name) 
+   values 
+  (0,'Торты');
+
+insert into cooking_skills
+  (skill_id, skill_name) 
+   values 
+  (1,'Пирожные');
+
+insert into cooking_skills
+  (skill_id, skill_name) 
+   values 
+  (2,'Утка по пекински');
+
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (3,'Суп');
+*/
+insert into cooking_skills
+  (skill_id, skill_name) 
+   values 
+  (0,'Торты');
+
+insert into cooking_skills
+  (skill_id, skill_name) 
+   values 
+  (1,'Пирожные');
+
+insert into cooking_skills
+  (skill_id, skill_name) 
+   values 
+  (2,'Утка по пекински');
+
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (3,'Суп');
+  
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (4,'Селёдка');
+  
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (5,'Чивапчичи');
+  
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (6,'Хлеб');
+  
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (7,'Суп');
+  
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (8,'Пельмени');
+  
+insert into cooking_skills
+  (skill_id, skill_name)
+   values 
+  (9,'Торты');
+-------------------------------------------------------------------------------------------------------
+--3)Объединение-таблиц-в-одну--------------------------------------------------------------------------
+/*
+create table chef_skill_links as                                   --инициализация объедененной таблицы
+  select chef_id, chef_name, skill_name 
+  from cooking_skills 
+  inner join chefs 
+  on skill_id = mod(chef_id, 4);                         
+       --если блюд больше то 4 меняем на другую цифру
+*/
+create table chef_skill_links as                                   --инициализация объедененной таблицы
+  select chef_id, chef_name, skill_name 
+  from cooking_skills 
+  inner join chefs 
+  on skill_id = chef_id;
+
+alter table chef_skill_links add skill_reach date; 
+  update chef_skill_links 
+  set skill_reach = current_date;
+-------------------------------------------------------------------------------------------------------
+--Запросы----------------------------------------------------------------------------------------------
+--4)Повара-которые-умеют-выпекать-торты----------------------------------------------------------------
+select chefs.chef_name "ФИО", chefs.chef_birth_date "День рождения", skill_name "Умение"
+  from chefs 
+  inner join chef_skill_links on chefs.chef_id = chef_skill_links.chef_id and skill_name = 'Торты';
+-------------------------------------------------------------------------------------------------------
+--5)Самый-молодой-повар--------------------------------------------------------------------------------
+select MAX(chef_birth_date) "День рождения самого молодого" 
+  from chefs;
+-------------------------------------------------------------------------------------------------------
+--6)Повара-старше-30ти---------------------------------------------------------------------------------
+select chefs.chef_id "ID", chefs.chef_name"ФИО", chefs.chef_birth_date "Дата рождения", cooking_skills.skill_name "Умение"  
+  from chefs  
+  inner join chef_skill_links on chefs.chef_id = chef_skill_links.chef_id  
+  inner join cooking_skills on chef_skill_links.skill_name = cooking_skills.skill_name 
+  where months_between(sysdate, chefs.chef_birth_date)/12>30;
+-------------------------------------------------------------------------------------------------------
+--7)Повара-пекущие-пирожные-до-20ти--------------------------------------------------------------------
+select chefs.chef_id "ID", chefs.chef_name "ФИО", chefs.chef_birth_date "Дата рождения", cooking_skills.skill_name "Умение"  
+  from chefs  
+  inner join chef_skill_links on chefs.chef_id=chef_skill_links.chef_id  
+  inner join cooking_skills on chef_skill_links.skill_name=cooking_skills.skill_name  
+  where cooking_skills.skill_name='Пирожные' and (months_between(chef_skill_links.skill_reach, chefs.chef_birth_date)/12<20);
+-------------------------------------------------------------------------------------------------------
+--8)Повара-на-П----------------------------------------------------------------------------------------
+select chef_name "Повара с фамилией на П"
+  from chefs
+  where chef_name like 'П%';
+-------------------------------------------------------------------------------------------------------
+--9)Возрастные-группы----------------------------------------------------------------------------------
+select trunc(months_between(current_date, chef_birth_date)/120)*10||'-'||(trunc(months_between(current_date, chef_birth_date)/120)+1)*10 "Промежуток", 
+  count (*) "Количество" 
+  from chefs 
+  inner join chef_skill_links on chef_skill_links.chef_id = chefs.chef_id and skill_name = 'Суп'
+  group by trunc(months_between(current_date, chef_birth_date)/120);
+-------------------------------------------------------------------------------------------------------
+--10)Возрастные-группы---------------------------------------------------------------------------------
+--Группы:                  меню завтрака, ланча(обеда), ужина.
+--Категории:               гарнир, горячее, десерт, коктейль, салаты и аперитив, комплимент, выпечка.
+--Вспомогательные таблицы: вегитарианское меню, десертное меню, меню напитков
+--
+--Можно сделать таблицу категории, с категориями и id навыков, которые понадобятся для этого. 
+--По данному id пользователь, например, может найти нужного повара.
+--Или наоборот, идти от поваров и в группе записать блюда из этой группы и повара, который может отвечать за данное меню.
