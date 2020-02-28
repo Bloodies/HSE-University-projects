@@ -360,7 +360,7 @@ begin
  elsif updating then raise_application_error(-20502, 'мы еще не умеем менять'); 
  --если менять как надо (insert into audit_chefs(log_name, ch_id, ch_name, ch_birthdate) values ('update', chef_id, :NEW.chef_name, :NEW.chef_birth_date); ) то выскакивает ошибка что столбец не находится 
  else raise_application_error(-20503, 'низя'); 
-end if; 
+ end if; 
 end track_chef;
  
  
@@ -378,4 +378,15 @@ select * from audit_chefs;
 /*12) Навесить на таблицу audit_chefs триггер, который бы запрещал удалять и изменять в ней записи. 
 При попытке отключения данного триггера должно выводиться уведомление, что данный триггер отключать нельзя.*/
 -------------------------------------------------------------------------------------------------------
+create or replace trigger ultimate_blocker
+before insert or update or delete on audit_chefs 
+for each row  
+begin 
+ if ('drop trigger ultimate_blocker') then raise_application_error(-20666,'Изменения в таблице невозможны'); 
+ elsif ('ALTER TRIGGER  ultimate_blocker DISABLE') then raise_application_error(-20666,'Изменения в таблице невозможны'); 
+ elsif ('ALTER TABLE audit_chefs DISABLE ALL TRIGGERS') then raise_application_error(-20666,'Изменения в таблице невозможны'); 
+ else raise_application_error(-20666,'Изменения в таблице невозможны'); 
+ end if;
+end;
+/
 -------------------------------------------------------------------------------------------------------
