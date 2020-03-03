@@ -1,0 +1,105 @@
+/*
+1)  drop function gen_email_name;
+2)  execute insert_team(3, v_name => 'LONGHORNS', v_city => 'AUSTIN');
+    execute insert_team(3, 'AUSTIN', 'LONGHORNS');
+3)  alter table long_tab nodify (long_col clob);
+4)  HEADER
+    EXECUTABLE
+5)  g_comm имеет значение 15 в 9:06am для Jones
+6)  Эта функция может быть использована в select-запросе к любой таблице, где есть колонки строкового типа
+    Эта функция генерирует строку на основе 2 символьных значений переданных в функцию
+7)  По умолчанию, хранимая процедура выполняется с привилегиями владельца
+    Хранимая процедура хранится в базе данных и может быть использована несколькими программами
+    Хранимая процедура дает некоторые преимущества по сравнению с обыкновенным SQL-запросом, как, например, программируемая функциональность и скомпилированный код
+8)  select sаlary, саlс_sal(sаlarу) from еmplоуееs where dеpartment_id = 60;
+    select lаst_nаme, sаlаry, сalс_sаl(salаrу) from еmploуеes order by calс_sal(sаlarу);
+9)  Значение discount_rate устанавливается в 0.10 каждый раз, когда пакет вызывается в сессии
+10) Да
+11) drop trigger business_hour;
+12) DML событие
+    тело триггера
+    название триггера
+    момент вызова триггера
+13) upd_bat_stat(v_id);
+*/
+--14)----------------------------------------------------------------------------------------
+create table agreement_payments
+( agreement_id numeric(10) not null,
+  constraint agreement_pk primary key (agreement_id),
+  agreement_number number not null,
+  pay_value number not null,
+  pay_date date not null
+);
+
+create index payment_date         
+  on agreement_payments(pay_date);
+
+create index total_payment         
+  on agreement_payments(pay_value);
+
+create sequence s_payments
+  minvalue 1
+  start with 1
+  increment by 1
+  cache 20;
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111111, 1200, to_date('01.10.2010', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111112, 850, to_date('20.06.2010', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111113, 600, to_date('08.06.2017', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111114, 2200, to_date('31.12.2014', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111115, 400, to_date('10.05.2012', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111116, 1200, to_date('20.02.2014', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111117, 1200, to_date('01.01.2009', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111118, 1000, to_date('21.02.2018', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111119, 700, to_date('21.02.2018', 'dd.mm.yyyy'));
+
+insert into agreement_payments
+  (agreement_id, agreement_number, pay_value, pay_date)
+  values
+  (s_payments.nextval, 1111111111120, 1200, to_date('03.03.2011', 'dd.mm.yyyy'));
+
+select s_payments.currval 
+  from agreement_payments;
+
+create or replace synonym agreement_payments_view
+  for agreement_payments;
+
+create or replace view view_per_date 
+as select pay_date, pay_value, agreement_number
+from agreement_payments_view
+order by pay_date;
