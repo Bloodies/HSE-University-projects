@@ -382,11 +382,7 @@ create or replace trigger ultimate_blocker
 before insert or update or delete on audit_chefs 
 for each row  
 begin 
- if ('drop trigger ultimate_blocker') then raise_application_error(-20666,'Изменения в таблице невозможны'); 
- elsif ('ALTER TRIGGER  ultimate_blocker DISABLE') then raise_application_error(-20666,'Изменения в таблице невозможны'); 
- elsif ('ALTER TABLE audit_chefs DISABLE ALL TRIGGERS') then raise_application_error(-20666,'Изменения в таблице невозможны'); 
- else raise_application_error(-20666,'Изменения в таблице невозможны'); 
- end if;
+ raise_application_error(-20666,'Изменения в таблице невозможны'); 
 end;
 /
 -------------------------------------------------------------------------------------------------------
