@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.1 (Tree IDs)", "Lab.1 (Tree IDs)\Lab.1 (Tree IDs).csproj", "{25FD0AEC-230C-4352-8E41-33AE25CB9627}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.2 (Paint)", "Lab.2 (Paint)\Lab.2 (Paint).csproj", "{521EFF3C-F011-4610-AD4C-BE28D5CEEF73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.3 (LINQ to XML)", "Lab.3 (LINQ to XML)\Lab.3 (LINQ to XML).csproj", "{BC0A2150-800D-4C32-9C4A-A2D4981366D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{521EFF3C-F011-4610-AD4C-BE28D5CEEF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{521EFF3C-F011-4610-AD4C-BE28D5CEEF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{521EFF3C-F011-4610-AD4C-BE28D5CEEF73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0A2150-800D-4C32-9C4A-A2D4981366D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0A2150-800D-4C32-9C4A-A2D4981366D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0A2150-800D-4C32-9C4A-A2D4981366D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0A2150-800D-4C32-9C4A-A2D4981366D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
