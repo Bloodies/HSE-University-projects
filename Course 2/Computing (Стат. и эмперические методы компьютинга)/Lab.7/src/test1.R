@@ -1,0 +1,15 @@
+library(ggplot2)
+
+df <- read.csv(file = "villa2.csv",  sep=";")
+View(df) 
+#----------------------------------
+#ggplot(df, aes(x = N)) + geom_boxplot(binwidth=1, colour = "orangered", fill="greenyellow")
+#ggplot(df, aes(x = Price)) + geom_boxplot(binwidth=1, colour = "orangered", fill="greenyellow")
+#ggplot(df, aes(x = Dist)) + geom_boxplot(binwidth=1, colour = "orangered", fill="greenyellow")
+#ggplot(df, aes(x = house)) + geom_boxplot(binwidth=1, colour = "orangered", fill="greenyellow")
+#ggplot(df, aes(x = area)) + geom_boxplot(binwidth=1, colour = "orangered", fill="greenyellow")
+ggplot(data = NULL, aes(x = N, group = df$region, fill = df$region)) +  geom_density(alpha = 0.7)
+ggplot(data = NULL, aes(x = Price, group = df$region, fill = df$region)) +  geom_density(alpha = 0.7)
+ggplot(data = NULL, aes(x = Dist, group = df$region, fill = df$region)) +  geom_density(alpha = 0.7)
+ggplot(data = NULL, aes(x = house, group = df$region, fill = df$region)) +  geom_density(alpha = 0.7)
+ggplot(data = NULL, aes(x = area, group = df$region, fill = df$region)) +  geom_density(alpha = 0.7)

@@ -1,0 +1,32 @@
+#install.packages(c("factoextra"))
+
+library(readr)
+library(factoextra)
+df <- read_delim("villa2.csv", ";", escape_double = FALSE, locale = locale(decimal_mark = ","), trim_ws = TRUE)
+View(df)
+plot(df)
+df <- read.csv(file = "villa2.csv", sep = ";")
+st <- as.vector(df$area);n <- gsub(",", ".", st);n <- as.numeric(n);df$area <- n
+st <- as.vector(df$Price);n <- gsub(",", ".", st);n <- as.numeric(n);df$Price <- n
+st <- as.vector(df$Dist);n <- gsub(",", ".", st);n <- as.numeric(n);df$Dist <- n
+dim(df)
+str(df)
+typeof(df$N)
+typeof(df$Price)
+typeof(df$Dist)
+typeof(df$house)
+typeof(df$area)
+typeof(df$Eco)
+df <- na.omit(df)
+fviz_nbclust(df, kmeans, method = "wss") + labs(subtitle = "Elbow method") + geom_vline(xintercept = 4, linetype = 2)
+fviz_nbclust(df, kmeans, method = "silhouette")
+cl <- kmeans(df, 4)
+cl
+fviz_cluster(cl, data = df, ellipse.type = 'convex')
+kruskal.test(df$N ~ cl$cluster)
+kruskal.test(df$N ~ cl$cluster)
+kruskal.test(df$Price ~ cl$cluster)
+kruskal.test(df$Dist ~ cl$cluster)
+kruskal.test(df$house ~ cl$cluster)
+kruskal.test(df$area ~ cl$cluster)
+kruskal.test(df$Eco ~ cl$cluster)
