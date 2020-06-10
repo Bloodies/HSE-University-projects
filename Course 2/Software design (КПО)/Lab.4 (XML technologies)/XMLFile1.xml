@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--<!DOCTYPE schedule SYSTEM "schedule.dtd">-->
+<schedule xmlns:schedule="http://www.w3.org/2001/XMLSchema-instance" schedule:schemaLocation="http://tempuri.org/XMLSchema1.xsd XMLSchema1.xsd">
+  <day weekday="Понедельник">
+    <subject type="семинар" number="3">
+      <name>Английский язык</name>
+      <class>110[3]</class>
+      <teacher>Садикова Т.Б.</teacher>
+      <timeFrame>
+        <start>11:30:00</start>
+        <end>12:50:00</end>
+      </timeFrame>
+    </subject>
+    <subject type="семинар" number="4">
+      <name>Английский язык</name>
+      <class>110[3]</class>
+      <teacher>Садикова Т.Б.</teacher>
+      <timeFrame>
+        <start>13:00:00</start>
+        <end>14:20:00</end>
+      </timeFrame>
+    </subject>
+  </day>
+  <day weekday="Вторник">
+    <subject type="семинар" number="3">
+      <name>Операционные системы</name>
+      <class>504[3]</class>
+      <teacher>Ланин В.В.</teacher>
+      <timeFrame>
+        <start>11:30:00</start>
+        <end>12:50:00</end>
+      </timeFrame>
+    </subject>
+    <subject type="семинар" number="4">
+      <name>Конструирование ПО</name>
+      <class>504[3]</class>
+      <teacher>Ланин В.В.</teacher>
+      <timeFrame>
+        <start>13:00:00</start>
+        <end>14:20:00</end>
+      </timeFrame>
+    </subject>
+  </day>
+  <day weekday="Среда">
+    <subject type="семинар" number="1">
+      <name>Статические и эмпер. методы компьютеринга</name>
+      <class>511[3]</class>
+      <teacher>Радионова М.В.</teacher>
+      <timeFrame>
+        <start>08:10:00</start>
+        <end>09:30:00</end>
+      </timeFrame>
+    </subject>
+    <subject type="семинар" number="2">
+      <name>Научно-исследовательский семинар</name>
+      <class>501[3]</class>
+      <teacher>Носкова Е.Н.</teacher>
+      <timeFrame>
+        <start>09:40:00</start>
+        <end>11:00:00</end>
+      </timeFrame>
+    </subject>
+  </day>
+  <day weekday="Четверг">
+    <subject type="лекция" number="3">
+      <name>Операционные системы</name>
+      <class>220[2]</class>
+      <teacher>Лядова Л.Н.</teacher>
+      <timeFrame>
+        <start>11:30:00</start>
+        <end>12:50:00</end>
+      </timeFrame>
+    </subject>
+    <subject type="лекция" number="4">
+      <name>Статические и эмпер. методы компьютеринга</name>
+      <class>220[2]</class>
+      <teacher>Радионова М.В.</teacher>
+      <timeFrame>
+        <start>13:00:00</start>
+        <end>14:20:00</end>
+      </timeFrame>
+    </subject>
+  </day>
+  <day weekday="Пятница">
+    <subject type="семинар" number="1">
+      <name>Базы данных</name>
+      <class>510[3]</class>
+      <teacher>Хренов В.В.</teacher>
+      <timeFrame>
+        <start>08:10:00</start>
+        <end>09:30:00</end>
+      </timeFrame>
+    </subject>
+    <subject type="семинар" number="2">
+      <name>Алгоритмы и структуры данных</name>
+      <class>504[3]</class>
+      <teacher>Морозенко В.В.</teacher>
+      <timeFrame>
+        <start>09:40:00</start>
+        <end>11:00:00</end>
+      </timeFrame>
+    </subject>
+  </day>
+</schedule>

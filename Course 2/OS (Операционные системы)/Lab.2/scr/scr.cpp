@@ -99,7 +99,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		int minSide = startX < startY ? startX : startY;
 		if (c != 0) {
 			for (int i = 0; i < c; i++) {
-				//Ellipse(hDC, mas[i][0] * startX + 2, mas[i][1] * startY + 2, (mas[i][0] * startX) + minSide - 2, (mas[i][1] * startY) + minSide - 2);
+				
 				Ellipse(hDC, (mas[i][0] * startX) + (startX / 2 - minSide / 2) + 2, mas[i][1] * startY + (startY / 2 - minSide / 2) + 2, (mas[i][0] * startX) + (startX / 2 + minSide / 2) - 2, (mas[i][1] * startY) + (startY / 2 + minSide / 2) - 2);
 			}
 		}
