@@ -1,0 +1,206 @@
+DROP TABLE JT$Calendar;
+create table JT$Calendar                                                 --инициализация таблицы с шефами
+(Cal_Day date not null);
+insert into JT$Calendar(Cal_Day) values (to_date('01.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('02.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('03.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('04.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('05.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('06.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('07.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('08.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('09.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('10.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('11.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('12.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('13.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('14.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('15.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('16.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('17.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('18.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('19.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('20.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('21.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('22.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('23.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('24.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('25.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('26.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('27.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('28.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('29.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('30.01.2009', 'dd.mm.yyyy'));
+insert into JT$Calendar(Cal_Day) values (to_date('31.01.2009', 'dd.mm.yyyy'));
+
+select * from JT$Calendar;
+
+DROP TABLE JT$Emp;
+create table JT$Emp                                                      --инициализация таблицы с шефами
+( Empno number not null,                 -- Таб. номер
+  EName varchar2 (80) not null,          -- Имя 
+  Job varchar2 (30) not null,            -- Должность
+  Mgr number,                            -- Начальник
+  Hiredate date not null,                -- Дата приема
+  Sal number (10, 2) not null,           -- Оклад
+  Comm number (10, 2),                   -- Бонус
+  Deptno number not null                 -- Отдел
+);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7369, 'SMITH', 'CLERK', 7902, to_date('17.12.2007', 'dd.mm.yyyy'), 800, null, 20);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7499, 'ALLEN', 'SALESMAN', 7698, to_date('20.02.2005', 'dd.mm.yyyy'), 1600, 300, 30);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7521, 'WARD', 'SALESMAN', 7698, to_date('22.01.2009', 'dd.mm.yyyy'), 1250, 500, 30);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7566, 'JONES', 'MANAGER', 7839, to_date('02.04.2006', 'dd.mm.yyyy'), 2975, null, 20);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7654, 'MARTIN', 'SALESMAN', 7698, to_date('28.09.2008', 'dd.mm.yyyy'), 1250, 1400, 30);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7698, 'BLAKE', 'MANAGER', 7839, to_date('15.01.2009', 'dd.mm.yyyy'), 2850, null, 30);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7782, 'CLARK', 'MANAGER', 7839, to_date('09.06.2000', 'dd.mm.yyyy'), 2450, null, 10);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7839, 'KING', 'PRESIDENT', null, to_date('17.11.2005', 'dd.mm.yyyy'), 5000, null, 10);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7844, 'TURNER', 'SALESMAN', 7698, to_date('11.01.2009', 'dd.mm.yyyy'), 1500, 0, 30);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7900, 'JAMES', 'CLERK', 7844, to_date('03.12.2001', 'dd.mm.yyyy'), 950, null, 30);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7902, 'FORD', 'ANALYST', 7566, to_date('11.01.2009', 'dd.mm.yyyy'), 3000, null, 20);
+insert into JT$Emp(Empno, EName, Job, Mgr, Hiredate, Sal, Comm, Deptno) values (7934, 'MILLER', 'CLERK', 7782, to_date('23.01.2004', 'dd.mm.yyyy'), 1300, null, 10);
+
+select * from JT$Emp;
+
+DROP TABLE JT$Operations;
+create table JT$Operations                                                      --инициализация таблицы с шефами
+( Operation_Id number not null,          -- Id операции 
+  Account_Id number not null,            -- Id счета 
+  Operation_Type varchar2 (2) not null /*CHECK (Operation_Type in ('D', 'C'))*/, -- Тип операции
+  Operation_Date date not null,          -- Дата операции 
+  Agreement_Num varchar2 (20),           -- Номер договора 
+  Amount number (20, 2) not null         -- Сумма операции
+);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (1, 1, 'С', to_date('01.01.2009', 'dd.mm.yyyy'), null, 100);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (2, 1, 'С', to_date('01.01.2009', 'dd.mm.yyyy'), '01-11A', 230);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (3, 1, 'С', to_date('01.01.2009', 'dd.mm.yyyy'), '01-11B', 350);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (4, 1, 'D', to_date('01.01.2009', 'dd.mm.yyyy'), null, 100);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (5, 1, 'D', to_date('01.01.2009', 'dd.mm.yyyy'), null, 100);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (6, 1, 'D', to_date('01.01.2009', 'dd.mm.yyyy'), '01-11A', 150);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (7, 1, 'D', to_date('01.01.2009', 'dd.mm.yyyy'), '01-11A', 150);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (8, 1, 'С', to_date('01.01.2009', 'dd.mm.yyyy'), null, 500);
+insert into JT$Operations(Operation_Id, Account_Id, Operation_Type, Operation_Date, Agreement_Num, Amount) values (9, 1, 'С', to_date('01.01.2009', 'dd.mm.yyyy'), null, 327);
+
+select * from JT$Operations;
+
+DROP TABLE JT$Saldo;
+create table JT$Saldo                                                      --инициализация таблицы с шефами
+( Customer_Id number not null,           -- Id клиента
+  Account_Id number not null,            -- Id счета
+  Beg_Date date not null,                -- Дата начала действия
+  End_Date date not null,                -- Дата конца действия
+  Out_Saldo number (20, 2) not null      -- Исходящий остаток
+);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 1, to_date('01.12.2008', 'dd.mm.yyyy'), to_date('19.12.2008', 'dd.mm.yyyy'), 100);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 1, to_date('20.12.2008', 'dd.mm.yyyy'), to_date('21.12.2008', 'dd.mm.yyyy'), 180);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 1, to_date('22.12.2008', 'dd.mm.yyyy'), to_date('31.12.2008', 'dd.mm.yyyy'), 83.50);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 1, to_date('01.01.2009', 'dd.mm.yyyy'), to_date('09.01.2009', 'dd.mm.yyyy'), -923.70);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 1, to_date('10.01.2009', 'dd.mm.yyyy'), to_date('31.12.9999', 'dd.mm.yyyy'), 0.32);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 2, to_date('08.12.2008', 'dd.mm.yyyy'), to_date('19.12.2008', 'dd.mm.yyyy'), 10);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 2, to_date('20.12.2008', 'dd.mm.yyyy'), to_date('20.12.2008', 'dd.mm.yyyy'), 120);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 2, to_date('21.12.2008', 'dd.mm.yyyy'), to_date('04.01.2009', 'dd.mm.yyyy'), 63.10);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 2, to_date('05.01.2009', 'dd.mm.yyyy'), to_date('24.01.2009', 'dd.mm.yyyy'), 1200);
+insert into JT$Saldo(Customer_Id, Account_Id, Beg_Date, End_Date, Out_Saldo) values (1, 2, to_date('25.01.2009', 'dd.mm.yyyy'), to_date('31.12.9999', 'dd.mm.yyyy'), 1003.31);
+
+select * from JT$Saldo;
+
+--1(1)-Задание---------------------------------------------------------------------------------------------------------------
+/*Написать SQL-запрос, выбирающий из таблицы JT$Emp следующие данные для отчета по подразделениям (ниже перечислены столбцы):
+· Номер подразделения (Deptno).
+· Общее число сотрудников подразделения.
+· Число сотрудников подразделения, принятых на работу (Hiredate) в январе 2009 г.
+· Суммарный оклад (Sal) всех сотрудников подразделения.
+· Процентная доля оклада сотрудников подразделения, принятых на работу (Hiredate) в январе 2009 г., в суммарном окладе сотрудников подразделения.*/
+-----------------------------------------------------------------------------------------------------------------------------
+ 
+select distinct Deptno "Номер подразделения", 
+       count(1) "Количество сотрудников", 
+       sum(case when 1=1 and Hiredate >= to_date('01.01.2009', 'dd.mm.yyyy') and Hiredate <= to_date('31.01.2009', 'dd.mm.yyyy') then 1 else 0 end) "поступило в январе 2009", 
+       sum(Sal) "Суммарный оклад сотрудников",  
+       nvl(trunc((select sum(sal) from jt$emp jan where 1=1 and jan.hiredate >= to_date('01.01.2009', 'dd.mm.yyyy') and jan.hiredate <= to_date('31.01.2009', 'dd.mm.yyyy') and jan.deptno=emp.deptno)/ sum(emp.sal) * 100, 2), 0) "Процентная доля оклада работников, принятых в январе" 
+  from jt$emp emp where 1=1 group by Deptno order by Deptno;
+   
+--1(2)-Задание--------------------------------------------------------------------------------------------------------------- 
+/*Выбрать аналогичные данные по сотрудникам,  
+подчиненным (как непосредственно, так и опосредованно, по иерархии подчинения)  
+заданному сотруднику (использовать номер сотрудника 7698).  
+Идентификатор (Empno) непосредственного руководителя сотрудника содержится в поле Mgr.*/ 
+----------------------------------------------------------------------------------------------------------------------------- 
+ 
+select distinct Deptno "номер подразделения", 
+  count(1) "количество сотрудников", 
+  sum(case when 1=1 and Hiredate >= to_date('01.01.2009', 'dd.mm.yyyy') and Hiredate <= to_date('31.01.2009', 'dd.mm.yyyy') then 1 else 0 end) "поступило в январе 2009", 
+  sum(Sal) "суммарный оклад сотрудников", 
+  nvl(trunc((select sum(sal) from jt$emp jan where 1=1 and jan.hiredate >= to_date('01.01.2009', 'dd.mm.yyyy') and jan.hiredate <= to_date('31.01.2009', 'dd.mm.yyyy') and jan.deptno=emp.deptno and jan.mgr IN (select mgrs.empno from jt$emp mgrs where 1=1 and (mgrs.empno = 7698 or mgrs.mgr = 7698)))/ sum(Sal) * 100,2),0) "процентная доля оклада работников, принятых в январе" 
+from jt$emp emp where 1=1 and Mgr IN (select mgrs.empno from jt$emp mgrs where 1=1 and (mgrs.empno = 7698 or mgrs.mgr = 7698 )) 
+group by Deptno order by Deptno;
+
+--2-Задание-----------------------------------------------------------------------------------------------------------------
+/*Написать SQL – запрос, выбирающий из таблицы JT$Operations данные для отчета*/
+-----------------------------------------------------------------------------------------------------------------------------
+create or replace function PromTable  
+(   
+    p_account_id int,   
+    p_dateFrom date,   
+    p_dateTo date   
+)   
+RETURN TABLE is 
+ 
+    Account_Id int; 
+    Operation_Date date; 
+    Agreement_Num varchar(20); 
+    Operation_Id_db int; 
+    Amount_db numeric(20, 2); 
+    Operation_Id_cr int; 
+    Amount_cr numeric(20, 2); 
+    new_Operation_Date date;  
+    new_Agreement_Num varchar(50); 
+ 
+ 
+    CURSOR c_cursor  
+    is SELECT distinct Operation_Date, isnull(Agreement_Num, '') as Agreement_Num 
+    FROM JT$Operations 
+    WHERE Account_Id = p_account_id and Operation_Date >= p_dateFrom and Operation_Date <= p_dateTo; 
+         
+    OPEN c_cursor; 
+    BEGIN 
+    loop 
+        FETCH c_cursor INTO new_Operation_Date, new_Agreement_Num; 
+        exit when c_cursor%NOTFOUND; 
+    end loop; 
+     
+    loop 
+        --INSERT INTO Finance 
+        select isnull(db.Account_Id, cr.Account_Id) Account_Id, 
+        isnull(db.Operation_Date, cr.Operation_Date) Operation_Date, 
+        isnull(db.Agreement_Num, cr.Agreement_Num) Agreement_Num, 
+            db.Operation_Id, 
+            db.Amount, 
+            cr.Operation_Id, 
+            cr.Amount 
+        from 
+        ( SELECT ROW_NUMBER() OVER (Order by Operation_Id) AS RowNumber, Operation_Date, isnull(Agreement_Num, '') as Agreement_Num, Operation_Id, Amount, Account_Id   
+            FROM JT$Operations  
+            WHERE Operation_Type = 'D' and isnull(Agreement_Num, '') = new_Agreement_Num and Operation_Date = new_Operation_Date   
+        ) db   
+        full JOIN   
+        ( SELECT ROW_NUMBER() OVER (Order by Operation_Id) AS RowNumber, Operation_Date, isnull(Agreement_Num, '') as Agreement_Num, Operation_Id, Amount, Account_Id   
+            FROM JT$Operations  
+            WHERE Operation_Type = 'C' and isnull(Agreement_Num, '') = new_Agreement_Num and Operation_Date = new_Operation_Date   
+        ) cr   
+        ON db.RowNumber = cr.RowNumber;   
+        FETCH c_cursor INTO new_Operation_Date, new_Agreement_Num;   
+    end loop;   
+    CLOSE c_cursor;
+    return;   
+end PromTable;  
+
+declare new_Account_Id int;
+declare new_p_dateFrom date;
+declare new_p_dateTo date;
+
+set new_Account_Id = 1;
+set new_p_dateFrom = CAST(to_date('01.01.2009', 'dd.mm.yyyy'));
+set new_p_dateTo = CAST(to_date('02.01.2009', 'dd.mm.yyyy'));
+
+select * from GetFinanceTable(new_Account_Id, new_p_dateFrom, new_p_dateTo)
+order by Operation_date, Agreement_num
