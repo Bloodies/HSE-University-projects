@@ -6,10 +6,5 @@ using System.Threading.Tasks;
 
 namespace Lab._12
 {
-    class Program
-    {
-        static void Main()
-        {
-        }
-    }
+    //NULL
 }

@@ -44,7 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="13 Lab.cs" />
+    <Compile Include="CollectionHandlerEventArgs.cs" />
+    <Compile Include="Journal.cs" />
+    <Compile Include="JournalEntry.cs" />
+    <Compile Include="MyCollection.cs" />
+    <Compile Include="MyNewCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Time.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
