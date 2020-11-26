@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Graphycal_redactor
+namespace Graphycal_redactor.src
 {
-    public partial class Form1 : Form
+    public partial class Window__main_ : Form
     {
-        public Form1()
+        public Window__main_()
         {
             InitializeComponent();
         }
 
+        private void Window__main__Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
