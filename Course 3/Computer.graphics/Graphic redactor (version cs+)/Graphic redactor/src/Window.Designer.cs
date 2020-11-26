@@ -39,9 +39,13 @@ namespace Graphic_redactor.src
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Window";
             this.Text = "Window";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Window_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Window_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Window_MouseUp);
             this.ResumeLayout(false);
 
         }
+
         #endregion
     }
 }
