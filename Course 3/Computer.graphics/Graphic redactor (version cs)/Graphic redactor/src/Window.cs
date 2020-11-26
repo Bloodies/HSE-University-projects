@@ -18,5 +18,6 @@ namespace Graphic_redactor.src
         {
             InitializeComponent();
         }
+
     }
 }
