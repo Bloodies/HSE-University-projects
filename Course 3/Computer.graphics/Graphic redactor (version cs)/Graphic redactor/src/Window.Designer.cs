@@ -89,7 +89,6 @@ namespace Graphic_redactor.src
             // 
             this.Splitter.Panel2.AutoScroll = true;
             this.Splitter.Panel2.AutoScrollMinSize = new System.Drawing.Size(450, 0);
-            this.Splitter.Panel2.Controls.Add(this.Task_2_group);
             this.Splitter.Panel2.Controls.Add(this.Tasks_menu);
             this.Splitter.Panel2.Controls.Add(this.Task_1_group);
             this.Splitter.Size = new System.Drawing.Size(1189, 540);
@@ -179,6 +178,7 @@ namespace Graphic_redactor.src
             // 
             // Task_1_group
             // 
+            this.Task_1_group.Controls.Add(this.Task_2_group);
             this.Task_1_group.Controls.Add(this.Task_1_text);
             this.Task_1_group.Location = new System.Drawing.Point(0, 27);
             this.Task_1_group.Name = "Task_1_group";
@@ -305,7 +305,7 @@ namespace Graphic_redactor.src
             // Task_2_group
             // 
             this.Task_2_group.Controls.Add(this.Task_2_text);
-            this.Task_2_group.Location = new System.Drawing.Point(6, 27);
+            this.Task_2_group.Location = new System.Drawing.Point(0, 20);
             this.Task_2_group.Name = "Task_2_group";
             this.Task_2_group.Size = new System.Drawing.Size(456, 511);
             this.Task_2_group.TabIndex = 2;
