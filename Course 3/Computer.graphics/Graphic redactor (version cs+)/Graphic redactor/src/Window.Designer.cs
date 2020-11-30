@@ -72,7 +72,7 @@ namespace Graphic_redactor.src
             // Pic_minimize
             // 
             this.Pic_minimize.Image = global::Graphic_redactor.Properties.Resources.minimize;
-            this.Pic_minimize.Location = new System.Drawing.Point(738, 0);
+            this.Pic_minimize.Location = new System.Drawing.Point(747, 0);
             this.Pic_minimize.Name = "Pic_minimize";
             this.Pic_minimize.Size = new System.Drawing.Size(28, 24);
             this.Pic_minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
