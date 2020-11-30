@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Redactor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Graphic_redactor.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -85,6 +91,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil-ruler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\window-close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\window-maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\window-minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vector-square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Redactor.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
