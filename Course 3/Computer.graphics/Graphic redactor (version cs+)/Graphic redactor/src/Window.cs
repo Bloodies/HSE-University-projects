@@ -132,6 +132,10 @@ namespace Graphic_redactor.src
 
         private void Pic_maximize_Click(object sender, EventArgs e)
         {
+            var form = sender as Form;
+
+            if (form.WindowState == FormWindowState.Maximized) {            }
+            else { this.WindowState = FormWindowState.Maximized; }
             
         }
 

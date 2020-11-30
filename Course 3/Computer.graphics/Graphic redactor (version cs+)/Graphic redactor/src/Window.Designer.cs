@@ -244,7 +244,6 @@ namespace Graphic_redactor.src
             // 
             // Icon_pic
             // 
-            this.Icon_pic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Icon_pic.Image = global::Graphic_redactor.Properties.Resources.pencil_ruler;
             this.Icon_pic.Location = new System.Drawing.Point(5, 3);
             this.Icon_pic.Name = "Icon_pic";
