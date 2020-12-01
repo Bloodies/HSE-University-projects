@@ -133,6 +133,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Redactor.ico" />
+    <None Include="Resources\color.png" />
+    <None Include="Resources\color.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

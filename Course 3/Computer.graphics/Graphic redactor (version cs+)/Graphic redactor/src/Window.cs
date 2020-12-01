@@ -129,6 +129,10 @@ namespace Graphic_redactor.src
         {
             Application.ExitThread();
         }
+        private void Exit_dop_button_Click(object sender, EventArgs e)
+        {
+            Application.ExitThread();
+        }
 
         private void Pic_maximize_Click(object sender, EventArgs e)
         {
