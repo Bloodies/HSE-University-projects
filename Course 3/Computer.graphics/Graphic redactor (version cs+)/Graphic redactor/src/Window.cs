@@ -58,17 +58,17 @@ namespace Graphic_redactor.src
             #endregion
 
             #region Test (просто хз где)
-            public override Color MenuStripGradientBegin 
+            public override Color GripDark
                 { get { return Color.Yellow; } }
-            public override Color MenuStripGradientEnd
+            public override Color GripLight
             { get { return Color.Yellow; } }
-            public override Color ToolStripGradientBegin
+            public override Color OverflowButtonGradientBegin
             { get { return Color.Yellow; } }
-            public override Color ToolStripGradientEnd
+            public override Color OverflowButtonGradientEnd
             { get { return Color.Yellow; } }
-            public override Color ToolStripContentPanelGradientBegin
+            public override Color StatusStripGradientBegin
             { get { return Color.Yellow; } }
-            public override Color ToolStripContentPanelGradientEnd
+            public override Color StatusStripGradientEnd
             { get { return Color.Yellow; } }
             public override Color ToolStripPanelGradientBegin
             { get { return Color.Yellow; } }
@@ -125,6 +125,7 @@ namespace Graphic_redactor.src
         }
         #endregion
 
+        #region Acting window
         private void Pic_close_Click(object sender, EventArgs e)
         {
             Application.ExitThread();
@@ -134,18 +135,106 @@ namespace Graphic_redactor.src
             Application.ExitThread();
         }
 
-        private void Pic_maximize_Click(object sender, EventArgs e)
-        {
-            var form = sender as Form;
-
-            if (form.WindowState == FormWindowState.Maximized) {            }
-            else { this.WindowState = FormWindowState.Maximized; }
-            
-        }
-
         private void Pic_minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        #endregion
+
+        #region Menu bar
+        #region File        
+        private void Make_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Save_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Save_as_button_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        #region Changing
+        private void Undo_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Redo_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Copy_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Input_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Choose_all_button_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        private void Tasks_window_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region Other 3D
+        #endregion
+        #endregion
+
+        private void Color_circle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region Drawing bar
+        private void Draw_pencil_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Draw_line_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Draw_polygon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Group_lines_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ungroup_lines_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Axes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Magic_line_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

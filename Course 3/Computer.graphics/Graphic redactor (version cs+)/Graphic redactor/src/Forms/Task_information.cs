@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Graphic_redactor
+namespace Graphic_redactor.src.Forms
 {
-    public partial class Form1 : Form
+    public partial class Task_information : Form
     {
-        public Form1()
+        public Task_information()
         {
             InitializeComponent();
         }

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Redactor.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Graphic_redactor.Program</StartupObject>
@@ -58,6 +58,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Forms\Task_information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\Task_information.Designer.cs">
+      <DependentUpon>Task_information.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Window.cs">
       <SubType>Form</SubType>
@@ -132,12 +138,19 @@
     <None Include="Resources\question-circle.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Redactor.ico" />
+    <Content Include="Icon.ico" />
+    <None Include="Resources\Color_circle.png" />
+    <None Include="Resources\square.png" />
+    <None Include="Resources\magic.png" />
+    <None Include="Resources\ruler-combined.png" />
+    <None Include="Resources\object-group.png" />
+    <None Include="Resources\object-ungroup.png" />
+    <None Include="Resources\draw-polygon.png" />
+    <None Include="Resources\pencil-ruler1.png" />
+    <None Include="Resources\pencil-alt.png" />
     <None Include="Resources\color.png" />
     <None Include="Resources\color.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

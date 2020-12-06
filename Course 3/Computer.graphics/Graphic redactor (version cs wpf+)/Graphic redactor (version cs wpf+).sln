@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphic redactor", "Graphic redactor\Graphic redactor.csproj", "{93CB29A9-1BBE-434E-B0E5-410A1B2933F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphic redactor", "Graphic redactor\Graphic redactor.csproj", "{1D363496-EE08-4D1E-BCD3-889D0A80E742}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{93CB29A9-1BBE-434E-B0E5-410A1B2933F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93CB29A9-1BBE-434E-B0E5-410A1B2933F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93CB29A9-1BBE-434E-B0E5-410A1B2933F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93CB29A9-1BBE-434E-B0E5-410A1B2933F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D363496-EE08-4D1E-BCD3-889D0A80E742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D363496-EE08-4D1E-BCD3-889D0A80E742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D363496-EE08-4D1E-BCD3-889D0A80E742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D363496-EE08-4D1E-BCD3-889D0A80E742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F4E071B7-74B1-44ED-8E6F-7718C2906752}
+		SolutionGuid = {CFBE7E23-0461-4D7A-9A20-F2F82850FE92}
 	EndGlobalSection
 EndGlobal
