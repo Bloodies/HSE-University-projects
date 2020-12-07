@@ -68,10 +68,12 @@ namespace Graphic_redactor.src
             this.Scale_bar = new System.Windows.Forms.TrackBar();
             this.Pic_scale_max = new System.Windows.Forms.PictureBox();
             this.Color_circle = new System.Windows.Forms.PictureBox();
+            this.Color_square = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Pic_minimize = new System.Windows.Forms.PictureBox();
             this.Pic_close = new System.Windows.Forms.PictureBox();
             this.Icon_pic = new System.Windows.Forms.PictureBox();
+            this.Color_dialog = new System.Windows.Forms.ColorDialog();
             this.Main_menu.SuspendLayout();
             this.Status_strip.SuspendLayout();
             this.Workflow.SuspendLayout();
@@ -85,6 +87,7 @@ namespace Graphic_redactor.src
             ((System.ComponentModel.ISupportInitialize)(this.Scale_bar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_scale_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Color_circle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Color_square)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Icon_pic)).BeginInit();
@@ -101,7 +104,7 @@ namespace Graphic_redactor.src
             this.дополнительные3DToolStripMenuItem});
             this.Main_menu.Location = new System.Drawing.Point(33, 4);
             this.Main_menu.Name = "Main_menu";
-            this.Main_menu.Size = new System.Drawing.Size(476, 24);
+            this.Main_menu.Size = new System.Drawing.Size(356, 24);
             this.Main_menu.TabIndex = 0;
             this.Main_menu.Text = "Main_menu";
             this.Main_menu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Main_menu_MouseDown);
@@ -131,7 +134,7 @@ namespace Graphic_redactor.src
             this.Make_button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Make_button.Name = "Make_button";
             this.Make_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.Make_button.Size = new System.Drawing.Size(180, 22);
+            this.Make_button.Size = new System.Drawing.Size(173, 22);
             this.Make_button.Text = "Создать";
             this.Make_button.Click += new System.EventHandler(this.Make_button_Click);
             // 
@@ -139,7 +142,7 @@ namespace Graphic_redactor.src
             // 
             this.Separator_1.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.Separator_1.Name = "Separator_1";
-            this.Separator_1.Size = new System.Drawing.Size(177, 6);
+            this.Separator_1.Size = new System.Drawing.Size(170, 6);
             // 
             // Save_button
             // 
@@ -148,7 +151,7 @@ namespace Graphic_redactor.src
             this.Save_button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Save_button.Name = "Save_button";
             this.Save_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Save_button.Size = new System.Drawing.Size(180, 22);
+            this.Save_button.Size = new System.Drawing.Size(173, 22);
             this.Save_button.Text = "Сохранить";
             this.Save_button.Click += new System.EventHandler(this.Save_button_Click);
             // 
@@ -158,7 +161,7 @@ namespace Graphic_redactor.src
             this.Save_as_button.ForeColor = System.Drawing.SystemColors.Window;
             this.Save_as_button.Image = global::Graphic_redactor.Properties.Resources.eye;
             this.Save_as_button.Name = "Save_as_button";
-            this.Save_as_button.Size = new System.Drawing.Size(180, 22);
+            this.Save_as_button.Size = new System.Drawing.Size(173, 22);
             this.Save_as_button.Text = "Сохранить как";
             this.Save_as_button.Click += new System.EventHandler(this.Save_as_button_Click);
             // 
@@ -166,7 +169,7 @@ namespace Graphic_redactor.src
             // 
             this.Separator_2.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.Separator_2.Name = "Separator_2";
-            this.Separator_2.Size = new System.Drawing.Size(177, 6);
+            this.Separator_2.Size = new System.Drawing.Size(170, 6);
             // 
             // Exit_dop_button
             // 
@@ -174,7 +177,7 @@ namespace Graphic_redactor.src
             this.Exit_dop_button.ForeColor = System.Drawing.SystemColors.Window;
             this.Exit_dop_button.Image = global::Graphic_redactor.Properties.Resources.window_close;
             this.Exit_dop_button.Name = "Exit_dop_button";
-            this.Exit_dop_button.Size = new System.Drawing.Size(180, 22);
+            this.Exit_dop_button.Size = new System.Drawing.Size(173, 22);
             this.Exit_dop_button.Text = "Выход";
             this.Exit_dop_button.Click += new System.EventHandler(this.Exit_dop_button_Click);
             // 
@@ -275,9 +278,9 @@ namespace Graphic_redactor.src
             this.Status_strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Status_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Cursor_location});
-            this.Status_strip.Location = new System.Drawing.Point(0, 485);
+            this.Status_strip.Location = new System.Drawing.Point(0, 483);
             this.Status_strip.Name = "Status_strip";
-            this.Status_strip.Size = new System.Drawing.Size(955, 22);
+            this.Status_strip.Size = new System.Drawing.Size(967, 22);
             this.Status_strip.SizingGrip = false;
             this.Status_strip.TabIndex = 5;
             this.Status_strip.Text = "statusStrip1";
@@ -300,9 +303,10 @@ namespace Graphic_redactor.src
             this.Workflow.Controls.Add(this.Scale_bar);
             this.Workflow.Controls.Add(this.Pic_scale_max);
             this.Workflow.Controls.Add(this.Color_circle);
+            this.Workflow.Controls.Add(this.Color_square);
             this.Workflow.Location = new System.Drawing.Point(0, 34);
             this.Workflow.Name = "Workflow";
-            this.Workflow.Size = new System.Drawing.Size(955, 448);
+            this.Workflow.Size = new System.Drawing.Size(970, 451);
             this.Workflow.TabIndex = 6;
             // 
             // Tool_strip_cont
@@ -312,26 +316,27 @@ namespace Graphic_redactor.src
             // 
             this.Tool_strip_cont.ContentPanel.BackgroundImage = global::Graphic_redactor.Properties.Resources.color1;
             this.Tool_strip_cont.ContentPanel.Controls.Add(this.Canvas_background);
-            this.Tool_strip_cont.ContentPanel.Size = new System.Drawing.Size(931, 398);
+            this.Tool_strip_cont.ContentPanel.Size = new System.Drawing.Size(946, 398);
             this.Tool_strip_cont.Dock = System.Windows.Forms.DockStyle.Bottom;
             // 
             // Tool_strip_cont.LeftToolStripPanel
             // 
             this.Tool_strip_cont.LeftToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tool_strip_cont.LeftToolStripPanel.Controls.Add(this.Work_strip);
-            this.Tool_strip_cont.Location = new System.Drawing.Point(0, 25);
+            this.Tool_strip_cont.Location = new System.Drawing.Point(0, 28);
             this.Tool_strip_cont.Name = "Tool_strip_cont";
             // 
             // Tool_strip_cont.RightToolStripPanel
             // 
             this.Tool_strip_cont.RightToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tool_strip_cont.Size = new System.Drawing.Size(955, 423);
+            this.Tool_strip_cont.Size = new System.Drawing.Size(970, 423);
             this.Tool_strip_cont.TabIndex = 0;
             this.Tool_strip_cont.Text = "toolStripContainer1";
             // 
             // Tool_strip_cont.TopToolStripPanel
             // 
             this.Tool_strip_cont.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.Tool_strip_cont.TopToolStripPanel.Enabled = false;
             // 
             // Canvas_background
             // 
@@ -343,7 +348,7 @@ namespace Graphic_redactor.src
             this.Canvas_background.Controls.Add(this.Canvas);
             this.Canvas_background.Location = new System.Drawing.Point(140, 30);
             this.Canvas_background.Name = "Canvas_background";
-            this.Canvas_background.Size = new System.Drawing.Size(630, 360);
+            this.Canvas_background.Size = new System.Drawing.Size(677, 328);
             this.Canvas_background.TabIndex = 1;
             // 
             // Canvas
@@ -352,9 +357,12 @@ namespace Graphic_redactor.src
             this.Canvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Canvas.Location = new System.Drawing.Point(0, 0);
             this.Canvas.Name = "Canvas";
-            this.Canvas.Size = new System.Drawing.Size(630, 360);
+            this.Canvas.Size = new System.Drawing.Size(677, 328);
             this.Canvas.TabIndex = 0;
             this.Canvas.TabStop = false;
+            this.Canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseDown);
+            this.Canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseMove);
+            this.Canvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseUp);
             // 
             // Work_strip
             // 
@@ -473,14 +481,27 @@ namespace Graphic_redactor.src
             // 
             // Color_circle
             // 
+            this.Color_circle.BackColor = System.Drawing.Color.Transparent;
+            this.Color_circle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Color_circle.Image = global::Graphic_redactor.Properties.Resources.Color_circle;
-            this.Color_circle.Location = new System.Drawing.Point(164, 3);
+            this.Color_circle.Location = new System.Drawing.Point(189, 3);
             this.Color_circle.Name = "Color_circle";
-            this.Color_circle.Size = new System.Drawing.Size(28, 22);
+            this.Color_circle.Size = new System.Drawing.Size(24, 22);
             this.Color_circle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Color_circle.TabIndex = 3;
+            this.Color_circle.TabIndex = 4;
             this.Color_circle.TabStop = false;
             this.Color_circle.Click += new System.EventHandler(this.Color_circle_Click);
+            // 
+            // Color_square
+            // 
+            this.Color_square.BackColor = System.Drawing.Color.Red;
+            this.Color_square.Location = new System.Drawing.Point(204, 3);
+            this.Color_square.Name = "Color_square";
+            this.Color_square.Size = new System.Drawing.Size(23, 22);
+            this.Color_square.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Color_square.TabIndex = 3;
+            this.Color_square.TabStop = false;
+            this.Color_square.Click += new System.EventHandler(this.Color_square_Click);
             // 
             // contextMenuStrip1
             // 
@@ -491,7 +512,7 @@ namespace Graphic_redactor.src
             // 
             this.Pic_minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Pic_minimize.Image = global::Graphic_redactor.Properties.Resources.window_minimize;
-            this.Pic_minimize.Location = new System.Drawing.Point(897, 3);
+            this.Pic_minimize.Location = new System.Drawing.Point(909, 3);
             this.Pic_minimize.Name = "Pic_minimize";
             this.Pic_minimize.Size = new System.Drawing.Size(24, 20);
             this.Pic_minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -503,7 +524,7 @@ namespace Graphic_redactor.src
             // 
             this.Pic_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Pic_close.Image = global::Graphic_redactor.Properties.Resources.window_close;
-            this.Pic_close.Location = new System.Drawing.Point(927, 3);
+            this.Pic_close.Location = new System.Drawing.Point(939, 3);
             this.Pic_close.Name = "Pic_close";
             this.Pic_close.Size = new System.Drawing.Size(24, 20);
             this.Pic_close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -520,13 +541,14 @@ namespace Graphic_redactor.src
             this.Icon_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Icon_pic.TabIndex = 3;
             this.Icon_pic.TabStop = false;
+            this.Icon_pic.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Icon_pic_MouseDoubleClick);
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.ClientSize = new System.Drawing.Size(955, 507);
+            this.ClientSize = new System.Drawing.Size(967, 505);
             this.Controls.Add(this.Workflow);
             this.Controls.Add(this.Status_strip);
             this.Controls.Add(this.Pic_minimize);
@@ -539,6 +561,7 @@ namespace Graphic_redactor.src
             this.Name = "Window";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Window";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Window_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Window_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Window_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Window_MouseUp);
@@ -562,6 +585,7 @@ namespace Graphic_redactor.src
             ((System.ComponentModel.ISupportInitialize)(this.Scale_bar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_scale_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Color_circle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Color_square)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Icon_pic)).EndInit();
@@ -611,6 +635,8 @@ namespace Graphic_redactor.src
         private System.Windows.Forms.ToolStripMenuItem Tasks_window;
         private System.Windows.Forms.ToolStripMenuItem дополнительные3DToolStripMenuItem;
         private System.Windows.Forms.Panel Canvas_background;
+        private System.Windows.Forms.PictureBox Color_square;
         private System.Windows.Forms.PictureBox Color_circle;
+        private System.Windows.Forms.ColorDialog Color_dialog;
     }
 }

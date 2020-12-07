@@ -59,6 +59,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\Forms\Bug_reporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\Bug_reporter.Designer.cs">
+      <DependentUpon>Bug_reporter.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Forms\Task_information.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\Bug_reporter.resx">
+      <DependentUpon>Bug_reporter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
