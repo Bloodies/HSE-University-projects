@@ -173,6 +173,16 @@ namespace Graphic_redactor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mouse_pointer {
+            get {
+                object obj = ResourceManager.GetObject("mouse-pointer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap object_group {
             get {
                 object obj = ResourceManager.GetObject("object-group", resourceCulture);
@@ -216,6 +226,16 @@ namespace Graphic_redactor.Properties {
         internal static System.Drawing.Bitmap pencil_ruler1 {
             get {
                 object obj = ResourceManager.GetObject("pencil-ruler1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap project_diagram {
+            get {
+                object obj = ResourceManager.GetObject("project-diagram", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

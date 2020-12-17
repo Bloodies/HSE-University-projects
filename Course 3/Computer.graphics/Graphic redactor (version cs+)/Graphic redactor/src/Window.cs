@@ -1,59 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using Graphic_redactor.src.Libraries;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using System.Diagnostics;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Graphic_redactor.src
 {
-    #region test of func
-    //public const int WM_NCLBUTTONDOWN = 0xA1;
-    //public const int HT_CAPTION = 0x2;
+    enum captures { TAKE_PT1, TAKE_PT2, TAKE_CENTR, TAKE_NONE, TAKE_TURN };
+    //режим рисования: рисования, перемешение, удаление
+    enum modes { MODE_DROW, MODE_MOVE, MODE_DELETE };
 
-    //[DllImportAttribute("user32.dll")]
-    //public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-    //[DllImportAttribute("user32.dll")]
-    //public static extern bool ReleaseCapture();
-    #endregion
-
+    enum penType { line, poligon };
     public partial class Window : Form
     {
+        editor state = new editor();
+
+        bool MODE_DROW = false;
+        bool MODE_MOVE = false;
+
+        bool Redacting_button_pressed = false;
         bool Pencil_button_pressed = false;
         bool Line_button_pressed = false;
         bool Polygon_button_pressed = false;
+        bool Bezyie_button_pressed = false;
         bool Group_button_pressed = false;
         bool Ungroup_button_pressed = false;
         bool Axes_button_pressed = false;
         bool Magic_line_button_pressed = false;
 
-        private List<Point> points = new List<Point>();
-        Point Current_point;
-        Point Previous_point;
-        float x_started, y_started;
-
-        Bitmap canvas_picture;
-
-        Graphics _graphics;
-
         public Window()
         {
             InitializeComponent();
-
             Color_square.BackColor = Current_color;
-
-            Main_menu.Renderer = new MyRenderer();            
-            canvas_picture = new Bitmap(1000, 1000);
-            _graphics = Graphics.FromImage(canvas_picture);
-            _graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            x_started = y_started = 0;
-
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            Color_circle.BackColor = Color.Transparent;
+            Main_menu.Renderer = new MyRenderer(); 
         }
 
         #region Цвета интерфейса
@@ -63,7 +50,13 @@ namespace Graphic_redactor.src
         }
 
         private class MyColors : ProfessionalColorTable
-        {            
+        {
+            public override Color ButtonSelectedGradientBegin { get { return Color.Yellow; } }
+            public override Color ButtonSelectedGradientEnd { get { return Color.Yellow; } }
+            public override Color ButtonCheckedGradientBegin { get { return Color.Yellow; } }
+            public override Color ButtonCheckedGradientEnd { get { return Color.Yellow; } }
+            public override Color ButtonPressedGradientBegin { get { return Color.Yellow; } }
+            public override Color ButtonPressedGradientEnd { get { return Color.Yellow; } }
             #region Menu
             public override Color MenuItemSelectedGradientBegin { get { return Color.FromArgb(10, 35, 75); } }
             public override Color MenuItemSelectedGradientEnd   { get { return Color.FromArgb(10, 35, 75); } }
@@ -173,11 +166,21 @@ namespace Graphic_redactor.src
         private void Make_button_Click(object sender, EventArgs e)
         {
             Canvas.Refresh();
+            //Open_file.ShowDialog();
+            //if (Open_file.FileName != "")
+            //{
+            //    canvas_picture = (Bitmap)Image.FromFile(Open_file.FileName);
+            //    Canvas.Image = canvas_picture;
+            //}
         }
 
         private void Save_button_Click(object sender, EventArgs e)
         {
-
+            Save_file.ShowDialog();
+            if (Save_file.FileName != "")
+            {
+                //canvas_picture.Save(Save_file.FileName);
+            }
         }
 
         private void Save_as_button_Click(object sender, EventArgs e)
@@ -245,8 +248,38 @@ namespace Graphic_redactor.src
         #endregion
 
         #region Drawing bar
+        private void Cursor_button_Click(object sender, EventArgs e)
+        {
+            state.curModes = (int)modes.MODE_MOVE;
+
+            Cursor_button.Enabled = false;
+            Draw_pencil.Enabled = true;
+            Draw_line.Enabled = true;
+            Draw_polygon.Enabled = true;
+            Group_lines.Enabled = true;
+            Ungroup_lines.Enabled = true;
+            Axes.Enabled = true;
+            Magic_line.Enabled = true;
+            Bezyie.Enabled = true;
+
+            Redacting_button_pressed = true;
+            Pencil_button_pressed = false;
+            Line_button_pressed = false;
+            Polygon_button_pressed = false;
+            Group_button_pressed = false;
+            Ungroup_button_pressed = false;
+            Axes_button_pressed = false;
+            Magic_line_button_pressed = false;
+            Bezyie_button_pressed = false;
+
+            MODE_DROW = false;
+            MODE_MOVE = true;
+
+        }
+
         private void Draw_pencil_Click(object sender, EventArgs e)
         {
+            Cursor_button.Enabled = true;
             Draw_pencil.Enabled = false;
             Draw_line.Enabled = true;
             Draw_polygon.Enabled = true;
@@ -254,7 +287,9 @@ namespace Graphic_redactor.src
             Ungroup_lines.Enabled = true;
             Axes.Enabled = true;
             Magic_line.Enabled = true;
+            Bezyie.Enabled = true;
 
+            Redacting_button_pressed = false;
             Pencil_button_pressed = true;
             Line_button_pressed = false;
             Polygon_button_pressed = false;
@@ -262,10 +297,19 @@ namespace Graphic_redactor.src
             Ungroup_button_pressed = false;
             Axes_button_pressed = false;
             Magic_line_button_pressed = false;
+            Bezyie_button_pressed = false;
+
+            MODE_DROW = false;
+            MODE_MOVE = false;
         }
 
         private void Draw_line_Click(object sender, EventArgs e)
         {
+            state.curModes = (int)modes.MODE_DROW;
+            state.resetIndexLine();
+            state.drawingSciene();
+
+            Cursor_button.Enabled = true;
             Draw_pencil.Enabled = true;
             Draw_line.Enabled = false;
             Draw_polygon.Enabled = true;
@@ -273,18 +317,22 @@ namespace Graphic_redactor.src
             Ungroup_lines.Enabled = true;
             Axes.Enabled = true;
             Magic_line.Enabled = true;
+            Bezyie.Enabled = true;
 
+            Redacting_button_pressed = false;
             Pencil_button_pressed = false;
             Line_button_pressed = true;
             Polygon_button_pressed = false;
             Group_button_pressed = false;
             Ungroup_button_pressed = false;
             Axes_button_pressed = false;
-            Magic_line_button_pressed = false;            
+            Magic_line_button_pressed = false;
+            Bezyie_button_pressed = false;
         }
 
         private void Draw_polygon_Click(object sender, EventArgs e)
         {
+            Cursor_button.Enabled = true;
             Draw_pencil.Enabled = true;
             Draw_line.Enabled = true;
             Draw_polygon.Enabled = false;
@@ -292,7 +340,9 @@ namespace Graphic_redactor.src
             Ungroup_lines.Enabled = true;
             Axes.Enabled = true;
             Magic_line.Enabled = true;
+            Bezyie.Enabled = true;
 
+            Redacting_button_pressed = false;
             Pencil_button_pressed = false;
             Line_button_pressed = false;
             Polygon_button_pressed = true;
@@ -300,10 +350,12 @@ namespace Graphic_redactor.src
             Ungroup_button_pressed = false;
             Axes_button_pressed = false;
             Magic_line_button_pressed = false;
+            Bezyie_button_pressed = false;
         }
 
         private void Group_lines_Click(object sender, EventArgs e)
         {
+            Cursor_button.Enabled = true;
             Draw_pencil.Enabled = true;
             Draw_line.Enabled = true;
             Draw_polygon.Enabled = true;
@@ -311,7 +363,9 @@ namespace Graphic_redactor.src
             Ungroup_lines.Enabled = true;
             Axes.Enabled = true;
             Magic_line.Enabled = true;
+            Bezyie.Enabled = true;
 
+            Redacting_button_pressed = false;
             Pencil_button_pressed = false;
             Line_button_pressed = false;
             Polygon_button_pressed = false;
@@ -319,10 +373,12 @@ namespace Graphic_redactor.src
             Ungroup_button_pressed = false;
             Axes_button_pressed = false;
             Magic_line_button_pressed = false;
+            Bezyie_button_pressed = false;
         }
 
         private void Ungroup_lines_Click(object sender, EventArgs e)
         {
+            Cursor_button.Enabled = true;
             Draw_pencil.Enabled = true;
             Draw_line.Enabled = true;
             Draw_polygon.Enabled = true;
@@ -330,7 +386,9 @@ namespace Graphic_redactor.src
             Ungroup_lines.Enabled = false;
             Axes.Enabled = true;
             Magic_line.Enabled = true;
+            Bezyie.Enabled = true;
 
+            Redacting_button_pressed = false;
             Pencil_button_pressed = false;
             Line_button_pressed = false;
             Polygon_button_pressed = false;
@@ -338,10 +396,12 @@ namespace Graphic_redactor.src
             Ungroup_button_pressed = true;
             Axes_button_pressed = false;
             Magic_line_button_pressed = false;
+            Bezyie_button_pressed = false;
         }
 
         private void Axes_Click(object sender, EventArgs e)
         {
+            Cursor_button.Enabled = true;
             Draw_pencil.Enabled = true;
             Draw_line.Enabled = true;
             Draw_polygon.Enabled = true;
@@ -349,7 +409,9 @@ namespace Graphic_redactor.src
             Ungroup_lines.Enabled = true;
             Axes.Enabled = false;
             Magic_line.Enabled = true;
+            Bezyie.Enabled = true;
 
+            Redacting_button_pressed = false;
             Pencil_button_pressed = false;
             Line_button_pressed = false;
             Polygon_button_pressed = false;
@@ -357,10 +419,16 @@ namespace Graphic_redactor.src
             Ungroup_button_pressed = false;
             Axes_button_pressed = true;
             Magic_line_button_pressed = false;
+            Bezyie_button_pressed = false;
         }
 
         private void Magic_line_Click(object sender, EventArgs e)
         {
+            state.curModes = (int)modes.MODE_DROW;
+            state.resetIndexLine();
+            state.drawingSciene();
+
+            Cursor_button.Enabled = true;
             Draw_pencil.Enabled = true;
             Draw_line.Enabled = true;
             Draw_polygon.Enabled = true;
@@ -368,7 +436,9 @@ namespace Graphic_redactor.src
             Ungroup_lines.Enabled = true;
             Axes.Enabled = true;
             Magic_line.Enabled = false;
+            Bezyie.Enabled = true;
 
+            Redacting_button_pressed = false;
             Pencil_button_pressed = false;
             Line_button_pressed = false;
             Polygon_button_pressed = false;
@@ -376,39 +446,97 @@ namespace Graphic_redactor.src
             Ungroup_button_pressed = false;
             Axes_button_pressed = false;
             Magic_line_button_pressed = true;
+            Bezyie_button_pressed = false;
+        }
+
+        private void Bezyie_button_Click(object sender, EventArgs e)
+        {
+            Cursor_button.Enabled = true;
+            Draw_pencil.Enabled = true;
+            Draw_line.Enabled = true;
+            Draw_polygon.Enabled = true;
+            Group_lines.Enabled = true;
+            Ungroup_lines.Enabled = true;
+            Axes.Enabled = true;
+            Magic_line.Enabled = true;
+            Bezyie.Enabled = false;
+
+            Redacting_button_pressed = false;
+            Pencil_button_pressed = false;
+            Line_button_pressed = false;
+            Polygon_button_pressed = false;
+            Group_button_pressed = false;
+            Ungroup_button_pressed = false;
+            Axes_button_pressed = false;
+            Magic_line_button_pressed = true;
+            Bezyie_button_pressed = false;
         }
         #endregion
 
-        private void Canvas_MouseUp(object sender, MouseEventArgs e)
+        #region Canvas acting
+        private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
-            Canvas.Cursor = Cursors.Default;
+            Canvas.Cursor = Cursors.Cross; 
+
+            if (Redacting_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+                state.drawingDown(e);
+            }
+            else if (Pencil_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+                
+            }
+            else if (Line_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+                state.drawingDown(e);
+            }
+            else if (Polygon_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (Bezyie_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (Group_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (Ungroup_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (Axes_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (Magic_line_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+                state.drawingDown(e);
+            }
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            
             Cursor_location.Text = $"Cursor place: X = [{e.X}] Y = [{Canvas_background.Size.Height - e.Y}] Z = [0]";
-
-            if (Pencil_button_pressed == true)
+            
+            if (Redacting_button_pressed == true && e.Button == MouseButtons.Left)
             {
-                //Bitmap bmp = new Bitmap(Scale_bar.Value, Scale_bar.Value);
-                //Previous_point = Current_point;
-                //Current_point = e.Location;..
-                Pen new_pen = new Pen(Current_color, Scale_bar.Value);
-                new_pen.StartCap = new_pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-                if (e.Button == MouseButtons.Left)
-                {
-                    Canvas.Image = canvas_picture;
-                    _graphics.DrawLine(new_pen, x_started, y_started, e.X, e.Y);//Previous_point, Current_point);
-                }   
-                x_started = e.X;
-                y_started = e.Y;
+                state.drawingSciene(Canvas, e);
+            }
+            else if (Pencil_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+                
             }
             else if (Line_button_pressed == true && e.Button == MouseButtons.Left)
             {
-
+                state.drawingSciene(Canvas, e);
             }
             else if (Polygon_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (Bezyie_button_pressed == true && e.Button == MouseButtons.Left)
             {
 
             }
@@ -426,40 +554,33 @@ namespace Graphic_redactor.src
             }
             else if (Magic_line_button_pressed == true && e.Button == MouseButtons.Left)
             {
-
+                state.drawingSciene(Canvas, e);
             }
         }
 
-        private void Canvas_MouseDown(object sender, MouseEventArgs e)
+        private void Canvas_MouseUp(object sender, MouseEventArgs e)
         {
-            Canvas.Cursor = Cursors.Cross;
-            if (Pencil_button_pressed == true)
+            Canvas.Cursor = Cursors.Default;
+
+            if (Redacting_button_pressed == true && e.Button == MouseButtons.Left)
             {
-                Current_point = e.Location;
-                Previous_point = Current_point;
-                points = new List<Point>();
-
-                Pen new_pen = new Pen(Current_color, Scale_bar.Value);
-                new_pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-                new_pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-                if (e.Button == MouseButtons.Left)
-                {
-
-                    Canvas.Image = canvas_picture;
-                    //_graphics.DrawLine(new_pen, x_started, y_started, e.X, e.Y);//Previous_point, Current_point);
-                    points.Add(new Point(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y));
-                    this.Invalidate();
-                    //_graphics.DrawLine(new_pen, Previous_point, Current_point);
-                    //_graphics.Draw
-                }
-                x_started = e.X;
-                y_started = e.Y;
+                state.drawingUp(e);
+                state.pointsDebug();
+            }
+            else if (Pencil_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+               
             }
             else if (Line_button_pressed == true && e.Button == MouseButtons.Left)
             {
-
+                state.drawingUp(e);
+                state.pointsDebug();
             }
             else if (Polygon_button_pressed == true && e.Button == MouseButtons.Left)
+            {
+
+            }
+            else if (Bezyie_button_pressed == true && e.Button == MouseButtons.Left)
             {
 
             }
@@ -477,22 +598,10 @@ namespace Graphic_redactor.src
             }
             else if (Magic_line_button_pressed == true && e.Button == MouseButtons.Left)
             {
-
+                state.drawingUp(e);
+                state.pointsDebug();
             }
         }
-
-        private void Window_Paint(object sender, PaintEventArgs e)
-        {
-            Bitmap bmp = new Bitmap(1, 1);
-            bmp.SetPixel(0, 0, Color.Black);
-            foreach (Point p in points)
-                e.Graphics.DrawImage(bmp, p);
-        }
-
-        private void Icon_pic_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Forms.Bug_reporter show_bug = new Forms.Bug_reporter($"Arguments now:\nPencil_button_pressed={Pencil_button_pressed}\nLine_button_pressed={Line_button_pressed}\nPolygon_button_pressed={Polygon_button_pressed}\nGroup_button_pressed={Group_button_pressed}\nUngroup_button_pressed={Ungroup_button_pressed}\nAxes_button_pressed={Axes_button_pressed}\nMagic_line_button_pressed={Magic_line_button_pressed}");            
-            show_bug.ShowDialog();
-        }
+        #endregion
     }
 }

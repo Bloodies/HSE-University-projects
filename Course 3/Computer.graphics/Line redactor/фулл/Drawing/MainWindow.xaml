@@ -1,0 +1,73 @@
+﻿<Window x:Class="Drawing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Drawing"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="758" Width="1276">
+    <Grid x:Name="MainGrid" Margin="-4,-18,4,18">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="addZ1TextBlock" HorizontalAlignment="Left" Height="20" Margin="1049,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" KeyUp="KeyUpZ1"/>
+
+        <Button x:Name="createLine" Content="Создать" Click="createLine_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1067,26,0,0" Height="37" Width="62"/>
+        <Button x:Name="deleteLine" Content="Удалить" Click="deleteLine_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1147,26,0,0" Height="37" Width="62"/>
+        <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="704" VerticalAlignment="Top" Width="1008"/>
+        <Label x:Name="mousePosition" Content="Позиция" HorizontalAlignment="Left" Margin="8,709,0,-16" VerticalAlignment="Top" Height="34" Width="128"/>
+        <Button x:Name="coordinateSystem_Button" Content="СК" HorizontalAlignment="Left" Margin="1038,507,0,0" VerticalAlignment="Top" Width="50" Height="29" Click="coordinateSystem_Button_Click"/>
+        <Label x:Name="lineEquation" Content="Ур-е" HorizontalAlignment="Left" Margin="569,709,0,-16" VerticalAlignment="Top" Height="34" Width="265"/>
+        <Label x:Name="endsCoord" Content="Концы линии" HorizontalAlignment="Left" Margin="141,709,0,-16" VerticalAlignment="Top" Height="34" Width="423"/>
+        <Slider x:Name="phiSlider" HorizontalAlignment="Left" Margin="1038,415,0,0" SmallChange="1" VerticalAlignment="Top" Width="200" Maximum="360" Minimum="0" ValueChanged="phiSlider_ValueChanged" Height="18"/>
+        <Slider x:Name="thetaSlider" HorizontalAlignment="Left" Margin="1038,443,0,0" SmallChange="1" VerticalAlignment="Top" Width="200" Maximum="360" Minimum="0" ValueChanged="thetaSlider_ValueChanged" Height="18"/>
+        <TextBox x:Name="addZ2TextBlock" HorizontalAlignment="Left" Height="20" Margin="1135,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" KeyUp="KeyUpZ2"/>
+        <Button x:Name="createMedian" Content="Медиана" HorizontalAlignment="Left" Margin="1084,165,0,0" VerticalAlignment="Top" Width="104" Click="createMedian_Click" Height="22"/>
+        <Button x:Name="createHeight" Content="Высота" HorizontalAlignment="Left" Margin="1084,196,0,0" VerticalAlignment="Top" Width="104" Click="CreateHeight_Click" Height="22"/>
+        <Label Content="Х&#xD;&#xA;Х" HorizontalAlignment="Left" Margin="1013,412,0,0" VerticalAlignment="Top" Height="25" Width="20"/>
+        <Label Content="Y" HorizontalAlignment="Left" Margin="1013,439,0,0" VerticalAlignment="Top" Height="25" Width="18"/>
+        <Slider x:Name="gammaSlider" Minimum="0" Maximum="360" HorizontalAlignment="Left" SmallChange="1" Margin="1038,471,0,0" VerticalAlignment="Top" Width="200" ValueChanged="gammaSlider_ValueChanged" Height="18"/>
+        <Label Content="Z" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1013,466,0,0" Height="23" Width="17"/>
+        <Label Content="Вращение" HorizontalAlignment="Left" Margin="1038,387,0,0" VerticalAlignment="Top" Height="26" Width="140"/>
+        <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="1039,689,0,0" VerticalAlignment="Top" Width="74" Click="SaveButton_Click" Height="20"/>
+        <Button x:Name="LoadButton" Content="Загрузить" HorizontalAlignment="Left" Margin="1147,689,0,0" VerticalAlignment="Top" Width="74" Height="20" Click="LoadButton_Click"/>
+        <TextBox x:Name="aScaleTextBox" HorizontalAlignment="Left" Height="23" Margin="65,574,-115,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="50" KeyUp="aScaleKeyUp" Grid.Column="1"/>
+        <Label Content="a" HorizontalAlignment="Left" Margin="46,571,-62,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="dScaleTextBox" HorizontalAlignment="Left" Height="23" Margin="136,574,-186,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="50" KeyUp="dScaleKeyUp" Grid.Column="1"/>
+        <Label Content="d" HorizontalAlignment="Left" Margin="120,571,-137,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="eScaleTextBox" HorizontalAlignment="Left" Height="23" Margin="207,574,-257,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="50" KeyUp="eScaleKeyUp" Grid.Column="1"/>
+        <Label Content="e" HorizontalAlignment="Left" Margin="191,571,-207,0" VerticalAlignment="Top" RenderTransformOrigin="4.235,0.5" Grid.Column="1"/>
+        <Button x:Name="ScaleButton" Content="Масштабировать" HorizontalAlignment="Left" Margin="99,602,-213,0" VerticalAlignment="Top" Width="114" Click="ScaleButton_Click" Grid.Column="1"/>
+        <TextBox x:Name="xTransportTextBox" HorizontalAlignment="Left" Height="23" Margin="1039,558,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" KeyUp="xTransportKeyUp"/>
+        <Label Content="x" HorizontalAlignment="Left" Margin="1024,554,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="yTransportTextBox" HorizontalAlignment="Left" Height="23" Margin="1110,558,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" KeyUp="yTransportKeyUp"/>
+        <Label Content="y" HorizontalAlignment="Left" Margin="1095,554,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="zTransportTextBox" HorizontalAlignment="Left" Height="23" Margin="1181,558,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" KeyUp="zTransportKeyUp"/>
+        <Label Content="z" HorizontalAlignment="Left" Margin="1166,554,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.235,0.5"/>
+        <Button x:Name="TransportButton" Content="Переместить" HorizontalAlignment="Left" Margin="1077,586,0,0" VerticalAlignment="Top" Width="114" Click="TransportButton_Click"/>
+        <Label Content="Зеркалирование" HorizontalAlignment="Left" Margin="1084,76,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="MirrorZButton" Content="по x" HorizontalAlignment="Left" Margin="1049,107,0,0" VerticalAlignment="Top" Width="51" Height="30" Click="MirrorZButton_Click"/>
+        <Button x:Name="MirrorX0Button" Content="по y" HorizontalAlignment="Left" Margin="1113,107,0,0" VerticalAlignment="Top" Width="51" Height="30" Click="MirrorX0Button_Click"/>
+        <Button x:Name="MirrorStartButton" Content="по xyz" HorizontalAlignment="Left" Margin="1175,107,0,0" VerticalAlignment="Top" Width="51" Height="30" Click="MirrorStartButton_Click"/>
+        <Button x:Name="CreateBiss" Content="Биссектриса" HorizontalAlignment="Left" Margin="1084,227,0,0" VerticalAlignment="Top" Width="104" Click="CreateBiss_Click" Height="22"/>
+        <Slider x:Name="sliderMorffing" HorizontalAlignment="Left" Margin="1026,646,0,0" VerticalAlignment="Top" Width="224" ValueChanged="sliderMorffing_ValueChanged"/>
+        <Label Content="Морфинг" HorizontalAlignment="Left" Margin="1102,620,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="MakePoints" HorizontalAlignment="Left" Height="23" Margin="1113,-49,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="108" KeyUp="KeyUpMakePoints"/>
+        <Label Content="Количество точек" HorizontalAlignment="Left" Margin="994,-52,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ProportionA" HorizontalAlignment="Left" Height="23" Margin="918,467,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="108" KeyUp="ProportionAKeyUp" Visibility="Hidden"/>
+        <Label Content="Пропорции для A" HorizontalAlignment="Left" Margin="918,436,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="ProportionB" HorizontalAlignment="Left" Height="23" Margin="1047,465,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" KeyUp="ProportionBKeyUp" Visibility="Hidden"/>
+        <Label Content="Пропорции для B" HorizontalAlignment="Left" Margin="1047,436,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Button x:Name="MergeFigures" Content="Соединить" HorizontalAlignment="Left" Margin="669,-49,0,0" VerticalAlignment="Top" Width="108" Click="MergeFigures_Click"/>
+        <Button x:Name="SetLocalCoordinate"  Content="ЛСК" HorizontalAlignment="Left" Margin="1104,507,0,0" VerticalAlignment="Top" Width="50" Height="29" Click="SetLocalCoordinate_Click"/>
+        <Button x:Name="BackOriginCS" Content="ГСК" HorizontalAlignment="Left" Margin="1171,507,0,0" VerticalAlignment="Top" Width="50" Click="BackOriginCS_Click" Height="29"/>
+        <Button x:Name="doZ" Content="Добавить Z" HorizontalAlignment="Left" Margin="1090,305,0,0" VerticalAlignment="Top" Width="74" Click="doZ_Click"/>
+        <Button x:Name="ClearMorffing" Content="Очистить" HorizontalAlignment="Left" Margin="867,793,0,-124" VerticalAlignment="Top" Width="75" Click="ClearMorffing_Click"/>
+        <Button x:Name="addGroup" Content="Добавить&#xD;&#xA;группу" HorizontalAlignment="Left" Margin="1049,345,0,0" VerticalAlignment="Top" Width="74" Click="addGroup_Click" Height="38"/>
+        <StackPanel x:Name="stackpanelProportions" HorizontalAlignment="Left" Height="164" Margin="994,769,0,-244" VerticalAlignment="Top" Width="259"/>
+        <Button x:Name="clearGroups" Content="Очистить&#xD;&#xA;группы" HorizontalAlignment="Left" Margin="1135,345,0,0" VerticalAlignment="Top" Width="74" Click="clearGroups_Click" Height="37"/>
+        <GroupBox Header="Пропорции для фигур" HorizontalAlignment="Left" Height="195" Margin="994,769,-5,-237" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

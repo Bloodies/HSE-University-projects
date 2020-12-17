@@ -57,9 +57,11 @@ namespace Graphic_redactor.src
             this.Canvas_background = new System.Windows.Forms.Panel();
             this.Canvas = new System.Windows.Forms.PictureBox();
             this.Work_strip = new System.Windows.Forms.ToolStrip();
+            this.Cursor_button = new System.Windows.Forms.ToolStripButton();
             this.Draw_pencil = new System.Windows.Forms.ToolStripButton();
             this.Draw_line = new System.Windows.Forms.ToolStripButton();
             this.Draw_polygon = new System.Windows.Forms.ToolStripButton();
+            this.Bezyie = new System.Windows.Forms.ToolStripButton();
             this.Group_lines = new System.Windows.Forms.ToolStripButton();
             this.Ungroup_lines = new System.Windows.Forms.ToolStripButton();
             this.Axes = new System.Windows.Forms.ToolStripButton();
@@ -70,10 +72,12 @@ namespace Graphic_redactor.src
             this.Color_circle = new System.Windows.Forms.PictureBox();
             this.Color_square = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Color_dialog = new System.Windows.Forms.ColorDialog();
+            this.Save_file = new System.Windows.Forms.SaveFileDialog();
+            this.Open_file = new System.Windows.Forms.OpenFileDialog();
             this.Pic_minimize = new System.Windows.Forms.PictureBox();
             this.Pic_close = new System.Windows.Forms.PictureBox();
             this.Icon_pic = new System.Windows.Forms.PictureBox();
-            this.Color_dialog = new System.Windows.Forms.ColorDialog();
             this.Main_menu.SuspendLayout();
             this.Status_strip.SuspendLayout();
             this.Workflow.SuspendLayout();
@@ -278,9 +282,9 @@ namespace Graphic_redactor.src
             this.Status_strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Status_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Cursor_location});
-            this.Status_strip.Location = new System.Drawing.Point(0, 483);
+            this.Status_strip.Location = new System.Drawing.Point(0, 645);
             this.Status_strip.Name = "Status_strip";
-            this.Status_strip.Size = new System.Drawing.Size(967, 22);
+            this.Status_strip.Size = new System.Drawing.Size(1308, 22);
             this.Status_strip.SizingGrip = false;
             this.Status_strip.TabIndex = 5;
             this.Status_strip.Text = "statusStrip1";
@@ -297,16 +301,15 @@ namespace Graphic_redactor.src
             this.Workflow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Workflow.AutoSize = true;
             this.Workflow.Controls.Add(this.Tool_strip_cont);
             this.Workflow.Controls.Add(this.Pic_scale_min);
             this.Workflow.Controls.Add(this.Scale_bar);
             this.Workflow.Controls.Add(this.Pic_scale_max);
             this.Workflow.Controls.Add(this.Color_circle);
             this.Workflow.Controls.Add(this.Color_square);
-            this.Workflow.Location = new System.Drawing.Point(0, 34);
+            this.Workflow.Location = new System.Drawing.Point(0, 31);
             this.Workflow.Name = "Workflow";
-            this.Workflow.Size = new System.Drawing.Size(970, 451);
+            this.Workflow.Size = new System.Drawing.Size(1308, 611);
             this.Workflow.TabIndex = 6;
             // 
             // Tool_strip_cont
@@ -316,20 +319,20 @@ namespace Graphic_redactor.src
             // 
             this.Tool_strip_cont.ContentPanel.BackgroundImage = global::Graphic_redactor.Properties.Resources.color1;
             this.Tool_strip_cont.ContentPanel.Controls.Add(this.Canvas_background);
-            this.Tool_strip_cont.ContentPanel.Size = new System.Drawing.Size(946, 398);
+            this.Tool_strip_cont.ContentPanel.Size = new System.Drawing.Size(1277, 586);
             this.Tool_strip_cont.Dock = System.Windows.Forms.DockStyle.Bottom;
             // 
             // Tool_strip_cont.LeftToolStripPanel
             // 
             this.Tool_strip_cont.LeftToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tool_strip_cont.LeftToolStripPanel.Controls.Add(this.Work_strip);
-            this.Tool_strip_cont.Location = new System.Drawing.Point(0, 28);
+            this.Tool_strip_cont.Location = new System.Drawing.Point(0, 25);
             this.Tool_strip_cont.Name = "Tool_strip_cont";
             // 
             // Tool_strip_cont.RightToolStripPanel
             // 
             this.Tool_strip_cont.RightToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tool_strip_cont.Size = new System.Drawing.Size(970, 423);
+            this.Tool_strip_cont.Size = new System.Drawing.Size(1308, 586);
             this.Tool_strip_cont.TabIndex = 0;
             this.Tool_strip_cont.Text = "toolStripContainer1";
             // 
@@ -340,15 +343,13 @@ namespace Graphic_redactor.src
             // 
             // Canvas_background
             // 
-            this.Canvas_background.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Canvas_background.AutoSize = true;
+            this.Canvas_background.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Canvas_background.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Canvas_background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(35)))), ((int)(((byte)(75)))));
             this.Canvas_background.Controls.Add(this.Canvas);
-            this.Canvas_background.Location = new System.Drawing.Point(140, 30);
+            this.Canvas_background.Location = new System.Drawing.Point(121, 39);
             this.Canvas_background.Name = "Canvas_background";
-            this.Canvas_background.Size = new System.Drawing.Size(677, 328);
+            this.Canvas_background.Size = new System.Drawing.Size(1000, 500);
             this.Canvas_background.TabIndex = 1;
             // 
             // Canvas
@@ -357,7 +358,7 @@ namespace Graphic_redactor.src
             this.Canvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Canvas.Location = new System.Drawing.Point(0, 0);
             this.Canvas.Name = "Canvas";
-            this.Canvas.Size = new System.Drawing.Size(677, 328);
+            this.Canvas.Size = new System.Drawing.Size(1000, 500);
             this.Canvas.TabIndex = 0;
             this.Canvas.TabStop = false;
             this.Canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseDown);
@@ -370,17 +371,31 @@ namespace Graphic_redactor.src
             this.Work_strip.Dock = System.Windows.Forms.DockStyle.None;
             this.Work_strip.GripMargin = new System.Windows.Forms.Padding(0);
             this.Work_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Cursor_button,
             this.Draw_pencil,
             this.Draw_line,
             this.Draw_polygon,
+            this.Bezyie,
             this.Group_lines,
             this.Ungroup_lines,
             this.Axes,
             this.Magic_line});
             this.Work_strip.Location = new System.Drawing.Point(0, 8);
             this.Work_strip.Name = "Work_strip";
-            this.Work_strip.Size = new System.Drawing.Size(24, 168);
+            this.Work_strip.Size = new System.Drawing.Size(31, 214);
             this.Work_strip.TabIndex = 0;
+            // 
+            // Cursor_button
+            // 
+            this.Cursor_button.AutoSize = false;
+            this.Cursor_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Cursor_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Cursor_button.Image = ((System.Drawing.Image)(resources.GetObject("Cursor_button.Image")));
+            this.Cursor_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Cursor_button.Name = "Cursor_button";
+            this.Cursor_button.Size = new System.Drawing.Size(30, 20);
+            this.Cursor_button.Text = ".";
+            this.Cursor_button.Click += new System.EventHandler(this.Cursor_button_Click);
             // 
             // Draw_pencil
             // 
@@ -388,7 +403,7 @@ namespace Graphic_redactor.src
             this.Draw_pencil.Image = global::Graphic_redactor.Properties.Resources.pencil_alt;
             this.Draw_pencil.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Draw_pencil.Name = "Draw_pencil";
-            this.Draw_pencil.Size = new System.Drawing.Size(22, 20);
+            this.Draw_pencil.Size = new System.Drawing.Size(29, 20);
             this.Draw_pencil.Text = "toolStripButton1";
             this.Draw_pencil.Click += new System.EventHandler(this.Draw_pencil_Click);
             // 
@@ -398,7 +413,7 @@ namespace Graphic_redactor.src
             this.Draw_line.Image = global::Graphic_redactor.Properties.Resources.pencil_ruler1;
             this.Draw_line.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Draw_line.Name = "Draw_line";
-            this.Draw_line.Size = new System.Drawing.Size(22, 20);
+            this.Draw_line.Size = new System.Drawing.Size(29, 20);
             this.Draw_line.Text = "toolStripButton2";
             this.Draw_line.Click += new System.EventHandler(this.Draw_line_Click);
             // 
@@ -408,9 +423,19 @@ namespace Graphic_redactor.src
             this.Draw_polygon.Image = global::Graphic_redactor.Properties.Resources.draw_polygon;
             this.Draw_polygon.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Draw_polygon.Name = "Draw_polygon";
-            this.Draw_polygon.Size = new System.Drawing.Size(22, 20);
+            this.Draw_polygon.Size = new System.Drawing.Size(29, 20);
             this.Draw_polygon.Text = "toolStripButton3";
             this.Draw_polygon.Click += new System.EventHandler(this.Draw_polygon_Click);
+            // 
+            // Bezyie
+            // 
+            this.Bezyie.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Bezyie.Image = global::Graphic_redactor.Properties.Resources.project_diagram;
+            this.Bezyie.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Bezyie.Name = "Bezyie";
+            this.Bezyie.Size = new System.Drawing.Size(29, 20);
+            this.Bezyie.Text = "toolStripButton1";
+            this.Bezyie.Click += new System.EventHandler(this.Bezyie_button_Click);
             // 
             // Group_lines
             // 
@@ -418,7 +443,7 @@ namespace Graphic_redactor.src
             this.Group_lines.Image = global::Graphic_redactor.Properties.Resources.object_ungroup;
             this.Group_lines.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Group_lines.Name = "Group_lines";
-            this.Group_lines.Size = new System.Drawing.Size(22, 20);
+            this.Group_lines.Size = new System.Drawing.Size(29, 20);
             this.Group_lines.Text = "toolStripButton4";
             this.Group_lines.Click += new System.EventHandler(this.Group_lines_Click);
             // 
@@ -428,7 +453,7 @@ namespace Graphic_redactor.src
             this.Ungroup_lines.Image = global::Graphic_redactor.Properties.Resources.object_group;
             this.Ungroup_lines.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Ungroup_lines.Name = "Ungroup_lines";
-            this.Ungroup_lines.Size = new System.Drawing.Size(22, 20);
+            this.Ungroup_lines.Size = new System.Drawing.Size(29, 20);
             this.Ungroup_lines.Text = "toolStripButton5";
             this.Ungroup_lines.Click += new System.EventHandler(this.Ungroup_lines_Click);
             // 
@@ -438,7 +463,7 @@ namespace Graphic_redactor.src
             this.Axes.Image = global::Graphic_redactor.Properties.Resources.ruler_combined;
             this.Axes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Axes.Name = "Axes";
-            this.Axes.Size = new System.Drawing.Size(22, 20);
+            this.Axes.Size = new System.Drawing.Size(29, 20);
             this.Axes.Text = "toolStripButton6";
             this.Axes.Click += new System.EventHandler(this.Axes_Click);
             // 
@@ -448,7 +473,7 @@ namespace Graphic_redactor.src
             this.Magic_line.Image = global::Graphic_redactor.Properties.Resources.magic;
             this.Magic_line.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Magic_line.Name = "Magic_line";
-            this.Magic_line.Size = new System.Drawing.Size(22, 20);
+            this.Magic_line.Size = new System.Drawing.Size(29, 20);
             this.Magic_line.Text = "toolStripButton7";
             this.Magic_line.Click += new System.EventHandler(this.Magic_line_Click);
             // 
@@ -508,11 +533,15 @@ namespace Graphic_redactor.src
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // Open_file
+            // 
+            this.Open_file.FileName = "openFileDialog1";
+            // 
             // Pic_minimize
             // 
             this.Pic_minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Pic_minimize.Image = global::Graphic_redactor.Properties.Resources.window_minimize;
-            this.Pic_minimize.Location = new System.Drawing.Point(909, 3);
+            this.Pic_minimize.Location = new System.Drawing.Point(1250, 3);
             this.Pic_minimize.Name = "Pic_minimize";
             this.Pic_minimize.Size = new System.Drawing.Size(24, 20);
             this.Pic_minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -524,7 +553,7 @@ namespace Graphic_redactor.src
             // 
             this.Pic_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Pic_close.Image = global::Graphic_redactor.Properties.Resources.window_close;
-            this.Pic_close.Location = new System.Drawing.Point(939, 3);
+            this.Pic_close.Location = new System.Drawing.Point(1280, 3);
             this.Pic_close.Name = "Pic_close";
             this.Pic_close.Size = new System.Drawing.Size(24, 20);
             this.Pic_close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -541,14 +570,13 @@ namespace Graphic_redactor.src
             this.Icon_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Icon_pic.TabIndex = 3;
             this.Icon_pic.TabStop = false;
-            this.Icon_pic.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Icon_pic_MouseDoubleClick);
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.ClientSize = new System.Drawing.Size(967, 505);
+            this.ClientSize = new System.Drawing.Size(1308, 667);
             this.Controls.Add(this.Workflow);
             this.Controls.Add(this.Status_strip);
             this.Controls.Add(this.Pic_minimize);
@@ -561,7 +589,6 @@ namespace Graphic_redactor.src
             this.Name = "Window";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Window";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Window_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Window_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Window_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Window_MouseUp);
@@ -572,7 +599,6 @@ namespace Graphic_redactor.src
             this.Workflow.ResumeLayout(false);
             this.Workflow.PerformLayout();
             this.Tool_strip_cont.ContentPanel.ResumeLayout(false);
-            this.Tool_strip_cont.ContentPanel.PerformLayout();
             this.Tool_strip_cont.LeftToolStripPanel.ResumeLayout(false);
             this.Tool_strip_cont.LeftToolStripPanel.PerformLayout();
             this.Tool_strip_cont.ResumeLayout(false);
@@ -638,5 +664,9 @@ namespace Graphic_redactor.src
         private System.Windows.Forms.PictureBox Color_square;
         private System.Windows.Forms.PictureBox Color_circle;
         private System.Windows.Forms.ColorDialog Color_dialog;
+        private System.Windows.Forms.SaveFileDialog Save_file;
+        private System.Windows.Forms.OpenFileDialog Open_file;
+        private System.Windows.Forms.ToolStripButton Bezyie;
+        private System.Windows.Forms.ToolStripButton Cursor_button;
     }
 }
