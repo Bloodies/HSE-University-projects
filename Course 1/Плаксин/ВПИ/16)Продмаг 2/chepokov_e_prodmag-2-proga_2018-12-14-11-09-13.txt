@@ -1,0 +1,122 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+
+    class Program
+    {
+        /*Весь bool не работает, или работает, но я не понял как
+        static bool dataCheck(string data1, string time1, string data2, string time2)
+        {
+            string[] mas1 = data1.Split('.');
+            string[] mas2 = data2.Split('.');
+            if (Convert.ToInt32(mas1[mas1.Length - 1]) > Convert.ToInt32(mas2[mas1.Length - 1])) return true;
+            if (Convert.ToInt32(mas2[mas1.Length - 1]) > Convert.ToInt32(mas1[mas1.Length - 1])) return false;
+            if (Convert.ToInt32(mas1[mas1.Length - 2]) > Convert.ToInt32(mas2[mas1.Length - 2])) return true;
+            if (Convert.ToInt32(mas2[mas1.Length - 2]) > Convert.ToInt32(mas1[mas1.Length - 2])) return false;
+            if (Convert.ToInt32(mas1[mas1.Length - 3]) > Convert.ToInt32(mas2[mas1.Length - 3])) return true;
+            if (Convert.ToInt32(mas2[mas1.Length - 3]) > Convert.ToInt32(mas1[mas1.Length - 3])) return false;
+            mas1 = time1.Split(':');
+            mas2 = time2.Split(':');
+            if (Convert.ToInt32(mas1[mas1.Length - 2]) > Convert.ToInt32(mas2[mas1.Length - 2])) return true;
+            if (Convert.ToInt32(mas2[mas1.Length - 2]) > Convert.ToInt32(mas1[mas1.Length - 2])) return false;
+            if (Convert.ToInt32(mas1[mas1.Length - 1]) > Convert.ToInt32(mas2[mas1.Length - 1])) return true;
+            if (Convert.ToInt32(mas2[mas1.Length - 1]) > Convert.ToInt32(mas1[mas1.Length - 1])) return false;
+            return true; 
+        } */
+        static void Main(string[] args)
+        {
+            
+            byte n = 0;
+            Console.Write("Введите количество товаров(целое число от 1 до 100): ");
+            bool ok = false;
+            do
+            {
+                ok = byte.TryParse(Console.ReadLine(), out n);
+                if ((!ok) || (n < 1) || (n > 100) || (n == 0))
+                    Console.Write("Ошибка ввода, число элементов - целое число от 1 до 100.\nПовторите ввод: ");
+            } while ((!ok) || (n > 100));
+            string[][] mas = new string[n][];
+            /* Я не знаю что хотел здесь сделать автор, но это явно не работает
+             * int bestProduct = 0;
+             * for (int i = 1; i < mas.Length; i++)  
+             * if (dataCheck(mas[i][1], mas[i][2], mas[bestProduct][1], mas[bestProduct][2])) bestProduct = i;
+             * string str = mas[bestProduct][0][0] + mas[bestProduct][2];
+             * Console.WriteLine(mas[bestProduct][0] + mas[bestProduct][1] + mas[bestProduct][2] + str); */
+            string[] mass;
+            int[] data;
+            int[] time;
+            string buf;            
+            mass = new string[n];            
+            data = new int[n];
+            time = new int[n];
+            string[] name = new string[n];
+            int[] shelfLife = new int[n];
+            int[] oldProduct = new int[n];
+            int[] number = new int[n];
+            int max = 0;
+            int numberOfElements = 0;
+            int Time = 0;
+            int min = 2400;
+            int numberMin = 300;
+            for (int i = 0; i < mass.GetLength(0); i++)
+            {
+                Console.Write("Введите название " + (i + 1) + " продукта: ");
+                mass[i] = Console.ReadLine();
+                Console.Write("Введите название " + (i + 1) + " продукта: ");
+                name[i] = Console.ReadLine();
+                do
+                {
+                    Console.Write("Сколько дней назад прибыл товар: ");
+                    buf = Console.ReadLine();
+                    ok = Int32.TryParse(buf, out numberOfElements);
+                    if ((!ok) || (numberOfElements < 1) || (numberOfElements > 365))
+                        Console.WriteLine("Число от 1 до 365, \nВведите снова");
+                } while (!ok);
+                data[i] = numberOfElements;
+                do
+                {
+                    Console.Write("Введите время изготовления (чч:мм): ");
+                    buf = Console.ReadLine();
+                    buf = buf.Replace(":", "");
+                    ok = Int32.TryParse(buf, out Time);
+                    if ((!ok) || (Time <= 0) || (Time >= 2400))
+                        Console.WriteLine("Введите снова число от 00:00 до 23:59");
+                } while (!ok);
+                time[i] = Time;
+            }            
+            for (int i = 0; i < n; i++)
+            {
+                if (data[i] > max)
+                    max = data[i];
+            }
+            for (int i = 0, j = 0; i < n; i++)
+            {
+                if (data[i] == max)
+                {
+                    oldProduct[j++] = data[i];
+                    number[j] = i;
+                }
+            }            
+            for (int i = 0; i < oldProduct.Length; i++)
+            {
+                if (time[number[i]] < min)
+                {
+                    min = time[number[i]];
+                    numberMin = i;
+                }
+            }
+            int result = 101;
+            foreach (int x in data)
+            {
+                if (x < result)
+                    result = x;
+            }
+            Console.WriteLine(name[result]);
+            Console.ReadLine();
+        }
+    }
+}

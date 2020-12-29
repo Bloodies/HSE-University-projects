@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Menu/EnteringMenu.unity
+    guid: 83542c487f97ef648b8c7bdfbe6d6fa0
+  - enabled: 1
+    path: Assets/Scenes/Home/Home.unity
+    guid: d07b363406d8f034095224391d9e9baf
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL1.unity
+    guid: 86dca9cebe0b3e945bf5fca757f751b1
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL2.unity
+    guid: b6bf1c0a23deda549844625749e4e44c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL3.unity
+    guid: 7b343bb22ced59e47a2702d8a4f859ff
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL4.unity
+    guid: fb9b2c9bf84326e41a02379b792e0114
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL5.unity
+    guid: 68642d78783e07a4ab1daadc893cad0d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL6.unity
+    guid: 3c1db713ceb44fd43bbc55484c81620e
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL7.unity
+    guid: 2a3c3122ae9d2634e899fe9f8c64244c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL8.unity
+    guid: 758d5b19e7c3e8c4393af48250bd5ef5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL9.unity
+    guid: 13d7994a889c92744a010bbd156fbe1d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL10.unity
+    guid: e1f82d85497ade843abc47b099e5f127
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL11.unity
+    guid: 805d704495e5c7d4e8fb30d9b17c38df
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL12.unity
+    guid: 36fc6c9701738a743903f846b3d6723f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL13.unity
+    guid: 73138f90e81508f4189ed8001b5d39c8
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL14.unity
+    guid: 3accff11c909d8142a41f8fe2781cf57
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dungeon_LVL15.unity
+    guid: d590f242e8d43ae41801badfc5b892e9
+  m_configObjects: {}
