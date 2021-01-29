@@ -6,14 +6,11 @@ Created on Thu Jan 28 22:01:55 2021
 """
 import csv
 import influxdb
-import itertools
-import argparse
-import pandas as pd
 
 from influxdb import InfluxDBClient
 
 client = InfluxDBClient(host='localhost', port=8086)
-SEPARATOR = ','
+SEPARATOR = ';"'
 
 try:
     client.ping()
@@ -38,18 +35,18 @@ column_names = result.raw["series"][0]["columns"]
 csv_header = ""
 
 for column in column_names:
-    csv_header += column + SEPARATOR
+    csv_header += column + ';"'
 
     csv_header = csv_header[:-1]
 
     points = pt = result.get_points()
-
+    
     with open("export.csv", "w") as export_file:
         export_file.write(csv_header + "\n")
         for point in points:
             line = ""
             for column in column_names:
-                line += str(point[column]) + SEPARATOR
+                line += str(point[column]) + ';'
             line = line[:-1]
             export_file.write(line + "\n")
 
