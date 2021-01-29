@@ -1,0 +1,12 @@
+create database dbname
+
+show databases
+use dbname
+
+insert dbname,name=measurementname,info=on measure1=100,measure2=200,measure3=0
+insert dbname,name=measurementname,info=on measure1=50,measure2=200,measure3=0
+insert dbname,name=measurementname,info=on measure1=100,measure2=100,measure3=0
+insert dbname,name=measurementname,info=on measure1=50,measure2=200,measure3=0
+insert dbname,name=measurementname,info=on measure1=100,measure2=250,measure3=0
+
+select * from dbname
