@@ -13,10 +13,10 @@ INFLUX_PORT         = 8086              #8086 as standart
 INFLUX_USENAME      = ''
 INFLUX_PASSWORD     = ''
 
-DB_NAME             = 'cluster'         #name of database
+DB_NAME             = 'dbname'         #name of database
 QUERY               = '*'               #Select ___ from
-MEASUREMENT_NAME    = 'cluster'
-FILE_NAME           = "export_cluster"  #name of csv file
+MEASUREMENT_NAME    = 'dbname'
+FILE_NAME           = "export_dbname"  #name of csv file
 
 QUERY_PATH          = 'select ' + QUERY + ' from ' + MEASUREMENT_NAME
 #QUERY_PATH          = "select " + QUERY + " from " + MEASUREMENT_NAME + \
@@ -54,10 +54,10 @@ for column in column_names:
         for point in points:
             line = ""
             for column in column_names:
-                #line += str(point[column]) + ";"
+                line += str(point[column]) + ";"
 #pri formate vishe csv pitaetsya preobrazovat' chislovie yacheiki v date 
 #esli csv nuzhen tolko dlya prosmotra to rasskommentirovat' stroku nizhe i kommentirovat' vishe
-                line += str(point[column]) + "';'"
+                #line += str(point[column]) + "';'"
             line = line[:-1]
             export_file.write(line + "\n")
     
