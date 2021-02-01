@@ -1,0 +1,73 @@
+precision rfc3339
+create database cluster
+show databases
+use cluster
+
+insert test,well=ID0678,temperature=27,region=Perm pressure=6.8
+
+--11----------------------------------------------------------------
+insert cluster,well=ID0678,temperature=27,region=Perm pressure=6.8
+insert cluster,well=ID0678,temperature=27,region=Perm pressure=6.8
+insert cluster,well=ID0678,temperature=27,region=Perm pressure=6.8
+insert cluster,well=ID0100,region=Perm pressure1=0.64,pressure2=1.15
+insert cluster,well=ID0678,temperature=27,region=Perm pressure=6.8
+insert cluster,well=ID0101,region=Osa pressure1=0.68,pressure2=2.75,pressure3=16
+insert cluster,well=ID0101,region=Osa pressure1=0.87,pressure2=3.5,pressure3=67
+insert cluster,well=ID0102,region=Barda pressure1=0.12,pressure2=1.5,pressure3=1.7
+insert cluster,well=ID0102,region=Barda pressure1=0.15,pressure2=1.55,pressure3=1.75
+insert cluster,well=ID0102,region=Barda pressure1=0.45,pressure2=1.75,pressure3=1.65
+insert cluster,well=ID0102,region=Barda pressure1=0.35,pressure2=1.95,pressure3=1.85
+insert cluster,well=ID0102,region=Barda pressure1=0.35,pressure2=1.95
+insert cluster,well=ID0103,region=Ufa pressure1=1.35,pressure2=2.95,pressure3=5
+insert cluster,well=ID0103,region=Ufa pressure1=2.35,pressure2=3.95,pressure3=5.5
+insert cluster,well=ID0103,region=Ufa pressure1=3.35,pressure2=1.95,pressure3=4.5
+insert cluster,well=ID0103,region=Ufa pressure1=2.35,pressure2=4.95,pressure3=7.5
+insert cluster,well=ID0103,region=Ufa pressure1=2.35,pressure2=4.95
+--------------------------------------------------------------------
+
+--12----------------------------------------------------------------
+select pressure1 from cluster where time<now()-3d17h30m
+select pressure1 from cluster where time<now()-3d17h40m
+select pressure1 from cluster where time<now()-3d18h
+--------------------------------------------------------------------
+
+--13----------------------------------------------------------------
+select pressure1 from cluster group by region
+--------------------------------------------------------------------
+
+--14----------------------------------------------------------------
+select mean(pressure1) from cluster where time>now()-5d group by time(1d)
+--------------------------------------------------------------------
+
+--15----------------------------------------------------------------
+select pressure1 from cluster fill(previous)
+select pressure1 from cluster fill(none)
+select mean(preassure1) from cluster group by time(1h) fill(linear)
+--------------------------------------------------------------------
+
+--Homework--------------------------------------------------------------
+--1)-Вывести-максимальные-за-час-значения-для-всех-давлений-куста2------
+-----для-текущего-месяца------------------------------------------------
+select max(/pressure/) from cluster where time>now()-30d group by time(1h) fill(none)
+------------------------------------------------------------------------
+
+--2)-Вывести-средние-на-интервалах-в-6-часов-значения-давлений1-и-2,----
+-----превышающих-1.54,-куста2-для-разных-регионов-для-текущего-месяца---
+select mean(pressure1), mean(pressure2) from cluster where pressure1>1.54 and pressure2>1.54 and time>now()-30d group by time(6h) region fill(none)
+------------------------------------------------------------------------
+
+--3)-Добавить-несколько-записей-для-куста,-чтобы-данные-по--------------
+-----давлению1-отсутствовали--------------------------------------------
+insert cluster,well=ID0104,region=Izhevsk pressure2=1.15,pressure3=0.9
+insert cluster,well=ID0104,region=Izhevsk pressure2=0.14,pressure3=0.12
+insert cluster,well=ID0104,region=Izhevsk pressure2=1.35,pressure3=0.28
+------------------------------------------------------------------------
+
+--4)-Вывести-значения-давлений1-и-2-с-использованием-автозаполнения-----
+-----разными-способами--------------------------------------------------
+select pressure1 from cluster fill(previous)
+select pressure1 from cluster fill(1)
+select pressure1 from cluster fill(null)
+------------------------------------------------------------------------
+
+select * from cluster

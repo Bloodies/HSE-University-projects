@@ -1,3 +1,4 @@
+precision rfc3339
 create database cluster
 show databases
 use cluster

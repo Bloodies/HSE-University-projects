@@ -13,10 +13,10 @@ INFLUX_PORT         = 8086              #8086 as standart
 INFLUX_USENAME      = ''
 INFLUX_PASSWORD     = ''
 
-DB_NAME             = 'dbname'         #name of database
+DB_NAME             = 'cluster'         #name of database
 QUERY               = '*'               #Select ___ from
-MEASUREMENT_NAME    = 'dbname'
-FILE_NAME           = "export_dbname"  #name of csv file
+MEASUREMENT_NAME    = 'cluster'
+FILE_NAME           = "export_cluster"  #name of csv file
 
 QUERY_PATH          = 'select ' + QUERY + ' from ' + MEASUREMENT_NAME
 #QUERY_PATH          = "select " + QUERY + " from " + MEASUREMENT_NAME + \
