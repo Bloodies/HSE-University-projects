@@ -1,0 +1,4 @@
+var a: List<Int> = emptyList()                  - Пустой неизменяемый список Int
+var a: Array<Int> = arrayOf(1,2)                - Массив [1,2]
+var a: Array<Int> = Array(2, {it})              - Массив [0,1]
+var a: MutableList<Int> = emptyMutableList()    - Пустой изменяемый список Int
