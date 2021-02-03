@@ -1,0 +1,4 @@
+Отметьте участки кода, где может возникнуть NullPointerException. var a: String?
+
+var b = externalJavaCall()
+var b = a!!.length

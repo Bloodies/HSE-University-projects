@@ -1,0 +1,4 @@
+Отметьте участки кода, где точно возникнет NullPointerException. var a: String? = null
+
+a!!.length
+throw NullPointerException("Hello, Mister Kotlin:)")
