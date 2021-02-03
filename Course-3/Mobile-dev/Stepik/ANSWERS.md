@@ -15,6 +15,8 @@
 </details>
 
 _______________________
+<p>- [X] 2.1</p>
+<p>    - [ ] 2.1.7</p>
 <details>
 <summary>GROUP 2 (Знакомство с Kotlin)</summary>
 <p>- [X] 2.1</p>
