@@ -1,0 +1,35 @@
+Сопоставьте определениям в XML их внешнее представление.
+
+1 - Горизонтальный индикатор, заполненный на 25%
+2 - Неопределенный маленький круговой индикатор
+3 - Неопределенный горизонтальный индикатор
+4 - Неопределенный круговой индикатор
+
+<ProgressBar
+      android:id="@+id/1"
+      style="@android:style/Widget.ProgressBar.Horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:progress="25"/>
+
+<ProgressBar
+      android:id="@+id/2"
+      style="@android:style/Widget.ProgressBar.Small"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+<ProgressBar
+      android:id="@+id/3"
+      style="@android:style/Widget.ProgressBar.Horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:progress="25"
+      android:indeterminate="true"/>
+
+<ProgressBar
+      android:id="@+id/4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:progress="25"
+      android:max="200"
+      android:indeterminate="false"/>

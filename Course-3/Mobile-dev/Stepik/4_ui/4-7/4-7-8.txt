@@ -1,0 +1,4 @@
+Выберите правильно составленные методы Espresso.
+
+onView(withId(R.id.myView)).perform(click())
+onView(allOf(instanceOf(android.widget.Button), withText("Test"))).perform(longPress()).check(matches(withText("Test2")))
