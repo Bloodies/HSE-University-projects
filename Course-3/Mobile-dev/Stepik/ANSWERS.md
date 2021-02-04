@@ -366,8 +366,8 @@ GROUP 4 (Программирование пользовательских ин�
 	```
 	7%	
 	```
-<details>
-<summary>Code</summary>
+	<details>
+	<summary>Code</summary>
 	```
 	<ProgressBar
 	      android:id="@+id/determinateBar"
@@ -378,7 +378,7 @@ GROUP 4 (Программирование пользовательских ин�
 	      android:max="400"
 	      android:progress="47"/>
 	```
-</details>
+	</details>
     - [X] 4.7.5
 	```
 	3-5 будет достаточно
