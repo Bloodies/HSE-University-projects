@@ -366,14 +366,14 @@ GROUP 4 (Программирование пользовательских ин�
 	<details>
 	<summary>Code</summary>
 	```
-	<ProgressBar
-	      android:id="@+id/determinateBar"
-	      style="@android:style/Widget.ProgressBar.Horizontal"
-	      android:layout_width="wrap_content"
-	      android:layout_height="wrap_content"
-	      android:min="20"
-	      android:max="400"
-	      android:progress="47"/>
+	/<ProgressBar
+	/      android:id="@+id/determinateBar"
+	/      style="@android:style/Widget.ProgressBar.Horizontal"
+	/      android:layout_width="wrap_content"
+	/      android:layout_height="wrap_content"
+	/      android:min="20"
+	/      android:max="400"
+	/      android:progress="47"/>
 	```
 	</details>	
 
