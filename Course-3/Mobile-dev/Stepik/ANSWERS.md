@@ -18,12 +18,24 @@ _______________________
 
 GROUP 2 (Знакомство с Kotlin)
 - [X] 2.1
-    - [ ] 2.1.7	```kotlin
+    - [ ] 2.1.7	
+	```kotlin
 	fun main(args: Array<String>) { println("Hello brave citizen of glorious Bug Kingdom!") }
 	```
     - [ ] 2.1.11
+	```kotlin
+	fun main() = print("Oh mighty ruler of Bug Kingdom, the earthling called ${readLine()} seeks for your wisdom!")
+	```
     - [ ] 2.1.14
+	```kotlin
+	fun calcChairs(bugs: Int): Int  = (bugs * 1.5).toInt()
+	```
     - [ ] 2.1.15
+	```kotlin
+	fun calcBugMoneyValue(dayNumber: Int, bugRank: Int, cashAmount: Int): Int {
+    return ((dayNumber*bugRank)+42)*cashAmount
+}
+	```
 - [ ] 2.2
     - [ ] 2.2.3
     - [ ] 2.2.6
