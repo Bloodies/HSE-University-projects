@@ -1,0 +1,3 @@
+В рамках шаблона добавьте в UI MainActivity textView с id == textView и editText с id == editText.
+
+ZDlmNODAwYN2M3M

@@ -1,0 +1,3 @@
+В случае, когда число простое "prime", если число не простое, то  "not prime". В случае ошибки textView должен отображать "error"
+
+ravsdfvsvrsdkjhsdskvvradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdf

@@ -6,4 +6,49 @@
     android:paddingRight="16dp"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/arg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/arg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сложение" />
+
+    <Button
+        android:id="@+id/subtr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Вычитание" />
+
+    <Button
+        android:id="@+id/mul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Умножение" />
+
+    <Button
+        android:id="@+id/divide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Вычитание" />
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
 </LinearLayout>

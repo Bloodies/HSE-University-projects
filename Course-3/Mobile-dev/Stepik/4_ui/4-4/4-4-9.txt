@@ -1,0 +1,3 @@
+Запрограммируйте кнопку так, чтобы после ее нажатия текст из editText попадал в textView.
+
+MzNlYjJmMGMZhMDFjNGNkMcwNTM0MWRhZTxY2I3NTVkZG

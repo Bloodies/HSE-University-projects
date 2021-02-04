@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="path" type="id" />
+    <item name="result" type="id" />
+    <item name="perform" type="id" />
+</resources>

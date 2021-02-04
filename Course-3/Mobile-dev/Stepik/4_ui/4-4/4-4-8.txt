@@ -1,0 +1,3 @@
+В рамках шаблона добавьте в UI MainActivity textView с id == textView . Свойство text  textView должно отображать количество нажатий на элемент в виде числа.
+
+ZmVkZGY4ZWQQxY2Y1YmM3Y

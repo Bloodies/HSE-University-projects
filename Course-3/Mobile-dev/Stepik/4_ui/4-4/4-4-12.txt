@@ -1,0 +1,3 @@
+В рамках шаблона добавьте в UI MainActivity textView с id == textView и editText с id == editText. Свойство text textView должно отображать количество событий onTextChanged для editText  в виде числа.
+
+ZWE0YYjU4M

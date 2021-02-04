@@ -1,0 +1,3 @@
+Запрограммируйте кнопки так, чтобы результат выполнения ее операции сохранялся в поле answer. Например, если нажата кнопка mul, то в answer отображается целочисленный результат умножения.
+
+MGFoPM7DlxAVqQV4TEbliCNHSnR9quNYOdNd7H8BBc3usCobx1GJqm68kbNDEpI1YbI5l203YkiIWxWo

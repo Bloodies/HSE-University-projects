@@ -1,0 +1,3 @@
+В рамках шаблона добавьте в UI MainActivity кнопку с id == button и текстом button . При нажатии на кнопку ее текст должен меняться на Button was pressed
+
+ZDQwzNTM
