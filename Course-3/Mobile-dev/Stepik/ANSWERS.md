@@ -366,7 +366,7 @@ GROUP 4 (Программирование пользовательских ин�
 	<details>
 	<summary>Code</summary>
 	```
-	//<ProgressBar
+	//<ProgressBar/
 	//      android:id="@+id/determinateBar"
 	//      style="@android:style/Widget.ProgressBar.Horizontal"
 	//      android:layout_width="wrap_content"
