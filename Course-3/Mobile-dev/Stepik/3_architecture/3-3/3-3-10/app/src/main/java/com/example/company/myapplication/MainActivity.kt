@@ -12,5 +12,12 @@ class MainActivity : AppCompatActivity() {
 
         // Write your code here
 
+        Log.d("DEBUG","DEBUG")
+        Log.w ("WARNING","WARNING")
+        Log.e("ERROR","ERROR")
+        Log.i("INFO","INFO")
+        Log.printAnswer()
+
+
     }
 }

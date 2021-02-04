@@ -1,0 +1,3 @@
+Запустите приложение и найдите в Logcat строку c tag == CHECKER.
+
+02-04 15:42:15.798 5923-5923/com.example.company.myapplication D/CHECKER: com.example.company.myapplication.MainActivity@3530717

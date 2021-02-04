@@ -1,0 +1,3 @@
+Выполните сборку debug apk. В полученном файле найдите  META-INF/MANIFEST.MF и напишите ниже значение поля SHA-256-Digest: для файла classes.dex.
+
+5tOoOlQAhWeZ6llJZOtG9ZnIknufHaFElgFk1lP8WD8=

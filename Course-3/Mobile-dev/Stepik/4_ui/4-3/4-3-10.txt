@@ -1,0 +1,3 @@
+В рамках шаблона расширьте UI MainActivity кнопкой с id == button и текстом Hello!
+
+02-04 16:54:08.789 6446-6459/? D/CHECKER: N2U2MU5ZWEz
