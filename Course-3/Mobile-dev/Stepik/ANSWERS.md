@@ -18,8 +18,7 @@ _______________________
 
 GROUP 2 (Знакомство с Kotlin)
 - [X] 2.1
-    - [ ] 2.1.7
-	```kotlin
+    - [ ] 2.1.7	```kotlin
 	fun main(args: Array<String>) { println("Hello brave citizen of glorious Bug Kingdom!") }
 	```
     - [ ] 2.1.11
