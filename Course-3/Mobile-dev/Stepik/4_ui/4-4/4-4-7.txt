@@ -1,0 +1,3 @@
+элемент не виден				- android.support.test.espresso.PerformException: Error performing 'single click' on view 'Animations or transitions are enabled on the target device.
+элемент не найден по id				- android.support.test.espresso.NoMatchingViewException: No views in hierarchy found matching: with id: 0 (resource name not found)
+текст элемента не соответствует требуемому	- android.support.test.espresso.base.DefaultFailureHandler$ AssertionFailedWithCauseError: 'with text: is "button"' doesn't match the selected view.

@@ -1,3 +1,3 @@
-event.getActionMasked()	- Получение события
+event.getActionMasked()- Получение события
 event.getActionIndex()	- Получение индекса касания
-event.getPointerCount()	- Получение количества касаний
+event.getPointerCount()- Получение количества касаний
