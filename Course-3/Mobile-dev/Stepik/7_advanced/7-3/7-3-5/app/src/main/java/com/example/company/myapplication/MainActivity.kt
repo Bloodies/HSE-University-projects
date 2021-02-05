@@ -8,41 +8,38 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_main.*
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+
+
 
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        const val notificationId = 101
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        notify.setOnClickListener {
-            // Создаём канал
-
-            if (Build.VERSION.SDK_INT >= 26) {
-                val channel = NotificationChannel("Cat channel", "channel", NotificationManager
-                        .IMPORTANCE_DEFAULT).apply {
-                    //description = "Feed cat"
-                    setShowBadge(true)
-                }
-                // Создаем уведомление
-                val builder = NotificationCompat.Builder(this, "Cat channel")
-                        .setSmallIcon(R.drawable.ic_launcher_foreground)
-                        .setContentTitle("Title")
-                        .setContentText(editText.text.toString())
+        val intent = Intent(this,MainActivity::class.java)
+        val resultIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+        val builder = NotificationCompat.Builder(this)
+                .setSmallIcon(android.R.drawable.alert_dark_frame)
+                .setContentTitle("Title")
+                .setContentText(editText.text)
+                //.setContentIntent(resultIntent)
                 //.setAutoCancel(true)
-                //.setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-                with(NotificationManagerCompat.from(this)) {
-                    //createNotificationChannel(channel)  // регистрируем канал
-                    notify(notificationId, builder.build()) // посылаем уведомление
-                }
-            }
-
+                //.setContentInfo("Info")
+                //.setNumber(1)
+                //.setWhen(1)
+                //.setOngoing(true)
+                //.setStyle(NotificationCompat.BigTextStyle().bigText("TEXT"))
+                //.setStyle(NotificationCompat.InboxStyle().addLine("Line1"))
+        notify.setOnClickListener{
+            val notification = builder.build()
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.notify(1,notification)
+            //notificationManager.cancel(1)
+            //notificationManager.cancelAll()
         }
-
     }
 }

@@ -1,0 +1,4 @@
+Необходимо создать приложение с EditText(id = editText) и Button(id = notify). 
+По нажатию на кнопку генерируется уведомление с текстом из editText.
+
+NWE4M2U5MmYxNDZlMDk1MWQxMTI2MWI3

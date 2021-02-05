@@ -1,0 +1,13 @@
+Необходимо разработать приложение со следующими компонентами:
+
+ MainActivity:
+
+Button(id = send_notification) - кнопка отправки уведомления
+FinishActivity:
+
+TextView(id = result_text) с текстом "Success"
+При старте приложения запускается MainActivity. По нажатию на кнопку отправляется уведомление c заголовком "Title". 
+Остальные параметры по желанию. 
+По нажатию на уведомление должно открываться FinishActivity приложения.
+
+zhjYzE3MmVhZjQwMGFiNTM5Y2E3ZWYwM
