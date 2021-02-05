@@ -1,0 +1,10 @@
+В рамках шаблона добавьте в MainActivity следующие элементы:
+
+ListView, id - listView. Элемент списка - TextView (android.R.layout.simple_list_item_1), тип данных - Int,
+SeekBar, id - seekBar.  Бегунок с дискретными значениями от 0 до 20 с шагом 1
+
+listView должен отображать квадраты чисел от 1 до значения seekBar(включительно). 
+Если значение seekBar установлено в 0, то listView пуст. 
+Список должен автоматически изменяться при изменении значения seekBar.
+
+posyhsttyuifdghsdfhdghdhfhdssdgijsxxgyw

@@ -1,0 +1,5 @@
+Необходимо создать приложение с Button(id = notify).
+
+По нажатию на кнопку генерируется уведомление c заголовком "Title" и текстом "Text".
+
+NGU3NzgwYmU5MGVkNzUzMzM5NmRiN2Qz

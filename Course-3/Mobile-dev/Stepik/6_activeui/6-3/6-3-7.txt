@@ -1,0 +1,7 @@
+В рамках шаблона добавьте в MainActivity следующие элементы:
+
+GridView, id - gridView . Элемент списка - TextView (android.R.layout.simple_list_item_1).
+gridView должен отображать числа от 0 до 30 с количеством столбцов 4.  
+При нажатии на ячейку, она должна удаляться из таблицы.
+
+vsgsdgdqogsggnysysswhsnnsdasghishr

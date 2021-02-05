@@ -1,0 +1,3 @@
+notificationManager.cancel(id)				- Удаление уведомления
+notificationManager.notify(id, notification)		- Отображение уведомления
+val notification : Notification = builder.build()	- Создание уведомления

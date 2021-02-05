@@ -6,13 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="222dp">
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Какой формы Земля?" />
+
+        <RadioGroup
+            android:id="@+id/rgAnswers"
+            android:layout_width="match_parent"
+            android:layout_height="145dp">
+
+            <RadioButton
+                android:id="@+id/rbDisk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Диск" />
+
+            <RadioButton
+                android:id="@+id/rbSphere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Шар" />
+
+            <RadioButton
+                android:id="@+id/rbEllipsoid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Эллипсоид" />
+
+            <RadioButton
+                android:id="@+id/rbCube"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Куб" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/butAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ответ" />
+
+        <TextView
+            android:id="@+id/tvAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

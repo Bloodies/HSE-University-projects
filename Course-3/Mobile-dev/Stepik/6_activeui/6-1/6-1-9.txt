@@ -1,0 +1,6 @@
+В рамках шаблона добавьте в MainActivity следующие элементы:
+
+Button, id - button,
+При нажатии на button должен генерироваться и исполняться Intent, по которому открывается Activity SecondActivity.
+
+uyiyudsfadfgdaafsaf

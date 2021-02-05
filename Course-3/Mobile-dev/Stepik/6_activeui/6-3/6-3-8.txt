@@ -1,0 +1,10 @@
+В рамках шаблона добавьте в MainActivity следующие элементы:
+
+Spinner, id - spinner. Элемент списка - TextView (android.R.layout.simple_spinner_item),
+EditText, id - editText.
+ 
+
+spinner должен содержать список целых чисел от 1 до значения в editText. 
+Список меняется динамически, по мере ввода числа в editText.
+
+qnihzdgajmiaasoidfjhsdgkosdsdhagsjsehnousdgs

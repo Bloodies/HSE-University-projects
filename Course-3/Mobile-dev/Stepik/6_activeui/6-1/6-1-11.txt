@@ -1,0 +1,13 @@
+В рамках шаблона добавьте следующие элементы:
+
+В MainActivity:
+
+EditText, id - editText,
+Button, id - button.
+В SecondActivity:
+
+TextView, id - textView.
+При нажатии на button должна открываться Activity SecondActivity. 
+При этом, текст из поля editText в MainActivity должен передаваться в поле textView в SecondActivity.
+
+uysagduqmgbpzgwspgfia

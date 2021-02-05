@@ -1,0 +1,5 @@
+Необходимо создать приложение с TextView (id textView) и Button (id button).
+По нажатию на кнопку запрашивается опасное разрешение android.Manifest.permission.CAMERA
+и в textView отображается "Granted", если пользователь выдал разрешение, либо "Denied", если отказано.
+
+jYWZhY2IwMzc3ZjZkZWQ0MmM3Y2M4ZjN

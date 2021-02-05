@@ -1,0 +1,4 @@
+#Fri Feb 05 19:11:23 YEKT 2021
+base.0=E\:\\Projects\\GitHub\\HSE-University-projects\\Course-3\\Mobile-dev\\Stepik\\7_advanced\\7-1\\7-1-11\\app\\build\\intermediates\\transforms\\dexMerger\\androidTest\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

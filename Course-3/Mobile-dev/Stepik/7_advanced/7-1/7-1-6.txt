@@ -1,0 +1,10 @@
+Необходимо создать приложение со следующими элементами управления:
+
+EditText (id editText),
+TextView(id textView),
+Button (id button).
+По нажатию на button отправляется запрос по URL из editText. 
+Если адрес доступен (не 404 или не 500), в textView отображается "Ok". 
+Если недоступен, отображается "Failed".
+
+iNGU0NDcwTNmMEwMN2UzMmQyM2I3ZmY4

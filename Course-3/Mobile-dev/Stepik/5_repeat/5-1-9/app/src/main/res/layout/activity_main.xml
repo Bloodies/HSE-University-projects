@@ -6,13 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-30dp"
+        tools:layout_editor_absoluteY="-229dp">
+
+        <TableRow>
+            <Spinner
+                android:id="@+id/spinner11"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+
+            <Spinner
+                android:id="@+id/spinner12"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+
+            <Spinner
+                android:id="@+id/spinner13"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+        </TableRow>
+        <TableRow>
+            <Spinner
+                android:id="@+id/spinner21"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+
+            <Spinner
+                android:id="@+id/spinner22"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+
+            <Spinner
+                android:id="@+id/spinner23"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+        </TableRow>
+        <TableRow>
+            <Spinner
+                android:id="@+id/spinner31"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+
+            <Spinner
+                android:id="@+id/spinner32"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+
+            <Spinner
+                android:id="@+id/spinner33"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:entries="@array/tictactoe" />
+        </TableRow>
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.56" />
+
+    </TableLayout>
+
 
 </android.support.constraint.ConstraintLayout>

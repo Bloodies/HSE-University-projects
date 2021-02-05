@@ -1,0 +1,13 @@
+В рамках шаблона добавьте следующие элементы:
+
+В MainActivity:
+
+ListView, id - listView1. Элемент списка - TextView (android.R.layout.simple_list_item_1).
+В ListItemActivity:
+
+TextView, id - textView.
+При нажатии на любой элемент списка listView1 должна открываться Activity ListItemActivity. При этом, текст из нажатого элемента списка в MainActivity должен передаваться в поле textView в ListItemActivity.
+
+В listView1 должны находиться порядковые номера его элементов, начиная с 1 (не менее 3-х элементов).
+
+qlkggssdgkghwssssrqhef

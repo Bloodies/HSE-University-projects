@@ -1,0 +1,30 @@
+В рамках шаблона добавьте следующие элементы:
+В MainActivity:
+
+Button, id - button_prev1,
+Button, id - button_next1,
+TextView, text - "MainActivity"
+В SecondActivity:
+
+Button, id - button_prev2,
+Button, id - button_next2,
+TextView, text - "SecondActivity"
+В ThirdActivity:
+
+Button, id - button_prev3,
+Button, id - button_next3,
+TextView, text - "ThirdActivity"
+В каждой Activity, при нажатии на кнопку next должна открываться следующая по счету Activity, при нажатии на кнопку prev ﻿- предыдущая по счету Activity. Переходы считаются зацикленными, то есть следующая после ThirdActivity -  MainActivity, предыдущая для MainActivity - ThirdActivity.
+
+TextView необходимы для упрощения навигации в приложении и не являются обязательными.
+
+Полный список переходов:
+
+button_prev1 - ThirdActivity
+button_next1 - SecondActivity
+button_prev2 - MainActivity
+button_next2 - ThirdActivity
+button_prev3 - SecondActivity
+button_next3 - MainActivity
+
+oqwergrtuhghweqwehshshhjkhjkkkttyui

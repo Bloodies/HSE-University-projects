@@ -1,0 +1,3 @@
+Необходимо создать приложение, которое запрашивает стандартное разрешение android.Manifest.permission.BLUETOOTH
+
+zY2JmYjI0ZDFjYmI2NGEyMzBjNDc4ODM
