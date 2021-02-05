@@ -4,6 +4,8 @@
 
 #### Курс предоставлен сайтом [stepik.org](https://stepik.org/)
 
+https://stepik.org/course/4792
+
 <details>
 <summary>English version</summary>
 
@@ -272,26 +274,32 @@ _______________________
 	<uses-permission>	- Позволяет запрашивать у системы разрешения, которые нужны приложению для доступа к различным функциям
 	<permission>		- Объявляет разрешение, которое может использоваться для ограничения доступа к определенным компонентам
 	```
-- [ ] 3.3
-    - [ ] 3.3.8
+- [X] 3.3
+    - [X] 3.3.8 (nit_1_check_ui)
 	```
-	compileSdkVersion
+	JKFHWK
 	```
-    - [ ] 3.3.9
+    - [X] 3.3.9 (nit_logcat)
 	```
-	compileSdkVersion
+	com.example.company.myapplication.MainActivity@3530717
 	```
-    - [ ] 3.3.10
 	```
-	compileSdkVersion
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: com.example.company.myapplication.MainActivity@3530717
 	```
-    - [ ] 3.3.12 (Загрузите APK-файл и распакуйте на своем компьютере. Определите, чему равна третья строчка файла META-INF/MANIFEST.MF.)
+    - [X] 3.3.10 (nit_2_logs)
+	```
+	159j0kjhk
+	```
+    - [X] 3.3.12 (Загрузите APK-файл и распакуйте на своем компьютере. Определите, чему равна третья строчка файла META-INF/MANIFEST.MF.)
 	```
 	Created-By: Android Gradle 3.0.1
 	```
-    - [ ] 3.3.13
+    - [X] 3.3.13 (nit_build_and_inspect)
 	```
-	compileSdkVersion
+	5tOoOlQAhWeZ6llJZOtG9ZnIknufHaFElgFk1lP8WD8=
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: 5tOoOlQAhWeZ6llJZOtG9ZnIknufHaFElgFk1lP8WD8=
 	```
 -----------
 ### GROUP 4 (Программирование пользовательских интерфейсов)
@@ -348,25 +356,113 @@ _______________________
 	Предупредим о необходимости при запуске приложения и запросим только запись звука, остальное по запросу.
 	Запросим разрешение, когда пользователь нажмет "Запись".
 	```
-- [ ] 4.3
-    - [ ] 4.3.2
-    - [ ] 4.3.6
-    - [ ] 4.3.7
-    - [ ] 4.3.8
-    - [ ] 4.3.10
-    - [ ] 4.3.11
-    - [ ] 4.3.13
-    - [ ] 4.3.14
-    - [ ] 4.3.15
-- [ ] 4.4
-    - [ ] 4.4.5
-    - [ ] 4.4.7
-    - [ ] 4.4.8
-    - [ ] 4.4.9
-    - [ ] 4.4.10
-    - [ ] 4.4.12
-    - [ ] 4.4.13
-    - [ ] 4.4.15
+- [X] 4.3
+    - [X] 4.3.2 ()
+	```
+	Absolute Layout	- Позволяет позиционировать дочерние элементы с помощью точного местоположения (координаты x / y).
+	Relative Layout	- Позволяет указать местоположение элементов управления друг относительно друга и относительно родительского элемента.
+	Linear Layout	- Позволяет позиционировать дочерние элементы в виде вертикального или горизонтального списка. Создает полосу прокрутки, если длина окна превышает длину экрана.
+	Grid Layout	- Макет, который помещает своих детей в прямоугольную сетку.
+	```
+    - [X] 4.3.6 (nit_ui_attr)
+	```
+	MWE4Mjc1ZmJhMWRmZGJlOWFmNWZkM2E4
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: MWE4Mjc1ZmJhMWRmZGJlOWFmNWZkM2E4
+	```
+    - [X] 4.3.7 (nit_ui_string)
+	```
+	MWI2NzQ1MjNlNTc2ZDhjZGVhYTI2Yzk1
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: MWI2NzQ1MjNlNTc2ZDhjZGVhYTI2Yzk1
+	```
+    - [X] 4.3.8 (Укажите свойства, которые определяют размер элемента в рамках родительского элемента.)
+	```
+	layout_height
+	layout_width
+	```
+    - [X] 4.3.10 (nit_ui_button_hello)
+	```
+	N2U2MU5ZWEz
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: N2U2MU5ZWEz
+	```
+    - [X] 4.3.11 (nit_ui_less_simplest)
+	```
+	RlMjZDA3GVhZ
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: RlMjZDA3GVhZ
+	```
+    - [X] 4.3.13 (Выберите номера корректных XML:)
+	```
+	1
+	3
+	```
+    - [X] 4.3.14 (Выберите номер ﻿XML, который описывает следующую структуру элементов:)
+	```
+	4
+	```
+    - [X] 4.3.15 (Выберите номер ﻿XML, который описывает следующее приложение:)
+	```
+	3
+	```
+- [X] 4.4
+    - [X] 4.4.5 (nit_ui_stupid_button)
+	```
+	ZDQwzNTM
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: ZDQwzNTM
+	```
+    - [X] 4.4.7
+	```
+	элемент не виден				- android.support.test.espresso.PerformException: Error performing 'single click' on view 'Animations or transitions are enabled on the target device.
+	элемент не найден по id				- android.support.test.espresso.NoMatchingViewException: No views in hierarchy found matching: with id: 0 (resource name not found)
+	текст элемента не соответствует требуемому	- android.support.test.espresso.base.DefaultFailureHandler$ AssertionFailedWithCauseError: 'with text: is "button"' doesn't match the selected view.
+	```
+    - [X] 4.4.8 (nit_ui_count_click)
+	```
+	ZmVkZGY4ZWQQxY2Y1YmM3Y
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: ZmVkZGY4ZWQQxY2Y1YmM3Y
+	```
+    - [X] 4.4.9 (nit_ui_edittext_to_text_view)
+	```
+	MzNlYjJmMGMZhMDFjNGNkMcwNTM0MWRhZTxY2I3NTVkZG
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: MzNlYjJmMGMZhMDFjNGNkMcwNTM0MWRhZTxY2I3NTVkZG
+	```
+    - [X] 4.4.10 (nit_calculator)
+	```
+	MGFoPM7DlxAVqQV4TEbliCNHSnR9quNYOdNd7H8BBc3usCobx1GJqm68kbNDEpI1YbI5l203YkiIWxWo
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: MGFoPM7DlxAVqQV4TEbliCNHSnR9quNYOdNd7H8BBc3usCobx1GJqm68kbNDEpI1YbI5l203YkiIWxWo
+	```
+    - [X] 4.4.12 (nit_ui_on_change_count)
+	```
+	ZWE0YYjU4M
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: ZWE0YYjU4M
+	```
+    - [X] 4.4.13 (nit_ui_autochange)
+	```
+	ZDlmNODAwYN2M3M
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: ZDlmNODAwYN2M3M
+	```
+    - [X] 4.4.15 (Какой метод задает текст сообщения в диалоговом окне AlertDialog?)
+	```
+	setMessage
+	```
 - [X] 4.5
     - [X] 4.5.6
 	```
@@ -384,7 +480,7 @@ _______________________
 	```
     - [X] 4.7.4 (На сколько будет заполнен индикатор ProgressBar, объявленный следующим образом?)
 	```
-	7%	
+	7%
 	```
     - [X] 4.7.5 (Сопоставьте определениям в XML их внешнее представление.)
 	```
@@ -415,48 +511,232 @@ _______________________
 	```
 -----------
 ### GROUP 5 (Задачи для закрепления)
-- [ ] 5.1
-    - [ ] 5.1.1
-    - [ ] 5.1.2
-    - [ ] 5.1.3
-    - [ ] 5.1.4
-    - [ ] 5.1.6
-    - [ ] 5.1.7
-    - [ ] 5.1.9
+- [X] 5.1
+    - [X] 5.1.1 (nit_prime_checker)
+	```
+	ravsdfvsvrsdkjhsdskvvradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdf
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: ravsdfvsvrsdkjhsdskvvradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdfradfvdf
+	```
+    - [X] 5.1.2 (nit_converter3)
+	```
+	oRT6oJM3bu8FjRTLXescimLHcg8SQuf21Zh7k86uoRT6oJM3bu
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: oRT6oJM3bu8FjRTLXescimLHcg8SQuf21Zh7k86uoRT6oJM3bu
+	```
+    - [X] 5.1.3 (nit_tcs)
+	```
+	ZTRkMGFhNTM5EwczZGZTZlJlYTNDZmJk
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: ZTRkMGFhNTM5EwczZGZTZlJlYTNDZmJk
+	```
+    - [X] 5.1.4 (nit_quadratic_equation)
+	```
+	Dt9pbBmxpKxu5WunqkhMcgHzY0nEgoiq5wf7Hk3eGAOGX3RrPrT3WQBVYW1pzjks6WdesqLSjOkCRQFfEGdnGvOaZGkg6kRcVHnho7Nn3nZ7b5SK95orPGRFds2Lw2s0Hw7CZh6tppWIXhlu3Akrn94ACPufzU8QHW2N37ahgU9o0NZJzVXSO6gdZERVBM
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: Dt9pbBmxpKxu5WunqkhMcgHzY0nEgoiq5wf7Hk3eGAOGX3RrPrT3WQBVYW1pzjks6WdesqLSjOkCRQFfEGdnGvOaZGkg6kRcVHnho7Nn3nZ7b5SK95orPGRFds2Lw2s0Hw7CZh6tppWIXhlu3Akrn94ACPufzU8QHW2N37ahgU9o0NZJzVXSO6gdZERVBM
+	```
+    - [X] 5.1.6 (nit_eath_shape)
+	```
+	r2wvwevwvwkepvkwrvddfvr2323r2323vsdvlav
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: r2wvwevwvwkepvkwrvddfvr2323r2323vsdvlav
+	```
+    - [X] 5.1.7 (nit_simple_text_editor)
+	```
+	451066361138540890019720703477353935997633274503818570764599817773670566788144519461017248
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: 451066361138540890019720703477353935997633274503818570764599817773670566788144519461017248
+	```
+    - [X] 5.1.9 (nit_tic_tac)
+	```
+	random_Stricsdcsdcngrandomvdfvdfringrandom_Stringvsdvsrandom_Strsvdssingrandom_Stringcsdvsvsv
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: random_Stricsdcsdcngrandomvdfvdfringrandom_Stringvsdvsrandom_Strsvdssingrandom_Stringcsdvsvsv
+	```
 -----------
 GROUP 6 (Пользовательские интерфейсы)
-- [ ] 6.1
-    - [ ] 6.1.9
-    - [ ] 6.1.10
-    - [ ] 6.1.11
-    - [ ] 6.1.12
-- [ ] 6.2
-    - [ ] 6.2.4
-    - [ ] 6.2.5
-    - [ ] 6.2.6
-    - [ ] 6.2.7
-- [ ] 6.3
-    - [ ] 6.3.5
-    - [ ] 6.3.6
-    - [ ] 6.3.7
-    - [ ] 6.3.8
+- [X] 6.1
+    - [X] 6.1.9 (nit_simplest_activity_transition)
+	```
+	uyiyudsfadfgdaafsaf
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: uyiyudsfadfgdaafsaf
+	```
+    - [X] 6.1.10 (nit_transition_between_activities)
+	```
+	oqwergrtuhghweqwehshshhjkhjkkkttyui
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: oqwergrtuhghweqwehshshhjkhjkkkttyui
+	```
+    - [X] 6.1.11 (nit_activity_transition_with_data)
+	```
+	uysagduqmgbpzgwspgfia
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: uysagduqmgbpzgwspgfia
+	```
+    - [X] 6.1.12 (nit_activity_lifecycle)
+	```
+	chodvgaadjfgiopdfg
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: chodvgaadjfgiopdfg
+	```
+- [X] 6.2
+    - [X] 6.2.4 (nit_clicable_list_view2)
+	```
+	qlkggssdgkghwssssrqhef
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: qlkggssdgkghwssssrqhef
+	```
+    - [X] 6.2.5 (nit_add_elements_to_listView)
+	```
+	bvysgsgdddsopbhssqbcidgt
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: bvysgsgdddsopbhssqbcidgt
+	```
+    - [X] 6.2.6 (nit_rm_elements_from_listView)
+	```
+	sdfgiosgdjxhhodhhfdhiodhqqpvh
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: sdfgiosgdjxhhodhhfdhiodhqqpvh
+	```
+    - [X] 6.2.7 (nit_list_view_with_bar)
+	```
+	posyhsttyuifdghsdfhdghdhfhdssdgijsxxgyw
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: posyhsttyuifdghsdfhdghdhfhdssdgijsxxgyw
+	```
+- [X] 6.3
+    - [X] 6.3.5 (nit_simple_gridview)
+	```
+	sipujghddigjhnadrh
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: sipujghddigjhnadrh
+	```
+    - [X] 6.3.6 (nit_clickable_gridView)
+	```
+	glehjhsawesashsdfdndciyggds
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: glehjhsawesashsdfdndciyggds
+	```
+    - [X] 6.3.7 (nit_rm_elements_from_gridView)
+	```
+	vsgsdgdqogsggnysysswhsnnsdasghishr
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: vsgsdgdqogsggnysysswhsnnsdasghishr
+	```
+    - [X] 6.3.8 (nit_spinner_dynamic_list)
+	```
+	qnihzdgajmiaasoidfjhsdgkosdsdhagsjsehnousdgs
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: qnihzdgajmiaasoidfjhsdgkosdsdhagsjsehnousdgs
+	```
 -----------
 GROUP 7 (Android advanced)
-- [ ] 7.1
-    - [ ] 7.1.5
-    - [ ] 7.1.6
-    - [ ] 7.1.9
-    - [ ] 7.1.1
-- [ ] 7.2
-    - [ ] 7.2.5
-    - [ ] 7.2.6
-    - [ ] 7.2.7
-- [ ] 7.3
-    - [ ] 7.3.4
-    - [ ] 7.3.5
-    - [ ] 7.3.7
-    - [ ] 7.3.8
-    - [ ] 7.3.10
+- [X] 7.1
+    - [X] 7.1.5 (nit_permission_normal_simple)
+	```
+	zY2JmYjI0ZDFjYmI2NGEyMzBjNDc4ODM
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: zY2JmYjI0ZDFjYmI2NGEyMzBjNDc4ODM
+	```
+    - [X] 7.1.6 (nit_permission_normal)
+	```
+	iNGU0NDcwTNmMEwMN2UzMmQyM2I3ZmY4
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: iNGU0NDcwTNmMEwMN2UzMmQyM2I3ZmY4
+	```
+    - [X] 7.1.9 (nit_permission_danger_simple)
+	```
+	jYWZhY2IwMzc3ZjZkZWQ0MmM3Y2M4ZjN
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: jYWZhY2IwMzc3ZjZkZWQ0MmM3Y2M4ZjN
+	```
+    - [X] 7.1.11 (nit_permission_danger)
+	```
+	jYWZhY2IwMzc3ZjZkZWQ0MmM3Y2M4ZjN
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: jYWZhY2IwMzc3ZjZkZWQ0MmM3Y2M4ZjN
+	```
+- [X] 7.2
+    - [X] 7.2.5 (nit_file_read_new)
+	```
+	FfsfwsfwOooOlsL
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: FfsfwsfwOooOlsL
+	```
+    - [X] 7.2.6 (nit_file_exchange)
+	```
+	dhkssweghllYuidfsFNWWewewqqq
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: dhkssweghllYuidfsFNWWewewqqq
+	```
+    - [X] 7.2.7 (nit_file_counter)
+	```
+	zFjYmJhmMzlkMYjkzM2NmIyY2VRiZDQ4
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: zFjYmJhmMzlkMYjkzM2NmIyY2VRiZDQ4
+	```
+- [X] 7.3
+    - [X] 7.3.4 (nit_notification)
+	```
+	NGU3NzgwYmU5MGVkNzUzMzM5NmRiN2Qz
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: NGU3NzgwYmU5MGVkNzUzMzM5NmRiN2Qz
+	```
+    - [X] 7.3.5 (nit_notification_data)
+	```
+	NWE4M2U5MmYxNDZlMDk1MWQxMTI2MWI3
+	```
+	```
+	2000-01-01 00:00:00.000 9000-9999/? D/CHECKER: NWE4M2U5MmYxNDZlMDk1MWQxMTI2MWI3
+	```
+    - [X] 7.3.7 (nit_notification_click)
+	```
+	zhjYzE3MmVhZjQwMGFiNTM5Y2E3ZWYwM
+	```
+	```
+	2000-01-01 16:03:15.413 9000-9999/? D/CHECKER: zhjYzE3MmVhZjQwMGFiNTM5Y2E3ZWYwM
+	```
+    - [X] 7.3.8
+	```
+	notificationManager.cancel(id)				- Удаление уведомления
+	notificationManager.notify(id, notification)		- Отображение уведомления
+	val notification : Notification = builder.build()	- Создание уведомления
+	```
+    - [X] 7.3.10
+	```
+	val alarmManager : AlarmManager = getSystemService(Context.ALARM_SERVICE)		- Создание AlarmManager
+	PendingIntent.getBroadcast(this,1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT))	- Создание операции интента
+	val intentAlarm : Intent = Intent(this, AlarmNotification.class)			- Определение базового интента
+	```
 -----------
 ### GROUP 8 (Публикация Android-приложений)
 - [X] 8.1
