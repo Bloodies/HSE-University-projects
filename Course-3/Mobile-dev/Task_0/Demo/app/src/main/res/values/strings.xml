@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Demo</string>
+
+    <string name="editText">Input number of elements</string>
+    <string name="button1">Button1</string>
+    <string name="button2">Button1</string>
+    <string name="result_string">Result</string>
+</resources>
