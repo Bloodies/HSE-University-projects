@@ -1,4 +1,8 @@
 <resources>
+    <!-- <string name="app_name">Timetable for HSE FE</string> -->
+    <!-- <string name="app_name">Base</string> -->
     <string name="app_name">Base</string>
 
+    <string name="teacher">РАСПИСАНИЕ ДЛЯ СТУДЕНТОВ</string>
+    <string name="student">РАСПИСАНИЕ ДЛЯ ПРЕПОДОВАТЕЛЯ</string>
 </resources>
