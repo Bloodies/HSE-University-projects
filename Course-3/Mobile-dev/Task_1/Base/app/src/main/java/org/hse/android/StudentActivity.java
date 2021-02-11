@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,14 +20,13 @@ import java.util.Locale;
 
 public class StudentActivity extends AppCompatActivity {
 
-    private static final String LOG_CODE = "LOG_CODE";
     private TextView time, status, subject, cabinet, corp, teacher;
     public Date currentTime;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
         final Spinner spinner = findViewById(R.id.groupList);
 
@@ -58,19 +58,27 @@ public class StudentActivity extends AppCompatActivity {
         initData();
     }
     private void initGroupList(List<Group> groups){
-        groups.add(new Group(1,"ПИ-18-1"));
-        groups.add(new Group(2,"ПИ-18-2"));
+        String[] pr = { "ПИ", "БИ", "УБ", "Э", "И", "Ю" };
+        String[] yr = { "16", "17", "18", "19", "20" };
+        int i=0;
+        for(int x = 0; x < pr.length; x++){
+            for(int y = 0; y < yr.length; y++){
+                for(int z = 1; z < 5; z++){
+                    i++;
+                    groups.add(new Group(i,pr[x]+"-"+yr[y]+"-"+z));
+                    if(z==5) z=1;
+                }
+                if(y==yr.length) y=0;
+            }
+        }
     }
     private void initTime(){
         currentTime = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
-        SimpleDateFormat simpleDayFormat = new SimpleDateFormat("E", Locale.getDefault());
-        //switch (simpleDayFormat.toString()){
-        //    case
-        //}
-        //if(simpleDayFormat.toString() == "st")
-        //String date = System.out.printf("%1$R %2$A", "Дата:", currentTime).toString;
-        //time.setText("%1$R %2$A", currentTime);
+        String[] Week_days = { "", "Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота" };
+        DateFormatSymbols symbols = new DateFormatSymbols( new Locale("ru", "ru"));
+        symbols.setShortWeekdays(Week_days);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm',' E", symbols);
         time.setText(simpleDateFormat.format(currentTime));
     }
     private void initData(){

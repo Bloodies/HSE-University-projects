@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import org.hse.android.StudentActivity;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class TeacherActivity extends AppCompatActivity {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher);
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
         final Spinner spinner = findViewById(R.id.groupList);
 
@@ -62,7 +63,11 @@ public class TeacherActivity extends AppCompatActivity {
     }
     private void initTime(){
         currentTime = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        String[] Week_days = { "", "Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота" };
+        DateFormatSymbols symbols = new DateFormatSymbols( new Locale("en", "US"));
+        symbols.setShortWeekdays(Week_days);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm',' E", symbols);
         time.setText(simpleDateFormat.format(currentTime));
     }
     private void initData(){
