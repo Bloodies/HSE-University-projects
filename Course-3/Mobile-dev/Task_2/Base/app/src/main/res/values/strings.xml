@@ -6,6 +6,7 @@
 
     <string name="teacher_button">РАСПИСАНИЕ ДЛЯ ПРЕПОДОВАТЕЛЯ</string>
     <string name="student_button">РАСПИСАНИЕ ДЛЯ СТУДЕНТОВ</string>
+    <string name="settings">НАСТРОЙКИ</string>
 
     <string name="first_label_s">Выберите группу:</string>
     <string name="first_label_t">Выберите преподователя:</string>

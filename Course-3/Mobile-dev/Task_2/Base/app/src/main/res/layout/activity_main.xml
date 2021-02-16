@@ -73,8 +73,9 @@
         android:layout_marginRight="160dp"
         android:layout_marginBottom="40dp"
         android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/settings"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

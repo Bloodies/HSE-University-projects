@@ -7,10 +7,4 @@
         <item name="android:textColor">@color/SecondaryHSE</item>
         <item name="android:typeface">monospace</item>
     </style>
-    <style name="Common_button_style">
-        <item name="android:fontFamily"></item>
-        <item name="android:fontFamily">roboto</item>
-        <item name="android:textColor">@color/SecondaryHSE</item>
-        <item name="android:typeface">monospace</item>
-    </style>
 </resources>
