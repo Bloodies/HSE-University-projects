@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="@string/first_label_t"
+        android:text="@string/first_label_t_ru"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/time" />
+            android:text="@string/time_ru" />
     </LinearLayout>
 
     <TextView
@@ -72,7 +72,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="@string/status"
+        android:text="@string/status_ru"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -96,28 +96,28 @@
             android:id="@+id/subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/subject" />
+            android:text="@string/subject_ru" />
 
         <TextView
             style="@style/Common_text_style"
             android:id="@+id/cabinet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cabinet" />
+            android:text="@string/cabinet_ru" />
 
         <TextView
             style="@style/Common_text_style"
             android:id="@+id/corp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/corp" />
+            android:text="@string/corp_ru" />
 
         <TextView
             style="@style/Common_text_style"
             android:id="@+id/teacher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/teacher" />
+            android:text="@string/teacher_ru" />
     </LinearLayout>
 
     <Button
