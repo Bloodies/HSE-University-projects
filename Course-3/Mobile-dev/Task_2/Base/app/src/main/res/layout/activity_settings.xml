@@ -33,14 +33,14 @@
                 android:text="@string/photo_textView" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -54,7 +54,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -76,7 +76,7 @@
 
                 <TextView
                     style="@style/Common_text_style"
-                    android:id="@+id/textView3"
+                    android:id="@+id/sensor_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="" />
@@ -85,7 +85,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
