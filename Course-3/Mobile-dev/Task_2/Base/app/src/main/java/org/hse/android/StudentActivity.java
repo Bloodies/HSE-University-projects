@@ -1,6 +1,8 @@
 package org.hse.android;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,8 +16,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class StudentActivity extends AppCompatActivity {
+
+    private static final String TAG = "StudentActivity";
 
     private TextView time, status, subject, cabinet, corp, teacher;
     public Date currentTime;
@@ -23,7 +28,7 @@ public class StudentActivity extends AppCompatActivity {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         final Spinner spinner = findViewById(R.id.groupList);
 
@@ -38,7 +43,7 @@ public class StudentActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
                 Object item = adapter.getItem(selectedItemPosition);
-                Log.d("Status","selectedItem: " + item);
+                Log.d(TAG,"selectedItem: " + item);
             }
             public void onNothingSelected(AdapterView<?> parent) { }
         });
@@ -54,6 +59,7 @@ public class StudentActivity extends AppCompatActivity {
 
         initData();
     }
+
     private void initGroupList(List<Group> groups){
         String[] pr = { "ПИ", "БИ", "УБ", "Э", "И", "Ю" };
         String[] yr = { "16", "17", "18", "19", "20" };
@@ -69,15 +75,17 @@ public class StudentActivity extends AppCompatActivity {
             }
         }
     }
+
     private void initTime(){
         currentTime = new Date();
         String[] Week_days = { "", "Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота" };
-        DateFormatSymbols symbols = new DateFormatSymbols( new Locale("ru", "ru"));
+        DateFormatSymbols symbols = new DateFormatSymbols( new Locale("en", "US"));
         symbols.setShortWeekdays(Week_days);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm',' E", symbols);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm',' E", symbols);
         time.setText(simpleDateFormat.format(currentTime));
     }
+
     private void initData(){
         status.setText("Нет пар");
 
@@ -86,6 +94,7 @@ public class StudentActivity extends AppCompatActivity {
         corp.setText("Корпус");
         teacher.setText("Преподователь");
     }
+
     static class Group{
         private Integer id;
         private String name;

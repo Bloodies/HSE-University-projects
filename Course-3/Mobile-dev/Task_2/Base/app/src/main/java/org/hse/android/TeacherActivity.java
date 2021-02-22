@@ -1,24 +1,26 @@
 package org.hse.android;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import org.hse.android.StudentActivity;
-
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class TeacherActivity extends AppCompatActivity {
+
+    private static final String TAG = "TeacherActivity";
 
     private TextView time, status, subject, cabinet, corp, teacher;
     public Date currentTime;
@@ -26,7 +28,7 @@ public class TeacherActivity extends AppCompatActivity {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         final Spinner spinner = findViewById(R.id.groupList);
 
@@ -41,7 +43,7 @@ public class TeacherActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
                 Object item = adapter.getItem(selectedItemPosition);
-                Log.d("Status","selectedItem: " + item);
+                Log.d(TAG,"selectedItem: " + item);
             }
             public void onNothingSelected(AdapterView<?> parent) { }
         });
@@ -67,6 +69,7 @@ public class TeacherActivity extends AppCompatActivity {
         DateFormatSymbols symbols = new DateFormatSymbols( new Locale("en", "US"));
         symbols.setShortWeekdays(Week_days);
 
+        @SuppressLint("SimpleDateFormat")
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm',' E", symbols);
         time.setText(simpleDateFormat.format(currentTime));
     }
