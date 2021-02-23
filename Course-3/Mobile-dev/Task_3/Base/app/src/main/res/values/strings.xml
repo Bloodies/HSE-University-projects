@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Timetable for HSE FE</string>
+    <string name="about_main">Программа созданная в рамках курса "Мобильная разработка" НИУ ВШЭ</string>
+    <string name="about_stud_list">Timetable for HSE FE</string>
+    <string name="about_teach_list">Timetable for HSE FE</string>
+
+    <string name="teacher_button_ru">РАСПИСАНИЕ ДЛЯ ПРЕПОДОВАТЕЛЯ</string>
+    <string name="student_button_ru">РАСПИСАНИЕ ДЛЯ СТУДЕНТОВ</string>
+    <string name="settings_ru">НАСТРОЙКИ</string>
+    <string name="take_photo_button_ru">Сделать фото</string>
+    <string name="save_button_ru">Сохранить</string>
+    <string name="logo_of_hse">Logo of HSE</string>
+
+    <string name="first_label_s_ru">Выберите группу:</string>
+    <string name="first_label_t_ru">Выберите преподователя:</string>
+    <string name="now_label">Сейчас:</string>
+    <string name="time_ru">00:00</string>
+    <string name="status_ru">Идет пара / Нет пар</string>
+    <string name="subject_ru">Дисциплина</string>
+    <string name="cabinet_ru">Кабинет</string>
+    <string name="corp_ru">Корпус</string>
+    <string name="teacher_ru">Преподователь</string>
+
+    <string name="photo_textView">Укажите фото</string>
+    <string name="name_editView">Укажите ваше имя</string>
+    <string name="light_textView">Текущая освещаемость:</string>
+    <string name="user_avatar">User_avatar</string>
+    <string name="sensors_list_label">Список доступных датчиков:</string>
+</resources>
