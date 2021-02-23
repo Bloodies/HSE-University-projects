@@ -64,14 +64,12 @@ public class StudentActivity extends AppCompatActivity {
         String[] pr = { "ПИ", "БИ", "УБ", "Э", "И", "Ю" };
         String[] yr = { "16", "17", "18", "19", "20" };
         int i=0;
-        for(int x = 0; x < pr.length; x++){
-            for(int y = 0; y < yr.length; y++){
-                for(int z = 1; z < 5; z++){
+        for (String p : pr) {
+            for (String y : yr) {
+                for (int z = 1; z < 5; z++) {
                     i++;
-                    groups.add(new Group(i,pr[x]+"-"+yr[y]+"-"+z));
-                    if(z==5) z=1;
+                    groups.add(new Group(i, p + "-" + y + "-" + z));
                 }
-                if(y==yr.length) y=0;
             }
         }
     }

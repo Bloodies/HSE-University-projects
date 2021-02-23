@@ -20,15 +20,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="170dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                style="@style/Common_text_style"
                 android:id="@+id/textView"
+                style="@style/Mini_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="@string/photo_textView" />
 
             <ImageView
@@ -36,7 +37,7 @@
                 android:layout_width="150dp"
                 android:layout_height="170dp"
                 android:layout_gravity="center"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/user_avatar"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <Button
@@ -59,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="@string/photo_textView"
+                android:hint="@string/name_editView"
                 android:autofillHints="" />
 
             <LinearLayout
@@ -68,18 +69,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/Common_text_style"
+                    style="@style/Mini_text_style"
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/light_textView" />
 
                 <TextView
-                    style="@style/Common_text_style"
+                    style="@style/Mini_text_style"
                     android:id="@+id/sensor_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="00 lux" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -97,4 +98,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <TextView
+        android:id="@+id/sensors_list_label"
+        style="@style/Mini_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/sensors_list_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_save" />
+
+    <ListView
+        android:id="@+id/sensors_list"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sensors_list_label">
+    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

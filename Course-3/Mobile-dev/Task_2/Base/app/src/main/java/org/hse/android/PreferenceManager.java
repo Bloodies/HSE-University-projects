@@ -13,23 +13,13 @@ public class PreferenceManager {
 
     ///////////////////////
 
-    public void savePhotoValue(String key, String value) {
+    public void saveValue(String key, String value) {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(key, value);
         editor.apply();
     }
 
-    public String getPhotoValue(String key) {
+    public String getValue(String key) {
         return sharedPref.getString(key, "");
-    }
-
-    private void saveValue(String key, String value) {
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(key, value);
-        editor.apply();
-    }
-
-    private String getValue(String key, String defaultValue) {
-        return sharedPref.getString(key,defaultValue);
     }
 }
