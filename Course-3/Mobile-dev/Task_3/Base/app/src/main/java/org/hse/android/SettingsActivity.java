@@ -187,8 +187,7 @@ public class SettingsActivity extends AppCompatActivity implements SensorEventLi
             catch (IOException ex) { Log.e(TAG, "Create file", ex); }
             if(photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        photoURI);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 try { startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE); }
                 catch (ActivityNotFoundException e) { Log.e(TAG, "Start activity", e); }
             }
