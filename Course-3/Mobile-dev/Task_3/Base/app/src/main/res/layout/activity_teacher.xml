@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/time_ru" />
+            android:text="@string/time" />
     </LinearLayout>
 
     <TextView
@@ -120,7 +120,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/day_cal_button"
+        android:id="@+id/schedule_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -132,13 +132,13 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
-        android:id="@+id/week_cal_button"
+        android:id="@+id/schedule_week"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="Расписание\nна неделю"
-        app:layout_constraintStart_toEndOf="@+id/day_cal_button"
+        app:layout_constraintStart_toEndOf="@+id/schedule_day"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

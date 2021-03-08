@@ -1,11 +1,5 @@
 package org.hse.android;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.FileProvider;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
@@ -27,6 +21,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import org.jetbrains.annotations.NotNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -154,7 +154,7 @@ public class SettingsActivity extends AppCompatActivity implements SensorEventLi
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] result) {
+    public void onRequestPermissionsResult(int requestCode, @NotNull String[] permissions, @NotNull int[] result) {
         if(requestCode == REQUEST_PERMISSION_CODE) {
             if(result.length > 0 && result[0] == PackageManager.PERMISSION_GRANTED) {
                 dispatchTakePictureIntent();

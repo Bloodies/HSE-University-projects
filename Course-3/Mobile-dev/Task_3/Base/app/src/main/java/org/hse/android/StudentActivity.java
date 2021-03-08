@@ -1,8 +1,6 @@
 package org.hse.android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,19 +8,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import java.text.DateFormatSymbols;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
-public class StudentActivity extends AppCompatActivity {
+public class StudentActivity extends BaseActivity {
 
     private static final String TAG = "StudentActivity";
 
-    private TextView time, status, subject, cabinet, corp, teacher;
+    private TextView status, subject, cabinet, corp, teacher;
+    private Spinner spinner;
     public Date currentTime;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +26,7 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        final Spinner spinner = findViewById(R.id.groupList);
+        spinner = findViewById(R.id.groupList);
 
         List<Group> groups = new ArrayList<>();
         initGroupList(groups);
@@ -48,7 +44,6 @@ public class StudentActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
-        time = findViewById(R.id.time);
         initTime();
 
         status = findViewById(R.id.status);
@@ -57,7 +52,10 @@ public class StudentActivity extends AppCompatActivity {
         corp = findViewById(R.id.corp);
         teacher = findViewById(R.id.teacher);
 
-        initData();
+        View scheduleDay = findViewById(R.id.schedule_day);
+        scheduleDay.setOnClickListener(v -> showSchedule(ScheduleType.DAY));
+        View scheduleWeek = findViewById(R.id.schedule_week);
+        scheduleWeek.setOnClickListener(v -> showSchedule(ScheduleType.WEEK));
     }
 
     private void initGroupList(List<Group> groups){
@@ -74,23 +72,19 @@ public class StudentActivity extends AppCompatActivity {
         }
     }
 
-    private void initTime(){
-        currentTime = new Date();
-        String[] Week_days = { "", "Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота" };
-        DateFormatSymbols symbols = new DateFormatSymbols( new Locale("en", "US"));
-        symbols.setShortWeekdays(Week_days);
-
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm',' E", symbols);
-        time.setText(simpleDateFormat.format(currentTime));
+    private void showSchedule(ScheduleType type) {
+        Object selectedItem = spinner.getSelectedItem();
+        if (!(selectedItem instanceof Group)) { return; }
+        showScheduleImpl(type, (Group) selectedItem, currentTime);
     }
 
-    private void initData(){
-        status.setText("Нет пар");
-
-        subject.setText("Дисциплина");
-        cabinet.setText("Кабинет");
-        corp.setText("Корпус");
-        teacher.setText("Преподователь");
+    protected void showScheduleImpl(ScheduleType type, Group group, Date currentTime) {
+        Intent intent = new Intent(this, ScheduleActivity.class);
+        intent.putExtra(ScheduleActivity.ARG_ID, group.getName());
+        intent.putExtra(ScheduleActivity.ARG_TYPE, type);
+        intent.putExtra(ScheduleActivity.ARG_MODE, ScheduleMode.STUDENT);
+        intent.putExtra(ScheduleActivity.ARG_TIME, currentTime);
+        startActivity(intent);
     }
 
     static class Group{

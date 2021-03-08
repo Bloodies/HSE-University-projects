@@ -32,9 +32,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BaseActivity" />
         <activity android:name=".StudentActivity" />
         <activity android:name=".TeacherActivity" />
         <activity android:name=".SettingsActivity" />
+        <activity android:name=".ScheduleActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

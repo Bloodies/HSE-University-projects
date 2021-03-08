@@ -1,10 +1,10 @@
 package org.hse.android;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,17 +28,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Student_pressed(){
-        Intent intent = new Intent(MainActivity.this, StudentActivity.class);
+        Intent intent = new Intent(this, StudentActivity.class);
         startActivity(intent);
     }
 
     private void Teacher_pressed(){
-        Intent intent = new Intent(MainActivity.this, TeacherActivity.class);
+
+        Intent intent = new Intent(this, TeacherActivity.class);
         startActivity(intent);
     }
 
     private void Settings_pressed(){
-        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 }
