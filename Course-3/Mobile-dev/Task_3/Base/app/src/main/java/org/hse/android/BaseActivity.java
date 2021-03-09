@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 import com.google.gson.Gson;
+import org.hse.android.cfg.TimeResponse;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,12 +18,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class BaseActivity extends AppCompatActivity {
-
     enum ScheduleType { DAY, WEEK }
-
     enum ScheduleMode { STUDENT, TEACHER }
-
-    interface OnItemClick { void onClick(ScheduleActivity.ScheduleItem data); }
 
     private final static String TAG = "BaseActivity";
     public static final String URL = "https://api.ipgeolocation.io/ipgeo?apiKey=b03018f75ed94023a005637878ec0977";

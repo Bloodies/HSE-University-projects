@@ -31,4 +31,5 @@
     <string name="schedule_name">Название</string>
     <string name="schedule_place">Кабинет</string>
     <string name="schedule_teacher">Преподаватель</string>
+    <string name="sample_schedule_group">XX-00-0</string>
 </resources>

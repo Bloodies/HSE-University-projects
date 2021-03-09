@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -8,10 +9,9 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:textSize="20sp"
+        style="@style/Big_text_style"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:lines="2"
+        android:layout_marginBottom="4dp"
         android:text="" />
 </LinearLayout>

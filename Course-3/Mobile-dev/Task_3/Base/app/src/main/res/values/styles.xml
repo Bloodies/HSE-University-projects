@@ -11,4 +11,10 @@
         <item name="android:textColor">@color/SecondaryHSE</item>
         <item name="android:typeface">monospace</item>
     </style>
+    <style name="Big_text_style">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/SecondaryHSE</item>
+        <item name="android:typeface">monospace</item>
+    </style>
 </resources>

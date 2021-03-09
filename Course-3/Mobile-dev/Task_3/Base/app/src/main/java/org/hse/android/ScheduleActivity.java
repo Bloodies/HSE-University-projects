@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import org.hse.android.cfg.ScheduleItem;
+import org.hse.android.cfg.ScheduleItemHeader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +22,16 @@ import java.util.Objects;
 
 public class ScheduleActivity extends AppCompatActivity {
     private BaseActivity.ScheduleType type;
+    private BaseActivity.ScheduleMode mode;
 
     public RecyclerView recyclerView;
     public ItemAdapter adapter;
 
-    static public String ARG_ID = "0", ARG_TYPE = "1", ARG_MODE = "2", ARG_TIME = "3", name;
+    static public String ARG_NAME = "0", ARG_ID = "1", ARG_TYPE = "2", ARG_MODE = "3", ARG_TIME = "4", name;
+    static public Integer DEFAULT_ID = 0, id;
     private TextView currentTime;
+
+    interface OnItemClick { void onClick(ScheduleItem data); }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,13 +47,15 @@ public class ScheduleActivity extends AppCompatActivity {
         currentTime.setText(String.format("%s", simpleDateFormat.format(BaseActivity.time_export)));
 
         type = (BaseActivity.ScheduleType) getIntent().getSerializableExtra(ARG_TYPE);
-        BaseActivity.ScheduleMode mode = (BaseActivity.ScheduleMode) getIntent().getSerializableExtra(ARG_MODE);
-        name = getIntent().getStringExtra(ARG_ID);
-        if (name == null) { name = "no data"; }
+        mode = (BaseActivity.ScheduleMode) getIntent().getSerializableExtra(ARG_MODE);
+        id = getIntent().getIntExtra(ARG_ID, DEFAULT_ID);
+        //name = getIntent().getStringExtra(ARG_NAME);
+        //if (name == null) { name = "null"; }
 
-        TextView title = findViewById(R.id.title);
+        TextView schedule_title = findViewById(R.id.schedule_title);
+        schedule_title.setText(getIntent().getStringExtra(ARG_NAME));
 
-        recyclerView = (RecyclerView) findViewById(R.id.listView);
+        recyclerView = findViewById(R.id.listView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setHasFixedSize(true);
@@ -62,7 +70,7 @@ public class ScheduleActivity extends AppCompatActivity {
         List<ScheduleItem> list = new ArrayList<>();
 
         ScheduleItemHeader header = new ScheduleItemHeader();
-        header.setTitle(String.format("%s\r\nПонедельник, 28 января", name));
+        header.setTitle(String.format("Понедельник, 28 января"));
         list.add(header);
 
         ScheduleItem item = new ScheduleItem();
@@ -91,9 +99,9 @@ public class ScheduleActivity extends AppCompatActivity {
         private final static int TYPE_HEADER = 1;
 
         private List<ScheduleItem> dataList = new ArrayList<>();
-        private BaseActivity.OnItemClick onItemClick;
+        private OnItemClick onItemClick;
 
-        public ItemAdapter(BaseActivity.OnItemClick onItemClick) { this.onItemClick = onItemClick; }
+        public ItemAdapter(OnItemClick onItemClick) { this.onItemClick = onItemClick; }
 
         @NonNull
         @Override
@@ -143,10 +151,10 @@ public class ScheduleActivity extends AppCompatActivity {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private Context context;
-        private BaseActivity.OnItemClick onItemClick;
+        private OnItemClick onItemClick;
         private TextView start, end, type, name, place, teacher;
 
-        public ViewHolder(View itemView, Context context, BaseActivity.OnItemClick onItemClick) {
+        public ViewHolder(View itemView, Context context,OnItemClick onItemClick) {
             super(itemView);
             this.context = context;
             this.onItemClick = onItemClick;
@@ -170,10 +178,10 @@ public class ScheduleActivity extends AppCompatActivity {
 
     public static class ViewHolderHeader extends RecyclerView.ViewHolder {
         private Context context;
-        private BaseActivity.OnItemClick onItemClick;
+        private OnItemClick onItemClick;
         private TextView title;
 
-        public ViewHolderHeader(View itemView, Context context, BaseActivity.OnItemClick onItemClick) {
+        public ViewHolderHeader(View itemView, Context context, OnItemClick onItemClick) {
             super(itemView);
             this.context = context;
             this.onItemClick = onItemClick;
@@ -181,29 +189,5 @@ public class ScheduleActivity extends AppCompatActivity {
         }
 
         public void bind(final ScheduleItemHeader data) { title.setText(data.getTitle()); }
-    }
-
-    public class ScheduleItem {
-        private String start, end, type, name, place, teacher;
-
-        public String getStart() { return start; }
-        public void setStart(String start){ this.start = start; }
-        public String getEnd() { return end; }
-        public void setEnd(String end){ this.end = end; }
-        public String getType() { return type; }
-        public void setType(String type){ this.type = type; }
-        public String getName() { return name; }
-        public void setName(String name){ this.name = name; }
-        public String getPlace() { return place; }
-        public void setPlace(String place){ this.place = place; }
-        public String getTeacher() { return teacher; }
-        public void setTeacher(String teacher){ this.teacher = teacher; }
-    }
-
-    public class ScheduleItemHeader extends ScheduleItem {
-        private String title;
-
-        public String getTitle() { return title; }
-        public void setTitle(String title){ this.title = title; }
     }
 }

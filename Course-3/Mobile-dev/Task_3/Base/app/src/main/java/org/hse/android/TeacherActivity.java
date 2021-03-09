@@ -71,7 +71,8 @@ public class TeacherActivity extends BaseActivity {
 
     protected void showScheduleImpl(ScheduleType type, StudentActivity.Group group, Date currentTime) {
         Intent intent = new Intent(this, ScheduleActivity.class);
-        intent.putExtra(ScheduleActivity.ARG_ID, group.getName());
+        intent.putExtra(ScheduleActivity.ARG_NAME, group.getName());
+        intent.putExtra(ScheduleActivity.ARG_ID, group.getId());
         intent.putExtra(ScheduleActivity.ARG_TYPE, type);
         intent.putExtra(ScheduleActivity.ARG_MODE, ScheduleMode.TEACHER);
         intent.putExtra(ScheduleActivity.ARG_TIME, currentTime);

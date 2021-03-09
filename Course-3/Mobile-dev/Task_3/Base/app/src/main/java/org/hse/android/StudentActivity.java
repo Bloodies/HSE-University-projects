@@ -80,7 +80,8 @@ public class StudentActivity extends BaseActivity {
 
     protected void showScheduleImpl(ScheduleType type, Group group, Date currentTime) {
         Intent intent = new Intent(this, ScheduleActivity.class);
-        intent.putExtra(ScheduleActivity.ARG_ID, group.getName());
+        intent.putExtra(ScheduleActivity.ARG_NAME, group.getName());
+        intent.putExtra(ScheduleActivity.ARG_ID, group.getId());
         intent.putExtra(ScheduleActivity.ARG_TYPE, type);
         intent.putExtra(ScheduleActivity.ARG_MODE, ScheduleMode.STUDENT);
         intent.putExtra(ScheduleActivity.ARG_TIME, currentTime);
@@ -95,9 +96,10 @@ public class StudentActivity extends BaseActivity {
             this.id = id;
             this.name = name;
         }
+        @Override public String toString() { return name; }
+
         public Integer getId(){ return id; }
         public void setId(Integer id) { this.id = id; }
-        @Override public String toString() { return name; }
         public String getName() { return name; }
         public void setName(String name){ this.name = name; }
     }
