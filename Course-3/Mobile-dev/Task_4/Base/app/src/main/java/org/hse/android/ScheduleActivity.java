@@ -6,14 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import org.hse.android.database.MainViewModel;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import org.hse.android.cfg.ScheduleItem;
-import org.hse.android.cfg.ScheduleItemHeader;
+import org.hse.android.requests.ScheduleItem;
+import org.hse.android.requests.ScheduleItemHeader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +25,8 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class ScheduleActivity extends AppCompatActivity {
+    protected MainViewModel mainViewModel;
+
     private BaseActivity.ScheduleType type;
     private BaseActivity.ScheduleMode mode;
 
@@ -38,6 +44,7 @@ public class ScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
         Objects.requireNonNull(getSupportActionBar()).hide();
+        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 
         SimpleDateFormat simpleDateFormat = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -105,7 +112,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
         @NonNull
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
             Context context = parent.getContext();
             LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -133,7 +140,7 @@ public class ScheduleActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        public void onBindViewHolder(@NotNull RecyclerView.ViewHolder viewHolder, int position) {
             ScheduleItem data = dataList.get(position);
             if (viewHolder instanceof ViewHolder) {
                 ((ViewHolder) viewHolder).bind(data);

@@ -21,8 +21,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.hse.android.requests.PreferenceManager;
 import org.jetbrains.annotations.NotNull;
-import androidx.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -133,7 +135,7 @@ public class SettingsActivity extends AppCompatActivity implements SensorEventLi
         sensorLight.setText(String.format("%s lux", lux));
     }
 
-    public void checkPermission(){
+    public void checkPermission() {
         int permissionsCheck = ActivityCompat.checkSelfPermission(this, PERMISSION);
         if (permissionsCheck != PackageManager.PERMISSION_GRANTED) {
             if(ActivityCompat.shouldShowRequestPermissionRationale(this, PERMISSION)) {

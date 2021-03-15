@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 import com.google.gson.Gson;
-import org.hse.android.cfg.TimeResponse;
+import org.hse.android.requests.TimeResponse;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -48,7 +48,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void initTime() { getTime(); }
 
-    private void showTime(Date dateTime){
+    public void showTime(Date dateTime){
         time = findViewById(R.id.time);
         current_time = findViewById(R.id.current_time);
         if (dateTime == null){ return; }
