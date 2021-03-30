@@ -1451,6 +1451,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1741,6 +1742,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1913,7 +1915,7 @@ Transform:
   - {fileID: 180172146}
   - {fileID: 552558085}
   - {fileID: 817060384}
-  - {fileID: 1763147727}
+  - {fileID: 1938488300}
   - {fileID: 708303477}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2116,11 +2118,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546168924}
   m_CullTransparentMesh: 1
---- !u!4 &1763147727 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7430510511571357118, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
-  m_PrefabInstance: {fileID: 1938488299}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1920011625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,6 +3965,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2913390895857825300, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913390895857825300, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913390895857825300, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2929387361455533003, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 4.867981
@@ -5582,6 +5591,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5422837579774095181, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430061341518780131, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5452194940972356106, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
@@ -8122,6 +8135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
+--- !u!224 &1938488300 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2913390895857825300, guid: d84f6e790fd2ff24ba4acb09b27b8d1c, type: 3}
+  m_PrefabInstance: {fileID: 1938488299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2099250791
 GameObject:
   m_ObjectHideFlags: 0
