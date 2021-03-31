@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         Vector3 position = new Vector3(Random.Range(-5f, 5f), 1);
-        PhotonNetwork.Instantiate(PlayerPrefab.name, position, Quaternion.identity);
+        PhotonNetwork.Instantiate(Path.Combine("PlayerPrefab"), position, Quaternion.identity);
     }
 
     // Update is called once per frame

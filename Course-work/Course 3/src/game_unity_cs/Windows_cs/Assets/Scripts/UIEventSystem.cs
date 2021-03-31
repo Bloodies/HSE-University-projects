@@ -60,7 +60,7 @@ public class UIEventSystem : MonoBehaviour
 
     public void QuitMain()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainScreen");
     }
 
     public void GoBack()
