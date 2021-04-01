@@ -57,18 +57,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\Mode.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\LoadSave.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\GameConfig.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\UITransition.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\WS_MAIN_LANGUAGE.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\ChangeKeyboard.cs" />
     <Compile Include="Assets\Scripts\UIEventSystem.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\WS_OPTIONS_LANGUAGE.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\Dialog.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\LevelSelect.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\LanguageControl.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\Menu.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\MenuSelect.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\TestController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\PanelOptions.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\OptionsControl.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Scripts\OnlineConnection\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\CustomInput.cs" />
+    <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scripts\Settings_screen\MenuControl.cs" />
     <Compile Include="Assets\Scripts\Settings_screen\Interface_scripts\Interface_settings.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\OnlineConnection\InternetConnection.cs" />
