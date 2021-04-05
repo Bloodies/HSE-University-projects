@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -77,46 +79,93 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status">
+        app:layout_constraintTop_toBottomOf="@+id/status"
+        tools:ignore="MissingConstraints">
 
-        <TextView
-            style="@style/Common_text_style"
-            android:id="@+id/subject"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/subject_ru" />
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            style="@style/Common_text_style"
-            android:id="@+id/cabinet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cabinet_ru" />
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/time" />
 
-        <TextView
-            style="@style/Common_text_style"
-            android:id="@+id/corp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/corp_ru" />
+            <TextView
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="bottom|center"
+                android:text="@string/time" />
+        </LinearLayout>
 
-        <TextView
-            style="@style/Common_text_style"
-            android:id="@+id/teacher"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:text="@string/teacher_ru" />
+            android:background="@drawable/hse_style_calendar_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/schedule_type"
+                android:textColor="@color/SecondaryHSE"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/schedule_name"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/schedule_place"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/corp"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/schedule_corp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/teacher"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/schedule_teacher" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button
@@ -129,7 +178,7 @@
         android:minLines="1"
         android:text="Расписание\nна день"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
     <Button
         android:id="@+id/schedule_week"
@@ -140,5 +189,5 @@
         android:layout_marginTop="10dp"
         android:text="Расписание\nна неделю"
         app:layout_constraintStart_toEndOf="@+id/schedule_day"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

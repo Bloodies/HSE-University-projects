@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Teacher_pressed(){
-
         Intent intent = new Intent(this, TeacherActivity.class);
         startActivity(intent);
     }

@@ -9,9 +9,9 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Big_text_style"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="4dp"
+        style="@style/Common_text_style"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:text="" />
 </LinearLayout>

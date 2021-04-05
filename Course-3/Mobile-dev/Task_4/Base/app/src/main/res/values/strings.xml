@@ -16,10 +16,6 @@
     <string name="now_label">Сейчас:</string>
     <string name="time">00:00</string>
     <string name="status_ru">Идет пара / Нет пар</string>
-    <string name="subject_ru">Дисциплина</string>
-    <string name="cabinet_ru">Кабинет</string>
-    <string name="corp_ru">Корпус</string>
-    <string name="teacher_ru">Преподователь</string>
 
     <string name="photo_textView">Укажите фото</string>
     <string name="name_editView">Укажите ваше имя</string>
@@ -30,6 +26,7 @@
     <string name="schedule_type">Тип</string>
     <string name="schedule_name">Название</string>
     <string name="schedule_place">Кабинет</string>
+    <string name="schedule_corp">Корпус</string>
     <string name="schedule_teacher">Преподаватель</string>
     <string name="sample_schedule_group">XX-00-0</string>
 </resources>
