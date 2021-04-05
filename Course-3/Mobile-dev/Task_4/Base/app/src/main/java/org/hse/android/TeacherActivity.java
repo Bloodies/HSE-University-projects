@@ -83,7 +83,6 @@ public class TeacherActivity extends BaseActivity {
         mainViewModel.getTimeTableTeacherByDate(currentTime).observe(this, list -> {
             for (TimeTableWithTeacherEntity listEntity : list) {
                 Log.d(TAG, listEntity.timeTableEntity.subjName + " " + listEntity.teacherEntity.fio);
-                // TODO move to DB query
                 if (getSelectedGroup() != null && getSelectedGroup().getId().equals(listEntity.timeTableEntity.teacherId)) {
                     initDataFromTimeTable(listEntity);
                 }

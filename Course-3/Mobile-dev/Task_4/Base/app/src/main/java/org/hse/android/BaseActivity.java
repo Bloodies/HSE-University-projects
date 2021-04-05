@@ -4,18 +4,24 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
 import com.google.gson.Gson;
+
 import org.hse.android.models.MainViewModel;
 import org.hse.android.requests.TimeResponse;
 import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -77,6 +83,19 @@ public class BaseActivity extends AppCompatActivity {
         time.setText(String.format("%s", simpleDateFormat.format(currentTime)));
     }
 
+    protected void showNewTime(){
+        mainViewModel.currentTime.observe(this, new Observer<Date>() {
+            @Override
+            public void onChanged(Date dateTime) {
+                if(dateTime == null)
+                    return;
+                currentTime = dateTime;
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm EEEE", new Locale("ru"));
+                time.setText(simpleDateFormat.format(currentTime));
+            }
+        });
+    }
+
     private void parseResponse(Response response) {
         Gson gson = new Gson();
         ResponseBody body = response.body();
@@ -91,6 +110,7 @@ public class BaseActivity extends AppCompatActivity {
             // run on UI thread
             runOnUiThread(() -> {
                 showTime(dateTime);
+                showNewTime();
                 mainViewModel.currentTime.setValue(dateTime);
             });
         }
