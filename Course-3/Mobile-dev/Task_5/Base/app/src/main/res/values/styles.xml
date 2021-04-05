@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Common_text_style">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/SecondaryHSE</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="Mini_text_style">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/SecondaryHSE</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="Big_text_style">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/SecondaryHSE</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+</resources>
