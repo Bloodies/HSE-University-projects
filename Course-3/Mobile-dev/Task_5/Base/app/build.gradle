@@ -3,22 +3,32 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        config {
+            storeFile file('E:\\Projects\\GitHub\\HSE-University-projects\\Course-3\\Mobile-dev\\Task_5\\Base\\resources\\keystore\\hse_keystore.jks')
+            keyAlias 'upload'
+            storePassword 'hsekeypassword'
+            keyPassword 'hsekeypassword'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "org.hse.android"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
