@@ -1,6 +1,7 @@
 import re
+import roman
 
-patternStr = r'\bM{0,4}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b'
+regex = r'\b(?=[IVXLMCD])M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b'
 open('output.txt', 'w').close()
 
 
@@ -47,12 +48,14 @@ def romanToInt(s):
     return total + run
 
 
+def repl(m):
+    if m.group(0) != "":
+        return str(roman.fromRoman(m.group(0)))
+
+
 with open("input.txt", "r", encoding='utf-8') as file:
     for line in file:
-        for match in re.findall(patternStr, line):
-            if len(match) != 0:
-                # line = line.replace(match, str(romanToInt(match)))
-                line = re.sub(match, str(romanToInt(match)), line)
+        line = re.sub(regex, repl, line)
         print(line)
         with open("output.txt", "a", encoding='utf-8') as output:
             output.write(line)
