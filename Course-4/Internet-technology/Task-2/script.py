@@ -15,7 +15,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleW
 
 
 def Task_1():
-    regex = r'(?<!:)[0-9a-fA-F]{4}(:[0-9a-fA-F]{4}){7}(?!:)|\b(?:((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4})\b'
+    regex = r'(?<!:)([0-9a-fA-F]{4}(:[0-9a-fA-F]{4}){7})(?!:)|(\b(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:\.|$)){4}\b)'
     reg = re.compile(regex)
 
     request = requests.get(url_1, headers=headers)
@@ -25,13 +25,12 @@ def Task_1():
     tree_elements = soup.find_all('span', class_='history-user')
 
     for element in tree_elements:
-        #print(element.find('a', class_='mw-userlink'))
-        #print(element.find('bdi'))
-        line = element.find('a', class_='mw-userlink').get_text().strip()
-        #print(element.find('a', class_='mw-userlink').get_text().strip())
-        for match in re.findall(regex, line):
-            print(match)
-    #tmp_list.append(element)
+        match = re.search(regex, element.find('a', class_='mw-userlink').get_text().strip())
+        if match is not None:
+            print(match.group())
+            tmp_list.append(match.group())
+
+    print(tmp_list)
     ip = r"2001:44C8:4209:EADD:5DA7:916F:A7A6:2020"
     request = requests.get(r"http://api.ipstack.com/" + ip + "?access_key=" + api_key)
     obj = request.json()
