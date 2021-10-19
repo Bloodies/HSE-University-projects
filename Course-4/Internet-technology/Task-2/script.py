@@ -21,20 +21,30 @@ def Task_1():
     request = requests.get(url_1, headers=headers)
     soup = BeautifulSoup(request.text, "html.parser")
 
-    tmp_list = []
+    ip_list = []
+    country = []
     tree_elements = soup.find_all('span', class_='history-user')
 
+    print("Парсинг сайта")
     for element in tree_elements:
         match = re.search(regex, element.find('a', class_='mw-userlink').get_text().strip())
         if match is not None:
-            print(match.group())
-            tmp_list.append(match.group())
+            # print(match.group())
+            ip_list.append(match.group())
 
-    print(tmp_list)
-    ip = r"2001:44C8:4209:EADD:5DA7:916F:A7A6:2020"
-    request = requests.get(r"http://api.ipstack.com/" + ip + "?access_key=" + api_key)
-    obj = request.json()
-    print(obj["country_name"])
+    # print(ip_list)
+    # print(set(ip_list))
+    print("Поиск стран по ip")
+    for ip in set(ip_list):
+        request = requests.get(r"http://api.ipstack.com/" + ip + "?access_key=" + api_key)
+        obj = request.json()
+        # print(obj["country_name"])
+        country.append(obj["country_name"])
+
+    print("---------------")
+    dictionary = {i: country.count(i) for i in country}
+    for w in sorted(dictionary, key=dictionary.get, reverse=True):
+        print(w, dictionary[w])
 
 
 def Task_2():
