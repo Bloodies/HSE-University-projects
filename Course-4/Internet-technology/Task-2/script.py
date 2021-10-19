@@ -5,7 +5,7 @@ import re
 from pprint import pprint
 from bs4 import BeautifulSoup
 
-api_key = r"0f77ff2a5caad795bbdaffcfd968d8a6"
+api_key = r""
 
 url_1 = r"https://ru.wikipedia.org/w/index.php?title=JSON&action=history"
 url_2 = r"https://api.hh.ru/vacancies?industry=7&per_page=10&page=0"
