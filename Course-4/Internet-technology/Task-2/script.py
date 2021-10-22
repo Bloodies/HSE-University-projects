@@ -1,14 +1,15 @@
-#pip install -r requirements.txt
+# pip install -r requirements.txt
 
-import requests
 import re
+import requests
 from pprint import pprint
 from bs4 import BeautifulSoup
 
 api_key = r""
 
 url_1 = r"https://ru.wikipedia.org/w/index.php?title=JSON&action=history"
-url_2 = r"https://api.hh.ru/vacancies?industry=7&per_page=10&page=0"
+# url_2 = r"https://api.hh.ru/vacancies?industry=7&per_page=10&page=0"
+url_2 = r"https://api.hh.ru/vacancies"
 url_3 = r"https://www.booking.com/searchresults.ru.html?label=gen173nr-1FCAEoggI46AdIM1gEaMIBiAEBmAEhuAEXyAEU2AEB6AEB-AELiAIBqAIDuAKgxYXuBcACAQ&sid=bc5edb21df74621477bf9c71bcf97f49&sb=1&src=index&src_elem=sb&error_url=https%3A%2F%2Fwww.booking.com%2Findex.ru.html%3Flabel%3Dgen173nr-1FCAEoggI46AdIM1gEaMIBiAEBmAEhuAEXyAEU2AEB6AEB-AELiAIBqAIDuAKgxYXuBcACAQ%3Bsid%3Dbc5edb21df74621477bf9c71bcf97f49%3Bsb_price_type%3Dtotal%26%3B&ss=%D0%9F%D0%B5%D1%80%D0%BC%D1%8C%2C+%D0%9F%D0%B5%D1%80%D0%BC%D1%81%D0%BA%D0%B8%D0%B9+%D0%BA%D1%80%D0%B0%D0%B9%2C+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&is_ski_area=&ssne=%D0%9B%D0%BE%D0%BD%D0%B4%D0%BE%D0%BD&ssne_untouched=%D0%9B%D0%BE%D0%BD%D0%B4%D0%BE%D0%BD&checkin_year=2019&checkin_month=11&checkin_monthday=9&checkout_year=2019&checkout_month=11&checkout_monthday=10&group_adults=2&group_children=0&no_rooms=1&b_h4u_keep_filters=&from_sf=1&ss_raw=gthvm&ac_position=0&ac_langcode=ru&ac_click_type=b&dest_id=-2980155&dest_type=city&iata=PEE&place_id_lat=58.01496&place_id_lon=56.24672&search_pageview_id=089a5390e2b60096&search_selected=true&search_pageview_id=089a5390e2b60096&ac_suggestion_list_length=5&ac_suggestion_theme_list_length=0"
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'}
@@ -16,7 +17,6 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleW
 
 def Task_1():
     regex = r'(?<!:)([0-9a-fA-F]{4}(:[0-9a-fA-F]{4}){7})(?!:)|(\b(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:\.|$)){4}\b)'
-    reg = re.compile(regex)
 
     request = requests.get(url_1, headers=headers)
     soup = BeautifulSoup(request.text, "html.parser")
@@ -48,8 +48,59 @@ def Task_1():
 
 
 def Task_2():
-    request = requests.get(url_2)
-    pprint(request.json())
+    page = 0
+    pages = 0
+
+    low_count = 0
+    low_price = 0
+
+    high_count = 0
+    high_price = 0
+
+    while True:
+        '''
+        https://github.com/hhru/api/tree/master/docs
+        https://api.hh.ru/areas
+        Россия - 113
+        Пермь - 72
+        Пермский край -1317
+        Москва - 1
+        '''
+        params = {
+            'text': 'NAME:Python',
+            # 'area': 1,
+            'page': page,
+            'per_page': 100
+        }
+        request = requests.get(url_2, params).json()
+
+        for item in request.items():
+            if item[0] == 'items':
+                for sub_item in item[1]:
+                    # print(sub_item['name'])
+                    # if sub_item['address'] is not None:
+                    #     print(sub_item['address']['city'])
+                    if sub_item['salary'] is not None:
+                        # print(sub_item['salary']['from'], sub_item['salary']['to'])
+                        if sub_item['salary']['from'] is not None:
+                            low_price += sub_item['salary']['from']
+                            low_count += 1
+                        if sub_item['salary']['to'] is not None:
+                            high_price += sub_item['salary']['to']
+                            high_count += 1
+            elif item[0] == 'pages':
+                pages = item[1]
+
+        print(f'анализ {page + 1} страницы из {pages}')
+
+        if (request['pages'] - page) <= 1:
+            break
+        else:
+            page += 1
+
+    print(f'Средняя зарплата Python разработчиков от {round(low_price/low_count)} до {round(high_price/high_count)}')
+    #request = requests.get(url_2)
+    #pprint(request.json())
 
 
 def Task_3():
@@ -77,7 +128,8 @@ def Task_3():
             else:
                 break
 
+
 if __name__ == '__main__':
-    Task_1()
-    # Task_2()
+    # Task_1()
+    Task_2()
     # Task_3()
