@@ -5,12 +5,13 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 
-api_key = r''
+api_key = r''  # needs api key
 
 url_1 = r'https://ru.wikipedia.org/w/index.php?title=JSON&action=history'
 # url_2 = r'https://api.hh.ru/vacancies?industry=7&per_page=10&page=0'
 url_2 = r'https://api.hh.ru/vacancies'
 url_3 = r'https://www.booking.com/searchresults.ru.html?label=gen173nr-1DCAEoggI46AdIM1gEaMIBiAEBmAEhuAEXyAEM2AED6AEBiAIBqAIDuAKz486LBsACAdICJDE3ZDhlZmZhLWI1ZTAtNDE3Yi04ODQxLTU0ODMxYjA2MzQzNNgCBOACAQ&sid=15910ac4ef1e864c27fdd2e87e03835b&sb=1&sb_lp=1&src=index&src_elem=sb&error_url=https%3A%2F%2Fwww.booking.com%2Findex.ru.html%3Flabel%3Dgen173nr-1DCAEoggI46AdIM1gEaMIBiAEBmAEhuAEXyAEM2AED6AEBiAIBqAIDuAKz486LBsACAdICJDE3ZDhlZmZhLWI1ZTAtNDE3Yi04ODQxLTU0ODMxYjA2MzQzNNgCBOACAQ%3Bsid%3D15910ac4ef1e864c27fdd2e87e03835b%3Bsb_price_type%3Dtotal%3Bsig%3Dv10it45QJ4%26%3B&ss=%D0%9F%D0%B5%D1%80%D0%BC%D1%8C&is_ski_area=0&ssne=%D0%9F%D0%B5%D1%80%D0%BC%D1%8C&ssne_untouched=%D0%9F%D0%B5%D1%80%D0%BC%D1%8C&dest_id=-2980155&dest_type=city&checkin_year=2021&checkin_month=10&checkin_monthday=30&checkout_year=2021&checkout_month=10&checkout_monthday=31&group_adults=1&group_children=0&no_rooms=1&b_h4u_keep_filters=&from_sf=1&order=price&offset=0'
+
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'}
 
 
@@ -97,8 +98,7 @@ def Task_2():
         else:
             page += 1
 
-    print(
-        f'Средняя зарплата Python разработчиков от {round(low_price / low_count)} до {round(high_price / high_count)}')
+    print(f'Средняя зарплата Python разработчиков от {round(low_price / low_count)} до {round(high_price / high_count)}')
     # request = requests.get(url_2)
     # pprint(request.json())
 
@@ -118,20 +118,17 @@ def Task_3():
         .replace('checkout_monthday=31', 'checkout_monthday=' + str((today + sunday_delta).strftime('%d')))
 
     while True:
-
         request = requests.get(url, headers=headers)
         soup = BeautifulSoup(request.content, 'html.parser')
 
-        hotelBlock = soup.find_all('div',
-                                   class_='_fe1927d9e _0811a1b54 _a8a1be610 _022ee35ec b9c27d6646 fb3c4512b4 fc21746a73')
+        hotelBlock = soup.find_all('div', class_='_fe1927d9e _0811a1b54 _a8a1be610 _022ee35ec b9c27d6646 fb3c4512b4 fc21746a73')
 
         print("\n----------------------------------------")
         for hotel in hotelBlock:
             if hotel is not None:
                 print(hotel.find('div', class_='fde444d7ef _c445487e2').get_text(),
                       hotel.find("span", class_="fde444d7ef _e885fdc12").get_text())
-                price += int(
-                    hotel.find('span', class_='fde444d7ef _e885fdc12').get_text().replace(' ', '').replace('руб.', ''))
+                price += int(hotel.find('span', class_='fde444d7ef _e885fdc12').get_text().replace(' ', '').replace('руб.', ''))
         print("----------------------------------------")
 
         elements = re.search(r'\d+', soup.find('h1', class_='_30227359d _0db903e42').get_text()).group()
@@ -155,6 +152,8 @@ def Task_3():
 
 
 if __name__ == '__main__':
-    # Task_1()
-    # Task_2()
+    Task_1()
+    print('\n-------------------------------------------------------------------------------------------------------\n')
+    Task_2()
+    print('\n-------------------------------------------------------------------------------------------------------\n')
     Task_3()
