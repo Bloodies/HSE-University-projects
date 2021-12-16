@@ -29,6 +29,8 @@ fig, ax = plt.subplots(3)
 
 
 def GroupAnalysis(group_id, op):
+    global group_1_ages, group_1_city, group_1_ids, group_2_ages, group_2_city, group_2_ids
+
     # print(vkapi.groups.getMembers(group_id=group_id, fields='sex,bdate,city', count=1000, sort='id_desc'))
     users = vkapi.groups.getMembers(group_id=group_id, fields='sex,bdate,city', count=1000, sort='id_desc')['items']
     sex = [i['sex'] for i in users]
@@ -39,16 +41,10 @@ def GroupAnalysis(group_id, op):
     male_count = len(sex) - female_count
 
     if op == 0:
-        global group_1_ages
-        global group_1_city
-        global group_1_ids
         group_1_ages = ages
         group_1_city = city_rate
         group_1_ids = [i['id'] for i in users]
     elif op == 1:
-        global group_2_ages
-        global group_2_city
-        global group_2_ids
         group_2_ages = ages
         group_2_city = city_rate
         group_2_ids = [i['id'] for i in users]

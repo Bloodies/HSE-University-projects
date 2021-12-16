@@ -14,8 +14,8 @@ file = open('input.txt', "r", encoding="utf-8")
 input_text = file.read()
 file.close()
 
-stop_words = stopwords.words('russian')
 spec_chars = string.punctuation + '\n\xa0«»\t—…-...'  # удаляем специальные символы
+stop_words = stopwords.words('russian')
 stemmer = SnowballStemmer("russian")
 temp_tf_idf = FreqDist
 
