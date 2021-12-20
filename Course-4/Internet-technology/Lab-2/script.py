@@ -14,7 +14,7 @@ file = open('input.txt', "r", encoding="utf-8")
 input_text = file.read()
 file.close()
 
-spec_chars = string.punctuation + '\n\xa0«»\t—…-...'  # удаляем специальные символы
+spec_chars = string.punctuation + '\n\xa0«»\t—…-...]['  # удаляем специальные символы
 stop_words = stopwords.words('russian')
 stemmer = SnowballStemmer("russian")
 temp_tf_idf = FreqDist
@@ -62,7 +62,7 @@ def Task_2():  # нормализация
         output.write(f + " " + fdist[f].__str__() + '\n')
 
 
-def Task_3():  # используем нормализацию второго типа
+def Task_3_4():
     global temp_tf_idf
     tf = temp_tf_idf.copy()
 
@@ -73,20 +73,16 @@ def Task_3():  # используем нормализацию второго т
     idf = temp_tf_idf.copy()
     for i in idf:
         idf[i] = 1
-
     tf_idf = temp_tf_idf.copy()
     for i in tf_idf:
         tf_idf[i] = tf[i] * idf[i]
 
     tf_idf = OrderedDict(sorted(tf_idf.items(), key=lambda kv: kv[1], reverse=True))
-    temp_tf_idf = tf_idf
 
-    output = open('output_3.txt', "w", encoding="utf-8")
+    output3 = open('output_3.txt', "w", encoding="utf-8")
     for f in tf_idf:
-        output.write(f + " " + tf_idf[f].__str__() + '\n')
+        output3.write(f + " " + tf_idf[f].__str__() + '\n')
 
-
-def Task_4():
     new_text = remove_chars_from_text(input_text, string.digits)
 
     sentences = tokenize.sent_tokenize(new_text)  # делим на предложения
@@ -114,26 +110,25 @@ def Task_4():
         weight = 0.0  # рассчитываем вес предложения
 
         for j, t in enumerate(sentence_tokens):
-            weight = weight + get_key(temp_tf_idf, t)
+            weight = weight + get_key(tf_idf, t)
         sdict[weight] = sentences[i]
 
-    # сортировка по значению
+        # сортировка по значению
     sdict_sort = OrderedDict(sorted(sdict.items(), key=lambda kv: kv[0], reverse=True))
 
     # ищем порог веса, который отвечает за то, включаем мы предложение или нет
     limit = list(sdict_sort.keys())[round((len(sdict_sort)) * 0.2)]
 
-    output = open('output_4.txt', "w", encoding="utf-8")
+    output4 = open('output_4.txt', "w", encoding="utf-8")
     for f in sdict_sort:
-        output.write(f.__str__() + " " + sdict_sort[f] + " " + '\n')
+        output4.write(f.__str__() + " " + sdict_sort[f] + " " + '\n')
 
     for i, s in enumerate(sdict):
         if s >= limit:
-            output.write(sdict[s] + '\n')
+            output4.write(sdict[s] + '\n')
 
 
 if __name__ == '__main__':
     Task_1()
     Task_2()
-    Task_3()
-    Task_4()
+    Task_3_4()
