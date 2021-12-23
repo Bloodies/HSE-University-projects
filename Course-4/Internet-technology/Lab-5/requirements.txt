@@ -1,0 +1,4 @@
+pyTelegramBotAPI~=4.2.2
+requests~=2.26.0
+mouse~=0.7.1
+Pillow~=8.4.0

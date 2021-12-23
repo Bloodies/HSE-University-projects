@@ -1,14 +1,14 @@
+import nltk
+import random
+import requests
+import string
+import os
 import matplotlib.pyplot as plt
 import numpy as np
 from bs4 import BeautifulSoup
 from nltk.classify import NaiveBayesClassifier
 from nltk.corpus import movie_reviews
 from textblob import TextBlob
-import nltk
-import random
-import requests
-import string
-import os
 
 # nltk.download(['names',
 #                'punkt',

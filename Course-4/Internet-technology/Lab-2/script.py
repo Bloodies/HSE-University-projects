@@ -1,6 +1,3 @@
-# nltk.download()
-# nltk.download('punkt')
-# nltk.download('stopwords')
 import nltk
 import pymorphy2
 import string
@@ -9,6 +6,9 @@ from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 from nltk import tokenize
 from collections import OrderedDict
+
+# nltk.download(['punkt',
+#                'stopwords'])
 
 file = open('input.txt', "r", encoding="utf-8")
 input_text = file.read()

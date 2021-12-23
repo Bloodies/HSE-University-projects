@@ -1,13 +1,12 @@
-# Импортируем нужные модули
-from collections import Counter
-from dateutil.relativedelta import relativedelta
-from datetime import datetime
-from urllib.request import urlretrieve
-import matplotlib.pyplot as plt
 import math
 import os
 import time
 import vk
+import matplotlib.pyplot as plt
+from collections import Counter
+from dateutil.relativedelta import relativedelta
+from datetime import datetime
+from urllib.request import urlretrieve
 
 token = ''
 session = vk.Session(access_token=token)
