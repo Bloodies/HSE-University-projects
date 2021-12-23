@@ -1,18 +1,23 @@
-
-import requests
+import matplotlib.pyplot as plt
+import numpy as np
 from bs4 import BeautifulSoup
-import spacy
-from pprint import pprint
 from nltk.classify import NaiveBayesClassifier
-from nltk.corpus import stopwords
+from nltk.corpus import movie_reviews
+from textblob import TextBlob
 import nltk
 import random
-from nltk.corpus import movie_reviews
-from nltk.tokenize import word_tokenize
-from spacy.util import minibatch, compounding
+import requests
 import string
+import os
 
-#nltk.download(['names', 'punkt', 'stopwords', 'movie_reviews', 'state_union', 'averaged_perceptron_tagger', 'vader_lexicon',  'NaiveBayesClassifier',])
+# nltk.download(['names',
+#                'punkt',
+#                'stopwords',
+#                'movie_reviews',
+#                'state_union',
+#                'averaged_perceptron_tagger',
+#                'vader_lexicon',
+#                'NaiveBayesClassifier'])
 spec_chars = string.punctuation + '\n\xa0«»\t—…-...]['
 classifier = NaiveBayesClassifier
 
@@ -20,19 +25,20 @@ classifier = NaiveBayesClassifier
 def remove_chars(word, chars):
     return "".join([ch for ch in word if ch not in chars])
 
+
 def unigram_features(dict_words):
     return dict((word, True) for word in dict_words)
 
 
 def extract_features(corpus, file_ids, cls, feature_extractor=unigram_features):
-    return [(feature_extractor(corpus.words(i)), cls) for i in file_ids]
+    return [(feature_extractor(corpus.words(j)), cls) for j in file_ids]
 
 
 def Scraping(movie_id):
     title_url = 'https://www.imdb.com/title/tt' + str(movie_id) + '/'
     rating_request = requests.get(title_url)
     title = BeautifulSoup(rating_request.text, 'html.parser')
-    rating = title.find('span', class_='AggregateRatingButton__RatingScore-sc-1ll29m0-1 iTLWoV').get_text()
+    movie_rating = title.find('span', class_='AggregateRatingButton__RatingScore-sc-1ll29m0-1 iTLWoV').get_text()
 
     review_url = 'https://www.imdb.com/title/tt' + str(movie_id) + '/reviews?ref_=tt_ov_rt'
     request = requests.get(review_url)
@@ -47,16 +53,16 @@ def Scraping(movie_id):
 
     items_list = soup.find('div', class_='lister').find('div', class_='lister-list')
     review_list = items_list.find_all('div', class_='lister-item-content')
-    for item in review_list:
-        parent = item.find('span', class_='rating-other-user-rating')
+    for list_item in review_list:
+        parent = list_item.find('span', class_='rating-other-user-rating')
         if parent is not None:
             review_rating = parent.find('span').get_text()
         else:
             review_rating = 'not rated'
-        review_title = item.find('a', class_='title').get_text().replace(' ', '').replace('\n', '')
-        username = item.find('div', class_='display-name-date').find('a').get_text()
-        posted_date = item.find('span', class_='review-date').get_text()
-        review_text = item.find('div', class_='content').find('div', class_='text show-more__control').get_text()
+        review_title = list_item.find('a', class_='title').get_text().replace(' ', '').replace('\n', '')
+        username = list_item.find('div', class_='display-name-date').find('a').get_text()
+        posted_date = list_item.find('span', class_='review-date').get_text()
+        review_text = list_item.find('div', class_='content').find('div', class_='text show-more__control').get_text()
 
         review_item = {'username': username,
                        'rating': review_rating,
@@ -66,8 +72,9 @@ def Scraping(movie_id):
 
         review.append(review_item)
 
-    movie_info = {'name': name, 'year': year, 'url': review_url, 'rating': float(rating), 'reviews': review}
+    movie_info = {'name': name, 'year': year, 'url': review_url, 'rating': float(movie_rating), 'reviews': review}
     return movie_info
+
 
 def Santiment_training():
     global classifier
@@ -89,13 +96,24 @@ def Santiment_training():
 
 
 def Santiment_analysis(input_text):
-    global classifier
+    # global classifier
     input_text = remove_chars(input_text, spec_chars)
     input_text = remove_chars(input_text, string.digits)
 
-    tokens = word_tokenize(input_text)
-    print(f"{classifier.classify(unigram_features(tokens))}")
-    classifier.show_most_informative_features()
+    # tokens = word_tokenize(input_text)
+    # print(f"Тональность текста:\033[31m {classifier.classify(unigram_features(tokens))}\033[0m ")
+    #
+    # return classifier.classify(unigram_features(tokens))
+    blob = TextBlob(input_text)
+    if blob.sentiment.polarity < 0:
+        print(f"Тональность текста:\033[31m Negative ({blob.sentiment.polarity:.2f}/1)\033[0m ")
+    elif blob.sentiment.polarity == 0:
+        print(f"Тональность текста:\033[31m Neutral ({blob.sentiment.polarity:.2f}/1)\033[0m ")
+    else:
+        print(f"Тональность текста:\033[31m Positive ({blob.sentiment.polarity:.2f}/1)\033[0m ")
+
+    return round(blob.sentiment.polarity, 2)
+
 
 # def remove_chars(word, chars):
 #         return "".join([ch for ch in word if ch not in chars])
@@ -127,28 +145,74 @@ def Santiment_analysis(input_text):
 #     print(accuracy * 100)
 
 
+def DoPlot(x_input, y_input, x_label, y_label, title):
+    x = np.array(x_input)
+    y = np.array(y_input)
+    args = np.argsort(x)
+    x = x[args]
+    y = y[args]
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
+    plt.scatter(x, y)
+    fit = np.polyfit(x, y, deg=4)
+    p = np.poly1d(fit)
+    plt.plot(x, p(x), "r--")
+
+
 if __name__ == '__main__':
-    Santiment_training()
+    # Santiment_training()
 
-    top5 = ['0111161', '0068646', '0071562', '0468569', '0050083']
-    bottom5 = ['1213644', '0270846', '4458206', '0060666', '4009460']
+    if not os.path.exists('Reviews'):
+        os.mkdir('Reviews')
+
+    positive = []
+    negative = []
+    neutral = []
+    rating = []
+
+    pred5 = ['0111161', '0068646', '0000005', '1213644', '0060666']
     rand5 = [random.randint(1, 10872600) for n in range(5)]
+    # movie_list = Scraping('0060666')
+    for i in pred5:
+        if len(str(i)) < 7:
+            movie_list = Scraping('0' * (7 - len(str(i))) + str(i))
+        else:
+            movie_list = Scraping(i)
 
-    movie_list = Scraping('0111161')
-    # for i in rand5:
-    #     if len(str(i)) < 7:
-    #         movie_list = Scrapping('0' * (7 - len(str(i))) + str(i))
-    #     else:
-    #         movie_list = Scrapping(i)
-    print(f"{movie_list['url']}\n{movie_list['name']} {movie_list['year']} {movie_list['rating']}/10")
-    for item in movie_list['reviews']:
-        vis_review = item['review'].replace('. ', '.\n||')
-        print("-----------------------------------------------")
-        print(f"{item['username']} {item['posted_date']}")
-        print(f"{item['review_title']} ({item['rating']}/10)")
-        print(f"||{vis_review}")
-        Santiment_analysis(item['review'])
-        #print("-----------------------------------------------")
-        #pprint(movie_list['reviews'])
+        print(f"{movie_list['url']}\n{movie_list['name']} {movie_list['year']} {movie_list['rating']}/10")
+        with open(f"Reviews/{movie_list['name'].replace(':', '')} (reviews).txt", 'w+', encoding="utf-8") as file:
+            file.write(f"{movie_list['url']}\n{movie_list['name']} {movie_list['year']} {movie_list['rating']}/10\n")
+            for item in movie_list['reviews']:
+                vis_review = item['review'].replace('. ', '.\n||')
+                print("-----------------------------------------------")
+                print(f"{item['username']} {item['posted_date']}")
+                print(f"{item['review_title']} ({item['rating']}/10)")
+                if item['rating'] == 'not rated':
+                    rating.append(int(0))
+                else:
+                    rating.append(int(item['rating']))
+                print(f"||{vis_review}")
 
+                analyze = Santiment_analysis(item['review'])
 
+                file.write("-----------------------------------------------\n" +
+                           f"{item['username']} {item['posted_date']}\n" +
+                           f"{item['review_title']} ({item['rating']}/10)\n" +
+                           f"||{vis_review}\n" +
+                           f"Тональность текста: Negative ({analyze}/1)\n")
+                if analyze < 0:
+                    negative.append(analyze)
+                    positive.append(0.0)
+                elif analyze > 0:
+                    negative.append(0.0)
+                    positive.append(analyze)
+
+            DoPlot(positive, rating, "Тональность", "Рейтинг", "Зависимость рейтинга от тональности")
+            try:
+                DoPlot(negative, rating, "Тональность", "Рейтинг", "Зависимость рейтинга от тональности")
+            except Exception as e:
+                print(e)
+
+            plt.show()
+            # plt.savefig(f"Reviews/{movie_list['name'].replace(':', '')} (plot).png", bbox_inches='tight')
