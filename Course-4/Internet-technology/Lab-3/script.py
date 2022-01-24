@@ -131,6 +131,9 @@ if __name__ == '__main__':
     print('\n-------------------------------------------------------------------------------------------------------\n')
     intersection = set(group_1_ids).intersection(set(group_2_ids))
     print(f'{len(intersection)} пользователей из 1000 ({(len(intersection) / len(group_1_ids) * 100):.1f}%) состоят в обеих группах')
+    print('\nПользователи: ')
+    for item in intersection:
+        print(f'{item[1]} {item[2]} (id: {item[0]})')
 
     # plot 1
     ax[0].set_title('Сравнение среднего возраста')
