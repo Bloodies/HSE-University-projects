@@ -1,20 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<link href="style.css" rel="stylesheet"/>
-		<meta charset="utf-8">
+		<link href='style.css' rel='stylesheet'/>
+		<meta charset='utf-8'>
 		<title>Таблица с меню (вариант 1)</title>
 	</head>
 	<body>
 		<div>
-			<table class="table">
+			<table class='table'>
 				
 				<tr>
 					<?php
 					$array=['Завтрак', 'Обед', 'Ужин'];
 					foreach ($array as $arr)
 					{
-						echo '<th class="table th">$arr</th>';
+						echo "<th class='table th'>$arr</th>";
 					}
 					?>
 				</tr>
