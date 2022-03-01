@@ -35,45 +35,36 @@ collected_imdb_counter = 0
 #         return 1
 #     return -1
 
-
-def scraping_imdb():
-    counter = 5013000
-    # counter = 2198
-
-    s = time.time()
-
-    # while counter <= 5013100:  # 10872600
-    #     if len(str(counter)) < 7:
-    #         imdb_set = (collect_movies('0' * (7 - len(str(counter))) + str(counter)))
-    #     else:
-    #         imdb_set = collect_movies(counter)
-    #
-    #     counter += 1
-    #
-    #     if imdb_set['name'] == 'skip':
-    #         pass
-    #     else:
-    #         with open(f'imdb_set.txt', 'a', encoding='utf-8') as imdb_file:
-    #             imdb_file.write(f'{imdb_set["id"]};{imdb_set["name"]};{imdb_set["year"]};{imdb_set["url"]}\n')
-
-    imdb_set = []
-
-    while counter <= 5013100:
-        if len(str(counter)) < 7:
-            imdb_set.append(collect_movies('0' * (7 - len(str(counter))) + str(counter)))
-        else:
-            imdb_set.append(collect_movies(counter))
-
-        counter += 1
-
-    for item in imdb_set:
+def saving(data):
+    for item in data:
         if item['name'] == 'skip':
             pass
         else:
             with open(f'imdb_set.txt', 'a', encoding='utf-8') as imdb_file:
                 imdb_file.write(f'{item["id"]};{item["name"]};{item["year"]};{item["url"]}\n')
 
-    print(time.time() - s)
+
+def scraping_imdb():
+    counter = 1
+    # counter = 2198
+
+    # s = time.time()
+    imdb_set = []
+
+    while counter <= 10872600:
+        if len(str(counter)) < 7:
+            imdb_set.append(collect_movies('0' * (7 - len(str(counter))) + str(counter)))
+        else:
+            imdb_set.append(collect_movies(counter))
+
+        if counter % 100 == 0:
+            print('\n\t\t\t\t\033[31m\033[40m\033[6m\033[4m       SAVING DATA       \033[0m\n')
+            saving(imdb_set)
+            imdb_set.clear()
+
+        counter += 1
+
+    # print(time.time() - s)
 
 
 def skip(arg):
@@ -176,7 +167,7 @@ def Scraping(movie_id):
 
 
 if __name__ == '__main__':
-    print(f' \033[47m\033[30m\033[5mdataset-{date_now.day}-{date_now.month}-{date_now.year}\033[0m')
+    print(f' \033[47m\033[30m\033[4m dataset-{date_now.day}-{date_now.month}-{date_now.year} \033[0m')
 
     if not os.path.exists('datasets'):
         os.mkdir('datasets')
