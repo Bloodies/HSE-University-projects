@@ -1,0 +1,257 @@
+0000502   |   Bohemios   |   1905   |   https://www.imdb.com/title/tt0000502/
+0000574   |   The Story of the Kelly Gang   |   1906   |   https://www.imdb.com/title/tt0000574/
+0000591   |   L'enfant prodigue   |   1907   |   https://www.imdb.com/title/tt0000591/
+0000679   |   The Fairylogue and Radio-Plays   |   1908   |   https://www.imdb.com/title/tt0000679/
+0000969   |   Les Misérables   |   1909   |   https://www.imdb.com/title/tt0000969/
+0001184   |   Don Juan de Serrallonga   |   1910   |   https://www.imdb.com/title/tt0001184/
+0001285   |   The Life of Moses   |   1909   |   https://www.imdb.com/title/tt0001285/
+0001380   |   Regina von Emmeritz och konung Gustaf II Adolf   |   1910   |   https://www.imdb.com/title/tt0001380/
+0001432   |   Uncle Tom's Cabin   |   1910   |   https://www.imdb.com/title/tt0001432/
+0001433   |   Uncle Tom's Cabin   |   1910   |   https://www.imdb.com/title/tt0001433/
+0001498   |   The Battle of Trafalgar   |   1911   |   https://www.imdb.com/title/tt0001498/
+0001592   |   Ekspeditricen   |   1911   |   https://www.imdb.com/title/tt0001592/
+0001614   |   De fire djævle   |   1911   |   https://www.imdb.com/title/tt0001614/
+0001630   |   Der fremde Vogel   |   1911   |   https://www.imdb.com/title/tt0001630/
+0001756   |   Lucha por la herencia   |   1911   |   https://www.imdb.com/title/tt0001756/
+0001790   |   Les misérables - Époque 1: Jean Valjean   |   1913   |   https://www.imdb.com/title/tt0001790/
+0001812   |   Oedipus Rex   |   1911   |   https://www.imdb.com/title/tt0001812/
+0001892   |   Den sorte drøm   |   1911   |   https://www.imdb.com/title/tt0001892/
+0001911   |   Sweet Nell of Old Drury   |   1911   |   https://www.imdb.com/title/tt0001911/
+0001963   |   Ved Fængslets Port   |   1911   |   https://www.imdb.com/title/tt0001963/
+0001964   |   Die Verräterin   |   1911   |   https://www.imdb.com/title/tt0001964/
+0001991   |   Den sorte drøm   |   1911   |   https://www.imdb.com/title/tt0001991/
+0002020   |   Les amours de la reine Élisabeth   |   1912   |   https://www.imdb.com/title/tt0002020/
+0002026   |   Anny - en gatepiges roman   |   1912   |   https://www.imdb.com/title/tt0002026/
+0002094   |   Charles IV   |   1912   |   https://www.imdb.com/title/tt0002094/
+0002101   |   Cleopatra   |   1912   |   https://www.imdb.com/title/tt0002101/
+0002130   |   L'Inferno   |   1911   |   https://www.imdb.com/title/tt0002130/
+0002153   |   Dødsspring til hest fra cirkuskuplen   |   1912   |   https://www.imdb.com/title/tt0002153/
+0002167   |   Fadren   |   1912   |   https://www.imdb.com/title/tt0002167/
+0002186   |   Den flyvende cirkus   |   1912   |   https://www.imdb.com/title/tt0002186/
+0002199   |   From the Manger to the Cross; or, Jesus of Nazareth   |   1912   |   https://www.imdb.com/title/tt0002199/
+0002281   |   The Invaders   |   1912   |   https://www.imdb.com/title/tt0002281/
+0002315   |   El lobo de la sierra   |   1912   |   https://www.imdb.com/title/tt0002315/
+0002423   |   Madame DuBarry   |   1919   |   https://www.imdb.com/title/tt0002423/
+0002425   |   Paul J. Rainey's African Hunt   |   1912   |   https://www.imdb.com/title/tt0002425/
+0002432   |   Los Pirineos de Port-Bou a Andorra   |   1912   |   https://www.imdb.com/title/tt0002432/
+0002445   |   Quo Vadis?   |   1913   |   https://www.imdb.com/title/tt0002445/
+0002452   |   Independenta Romaniei   |   1912   |   https://www.imdb.com/title/tt0002452/
+0002461   |   Richard III   |   1912   |   https://www.imdb.com/title/tt0002461/
+0002500   |   Den sorte kansler   |   1912   |   https://www.imdb.com/title/tt0002500/
+0002514   |   De svarta maskerna   |   1912   |   https://www.imdb.com/title/tt0002514/
+0002588   |   Zigomar contre Nick Carter   |   1912   |   https://www.imdb.com/title/tt0002588/
+0002625   |   Ana Kadova   |   1913   |   https://www.imdb.com/title/tt0002625/
+0002628   |   Der Andere   |   1913   |   https://www.imdb.com/title/tt0002628/
+0002646   |   Atlantis   |   1913   |   https://www.imdb.com/title/tt0002646/
+0002669   |   The Battle of Gettysburg   |   1913   |   https://www.imdb.com/title/tt0002669/
+0002685   |   Blodets röst   |   1913   |   https://www.imdb.com/title/tt0002685/
+0002736   |   Caprice   |   1913   |   https://www.imdb.com/title/tt0002736/
+0002743   |   El Caín moderno   |   1913   |   https://www.imdb.com/title/tt0002743/
+0002748   |   Chelsea 7750   |   1913   |   https://www.imdb.com/title/tt0002748/
+0002767   |   The Count of Monte Cristo   |   1913   |   https://www.imdb.com/title/tt0002767/
+0002801   |   Le diamant noir   |   1913   |   https://www.imdb.com/title/tt0002801/
+0002820   |   East Lynne   |   1913   |   https://www.imdb.com/title/tt0002820/
+0002822   |   What 80 Million Women Want   |   1913   |   https://www.imdb.com/title/tt0002822/
+0002832   |   Evangeline   |   1914   |   https://www.imdb.com/title/tt0002832/
+0002844   |   Fantômas - À l'ombre de la guillotine   |   1913   |   https://www.imdb.com/title/tt0002844/
+0002879   |   The Fortune Hunters   |   1913   |   https://www.imdb.com/title/tt0002879/
+0002885   |   From Dusk to Dawn   |   1913   |   https://www.imdb.com/title/tt0002885/
+0002898   |   Germinal   |   1913   |   https://www.imdb.com/title/tt0002898/
+0002917   |   Gränsfolken   |   1913   |   https://www.imdb.com/title/tt0002917/
+0002922   |   Hamlet   |   1913   |   https://www.imdb.com/title/tt0002922/
+0002973   |   Dr. Mawson in the Antarctic   |   1913   |   https://www.imdb.com/title/tt0002973/
+0003006   |   In the Bishop's Carriage   |   1913   |   https://www.imdb.com/title/tt0003006/
+0003014   |   Ingeborg Holm   |   1913   |   https://www.imdb.com/title/tt0003014/
+0003015   |   Die Insel der Seligen   |   1913   |   https://www.imdb.com/title/tt0003015/
+0003022   |   Ivanhoe   |   1913   |   https://www.imdb.com/title/tt0003022/
+0003023   |   Ivanhoe   |   1913   |   https://www.imdb.com/title/tt0003023/
+0003037   |   Juve contre Fantômas   |   1913   |   https://www.imdb.com/title/tt0003037/
+0003048   |   A Lady of Quality   |   1913   |   https://www.imdb.com/title/tt0003048/
+0003069   |   Lille Klaus og store Klaus   |   1913   |   https://www.imdb.com/title/tt0003069/
+0003076   |   Livets konflikter   |   1913   |   https://www.imdb.com/title/tt0003076/
+0003102   |   Ma l'amor mio non muore...   |   1914   |   https://www.imdb.com/title/tt0003102/
+0003108   |   Macbeth   |   1913   |   https://www.imdb.com/title/tt0003108/
+0003113   |   Mala raza   |   1913   |   https://www.imdb.com/title/tt0003113/
+0003131   |   Maudite soit la guerre   |   1914   |   https://www.imdb.com/title/tt0003131/
+0003150   |   Miraklet   |   1913   |   https://www.imdb.com/title/tt0003150/
+0003159   |   Les misérables - Époque 2: Fantine   |   1913   |   https://www.imdb.com/title/tt0003159/
+0003165   |   Le mort qui tue   |   1913   |   https://www.imdb.com/title/tt0003165/
+0003167   |   Home, Sweet Home   |   1914   |   https://www.imdb.com/title/tt0003167/
+0003214   |   Noch pered Rozhdestvom   |   1913   |   https://www.imdb.com/title/tt0003214/
+0003219   |   När kärleken dödar   |   1913   |   https://www.imdb.com/title/tt0003219/
+0003227   |   Den okända   |   1913   |   https://www.imdb.com/title/tt0003227/
+0003241   |   One Hundred Years of Mormonism   |   1913   |   https://www.imdb.com/title/tt0003241/
+0003306   |   På livets ödesvägar   |   1913   |   https://www.imdb.com/title/tt0003306/
+0003309   |   Rablélek   |   1914   |   https://www.imdb.com/title/tt0003309/
+0003316   |   The Rattlesnake   |   1913   |   https://www.imdb.com/title/tt0003316/
+0003324   |   A Regiment of Two   |   1913   |   https://www.imdb.com/title/tt0003324/
+0003330   |   Richard Wagner   |   1913   |   https://www.imdb.com/title/tt0003330/
+0003335   |   The Robbers   |   1913   |   https://www.imdb.com/title/tt0003335/
+0003362   |   The Sea Wolf   |   1913   |   https://www.imdb.com/title/tt0003362/
+0003365   |   Shadows of the Moulin Rouge   |   1913   |   https://www.imdb.com/title/tt0003365/
+0003419   |   Der Student von Prag   |   1913   |   https://www.imdb.com/title/tt0003419/
+0003423   |   Die Sumpfblume   |   1913   |   https://www.imdb.com/title/tt0003423/
+0003431   |   Die Tangokönigin   |   1913   |   https://www.imdb.com/title/tt0003431/
+0003471   |   Traffic in Souls   |   1913   |   https://www.imdb.com/title/tt0003471/
+0003489   |   Gli ultimi giorni di Pompei   |   1913   |   https://www.imdb.com/title/tt0003489/
+0003500   |   Vampyren   |   1913   |   https://www.imdb.com/title/tt0003500/
+0003502   |   Eine venezianische Nacht   |   1914   |   https://www.imdb.com/title/tt0003502/
+0003504   |   Der Verführte   |   1913   |   https://www.imdb.com/title/tt0003504/
+0003565   |   Wo ist Coletti?   |   1913   |   https://www.imdb.com/title/tt0003565/
+0003576   |   The Wreck   |   1913   |   https://www.imdb.com/title/tt0003576/
+0003596   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0003596/
+0003604   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0003604/
+0003634   |   As Ye Sow   |   1914   |   https://www.imdb.com/title/tt0003634/
+0003637   |   Assunta Spina   |   1915   |   https://www.imdb.com/title/tt0003637/
+0003643   |   The Avenging Conscience: or 'Thou Shalt Not Kill'   |   1914   |   https://www.imdb.com/title/tt0003643/
+0003657   |   The Bargain   |   1914   |   https://www.imdb.com/title/tt0003657/
+0003665   |   The Battle of the Sexes   |   1914   |   https://www.imdb.com/title/tt0003665/
+0003668   |   Beating Back   |   1914   |   https://www.imdb.com/title/tt0003668/
+0003670   |   Behind the Scenes   |   1914   |   https://www.imdb.com/title/tt0003670/
+0003675   |   The Beloved Adventurer   |   1914   |   https://www.imdb.com/title/tt0003675/
+0003694   |   Bra flicka reder sig själv   |   1914   |   https://www.imdb.com/title/tt0003694/
+0003724   |   In the Days of the Thundering Herd   |   1914   |   https://www.imdb.com/title/tt0003724/
+0003731   |   Burning Daylight: The Adventures of 'Burning Daylight' in Alaska   |   1914   |   https://www.imdb.com/title/tt0003731/
+0003732   |   Burning Daylight: The Adventures of 'Burning Daylight' in Civilization   |   1914   |   https://www.imdb.com/title/tt0003732/
+0003740   |   Cabiria   |   1914   |   https://www.imdb.com/title/tt0003740/
+0003747   |   Cameo Kirby   |   1914   |   https://www.imdb.com/title/tt0003747/
+0003748   |   Captain Alvarez   |   1914   |   https://www.imdb.com/title/tt0003748/
+0003769   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0003769/
+0003772   |   Cinderella   |   1914   |   https://www.imdb.com/title/tt0003772/
+0003774   |   The Circus Man   |   1914   |   https://www.imdb.com/title/tt0003774/
+0003778   |   Clothes   |   1914   |   https://www.imdb.com/title/tt0003778/
+0003816   |   Damon and Pythias   |   1914   |   https://www.imdb.com/title/tt0003816/
+0003822   |   La danza fatal   |   1915   |   https://www.imdb.com/title/tt0003822/
+0003827   |   The Day of Days   |   1914   |   https://www.imdb.com/title/tt0003827/
+0003854   |   Dodge City Trail   |   1936   |   https://www.imdb.com/title/tt0003854/
+0003856   |   The Dollar Mark   |   1914   |   https://www.imdb.com/title/tt0003856/
+0003857   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0003857/
+0003858   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0003858/
+0003870   |   Dömen icke   |   1914   |   https://www.imdb.com/title/tt0003870/
+0003880   |   En av de många   |   1915   |   https://www.imdb.com/title/tt0003880/
+0003882   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0003882/
+0003883   |   L'enfant de Paris   |   1913   |   https://www.imdb.com/title/tt0003883/
+0003884   |   Engelein   |   1914   |   https://www.imdb.com/title/tt0003884/
+0003890   |   The Escape   |   1914   |   https://www.imdb.com/title/tt0003890/
+0003897   |   The Exploits of Elaine   |   1914   |   https://www.imdb.com/title/tt0003897/
+0003930   |   Fantômas contre Fantômas   |   1914   |   https://www.imdb.com/title/tt0003930/
+0003951   |   Fatum   |   1915   |   https://www.imdb.com/title/tt0003951/
+0003952   |   Le faux magistrat   |   1914   |   https://www.imdb.com/title/tt0003952/
+0003960   |   La fille de Delft   |   1914   |   https://www.imdb.com/title/tt0003960/
+0003973   |   A Florida Enchantment   |   1914   |   https://www.imdb.com/title/tt0003973/
+0003977   |   The Folly of Revenge   |   1916   |   https://www.imdb.com/title/tt0003977/
+0003999   |   För sin kärleks skull   |   1914   |   https://www.imdb.com/title/tt0003999/
+0004002   |   The Gangsters of New York   |   1914   |   https://www.imdb.com/title/tt0004002/
+0004003   |   Gatans barn   |   1914   |   https://www.imdb.com/title/tt0004003/
+0004006   |   A Gentleman from Mississippi   |   1914   |   https://www.imdb.com/title/tt0004006/
+0004013   |   The Ghost Breaker   |   1914   |   https://www.imdb.com/title/tt0004013/
+0004014   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0004014/
+0004022   |   Cajus Julius Caesar   |   1914   |   https://www.imdb.com/title/tt0004022/
+0004026   |   Der Golem   |   1914   |   https://www.imdb.com/title/tt0004026/
+0004027   |   A Good Little Devil   |   1914   |   https://www.imdb.com/title/tt0004027/
+0004028   |   The Good-for-Nothing   |   1914   |   https://www.imdb.com/title/tt0004028/
+0004047   |   Halvblod   |   1913   |   https://www.imdb.com/title/tt0004047/
+0004052   |   The Hazards of Helen   |   1914   |   https://www.imdb.com/title/tt0004052/
+0004066   |   Det hemmelighedsfulde X   |   1914   |   https://www.imdb.com/title/tt0004066/
+0004099   |   His Majesty, the Scarecrow of Oz   |   1914   |   https://www.imdb.com/title/tt0004099/
+0004113   |   Home, Sweet Home   |   1914   |   https://www.imdb.com/title/tt0004113/
+0004121   |   Der Hund von Baskerville   |   1914   |   https://www.imdb.com/title/tt0004121/
+0004122   |   Der Hund von Baskerville   |   1914   |   https://www.imdb.com/title/tt0004122/
+0004134   |   Hypocrites   |   1915   |   https://www.imdb.com/title/tt0004134/
+0004137   |   The Idler   |   1914   |   https://www.imdb.com/title/tt0004137/
+0004148   |   In the Days of the Thundering Herd   |   1914   |   https://www.imdb.com/title/tt0004148/
+0004150   |   In the Land of the Head Hunters   |   1914   |   https://www.imdb.com/title/tt0004150/
+0004164   |   Ireland, a Nation   |   1914   |   https://www.imdb.com/title/tt0004164/
+0004167   |   Jane Eyre   |   1914   |   https://www.imdb.com/title/tt0004167/
+0004179   |   Joseph in the Land of Egypt   |   1914   |   https://www.imdb.com/title/tt0004179/
+0004181   |   Judith of Bethulia   |   1914   |   https://www.imdb.com/title/tt0004181/
+0004196   |   Kreytserova sonata   |   1914   |   https://www.imdb.com/title/tt0004196/
+0004203   |   A Lady of Quality   |   1913   |   https://www.imdb.com/title/tt0004203/
+0004206   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0004206/
+0004208   |   The Last Volunteer   |   1914   |   https://www.imdb.com/title/tt0004208/
+0004223   |   The Life of General Villa   |   1914   |   https://www.imdb.com/title/tt0004223/
+0004224   |   Life's Shop Window   |   1914   |   https://www.imdb.com/title/tt0004224/
+0004267   |   Love Never Dies   |   1916   |   https://www.imdb.com/title/tt0004267/
+0004271   |   Luchtkastelen   |   1914   |   https://www.imdb.com/title/tt0004271/
+0004272   |   Lucille Love: The Girl of Mystery   |   1914   |   https://www.imdb.com/title/tt0004272/
+0004301   |   Man of the Hour   |   1914   |   https://www.imdb.com/title/tt0004301/
+0004303   |   Manon Lescaut   |   1914   |   https://www.imdb.com/title/tt0004303/
+0004307   |   Martin Eden   |   1914   |   https://www.imdb.com/title/tt0004307/
+0004312   |   The Master Cracksman   |   1914   |   https://www.imdb.com/title/tt0004312/
+0004313   |   The Master Key   |   1914   |   https://www.imdb.com/title/tt0004313/
+0004319   |   McVeagh of the South Seas   |   1914   |   https://www.imdb.com/title/tt0004319/
+0004345   |   Misterio de dolor   |   1914   |   https://www.imdb.com/title/tt0004345/
+0004387   |   Ned med Vaabnene   |   1914   |   https://www.imdb.com/title/tt0004387/
+0004388   |   Sweet Nell of Old Drury   |   1911   |   https://www.imdb.com/title/tt0004388/
+0004390   |   Nemye svideteli   |   1914   |   https://www.imdb.com/title/tt0004390/
+0004391   |   Neptune's Daughter   |   1914   |   https://www.imdb.com/title/tt0004391/
+0004430   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0004430/
+0004450   |   Die Pagode   |   1917   |   https://www.imdb.com/title/tt0004450/
+0004457   |   The Patchwork Girl of Oz   |   1914   |   https://www.imdb.com/title/tt0004457/
+0004462   |   Gränsfolken   |   1913   |   https://www.imdb.com/title/tt0004462/
+0004464   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0004464/
+0004465   |   The Perils of Pauline   |   1914   |   https://www.imdb.com/title/tt0004465/
+0004483   |   The Port of Missing Men   |   1914   |   https://www.imdb.com/title/tt0004483/
+0004502   |   Prästen   |   1914   |   https://www.imdb.com/title/tt0004502/
+0004504   |   The Pursuit of the Phantom   |   1914   |   https://www.imdb.com/title/tt0004504/
+0004525   |   Le chevalier de Maison-Rouge   |   1914   |   https://www.imdb.com/title/tt0004525/
+0004545   |   Rose of the Rancho   |   1914   |   https://www.imdb.com/title/tt0004545/
+0004553   |   Det röda tornet   |   1914   |   https://www.imdb.com/title/tt0004553/
+0004555   |   Salomy Jane   |   1914   |   https://www.imdb.com/title/tt0004555/
+0004558   |   Samson   |   1914   |   https://www.imdb.com/title/tt0004558/
+0004571   |   La secta de los misteriosos   |   1914   |   https://www.imdb.com/title/tt0004571/
+0004573   |   Ein seltsamer Fall   |   1914   |   https://www.imdb.com/title/tt0004573/
+0004586   |   Shore Acres   |   1914   |   https://www.imdb.com/title/tt0004586/
+0004593   |   The Sign of the Cross   |   1914   |   https://www.imdb.com/title/tt0004593/
+0004594   |   El signo de la tribu   |   1914   |   https://www.imdb.com/title/tt0004594/
+0004603   |   Skottet   |   1914   |   https://www.imdb.com/title/tt0004603/
+0004613   |   Soldiers of Fortune   |   1914   |   https://www.imdb.com/title/tt0004613/
+0004630   |   The Spoilers   |   1914   |   https://www.imdb.com/title/tt0004630/
+0004632   |   Springtime   |   1914   |   https://www.imdb.com/title/tt0004632/
+0004635   |   The Squaw Man   |   1914   |   https://www.imdb.com/title/tt0004635/
+0004639   |   Stormfågeln   |   1914   |   https://www.imdb.com/title/tt0004639/
+0004647   |   Stuart Webbs: Das Panzergewölbe   |   1914   |   https://www.imdb.com/title/tt0004647/
+0004648   |   Stuart Webbs: Der Mann im Keller   |   1914   |   https://www.imdb.com/title/tt0004648/
+0004649   |   Stuart Webbs: Der Spuk im Haus des Professors   |   1914   |   https://www.imdb.com/title/tt0004649/
+0004680   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0004680/
+0004681   |   Tess of the Storm Country   |   1914   |   https://www.imdb.com/title/tt0004681/
+0004688   |   The Thief   |   1914   |   https://www.imdb.com/title/tt0004688/
+0004689   |   The Thief   |   1914   |   https://www.imdb.com/title/tt0004689/
+0004705   |   The Active Life of Dolly of the Dailies   |   1914   |   https://www.imdb.com/title/tt0004705/
+0004707   |   Tillie's Punctured Romance   |   1914   |   https://www.imdb.com/title/tt0004707/
+0004712   |   A tolonc   |   1915   |   https://www.imdb.com/title/tt0004712/
+0004727   |   The Trey o' Hearts   |   1914   |   https://www.imdb.com/title/tt0004727/
+0004743   |   Uncle Tom's Cabin   |   1914   |   https://www.imdb.com/title/tt0004743/
+0004744   |   Und das Licht erlosch   |   1914   |   https://www.imdb.com/title/tt0004744/
+0004755   |   Uriel Acosta   |   1914   |   https://www.imdb.com/title/tt0004755/
+0004766   |   The Virginian   |   1914   |   https://www.imdb.com/title/tt0004766/
+0004776   |   The Walls of Jericho   |   1914   |   https://www.imdb.com/title/tt0004776/
+0004786   |   Weergevonden   |   1914   |   https://www.imdb.com/title/tt0004786/
+0004798   |   When Rome Ruled   |   1914   |   https://www.imdb.com/title/tt0004798/
+0004825   |   The Wishing Ring: An Idyll of Old England   |   1914   |   https://www.imdb.com/title/tt0004825/
+0004832   |   The Woman in Black   |   1914   |   https://www.imdb.com/title/tt0004832/
+0004837   |   The World, the Flesh and the Devil   |   1914   |   https://www.imdb.com/title/tt0004837/
+0004838   |   The Wrath of the Gods   |   1914   |   https://www.imdb.com/title/tt0004838/
+0004842   |   Your Girl and Mine: A Woman Suffrage Play   |   1914   |   https://www.imdb.com/title/tt0004842/
+0004847   |   Az éjszaka rabja   |   1914   |   https://www.imdb.com/title/tt0004847/
+0004854   |   The Absentee   |   1915   |   https://www.imdb.com/title/tt0004854/
+0004866   |   After Five   |   1915   |   https://www.imdb.com/title/tt0004866/
+0004872   |   Alias Jimmy Valentine   |   1915   |   https://www.imdb.com/title/tt0004872/
+0004873   |   Alice in Wonderland   |   1915   |   https://www.imdb.com/title/tt0004873/
+0004883   |   Aloha Oe   |   1915   |   https://www.imdb.com/title/tt0004883/
+0004884   |   The Alster Case   |   1915   |   https://www.imdb.com/title/tt0004884/
+0004897   |   Anna Karenina   |   1915   |   https://www.imdb.com/title/tt0004897/
+0004905   |   The Arab   |   1915   |   https://www.imdb.com/title/tt0004905/
+0004909   |   Armstrong's Wife   |   1915   |   https://www.imdb.com/title/tt0004909/
+0004911   |   The Arrival of Perpetua   |   1915   |   https://www.imdb.com/title/tt0004911/
+0004919   |   At Bay   |   1915   |   https://www.imdb.com/title/tt0004919/
+0004937   |   Barbara Frietchie   |   1915   |   https://www.imdb.com/title/tt0004937/
+0004942   |   The Battle Cry of Peace   |   1915   |   https://www.imdb.com/title/tt0004942/
+0004962   |   Between Men   |   1915   |   https://www.imdb.com/title/tt0004962/
+0004965   |   The Bigger Man   |   1915   |   https://www.imdb.com/title/tt0004965/
+0004972   |   The Birth of a Nation   |   1915   |   https://www.imdb.com/title/tt0004972/
+0004974   |   The Black Box   |   1915   |   https://www.imdb.com/title/tt0004974/
+0004978   |   Blackbirds   |   1915   |   https://www.imdb.com/title/tt0004978/
+0004980   |   Blindness of Devotion   |   1915   |   https://www.imdb.com/title/tt0004980/
+0004990   |   Bondwomen   |   1915   |   https://www.imdb.com/title/tt0004990/
+0004996   |   A Branded Soul   |   1917   |   https://www.imdb.com/title/tt0004996/
