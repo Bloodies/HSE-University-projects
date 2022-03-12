@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="CryptoService.asmx.cs" Class="NewWebService.CryptoService" %>
