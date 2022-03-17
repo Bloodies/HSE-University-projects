@@ -4,19 +4,21 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Messaging;
+using System.Threading;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using System.Messaging;
+using Newtonsoft.Json;
+using MSMQ;
+
 
 namespace MSMQ
 {
     public partial class frmMain : Form
     {
         private HashSet<string> _setClients = new HashSet<string>();
-        private MessageQueue _messagesQueue = null; // очередь сообщений
+        private MessageQueue _inputMQ = null; // очередь сообщений
         private Thread _thread = null;              // поток, отвечающий за работу с очередью сообщений
         private bool _continue = true;              // флаг, указывающий продолжается ли работа с мэйлслотом
         private const string NAME = ".\\private$\\";
@@ -29,15 +31,15 @@ namespace MSMQ
 
             // если очередь сообщений с указанным путем существует, то открываем ее, иначе создаем новую
             if (MessageQueue.Exists(path))
-                _messagesQueue = new MessageQueue(path);
+                _inputMQ = new MessageQueue(path);
             else
-                _messagesQueue = MessageQueue.Create(path);
+                _inputMQ = MessageQueue.Create(path);
 
             // задаем форматтер сообщений в очереди
-            _messagesQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(String) });
+            _inputMQ.Formatter = new XmlMessageFormatter(new Type[] { typeof(String) });
 
             // вывод пути к очереди сообщений в заголовок формы, чтобы можно было его использовать для ввода имени в форме клиента, запущенного на другом вычислительном узле
-            this.Text += "     " + _messagesQueue.Path;
+            this.Text += "     " + _inputMQ.Path;
 
             // создание потока, отвечающего за работу с очередью сообщений
             _thread = new Thread(ReceiveMessage);
@@ -47,7 +49,7 @@ namespace MSMQ
         // получение сообщения
         private void ReceiveMessage()
         {
-            if (_messagesQueue == null) return;
+            if (_inputMQ == null) return;
 
             System.Messaging.Message msg = null;
             bool write;
@@ -59,8 +61,8 @@ namespace MSMQ
             {
                 while (_continue)
                 {
-                    if (_messagesQueue.Peek() != null)              // если в очереди есть сообщение, выполняем его чтение, интервал до следующей попытки чтения равен 10 секундам
-                        msg = _messagesQueue.Receive(TimeSpan.FromSeconds(10.0));
+                    if (_inputMQ.Peek() != null)              // если в очереди есть сообщение, выполняем его чтение, интервал до следующей попытки чтения равен 10 секундам
+                        msg = _inputMQ.Receive(TimeSpan.FromSeconds(10.0));
 
                     if (!_continue)
                         break;
@@ -85,7 +87,7 @@ namespace MSMQ
                     }
 
                     //Отправить сообщение всем
-                    if (!write) 
+                    if (!write)
                         continue;
 
                     rtbMessages.Invoke((MethodInvoker)delegate
@@ -114,6 +116,22 @@ namespace MSMQ
             }
         }
 
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            MessageQueue outputMessageQueue;
+
+            foreach (var x in _setClients)
+            {
+                string path = NAME + x;
+                if (MessageQueue.Exists(path))
+                    outputMessageQueue = new MessageQueue(path);
+                else
+                    outputMessageQueue = MessageQueue.Create(path);
+
+                outputMessageQueue.Send("inicialization");
+            }
+        }
+
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_setClients.Count == 0)
@@ -122,7 +140,7 @@ namespace MSMQ
 
                 try
                 {
-                    _messagesQueue.Send("get out");
+                    _inputMQ.Send("get out");
 
                     if (_thread != null)
                     {
@@ -130,9 +148,9 @@ namespace MSMQ
                         _thread.Join();
                     }
 
-                    if (_messagesQueue != null)
+                    if (_inputMQ != null)
                     {
-                        MessageQueue.Delete(_messagesQueue.Path);   // в случае необходимости удаляем очередь сообщений
+                        MessageQueue.Delete(_inputMQ.Path);   // в случае необходимости удаляем очередь сообщений
                     }
                 }
                 catch (Exception ex)
