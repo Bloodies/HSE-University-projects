@@ -20,12 +20,13 @@ headers = {'accept': '*/*',
 top_1000 = 'https://www.imdb.com/search/title/?groups=top_1000'
 bottom_1000 = 'https://www.imdb.com/search/title/?groups=bottom_1000'
 
+
 checked_counter = 0
 
-# open('dataset.txt', 'w').close()
-open('dataset.xlsx', 'w').close()
-# open('raw_data.txt', 'w').close()
 open('raw_data.xlsx', 'w').close()
+open('dataset.xlsx', 'w').close()
+open('datasetD1.xlsx', 'w').close()
+open('datasetD2.xlsx', 'w').close()
 
 
 def scrapper(url):
@@ -38,13 +39,13 @@ def scrapper(url):
         soup = BeautifulSoup(request.content, 'html.parser')
 
         title_block = soup.find('div', class_='lister-list').find_all('div', class_='lister-item mode-advanced')
-        for item in title_block:
-            title = item.find('h3', class_='lister-item-header').find('a')
+        for it in title_block:
+            title = it.find('h3', class_='lister-item-header').find('a')
             title_id = title.get('href').replace('/title/tt', '').replace('/?ref_=adv_li_tt', '')
             data.append(title_id)
             print(
                 f'{url.replace("https://www.imdb.com/search/title/?groups=", "").replace("&start=", "/").replace("&ref_=adv_nxt", "")}: '
-                f'{item.find("span", class_="lister-item-index unbold text-primary").get_text()} {title_id}')
+                f'{it.find("span", class_="lister-item-index unbold text-primary").get_text()} {title_id}')
 
         if start + 50 <= len(data):
             if iteration == 1:
@@ -60,7 +61,8 @@ def scrapper(url):
 
 
 def convert_date(child_id):
-    data, release_date = [], []
+    data = []
+    release_date = [0, 0, 0]
     date = None
     qty_most_common = 0
     month_format = {'January': 1,
@@ -99,31 +101,43 @@ def convert_date(child_id):
     if len(str(date[1])) > 3 and not date[1].isdigit():
         month = month_format[str(date[1])]
     else:
-        release_date.append(0)
-        release_date.append(0)
+        release_date[0] = 0
+        release_date[1] = 0
         return release_date
     year = date[2]
 
     temp_season = datetime.datetime(2020, int(month), int(day))
     if datetime.datetime(2019, 11, 20) < temp_season < datetime.datetime(2020, 2, 20):
-        release_date.append(4)
+        release_date[0] = 4
     elif datetime.datetime(2020, 2, 20) < temp_season < datetime.datetime(2020, 5, 20):
-        release_date.append(1)
+        release_date[0] = 1
     elif datetime.datetime(2020, 5, 20) < temp_season < datetime.datetime(2020, 8, 20):
-        release_date.append(2)
+        release_date[0] = 2
     elif datetime.datetime(2020, 8, 20) < temp_season < datetime.datetime(2020, 11, 20):
-        release_date.append(3)
+        release_date[0] = 3
     elif datetime.datetime(2020, 11, 20) < temp_season < datetime.datetime(2021, 2, 20):
-        release_date.append(4)
+        release_date[0] = 4
     else:
-        release_date.append(0)
+        release_date[0] = 0
 
-    release_date.append(datetime.datetime.strptime(f'{year}-{month}-{day}', '%Y-%m-%d').isoweekday())
+    release_date[1] = datetime.datetime.strptime(f'{year}-{month}-{day}', '%Y-%m-%d').isoweekday()
+
+    if datetime.datetime(2019, 12, 15) < temp_season < datetime.datetime(2020, 1, 15):
+        release_date[2] = 1
+    elif datetime.datetime(2020, 12, 15) < temp_season < datetime.datetime(2021, 1, 15):
+        release_date[2] = 1
+    elif datetime.datetime(2020, 6, 15) < temp_season < datetime.datetime(2020, 9, 10):
+        release_date[2] = 1
+    else:
+        release_date[2] = 0
+
     return release_date
 
 
 def take_person_score(child_id):
     score, temp = 0, 0
+    total = [0, 0, 0]
+
     for item in child_id:
         url = f'https://www.imdb.com/name/nm{str(item)}/'
         session = requests.Session()
@@ -135,6 +149,48 @@ def take_person_score(child_id):
             temp = temp.get_text()
         else:
             return 0
+
+        awards = soup.find('div', class_='article highlighted')
+        if awards is not None:
+            awards = awards.find_all('span', class_='awards-blurb')
+            for span_a in awards:
+                if awards is not None:
+                    awards = span_a.get_text().replace('.', '').replace('\n', '')
+                    if awards.find('Oscar') != -1 or awards[0].find('Oscars') != -1:
+                        if awards.find('Nominated') != -1:
+                            temp_aw = (awards.replace(' ', '')
+                                       .replace('Nominated', '')
+                                       .replace('for', '')
+                                       .replace('Oscar', '')
+                                       .replace('s', ''))
+                            temp_aw = int(temp_aw) if str(temp_aw).isdigit() else 1
+                            if temp_aw > 2:
+                                total[0] += 1
+                            else:
+                                total[0] += 0
+                        else:
+                            temp_aw = (awards.replace(' ', '')
+                                       .replace('Won', '')
+                                       .replace('Oscar', '')
+                                       .replace('s', ''))
+                            total[0] += int(temp_aw) if str(temp_aw).isdigit() else 1
+                    else:
+                        total[0] += 0
+
+                    if awards.find('wins') != -1:
+                        total[1] = 1
+                    else:
+                        total[1] = 0
+
+                    if awards.find('&') != -1:
+                        awards = (awards.split('&')[0]
+                                  .replace(' ', '')
+                                  .replace('Another', '')
+                                  .replace('wins', ''))
+                    else:
+                        awards = (awards.replace(' ', '')
+                                  .replace('Another', '')
+                                  .replace('wins', ''))
 
         if temp == 'SEE RANK':
             score += 10 / 2
@@ -148,10 +204,13 @@ def take_person_score(child_id):
             score += 50 / 2
         else:
             return 0
+
+        score += int(awards) if str(awards).isdigit() else 1
             # score += ((100 - int(temp)) / 2) + 30 / 2
 
     num = len(child_id) if len(child_id) != 0 else 1
-    return round(score / num)
+    total[2] = round(score / num)
+    return total
 
 
 def take_box_wiki(child_id):
@@ -195,7 +254,7 @@ def take_box_wiki(child_id):
         else:
             return 0
 
-    budget = []
+    budget = [0, 0, 0]
     search_result = ''
 
     try:
@@ -213,27 +272,27 @@ def take_box_wiki(child_id):
         temp_budget = soup.find('span', attrs={'data-wikidata-property-id': 'P2130'})
         if temp_budget is not None:
             temp_budget = temp_budget.get_text()
-            budget.append(calculate(temp_budget))
+            budget[0] = calculate(temp_budget)
         else:
-            budget.append(0)
+            budget[0] = 0
 
         temp_box = soup.find('span', attrs={'data-wikidata-property-id': 'P2142'})
         if temp_box is not None:
             temp_box = temp_box.get_text()
-            budget.append(calculate(temp_box))
+            budget[1] = calculate(temp_box)
         else:
-            budget.append(0)
+            budget[1] = 0
 
         franchise1 = soup.find('span', attrs={'data-wikidata-property-id': 'P155'})
         franchise2 = soup.find('span', attrs={'data-wikidata-property-id': 'P156'})
         if franchise1 is not None or franchise2 is not None:
-            budget.append(1)
+            budget[2] = 1
         else:
-            budget.append(0)
+            budget[2] = 0
     except (NoSuchElementException, StaleElementReferenceException):
-        budget.append(0)
-        budget.append(0)
-        budget.append(0)
+        budget[0] = 0
+        budget[1] = 0
+        budget[2] = 0
         return budget
         pass
 
@@ -243,8 +302,9 @@ def take_box_wiki(child_id):
 def parser(title_id):
     global checked_counter
     directors, writers, stars = [], [], []
+    directors_awards, writers_awards, stars_awards = '', '', ''
     year, mpaa, duration, genre, season, popularity, budget, boxoffice, franchise = '', '', '', '', '', '', '', '', ''
-    hour, minute, day, age_limit, country = '', '', '', '', ''
+    hour, minute, day, age_limit, oscars, holiday = '', '', '', '', '', ''
 
     agelimit_format = {'PG-13': 3, 'NC-17': 5, 'PG': 2, 'R': 4, 'G': 1, 'X': 6, '0': 1, '6': 2, '12': 3, '14': 4, '16': 5, '18': 6}
     genre_format = {'Action': 1, 'Adventure': 2, 'Drama': 3, 'Comedy': 4, 'Crime': 5,
@@ -253,11 +313,6 @@ def parser(title_id):
                     'Fantasy': 16, 'Sci-Fi': 17, 'Thriller': 18, 'Family': 19, 'Short': 20,
                     'Sport': 21, 'War': 22, 'Reality-TV': 23, 'Game-Show': 24, 'Documentary': 25,
                     'Talk-Show': 26, 'News': 27, 'Adult': 28}
-    country_check = ['United States', 'United Kingdom', 'Russia', 'Canada', 'France',
-                     'South Korea', 'China', 'India', 'Nigeria', 'Germany', 'Australia', 'Brazil']
-    country_format = {'United States': 1, 'United Kingdom': 2, 'Russia': 3, 'Canada': 4,
-                      'France': 5, 'South Korea': 6, 'China': 7, 'India': 8,
-                      'Nigeria': 9, 'Germany': 10, 'Australia': 11, 'Brazil': 12, }
 
     url = f'https://www.imdb.com/title/tt{str(title_id)}/'
     session = requests.Session()
@@ -266,9 +321,8 @@ def parser(title_id):
 
     boxoffice_wiki = take_box_wiki(title_id)
 
-
     success = soup.find('li', class_='ipc-inline-list__item')
-    title = soup.find('h1', class_='TitleHeader__TitleText-sc-1wu6n3d-0')
+    title = soup.find('h1', attrs={'data-testid': 'hero-title-block__title'})
     if title is not None:
         title = title.get_text()
 
@@ -296,26 +350,28 @@ def parser(title_id):
         else:
             age_limit = 0
 
-        genre = soup.find('a', class_='GenresAndPlot__GenreChip-sc-cum89p-3')
+        genre = soup.find('div', attrs={'data-testid': 'genres'})
         if genre is not None:
-            genre = genre_format[genre.get_text()]
-
-        country = soup.find('div', attrs={'data-testid': 'title-details-section'})
-        if country is not None:
-            country = country.find('li', attrs={'data-testid': 'title-details-origin'})
-            if country is not None:
-                country = country.find('a', class_='ipc-metadata-list-item__list-content-item')
-                if country is not None:
-                    country = country_format[country.get_text()] if country.get_text() in country_check else 0
-        else:
-            country = 0
+            genre = genre.find('span', class_='ipc-chip__text')
+            if genre is not None:
+                genre = genre_format[genre.get_text()]
 
         release_date = convert_date(title_id)
         season = release_date[0]
         day = release_date[1]
+        holiday = release_date[2]
 
         temp = 1
-        credits_list = soup.find('div', attrs={'data-testid': 'title-pc-expanded-section'}).find_all('li')
+        credits_list = soup.find('div', attrs={'data-testid': 'title-pc-expanded-section'})
+        if credits_list is not None:
+            credits_list = credits_list.find_all('li', attrs={'data-testid': 'title-pc-principal-credit'})
+        else:
+            credits_list = soup.find('div', attrs={'data-testid': 'title-pc-wide-screen'})
+            if credits_list is not None:
+                credits_list = credits_list.find_all('li', attrs={'data-testid': 'title-pc-principal-credit'})
+            else:
+                title_id = 0
+
         for credits_item in credits_list:
             list_items = credits_item.find_all('li', class_='ipc-inline-list__item')
             for li in list_items:
@@ -340,6 +396,16 @@ def parser(title_id):
         directors = take_person_score(directors)
         writers = take_person_score(writers)
         stars = take_person_score(stars)
+
+        oscars = directors[0] + writers[0] + stars[0]
+
+        directors_awards = directors[1]
+        writers_awards = writers[1]
+        stars_awards = stars[1]
+
+        directors = directors[2]
+        writers = writers[2]
+        stars = stars[2]
 
         popularity = soup.find('div', attrs={'data-testid': 'hero-rating-bar__popularity__score'})
         if popularity is not None:
@@ -411,9 +477,8 @@ def parser(title_id):
     year = int(year[0]) if year else 0
     age_limit = int(age_limit) if age_limit else 0
     duration = int(duration) if duration else 0
-    country = int(country) if country else 0
     season = int(season) if season else 0
-    day = int(day) if int(day) else 0
+    day = int(day) if str(day).isdigit() else 0
     directors = int(directors) if directors else 0
     writers = int(writers) if writers else 0
     stars = int(stars) if stars else 0
@@ -431,20 +496,17 @@ def parser(title_id):
     if budget < 100000:
         title_id = 0
 
-    if boxoffice < 1000:
+    if boxoffice < 10000:
         title_id = 0
 
-    budget = round((budget/1000000), 1)
-    boxoffice = round((boxoffice/1000000), 1)
-
     if boxoffice >= (budget * 2):
-        profitable = 3
+        profitable = 100
     elif boxoffice >= (budget + (budget / 2)):
-        profitable = 2
+        profitable = 75
     elif boxoffice >= budget:
-        profitable = 1
+        profitable = 50
     else:
-        profitable = 0
+        profitable = 25
 
     print(title_id, title, url)
     data = {'id': title_id,
@@ -453,12 +515,16 @@ def parser(title_id):
             'year': year,
             'age-limit': age_limit,
             'duration': duration,
-            'release-country': country,
             'release-season': season,
             'release-day': day,
+            'holiday': holiday,
             'directors': directors,
+            'directors-awards': directors_awards,
             'writers': writers,
+            'writers-awards': writers_awards,
             'stars': stars,
+            'stars-awards': stars_awards,
+            'oscars': oscars,
             'genre': genre,
             'franchise': franchise,
             'imdb-popularity': popularity,
@@ -469,6 +535,314 @@ def parser(title_id):
     return data
 
 
+def del_copy(obj):
+    n = []
+    for i in obj:
+        if i not in n:
+            n.append(i)
+    return n
+
+
+def write_file(dset, title, ver, state):
+    # print(dset)
+    # print(title, ver, state)
+    if title == 'D1':
+        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D1\n'
+        frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
+                f'Длительность фильма в минутах;'
+                f'Сезон выхода (0-зима, 1-весна и тд);'
+                f'День недели выхода (1-понедельник и тд);'
+                f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
+                f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
+                f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
+                f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
+                f'Имеют ли режиссеры награды (0-нет, 1-да);'
+                f'Имеют ли сценаристы награды (0-нет, 1-да);'
+                f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
+                f'Количество оскаров у съемочной группы;'
+                f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
+                f'Является ли фильм частью франшизы;'
+                f'Условная популярность на сайте imdb;'
+                f'Бюджет фильма;'
+                f'Кассовые сборы фильма;\n')
+    elif title == 'D2':
+        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D2\n'
+        frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
+                f'Длительность фильма в минутах;'
+                f'Сезон выхода (0-зима, 1-весна и тд);'
+                f'День недели выхода (1-понедельник и тд);'
+                f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
+                f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
+                f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
+                f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
+                f'Имеют ли режиссеры награды (0-нет, 1-да);'
+                f'Имеют ли сценаристы награды (0-нет, 1-да);'
+                f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
+                f'Количество оскаров у съемочной группы;'
+                f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
+                f'Является ли фильм частью франшизы;'
+                f'Условная популярность на сайте imdb;'
+                f'Бюджет фильма;'
+                f'Окупаемость фильма (25-не окупился, 50-собрал бюджет, 75-частичная окупаемость, 100-окупился)\n')
+    else:
+        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D1;D2\n'
+        frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
+                f'Длительность фильма в минутах;'
+                f'Сезон выхода (0-зима, 1-весна и тд);'
+                f'День недели выхода (1-понедельник и тд);'
+                f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
+                f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
+                f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
+                f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
+                f'Имеют ли режиссеры награды (0-нет, 1-да);'
+                f'Имеют ли сценаристы награды (0-нет, 1-да);'
+                f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
+                f'Количество оскаров у съемочной группы;'
+                f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
+                f'Является ли фильм частью франшизы;'
+                f'Условная популярность на сайте imdb;'
+                f'Бюджет фильма;'
+                f'Кассовые сборы фильма;'
+                f'Окупаемость фильма (25-не окупился, 50-собрал бюджет, 75-частичная окупаемость, 100-окупился)\n')
+
+    if state == 1:
+        with open(f'sample.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_all.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+            f.write(frow)
+        with open(f'dataset_0-5.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_5-10.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_10-15.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_15-20.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_20-30.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_30-50.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_50-100.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+        with open(f'dataset_100-inf.txt', 'w', encoding='utf-8') as f:
+            f.write(header)
+
+    if ver == 'D1':
+        with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
+            for span in dset:
+                f.write(f'{span["age-limit"]};{span["duration"]};'
+                        f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
+                        f'{span["directors"]};{span["writers"]};{span["stars"]};'
+                        f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
+                        f'{span["oscars"]};'
+                        f'{span["genre"]};{span["franchise"]};{span["imdb-popularity"]};'
+                        f'{span["budget"]};{span["box-office"]}\n')
+    elif ver == 'D2':
+        with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
+            for span in dset:
+                f.write(f'{span["age-limit"]};{span["duration"]};'
+                        f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
+                        f'{span["directors"]};{span["writers"]};{span["stars"]};'
+                        f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
+                        f'{span["oscars"]};'
+                        f'{span["genre"]};{span["franchise"]};{span["imdb-popularity"]};'
+                        f'{span["budget"]};{span["profitable"]}\n')
+    else:
+        with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
+            for span in dset:
+                f.write(f'{span["age-limit"]};{span["duration"]};'
+                        f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
+                        f'{span["directors"]};{span["writers"]};{span["stars"]};'
+                        f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
+                        f'{span["oscars"]};'
+                        f'{span["genre"]};{span["franchise"]};{span["imdb-popularity"]};'
+                        f'{span["budget"]};{span["box-office"]};{span["profitable"]}\n')
+
+    if state == 2:
+        f.close()
+
+        sample = pandas.read_csv(f'sample.txt', sep=';')
+        group0 = pandas.read_csv(f'dataset_all.txt', sep=';')
+        group1 = pandas.read_csv(f'dataset_0-5.txt', sep=';')
+        group2 = pandas.read_csv(f'dataset_5-10.txt', sep=';')
+        group3 = pandas.read_csv(f'dataset_10-15.txt', sep=';')
+        group4 = pandas.read_csv(f'dataset_15-20.txt', sep=';')
+        group5 = pandas.read_csv(f'dataset_20-30.txt', sep=';')
+        group6 = pandas.read_csv(f'dataset_30-50.txt', sep=';')
+        group7 = pandas.read_csv(f'dataset_50-100.txt', sep=';')
+        group8 = pandas.read_csv(f'dataset_100-inf.txt', sep=';')
+
+        sheets = {'DATA': group0,
+                  'DATA_0-5': group1, 'TEST_0-5': sample, 'CHECK_0-5': sample,
+                  'DATA_5-10': group2, 'TEST_5-10': sample, 'CHECK_5-10': sample,
+                  'DATA_10-15': group3, 'TEST_10-15': sample, 'CHECK_10-15': sample,
+                  'DATA_15-20': group4, 'TEST_15-20': sample, 'CHECK_15-20': sample,
+                  'DATA_20-30': group5, 'TEST_20-30': sample, 'CHECK_20-30': sample,
+                  'DATA_30-50': group6, 'TEST_30-50': sample, 'CHECK_30-50': sample,
+                  'DATA_50-100': group7, 'TEST_50-100': sample, 'CHECK_50-100': sample,
+                  'DATA_100-inf': group8, 'TEST_100-inf': sample, 'CHECK_100-inf': sample}
+
+        writer = pandas.ExcelWriter(f'./dataset{ver}.xlsx', engine='openpyxl')
+
+        for sheet_name in sheets.keys():
+            sheets[sheet_name].to_excel(writer, sheet_name=sheet_name, engine='openpyxl', index=False)
+
+        writer.save()
+
+        os.remove('sample.txt')
+        os.remove('dataset_all.txt')
+        os.remove('dataset_0-5.txt')
+        os.remove('dataset_5-10.txt')
+        os.remove('dataset_10-15.txt')
+        os.remove('dataset_15-20.txt')
+        os.remove('dataset_20-30.txt')
+        os.remove('dataset_30-50.txt')
+        os.remove('dataset_50-100.txt')
+        os.remove('dataset_100-inf.txt')
+
+
+def first_part():
+
+    raw_dataset.append(scrapper(top_1000))
+    raw_dataset.append(scrapper(bottom_1000))
+
+    for k in raw_dataset[0]:
+        ids.append(k)
+
+    for k in raw_dataset[1]:
+        ids.append(k)
+
+    print(ids)
+    with open(f'ids.txt', 'w+', encoding='utf-8') as id_file:
+        for item in ids:
+            id_file.write(item + '\n')
+
+
+def second_part():
+    counter = 0
+    open(f'tempdata.txt', 'w').close()
+
+    with open(f'raw_data.txt', 'w', encoding='utf-8') as set_file:
+        set_file.write(f'url;id;name;year;duration;imdb-popularity;budget;box-office\n')
+
+    while counter <= 2000:
+        output_dataset, temp_dataset, temp_ids = [], [], []
+        print(1, counter)
+
+        with open(f'ids.txt', 'r', encoding='utf-8') as temp_file:
+            for index, row_idx in enumerate(temp_file, 1):
+                if counter <= index < counter + 100:
+                    temp_ids.append(row_idx.replace('\n', ''))
+
+        try:
+            temp_dataset = pool.map(parser, temp_ids)
+        except (TimeoutError, requests.exceptions.ConnectionError) as e:
+            pass
+
+        for temp_row in temp_dataset:
+            if temp_row["id"] in (0, '0', '', None):
+                pass
+            else:
+                output_dataset.append(temp_row)
+
+        with open(f'tempdata.txt', 'a', encoding='utf-8') as temp_data:
+            for subrow in output_dataset:
+                temp_data.write(f'{subrow}\n')
+
+        counter += 100
+
+    temp_file.close()
+    temp_data.close()
+
+
+def third_part():
+    dataset = []
+
+    with open(f'tempdata.txt', 'r', encoding='utf-8') as temp_fdata:
+        for irow in temp_fdata:
+            dataset.append(eval(irow.replace('\n', '')))
+
+    dataset = del_copy(dataset)
+
+    with open(f'raw_data.txt', 'a', encoding='utf-8') as j_file:
+        for jrow in dataset:
+            j_file.write(f'{jrow["url"]};{jrow["id"]};'
+                         f'{jrow["name"]};{jrow["year"]};{jrow["duration"]};'
+                         f'{jrow["imdb-popularity"]};{jrow["budget"]};{jrow["box-office"]}\n')
+
+    dataset0_5, dataset5_10, dataset10_15, dataset15_20 = [], [], [], []
+    dataset20_30, dataset30_50, dataset50_100, dataset100_inf = [], [], [], []
+
+    for krow in dataset:
+        if krow["budget"] < 5000000:
+            dataset0_5.append(krow)
+        if 5000001 < krow["budget"] < 10000000:
+            dataset5_10.append(krow)
+        if 10000001 < krow["budget"] < 15000000:
+            dataset10_15.append(krow)
+        if 15000001 < krow["budget"] < 20000000:
+            dataset15_20.append(krow)
+        if 20000001 < krow["budget"] < 30000000:
+            dataset20_30.append(krow)
+        if 30000001 < krow["budget"] < 50000000:
+            dataset30_50.append(krow)
+        if 50000000 < krow["budget"] < 100000000:
+            dataset50_100.append(krow)
+        if 100000000 < krow["budget"]:
+            dataset100_inf.append(krow)
+
+    write_file(dataset, 'all', 'D1', 1)
+    write_file(dataset0_5, '0-5', 'D1', 0)
+    write_file(dataset5_10, '5-10', 'D1', 0)
+    write_file(dataset10_15, '10-15', 'D1', 0)
+    write_file(dataset15_20, '15-20', 'D1', 0)
+    write_file(dataset20_30, '20-30', 'D1', 0)
+    write_file(dataset30_50, '30-50', 'D1', 0)
+    write_file(dataset50_100, '50-100', 'D1', 0)
+    write_file(dataset100_inf, '100-inf', 'D1', 2)
+
+    write_file(dataset, 'all', 'D2', 1)
+    write_file(dataset0_5, '0-5', 'D2', 0)
+    write_file(dataset5_10, '5-10', 'D2', 0)
+    write_file(dataset10_15, '10-15', 'D2', 0)
+    write_file(dataset15_20, '15-20', 'D2', 0)
+    write_file(dataset20_30, '20-30', 'D2', 0)
+    write_file(dataset30_50, '30-50', 'D2', 0)
+    write_file(dataset50_100, '50-100', 'D2', 0)
+    write_file(dataset100_inf, '100-inf', 'D2', 2)
+
+    write_file(dataset, 'all', '', 1)
+    write_file(dataset0_5, '0-5', '', 0)
+    write_file(dataset5_10, '5-10', '', 0)
+    write_file(dataset10_15, '10-15', '', 0)
+    write_file(dataset15_20, '15-20', '', 0)
+    write_file(dataset20_30, '20-30', '', 0)
+    write_file(dataset30_50, '30-50', '', 0)
+    write_file(dataset50_100, '50-100', '', 0)
+    write_file(dataset100_inf, '100-inf', '', 2)
+
+    temp_fdata.close()
+    j_file.close()
+
+    df0 = pandas.read_csv('raw_data.txt', sep=';')
+    df0.to_excel('raw_data.xlsx', 'DATA', engine='openpyxl', index=False)
+
+    os.remove('raw_data.txt')
+
+
+def test():
+    # for item_id in ('0468569'): #ids:'10366460',
+    test_set = parser('0468569')
+    print(f'{test_set["age-limit"]};{test_set["duration"]};'
+          f'{test_set["release-season"]};{test_set["release-day"]};{test_set["holiday"]};'
+          f'{test_set["directors"]};{test_set["writers"]};{test_set["stars"]};'
+          f'{test_set["directors-awards"]};{test_set["writers-awards"]};{test_set["stars-awards"]};'
+          f'{test_set["oscars"]};'
+          f'{test_set["genre"]};{test_set["franchise"]};{test_set["imdb-popularity"]};'
+          f'{test_set["budget"]};{test_set["profitable"]}\n')
+
+
 if __name__ == '__main__':
     pool = Pool()
     chrome_options = Options()
@@ -476,72 +850,11 @@ if __name__ == '__main__':
     # chrome_options.add_argument(r"user-data-dir=C:\\Users\\" + WINUSER + "\\AppData\\Local\\Google\\Chrome\\User Data")
     chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(options=chrome_options)
+
     raw_dataset = []
     ids = []
-    dataset = []
-    counter = 0
 
-    # raw_dataset.append(scrapper(top_1000))
-    # raw_dataset.append(scrapper(bottom_1000))
-
-    # for k in raw_dataset[0]:
-    #     ids.append(k)
-    #
-    # for k in raw_dataset[1]:
-    #     ids.append(k)
-    #
-    # print(ids)
-    # with open(f'ids.txt', 'w+', encoding='utf-8') as id_file:
-    #     for item in ids:
-    #         id_file.write(item + '\n')
-    #
-    # with open(f'raw_data.txt', 'w', encoding='utf-8') as set_file:
-    #     set_file.write(f'url;id;name;year;duration;imdb-popularity;budget;box-office\n')
-    # with open(f'dataset.txt', 'w', encoding='utf-8') as file:
-    #     file.write(f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;D1;D2\n')
-
-    while counter <= 2000:
-        # for item_id in ('10366460', '0468569'): #ids:
-        #     dataset.append(parser(item_id))
-        temp_ids = []
-
-        with open(f'ids.txt', 'r', encoding='utf-8') as temp_file:
-            for index, row in enumerate(temp_file, 1):
-                if counter <= index < counter + 100:
-                    temp_ids.append(row.replace('\n', ''))
-
-        print(1, counter)
-
-        try:
-            dataset = pool.map(parser, temp_ids)
-        except (TimeoutError, requests.exceptions.ConnectionError) as e:
-            pass
-
-        with open(f'raw_data.txt', 'a', encoding='utf-8') as set_file:
-            for row in dataset:
-                set_file.write(f'{row["url"]};{row["id"]};'
-                               f'{row["name"]};{row["year"]};{row["duration"]};'
-                               f'{row["imdb-popularity"]};{row["budget"]};{row["box-office"]}\n')
-
-        with open(f'dataset.txt', 'a', encoding='utf-8') as file:
-            for row in dataset:
-                if row["id"] == 0:
-                    pass
-                else:
-                    file.write(f'{row["age-limit"]};{row["duration"]};'
-                               f'{row["release-country"]};{row["release-season"]};{row["release-day"]};'
-                               f'{row["directors"]};{row["writers"]};{row["stars"]};'
-                               f'{row["genre"]};{row["franchise"]};{row["imdb-popularity"]};'
-                               f'{row["budget"]};{row["box-office"]};{row["profitable"]}\n')
-
-        counter += 100
-        
-    temp_file.close()
-    set_file.close()
-    file.close()
-
-    df0 = pandas.read_csv('raw_data.txt', sep=';')
-    df0.to_excel('raw_data.xlsx', 'DATA', index=False)
-
-    df1 = pandas.read_csv('dataset.txt', sep=';')
-    df1.to_excel('dataset.xlsx', 'DATA', index=False)
+    # test()
+    # first_part()
+    # second_part()
+    third_part()
