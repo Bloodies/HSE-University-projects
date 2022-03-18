@@ -23,10 +23,10 @@ bottom_1000 = 'https://www.imdb.com/search/title/?groups=bottom_1000'
 
 checked_counter = 0
 
-open('raw_data.xlsx', 'w').close()
-open('dataset.xlsx', 'w').close()
-open('datasetD1.xlsx', 'w').close()
-open('datasetD2.xlsx', 'w').close()
+open('./raw_data.xlsx', 'w').close()
+open('./dataset.xlsx', 'w').close()
+open('./datasetD1.xlsx', 'w').close()
+open('./datasetD2.xlsx', 'w').close()
 
 
 def scrapper(url):
@@ -544,89 +544,56 @@ def del_copy(obj):
 
 
 def write_file(dset, title, ver, state):
-    # print(dset)
-    # print(title, ver, state)
+    sample_frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
+                   f'Длительность фильма в минутах;'
+                   f'Сезон выхода (0-зима, 1-весна и тд);'
+                   f'День недели выхода (1-понедельник и тд);'
+                   f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
+                   f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
+                   f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
+                   f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
+                   f'Имеют ли режиссеры награды (0-нет, 1-да);'
+                   f'Имеют ли сценаристы награды (0-нет, 1-да);'
+                   f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
+                   f'Количество оскаров у съемочной группы;'
+                   f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
+                   f'Является ли фильм частью франшизы;'
+                   f'Условная популярность на сайте imdb;'
+                   f'Бюджет фильма;')
+    files = ['dataset_0-5',
+             'dataset_5-10',
+             'dataset_10-15',
+             'dataset_15-20',
+             'dataset_20-30',
+             'dataset_30-50',
+             'dataset_50-100',
+             'dataset_100-inf']
+
     if title == 'D1':
         header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D1\n'
-        frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
-                f'Длительность фильма в минутах;'
-                f'Сезон выхода (0-зима, 1-весна и тд);'
-                f'День недели выхода (1-понедельник и тд);'
-                f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
-                f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
-                f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
-                f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
-                f'Имеют ли режиссеры награды (0-нет, 1-да);'
-                f'Имеют ли сценаристы награды (0-нет, 1-да);'
-                f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
-                f'Количество оскаров у съемочной группы;'
-                f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
-                f'Является ли фильм частью франшизы;'
-                f'Условная популярность на сайте imdb;'
-                f'Бюджет фильма;'
+        frow = (f'{sample_frow}'
                 f'Кассовые сборы фильма;\n')
     elif title == 'D2':
         header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D2\n'
-        frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
-                f'Длительность фильма в минутах;'
-                f'Сезон выхода (0-зима, 1-весна и тд);'
-                f'День недели выхода (1-понедельник и тд);'
-                f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
-                f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
-                f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
-                f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
-                f'Имеют ли режиссеры награды (0-нет, 1-да);'
-                f'Имеют ли сценаристы награды (0-нет, 1-да);'
-                f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
-                f'Количество оскаров у съемочной группы;'
-                f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
-                f'Является ли фильм частью франшизы;'
-                f'Условная популярность на сайте imdb;'
-                f'Бюджет фильма;'
+        frow = (f'{sample_frow}'
                 f'Окупаемость фильма (25-не окупился, 50-собрал бюджет, 75-частичная окупаемость, 100-окупился)\n')
     else:
         header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D1;D2\n'
-        frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
-                f'Длительность фильма в минутах;'
-                f'Сезон выхода (0-зима, 1-весна и тд);'
-                f'День недели выхода (1-понедельник и тд);'
-                f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
-                f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
-                f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
-                f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
-                f'Имеют ли режиссеры награды (0-нет, 1-да);'
-                f'Имеют ли сценаристы награды (0-нет, 1-да);'
-                f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
-                f'Количество оскаров у съемочной группы;'
-                f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
-                f'Является ли фильм частью франшизы;'
-                f'Условная популярность на сайте imdb;'
-                f'Бюджет фильма;'
+        frow = (f'{sample_frow}'
                 f'Кассовые сборы фильма;'
                 f'Окупаемость фильма (25-не окупился, 50-собрал бюджет, 75-частичная окупаемость, 100-окупился)\n')
 
     if state == 1:
-        with open(f'sample.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_all.txt', 'w', encoding='utf-8') as f:
+        with open(f'./dataset_all.txt', 'w', encoding='utf-8') as f:
             f.write(header)
             f.write(frow)
-        with open(f'dataset_0-5.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_5-10.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_10-15.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_15-20.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_20-30.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_30-50.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_50-100.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
-        with open(f'dataset_100-inf.txt', 'w', encoding='utf-8') as f:
-            f.write(header)
+        for ictr in files:
+            with open(f'./{ictr}.txt', 'w', encoding='utf-8') as f:
+                f.write(header)
+            with open(f'./{ictr}_test.txt', 'w', encoding='utf-8') as f:
+                f.write(header)
+            with open(f'./{ictr}_check.txt', 'w', encoding='utf-8') as f:
+                f.write(header)
 
     if ver == 'D1':
         with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
@@ -635,9 +602,9 @@ def write_file(dset, title, ver, state):
                         f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
                         f'{span["directors"]};{span["writers"]};{span["stars"]};'
                         f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
-                        f'{span["oscars"]};'
-                        f'{span["genre"]};{span["franchise"]};{span["imdb-popularity"]};'
-                        f'{span["budget"]};{span["box-office"]}\n')
+                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};'
+                        f'{span["imdb-popularity"]};{span["budget"]};'
+                        f'{span["box-office"]}\n')
     elif ver == 'D2':
         with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
             for span in dset:
@@ -645,9 +612,9 @@ def write_file(dset, title, ver, state):
                         f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
                         f'{span["directors"]};{span["writers"]};{span["stars"]};'
                         f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
-                        f'{span["oscars"]};'
-                        f'{span["genre"]};{span["franchise"]};{span["imdb-popularity"]};'
-                        f'{span["budget"]};{span["profitable"]}\n')
+                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};'
+                        f'{span["imdb-popularity"]};{span["budget"]};'
+                        f'{span["profitable"]}\n')
     else:
         with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
             for span in dset:
@@ -655,33 +622,73 @@ def write_file(dset, title, ver, state):
                         f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
                         f'{span["directors"]};{span["writers"]};{span["stars"]};'
                         f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
-                        f'{span["oscars"]};'
-                        f'{span["genre"]};{span["franchise"]};{span["imdb-popularity"]};'
-                        f'{span["budget"]};{span["box-office"]};{span["profitable"]}\n')
+                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};'
+                        f'{span["imdb-popularity"]};{span["budget"]};'
+                        f'{span["box-office"]};{span["profitable"]}\n')
+
+    for ctr in files:
+        lrow_counter = 0
+        temp_dataset, dataset_test, dataset_check = [], [], []
+        with open(f'./{ctr}.txt', 'r', encoding='utf-8') as lfile:
+            for lrow in lfile:
+                if lrow_counter != 0:
+                    if lrow_counter % 20 == 0:
+                        dataset_test.append(lrow)
+                    elif lrow_counter % 47 == 0:
+                        dataset_check.append(lrow)
+                    else:
+                        temp_dataset.append(lrow)
+                lrow_counter += 1
+        with open(f'./{ctr}_test.txt', 'a', encoding='utf-8') as mfile:
+            for mrow in dataset_test:
+                mfile.write(mrow)
+        with open(f'./{ctr}_check.txt', 'a', encoding='utf-8') as nfile:
+            for nrow in dataset_check:
+                nfile.write(nrow)
+        open(f'./{ctr}.txt', 'w').close()
+        with open(f'./{ctr}.txt', 'a', encoding='utf-8') as ofile:
+            ofile.write(header)
+            for orow in temp_dataset:
+                ofile.write(orow)
 
     if state == 2:
         f.close()
 
-        sample = pandas.read_csv(f'sample.txt', sep=';')
-        group0 = pandas.read_csv(f'dataset_all.txt', sep=';')
-        group1 = pandas.read_csv(f'dataset_0-5.txt', sep=';')
-        group2 = pandas.read_csv(f'dataset_5-10.txt', sep=';')
-        group3 = pandas.read_csv(f'dataset_10-15.txt', sep=';')
-        group4 = pandas.read_csv(f'dataset_15-20.txt', sep=';')
-        group5 = pandas.read_csv(f'dataset_20-30.txt', sep=';')
-        group6 = pandas.read_csv(f'dataset_30-50.txt', sep=';')
-        group7 = pandas.read_csv(f'dataset_50-100.txt', sep=';')
-        group8 = pandas.read_csv(f'dataset_100-inf.txt', sep=';')
+        group0 = pandas.read_csv(f'./dataset_all.txt', sep=';')
+        group1 = pandas.read_csv(f'./dataset_0-5.txt', sep=';')
+        group1_test = pandas.read_csv(f'./dataset_0-5_test.txt', sep=';')
+        group1_check = pandas.read_csv(f'./dataset_0-5_check.txt', sep=';')
+        group2 = pandas.read_csv(f'./dataset_5-10.txt', sep=';')
+        group2_test = pandas.read_csv(f'./dataset_5-10_test.txt', sep=';')
+        group2_check = pandas.read_csv(f'./dataset_5-10_check.txt', sep=';')
+        group3 = pandas.read_csv(f'./dataset_10-15.txt', sep=';')
+        group3_test = pandas.read_csv(f'./dataset_10-15_test.txt', sep=';')
+        group3_check = pandas.read_csv(f'./dataset_10-15_check.txt', sep=';')
+        group4 = pandas.read_csv(f'./dataset_15-20.txt', sep=';')
+        group4_test = pandas.read_csv(f'./dataset_15-20_test.txt', sep=';')
+        group4_check = pandas.read_csv(f'./dataset_15-20_check.txt', sep=';')
+        group5 = pandas.read_csv(f'./dataset_20-30.txt', sep=';')
+        group5_test = pandas.read_csv(f'./dataset_20-30_test.txt', sep=';')
+        group5_check = pandas.read_csv(f'./dataset_20-30_check.txt', sep=';')
+        group6 = pandas.read_csv(f'./dataset_30-50.txt', sep=';')
+        group6_test = pandas.read_csv(f'./dataset_30-50_test.txt', sep=';')
+        group6_check = pandas.read_csv(f'./dataset_30-50_check.txt', sep=';')
+        group7 = pandas.read_csv(f'./dataset_50-100.txt', sep=';')
+        group7_test = pandas.read_csv(f'./dataset_50-100_test.txt', sep=';')
+        group7_check = pandas.read_csv(f'./dataset_50-100_check.txt', sep=';')
+        group8 = pandas.read_csv(f'./dataset_100-inf.txt', sep=';')
+        group8_test = pandas.read_csv(f'./dataset_100-inf_test.txt', sep=';')
+        group8_check = pandas.read_csv(f'./dataset_100-inf_check.txt', sep=';')
 
         sheets = {'DATA': group0,
-                  'DATA_0-5': group1, 'TEST_0-5': sample, 'CHECK_0-5': sample,
-                  'DATA_5-10': group2, 'TEST_5-10': sample, 'CHECK_5-10': sample,
-                  'DATA_10-15': group3, 'TEST_10-15': sample, 'CHECK_10-15': sample,
-                  'DATA_15-20': group4, 'TEST_15-20': sample, 'CHECK_15-20': sample,
-                  'DATA_20-30': group5, 'TEST_20-30': sample, 'CHECK_20-30': sample,
-                  'DATA_30-50': group6, 'TEST_30-50': sample, 'CHECK_30-50': sample,
-                  'DATA_50-100': group7, 'TEST_50-100': sample, 'CHECK_50-100': sample,
-                  'DATA_100-inf': group8, 'TEST_100-inf': sample, 'CHECK_100-inf': sample}
+                  'DATA_0-5': group1, 'TEST_0-5': group1_test, 'CHECK_0-5': group1_check,
+                  'DATA_5-10': group2, 'TEST_5-10': group2_test, 'CHECK_5-10': group2_check,
+                  'DATA_10-15': group3, 'TEST_10-15': group3_test, 'CHECK_10-15': group3_check,
+                  'DATA_15-20': group4, 'TEST_15-20': group4_test, 'CHECK_15-20': group4_check,
+                  'DATA_20-30': group5, 'TEST_20-30': group5_test, 'CHECK_20-30': group5_check,
+                  'DATA_30-50': group6, 'TEST_30-50': group6_test, 'CHECK_30-50': group6_check,
+                  'DATA_50-100': group7, 'TEST_50-100': group7_test, 'CHECK_50-100': group7_check,
+                  'DATA_100-inf': group8, 'TEST_100-inf': group8_test, 'CHECK_100-inf': group8_check}
 
         writer = pandas.ExcelWriter(f'./dataset{ver}.xlsx', engine='openpyxl')
 
@@ -690,16 +697,14 @@ def write_file(dset, title, ver, state):
 
         writer.save()
 
-        os.remove('sample.txt')
-        os.remove('dataset_all.txt')
-        os.remove('dataset_0-5.txt')
-        os.remove('dataset_5-10.txt')
-        os.remove('dataset_10-15.txt')
-        os.remove('dataset_15-20.txt')
-        os.remove('dataset_20-30.txt')
-        os.remove('dataset_30-50.txt')
-        os.remove('dataset_50-100.txt')
-        os.remove('dataset_100-inf.txt')
+        os.remove('./dataset_all.txt')
+        for delete in files:
+            if os.path.exists(f'./{delete}.txt'):
+                os.remove(f'./{delete}.txt')
+            if os.path.exists(f'./{delete}_test.txt'):
+                os.remove(f'./{delete}_test.txt')
+            if os.path.exists(f'./{delete}_check.txt'):
+                os.remove(f'./{delete}_check.txt')
 
 
 def first_part():
@@ -714,23 +719,23 @@ def first_part():
         ids.append(k)
 
     print(ids)
-    with open(f'ids.txt', 'w+', encoding='utf-8') as id_file:
+    with open(f'./ids.txt', 'w+', encoding='utf-8') as id_file:
         for item in ids:
             id_file.write(item + '\n')
 
 
 def second_part():
     counter = 0
-    open(f'tempdata.txt', 'w').close()
+    open(f'./tempdata.txt', 'w').close()
 
-    with open(f'raw_data.txt', 'w', encoding='utf-8') as set_file:
+    with open(f'./raw_data.txt', 'w', encoding='utf-8') as set_file:
         set_file.write(f'url;id;name;year;duration;imdb-popularity;budget;box-office\n')
 
     while counter <= 2000:
         output_dataset, temp_dataset, temp_ids = [], [], []
         print(1, counter)
 
-        with open(f'ids.txt', 'r', encoding='utf-8') as temp_file:
+        with open(f'./ids.txt', 'r', encoding='utf-8') as temp_file:
             for index, row_idx in enumerate(temp_file, 1):
                 if counter <= index < counter + 100:
                     temp_ids.append(row_idx.replace('\n', ''))
@@ -746,7 +751,7 @@ def second_part():
             else:
                 output_dataset.append(temp_row)
 
-        with open(f'tempdata.txt', 'a', encoding='utf-8') as temp_data:
+        with open(f'./tempdata.txt', 'a', encoding='utf-8') as temp_data:
             for subrow in output_dataset:
                 temp_data.write(f'{subrow}\n')
 
@@ -759,13 +764,13 @@ def second_part():
 def third_part():
     dataset = []
 
-    with open(f'tempdata.txt', 'r', encoding='utf-8') as temp_fdata:
+    with open(f'./tempdata.txt', 'r', encoding='utf-8') as temp_fdata:
         for irow in temp_fdata:
             dataset.append(eval(irow.replace('\n', '')))
 
     dataset = del_copy(dataset)
 
-    with open(f'raw_data.txt', 'a', encoding='utf-8') as j_file:
+    with open(f'./raw_data.txt', 'a', encoding='utf-8') as j_file:
         for jrow in dataset:
             j_file.write(f'{jrow["url"]};{jrow["id"]};'
                          f'{jrow["name"]};{jrow["year"]};{jrow["duration"]};'
@@ -825,10 +830,10 @@ def third_part():
     temp_fdata.close()
     j_file.close()
 
-    df0 = pandas.read_csv('raw_data.txt', sep=';')
-    df0.to_excel('raw_data.xlsx', 'DATA', engine='openpyxl', index=False)
+    df0 = pandas.read_csv('./raw_data.txt', sep=';')
+    df0.to_excel('./raw_data.xlsx', 'DATA', engine='openpyxl', index=False)
 
-    os.remove('raw_data.txt')
+    os.remove('./raw_data.txt')
 
 
 def test():
