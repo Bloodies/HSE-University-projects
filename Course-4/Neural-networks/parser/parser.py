@@ -246,7 +246,11 @@ def take_box_wiki(child_id):
             if len(temp[0]) > 4:
                 return ''.join(temp[0]).replace(' ', '').replace('\xa0', '')
             else:
-                temp[1] = temp[1].replace('тыс', '1000').replace('млн', '1000000').replace('млрд', '1000000000').replace(',', '.')
+                temp[1] = (temp[1]
+                           .replace('тыс', '1000')
+                           .replace('млн', '1000000')
+                           .replace('млрд', '1000000000')
+                           .replace(',', '.'))
                 if is_number(temp[0]) is True and is_number(temp[1]):
                     return round((float(temp[0]) * float(temp[1])))
                 else:
@@ -255,7 +259,6 @@ def take_box_wiki(child_id):
             return 0
 
     budget = [0, 0, 0]
-    search_result = ''
 
     try:
         driver.get(f'https://ru.wikipedia.org/w/index.php?search=IMDb%09ID+{str(child_id)}&ns0=1')
@@ -306,7 +309,8 @@ def parser(title_id):
     year, mpaa, duration, genre, season, popularity, budget, boxoffice, franchise = '', '', '', '', '', '', '', '', ''
     hour, minute, day, age_limit, oscars, holiday = '', '', '', '', '', ''
 
-    agelimit_format = {'PG-13': 3, 'NC-17': 5, 'PG': 2, 'R': 4, 'G': 1, 'X': 6, '0': 1, '6': 2, '12': 3, '14': 4, '16': 5, '18': 6}
+    agelimit_format = {'PG-13': 3, 'NC-17': 5, 'PG': 2, 'R': 4, 'G': 1, 'X': 6,
+                       '0': 1, '6': 2, '12': 3, '14': 4, '16': 5, '18': 6}
     genre_format = {'Action': 1, 'Adventure': 2, 'Drama': 3, 'Comedy': 4, 'Crime': 5,
                     'Romance': 6, 'Mystery': 7, 'Horror': 8, 'History': 9, 'Western': 10,
                     'Music': 11, 'Biography': 12, 'Musical': 13, 'Film-Noir': 14, 'Animation': 15,
@@ -569,11 +573,11 @@ def write_file(dset, title, ver, state):
              'dataset_50-100',
              'dataset_100-inf']
 
-    if title == 'D1':
+    if ver == 'D1':
         header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D1\n'
         frow = (f'{sample_frow}'
-                f'Кассовые сборы фильма;\n')
-    elif title == 'D2':
+                f'Кассовые сборы фильма\n')
+    elif ver == 'D2':
         header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D2\n'
         frow = (f'{sample_frow}'
                 f'Окупаемость фильма (25-не окупился, 50-собрал бюджет, 75-частичная окупаемость, 100-окупился)\n')
@@ -626,32 +630,35 @@ def write_file(dset, title, ver, state):
                         f'{span["imdb-popularity"]};{span["budget"]};'
                         f'{span["box-office"]};{span["profitable"]}\n')
 
-    for ctr in files:
-        lrow_counter = 0
-        temp_dataset, dataset_test, dataset_check = [], [], []
-        with open(f'./{ctr}.txt', 'r', encoding='utf-8') as lfile:
-            for lrow in lfile:
-                if lrow_counter != 0:
-                    if lrow_counter % 20 == 0:
-                        dataset_test.append(lrow)
-                    elif lrow_counter % 47 == 0:
-                        dataset_check.append(lrow)
-                    else:
-                        temp_dataset.append(lrow)
-                lrow_counter += 1
-        with open(f'./{ctr}_test.txt', 'a', encoding='utf-8') as mfile:
-            for mrow in dataset_test:
-                mfile.write(mrow)
-        with open(f'./{ctr}_check.txt', 'a', encoding='utf-8') as nfile:
-            for nrow in dataset_check:
-                nfile.write(nrow)
-        open(f'./{ctr}.txt', 'w').close()
-        with open(f'./{ctr}.txt', 'a', encoding='utf-8') as ofile:
-            ofile.write(header)
-            for orow in temp_dataset:
-                ofile.write(orow)
-
     if state == 2:
+        for ctr in files:
+            lrow_counter = 0
+            temp_dataset, dataset_test, dataset_check = [], [], []
+            with open(f'./{ctr}.txt', 'r', encoding='utf-8') as lfile:
+                for lrow in lfile:
+                    if lrow_counter != 0:
+                        if lrow_counter % 20 == 0:
+                            dataset_test.append(lrow)
+                        elif lrow_counter % 47 == 0:
+                            dataset_check.append(lrow)
+                        else:
+                            temp_dataset.append(lrow)
+                    lrow_counter += 1
+            lfile.close()
+            with open(f'./{ctr}_test.txt', 'a', encoding='utf-8') as mfile:
+                for mrow in dataset_test:
+                    mfile.write(mrow)
+            with open(f'./{ctr}_check.txt', 'a', encoding='utf-8') as nfile:
+                for nrow in dataset_check:
+                    nfile.write(nrow)
+            open(f'./{ctr}.txt', 'w').close()
+            with open(f'./{ctr}.txt', 'a', encoding='utf-8') as ofile:
+                ofile.write(header)
+                for orow in temp_dataset:
+                    ofile.write(orow)
+        mfile.close()
+        nfile.close()
+        ofile.close()
         f.close()
 
         group0 = pandas.read_csv(f'./dataset_all.txt', sep=';')
@@ -743,6 +750,7 @@ def second_part():
         try:
             temp_dataset = pool.map(parser, temp_ids)
         except (TimeoutError, requests.exceptions.ConnectionError) as e:
+            print(e)
             pass
 
         for temp_row in temp_dataset:
