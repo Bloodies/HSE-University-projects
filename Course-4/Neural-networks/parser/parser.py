@@ -1,5 +1,6 @@
 import datetime
 import lxml
+import numpy
 import os
 import pandas
 import re
@@ -20,13 +21,18 @@ headers = {'accept': '*/*',
 top_1000 = 'https://www.imdb.com/search/title/?groups=top_1000'
 bottom_1000 = 'https://www.imdb.com/search/title/?groups=bottom_1000'
 
-
 checked_counter = 0
 
 open('./raw_data.xlsx', 'w').close()
 open('./dataset.xlsx', 'w').close()
 open('./datasetD1.xlsx', 'w').close()
 open('./datasetD2.xlsx', 'w').close()
+
+files = ['all',
+         '0-10',
+         '10-30',
+         '30-50',
+         '50-inf']
 
 
 def scrapper(url):
@@ -206,7 +212,7 @@ def take_person_score(child_id):
             return 0
 
         score += int(awards) if str(awards).isdigit() else 1
-            # score += ((100 - int(temp)) / 2) + 30 / 2
+        # score += ((100 - int(temp)) / 2) + 30 / 2
 
     num = len(child_id) if len(child_id) != 0 else 1
     total[2] = round(score / num)
@@ -287,8 +293,7 @@ def take_box_wiki(child_id):
             budget[1] = 0
 
         franchise1 = soup.find('span', attrs={'data-wikidata-property-id': 'P155'})
-        franchise2 = soup.find('span', attrs={'data-wikidata-property-id': 'P156'})
-        if franchise1 is not None or franchise2 is not None:
+        if franchise1 is not None:
             budget[2] = 1
         else:
             budget[2] = 0
@@ -502,15 +507,18 @@ def parser(title_id):
 
     if boxoffice < 10000:
         title_id = 0
+    else:
+        boxoffice = int((str(boxoffice)[0] + str(boxoffice)[1]) + ("0" * (len(str(boxoffice)) - 2)))
+
+    if (budget * 4) > boxoffice < (budget / 4):
+        title_id = 0
 
     if boxoffice >= (budget * 2):
         profitable = 100
-    elif boxoffice >= (budget + (budget / 2)):
-        profitable = 75
-    elif boxoffice >= budget:
+    elif budget <= boxoffice <= (budget * 2):
         profitable = 50
     else:
-        profitable = 25
+        profitable = 0
 
     print(title_id, title, url)
     data = {'id': title_id,
@@ -547,155 +555,147 @@ def del_copy(obj):
     return n
 
 
+def del_ejects(filename):
+    print(filename)
+    df = pandas.read_csv(f'./dataset_{filename}.txt', sep=';')
+
+    for x in ['D1']:
+        q75, q25 = numpy.percentile(df.loc[:, x], [75, 25])
+        intr_qr = q75 - q25
+
+        max = q75 + (1.5 * intr_qr)
+        min = q25 - (1.5 * intr_qr)
+
+        df.loc[df[x] < min, x] = numpy.nan
+        df.loc[df[x] > max, x] = numpy.nan
+
+    for x in ['X11']:
+        q75, q25 = numpy.percentile(df.loc[:, x], [75, 25])
+        intr_qr = q75 - q25
+
+        max = q75 + (1.5 * intr_qr)
+        min = q25 - (1.5 * intr_qr)
+
+        df.loc[df[x] < min, x] = numpy.nan
+        df.loc[df[x] > max, x] = numpy.nan
+
+    print(df.isnull().sum())
+    df.isnull().sum()
+    df = df.dropna(axis=0)
+
+    df.to_csv(f'./dataset_{filename}.txt', index=False, sep=';')
+
+
 def write_file(dset, title, ver, state):
     sample_frow = (f'Возрастное ограничение (1- 0+, 2- 6+ и тд);'
                    f'Длительность фильма в минутах;'
                    f'Сезон выхода (0-зима, 1-весна и тд);'
-                   f'День недели выхода (1-понедельник и тд);'
                    f'Вышел ли фильм в период высокой посещаемости кинотеатров (0-нет, 1-да);'
-                   f'Сумма рейтингов режиссеров (рейтинг топ 5000 + количество наград);'
-                   f'Сумма рейтингов сценаристов (рейтинг топ 5000 + количество наград);'
-                   f'Сумма рейтингов 3-х главных звезд (рейтинг топ 5000 + количество наград);'
                    f'Имеют ли режиссеры награды (0-нет, 1-да);'
                    f'Имеют ли сценаристы награды (0-нет, 1-да);'
                    f'Имеют ли 3-х главные звезды награды (0-нет, 1-да);'
                    f'Количество оскаров у съемочной группы;'
                    f'Основной жанр фильма (1-Action, 2-Adventure, 3-Drama и тд);'
                    f'Является ли фильм частью франшизы;'
-                   f'Условная популярность на сайте imdb;'
                    f'Бюджет фильма;')
-    files = ['dataset_0-5',
-             'dataset_5-10',
-             'dataset_10-15',
-             'dataset_15-20',
-             'dataset_20-30',
-             'dataset_30-50',
-             'dataset_50-100',
-             'dataset_100-inf']
-
     if ver == 'D1':
-        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D1\n'
+        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;D1\n'
         frow = (f'{sample_frow}'
                 f'Кассовые сборы фильма\n')
     elif ver == 'D2':
-        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D2\n'
+        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;D1\n'
         frow = (f'{sample_frow}'
-                f'Окупаемость фильма (25-не окупился, 50-собрал бюджет, 75-частичная окупаемость, 100-окупился)\n')
+                f'Окупаемость фильма (0-не окупился, 50-собрал бюджет, 100-окупился)\n')
     else:
-        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;X12;X13;X14;X15;X16;D1;D2\n'
+        header = f'X1;X2;X3;X4;X5;X6;X7;X8;X9;X10;X11;D1;D2\n'
         frow = (f'{sample_frow}'
                 f'Кассовые сборы фильма;'
-                f'Окупаемость фильма (25-не окупился, 50-собрал бюджет, 75-частичная окупаемость, 100-окупился)\n')
+                f'Окупаемость фильма (0-не окупился, 50-собрал бюджет, 100-окупился)\n')
 
     if state == 1:
-        with open(f'./dataset_all.txt', 'w', encoding='utf-8') as f:
+        with open(f'./dataset_sample.txt', 'w', encoding='utf-8') as f:
             f.write(header)
             f.write(frow)
-        for ictr in files:
-            with open(f'./{ictr}.txt', 'w', encoding='utf-8') as f:
+        for files_item_add in files:
+            with open(f'./dataset_{files_item_add}.txt', 'w', encoding='utf-8') as f:
                 f.write(header)
-            with open(f'./{ictr}_test.txt', 'w', encoding='utf-8') as f:
-                f.write(header)
-            with open(f'./{ictr}_check.txt', 'w', encoding='utf-8') as f:
+            with open(f'./dataset_{files_item_add}_test.txt', 'w', encoding='utf-8') as f:
                 f.write(header)
 
     if ver == 'D1':
         with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
             for span in dset:
                 f.write(f'{span["age-limit"]};{span["duration"]};'
-                        f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
-                        f'{span["directors"]};{span["writers"]};{span["stars"]};'
+                        f'{span["release-season"]};{span["holiday"]};'
                         f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
-                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};'
-                        f'{span["imdb-popularity"]};{span["budget"]};'
+                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};{span["budget"]};'
                         f'{span["box-office"]}\n')
     elif ver == 'D2':
         with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
             for span in dset:
                 f.write(f'{span["age-limit"]};{span["duration"]};'
-                        f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
-                        f'{span["directors"]};{span["writers"]};{span["stars"]};'
+                        f'{span["release-season"]};{span["holiday"]};'
                         f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
-                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};'
-                        f'{span["imdb-popularity"]};{span["budget"]};'
+                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};{span["budget"]};'
                         f'{span["profitable"]}\n')
     else:
         with open(f'./dataset_{title}.txt', 'a', encoding='utf-8') as f:
             for span in dset:
                 f.write(f'{span["age-limit"]};{span["duration"]};'
-                        f'{span["release-season"]};{span["release-day"]};{span["holiday"]};'
-                        f'{span["directors"]};{span["writers"]};{span["stars"]};'
+                        f'{span["release-season"]};{span["holiday"]};'
                         f'{span["directors-awards"]};{span["writers-awards"]};{span["stars-awards"]};'
-                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};'
-                        f'{span["imdb-popularity"]};{span["budget"]};'
-                        f'{span["box-office"]};{span["profitable"]}\n')
+                        f'{span["oscars"]};{span["genre"]};{span["franchise"]};{span["budget"]};'
+                        f'{span["box-office"]};'
+                        f'{span["profitable"]}\n')
 
     if state == 2:
         for ctr in files:
             lrow_counter = 0
-            temp_dataset, dataset_test, dataset_check = [], [], []
-            with open(f'./{ctr}.txt', 'r', encoding='utf-8') as lfile:
+            temp_dataset, dataset_test = [], []
+            with open(f'./dataset_{ctr}.txt', 'r', encoding='utf-8') as lfile:
                 for lrow in lfile:
                     if lrow_counter != 0:
-                        if lrow_counter % 20 == 0:
+                        if lrow_counter % 8 == 0:
                             dataset_test.append(lrow)
-                        elif lrow_counter % 47 == 0:
-                            dataset_check.append(lrow)
                         else:
                             temp_dataset.append(lrow)
                     lrow_counter += 1
             lfile.close()
-            with open(f'./{ctr}_test.txt', 'a', encoding='utf-8') as mfile:
+            with open(f'./dataset_{ctr}_test.txt', 'a', encoding='utf-8') as mfile:
                 for mrow in dataset_test:
                     mfile.write(mrow)
-            with open(f'./{ctr}_check.txt', 'a', encoding='utf-8') as nfile:
-                for nrow in dataset_check:
-                    nfile.write(nrow)
-            open(f'./{ctr}.txt', 'w').close()
-            with open(f'./{ctr}.txt', 'a', encoding='utf-8') as ofile:
-                ofile.write(header)
+            open(f'./dataset_{ctr}.txt', 'w').close()
+            with open(f'./dataset_{ctr}.txt', 'a', encoding='utf-8') as nfile:
+                nfile.write(header)
                 for orow in temp_dataset:
-                    ofile.write(orow)
+                    nfile.write(orow)
         mfile.close()
         nfile.close()
-        ofile.close()
         f.close()
 
-        group0 = pandas.read_csv(f'./dataset_all.txt', sep=';')
-        group1 = pandas.read_csv(f'./dataset_0-5.txt', sep=';')
-        group1_test = pandas.read_csv(f'./dataset_0-5_test.txt', sep=';')
-        group1_check = pandas.read_csv(f'./dataset_0-5_check.txt', sep=';')
-        group2 = pandas.read_csv(f'./dataset_5-10.txt', sep=';')
-        group2_test = pandas.read_csv(f'./dataset_5-10_test.txt', sep=';')
-        group2_check = pandas.read_csv(f'./dataset_5-10_check.txt', sep=';')
-        group3 = pandas.read_csv(f'./dataset_10-15.txt', sep=';')
-        group3_test = pandas.read_csv(f'./dataset_10-15_test.txt', sep=';')
-        group3_check = pandas.read_csv(f'./dataset_10-15_check.txt', sep=';')
-        group4 = pandas.read_csv(f'./dataset_15-20.txt', sep=';')
-        group4_test = pandas.read_csv(f'./dataset_15-20_test.txt', sep=';')
-        group4_check = pandas.read_csv(f'./dataset_15-20_check.txt', sep=';')
-        group5 = pandas.read_csv(f'./dataset_20-30.txt', sep=';')
-        group5_test = pandas.read_csv(f'./dataset_20-30_test.txt', sep=';')
-        group5_check = pandas.read_csv(f'./dataset_20-30_check.txt', sep=';')
-        group6 = pandas.read_csv(f'./dataset_30-50.txt', sep=';')
-        group6_test = pandas.read_csv(f'./dataset_30-50_test.txt', sep=';')
-        group6_check = pandas.read_csv(f'./dataset_30-50_check.txt', sep=';')
-        group7 = pandas.read_csv(f'./dataset_50-100.txt', sep=';')
-        group7_test = pandas.read_csv(f'./dataset_50-100_test.txt', sep=';')
-        group7_check = pandas.read_csv(f'./dataset_50-100_check.txt', sep=';')
-        group8 = pandas.read_csv(f'./dataset_100-inf.txt', sep=';')
-        group8_test = pandas.read_csv(f'./dataset_100-inf_test.txt', sep=';')
-        group8_check = pandas.read_csv(f'./dataset_100-inf_check.txt', sep=';')
+        for repeat in range(5):
+            for item_files in files:
+                del_ejects(f'{item_files}')
+                del_ejects(f'{item_files}_test')
 
-        sheets = {'DATA': group0,
-                  'DATA_0-5': group1, 'TEST_0-5': group1_test, 'CHECK_0-5': group1_check,
-                  'DATA_5-10': group2, 'TEST_5-10': group2_test, 'CHECK_5-10': group2_check,
-                  'DATA_10-15': group3, 'TEST_10-15': group3_test, 'CHECK_10-15': group3_check,
-                  'DATA_15-20': group4, 'TEST_15-20': group4_test, 'CHECK_15-20': group4_check,
-                  'DATA_20-30': group5, 'TEST_20-30': group5_test, 'CHECK_20-30': group5_check,
-                  'DATA_30-50': group6, 'TEST_30-50': group6_test, 'CHECK_30-50': group6_check,
-                  'DATA_50-100': group7, 'TEST_50-100': group7_test, 'CHECK_50-100': group7_check,
-                  'DATA_100-inf': group8, 'TEST_100-inf': group8_test, 'CHECK_100-inf': group8_check}
+        group0 = pandas.read_csv(f'./dataset_sample.txt', sep=';')
+        group1 = pandas.read_csv(f'./dataset_all.txt', sep=';')
+        group1_test = pandas.read_csv(f'./dataset_all_test.txt', sep=';')
+        group2 = pandas.read_csv(f'./dataset_0-10.txt', sep=';')
+        group2_test = pandas.read_csv(f'./dataset_0-10_test.txt', sep=';')
+        group3 = pandas.read_csv(f'./dataset_10-30.txt', sep=';')
+        group3_test = pandas.read_csv(f'./dataset_10-30_test.txt', sep=';')
+        group4 = pandas.read_csv(f'./dataset_30-50.txt', sep=';')
+        group4_test = pandas.read_csv(f'./dataset_30-50_test.txt', sep=';')
+        group5 = pandas.read_csv(f'./dataset_50-inf.txt', sep=';')
+        group5_test = pandas.read_csv(f'./dataset_50-inf_test.txt', sep=';')
+
+        sheets = {'SAMPLE': group0,
+                  'DATA': group1, 'TEST': group1_test,
+                  'DATA_0-10': group2, 'TEST_0-10': group2_test,
+                  'DATA_10-30': group3, 'TEST_10-30': group3_test,
+                  'DATA_30-50': group4, 'TEST_30-50': group4_test,
+                  'DATA_50-inf': group5, 'TEST_50-inf': group5_test}
 
         writer = pandas.ExcelWriter(f'./dataset{ver}.xlsx', engine='openpyxl')
 
@@ -704,18 +704,15 @@ def write_file(dset, title, ver, state):
 
         writer.save()
 
-        os.remove('./dataset_all.txt')
-        for delete in files:
-            if os.path.exists(f'./{delete}.txt'):
-                os.remove(f'./{delete}.txt')
-            if os.path.exists(f'./{delete}_test.txt'):
-                os.remove(f'./{delete}_test.txt')
-            if os.path.exists(f'./{delete}_check.txt'):
-                os.remove(f'./{delete}_check.txt')
+        os.remove('./dataset_sample.txt')
+        for files_item_del in files:
+            if os.path.exists(f'./dataset_{files_item_del}.txt'):
+                os.remove(f'./dataset_{files_item_del}.txt')
+            if os.path.exists(f'./dataset_{files_item_del}_test.txt'):
+                os.remove(f'./dataset_{files_item_del}_test.txt')
 
 
 def first_part():
-
     raw_dataset.append(scrapper(top_1000))
     raw_dataset.append(scrapper(bottom_1000))
 
@@ -732,8 +729,8 @@ def first_part():
 
 
 def second_part():
-    counter = 0
-    open(f'./tempdata.txt', 'w').close()
+    counter = 1100
+    # open(f'./tempdata.txt', 'w').close()
 
     with open(f'./raw_data.txt', 'w', encoding='utf-8') as set_file:
         set_file.write(f'url;id;name;year;duration;imdb-popularity;budget;box-office\n')
@@ -770,6 +767,7 @@ def second_part():
 
 
 def third_part():
+    versions = ['D1', 'D2', '']
     dataset = []
 
     with open(f'./tempdata.txt', 'r', encoding='utf-8') as temp_fdata:
@@ -784,56 +782,38 @@ def third_part():
                          f'{jrow["name"]};{jrow["year"]};{jrow["duration"]};'
                          f'{jrow["imdb-popularity"]};{jrow["budget"]};{jrow["box-office"]}\n')
 
-    dataset0_5, dataset5_10, dataset10_15, dataset15_20 = [], [], [], []
-    dataset20_30, dataset30_50, dataset50_100, dataset100_inf = [], [], [], []
+    dataset0_10, dataset10_30, dataset30_50, dataset50_inf = [], [], [], []
 
     for krow in dataset:
-        if krow["budget"] < 5000000:
-            dataset0_5.append(krow)
-        if 5000001 < krow["budget"] < 10000000:
-            dataset5_10.append(krow)
-        if 10000001 < krow["budget"] < 15000000:
-            dataset10_15.append(krow)
-        if 15000001 < krow["budget"] < 20000000:
-            dataset15_20.append(krow)
-        if 20000001 < krow["budget"] < 30000000:
-            dataset20_30.append(krow)
+        if krow["budget"] < 10000000:
+            dataset0_10.append(krow)
+        if 10000001 < krow["budget"] < 30000000:
+            dataset10_30.append(krow)
         if 30000001 < krow["budget"] < 50000000:
             dataset30_50.append(krow)
-        if 50000000 < krow["budget"] < 100000000:
-            dataset50_100.append(krow)
-        if 100000000 < krow["budget"]:
-            dataset100_inf.append(krow)
+        if 50000001 < krow["budget"]:
+            dataset50_inf.append(krow)
 
-    write_file(dataset, 'all', 'D1', 1)
-    write_file(dataset0_5, '0-5', 'D1', 0)
-    write_file(dataset5_10, '5-10', 'D1', 0)
-    write_file(dataset10_15, '10-15', 'D1', 0)
-    write_file(dataset15_20, '15-20', 'D1', 0)
-    write_file(dataset20_30, '20-30', 'D1', 0)
+    write_file(dataset, 'sample', 'D1', 1)
+    write_file(dataset, 'all', 'D1', 0)
+    write_file(dataset0_10, '0-10', 'D1', 0)
+    write_file(dataset10_30, '10-30', 'D1', 0)
     write_file(dataset30_50, '30-50', 'D1', 0)
-    write_file(dataset50_100, '50-100', 'D1', 0)
-    write_file(dataset100_inf, '100-inf', 'D1', 2)
+    write_file(dataset50_inf, '50-inf', 'D1', 2)
 
-    write_file(dataset, 'all', 'D2', 1)
-    write_file(dataset0_5, '0-5', 'D2', 0)
-    write_file(dataset5_10, '5-10', 'D2', 0)
-    write_file(dataset10_15, '10-15', 'D2', 0)
-    write_file(dataset15_20, '15-20', 'D2', 0)
-    write_file(dataset20_30, '20-30', 'D2', 0)
+    write_file(dataset, 'sample', 'D2', 1)
+    write_file(dataset, 'all', 'D2', 0)
+    write_file(dataset0_10, '0-10', 'D2', 0)
+    write_file(dataset10_30, '10-30', 'D2', 0)
     write_file(dataset30_50, '30-50', 'D2', 0)
-    write_file(dataset50_100, '50-100', 'D2', 0)
-    write_file(dataset100_inf, '100-inf', 'D2', 2)
+    write_file(dataset50_inf, '50-inf', 'D2', 2)
 
-    write_file(dataset, 'all', '', 1)
-    write_file(dataset0_5, '0-5', '', 0)
-    write_file(dataset5_10, '5-10', '', 0)
-    write_file(dataset10_15, '10-15', '', 0)
-    write_file(dataset15_20, '15-20', '', 0)
-    write_file(dataset20_30, '20-30', '', 0)
+    write_file(dataset, 'sample', '', 1)
+    write_file(dataset, 'all', '', 0)
+    write_file(dataset0_10, '0-10', '', 0)
+    write_file(dataset10_30, '10-30', '', 0)
     write_file(dataset30_50, '30-50', '', 0)
-    write_file(dataset50_100, '50-100', '', 0)
-    write_file(dataset100_inf, '100-inf', '', 2)
+    write_file(dataset50_inf, '50-inf', '', 2)
 
     temp_fdata.close()
     j_file.close()
