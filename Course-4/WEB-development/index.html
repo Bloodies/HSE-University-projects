@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			.wrapper {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				grid-auto-rows: auto;
+				padding: 2px; /* контур формы */
+				border: 1px solid #CCCCCC;
+				gap: 3px; /* зазоры по вертикали */
+			}
+			.container { 
+				grid-column-start: 1;
+				grid-column-end: span 4;
+			}
+			div {				
+				padding: 2px; /* контур формы */
+				border: 1px solid #CCCCCC;
+			}
+			p.title {
+				margin: 0 auto;
+				text-align: center;
+				padding: 3px; /* контур формы */
+			}
+			P.line {				
+				margin-left: 5px;
+				text-align: left;
+				border-left: 2px dashed red;
+				padding: 10px;
+   			}
+			form {
+				margin: 0 auto; /* Расположим форму по центру страницы */
+				width: 220px;
+				padding: 10px; /* контур формы */
+				border: 1px solid #CCCCCC;
+				border-radius: 5px;
+			}
+			.ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			form li + li {
+				margin-top: 10px;
+			}
+			label {
+				display: inline-block;
+				width: 65px;
+				text-align: right;
+			}
+			input,
+			textarea {
+				font: 1em sans-serif;
+				width: 150px; /* размер полей */
+				box-sizing: border-box;
+				border: 1px solid #999999; /* границы полей */
+			}
+			input:focus,
+			textarea:focus { /* подсветка для элементов в фокусе */
+				border-color: #000000;
+			}
+			.button {
+				padding-left: 65px;
+				margin-left: 10px;
+			}
+		</style>
+		<link rel="stylesheet" href="style.css"/>
+		<meta charset="utf-8">
+		<title>Веб разработка ЧепоковЕС (ПИ-18-2)</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="container">
+				<p class="title" style="font-size: 150%; text-decoration: underline">Таблица примеров</p>
+			</div>
+			<div>
+				<p class="title">Формы</p>
+			</div>
+			<div>
+				<p class="title">Таблицы</p>
+			</div>
+			<div>
+				<p class="title">Списки</p>
+			</div>
+			<div>
+				<p class="title">Блоки</p>
+			</div>
+			<div>
+				<!-- <form action="/my-handling-form-page" method="post"> -->
+				<form>
+					<ul class="ul">
+						<li>
+							<label for="login">Login:</label>
+							<input type="login" id="login" name="user_login">
+						</li>
+						<li>
+							<label for="password">Password:</label>
+							<input type="password" id="password" name="user_password">
+						</li>
+						<li class="button">
+							<button type="submit">Login</button>
+						</li>
+					</ul>				
+				</form>
+			</div>
+			<div>
+				<table class="table">
+					<tr>
+						<th class="table th">1</th>
+						<th class="table th">2</th>
+						<th class="table th">3</th>
+					</tr>
+					<tr>
+						<td>1.1</td>
+						<td>1.2</td>
+						<td>1.3</td>
+					</tr>
+					<tr>
+						<td>2.1</td>
+						<td>2.2</td>
+						<td>2.3</td>
+					</tr>
+					<tr>
+						<td>3.1</td>
+						<td>3.2</td>
+						<td>3.3</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<ul type="square">Маркированный:
+					<li>Lorem</li>
+					<li>ipsum</li>
+				</ul>
+				<ol type="I">Нумерованный:
+					<li>Lorem ipsum</li>
+					<li>dolor sit amet</li>
+					<ul type="circle">
+						<li>consectetur</li>
+						<li>adipiscing elit</li>
+					</ul>
+					<li>sed do eiusmod</li>
+				</ol>
+			</div>
+			<div>
+                <p class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+		</div>
+	</body>
+</html>

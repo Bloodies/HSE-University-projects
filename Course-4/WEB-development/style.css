@@ -2,7 +2,8 @@
 	width: 500px;
 	margin-bottom: 20px;
 	border: 1px solid #dddddd;
-	border-collapse: collapse; 
+	border-collapse: collapse;
+	margin: 0 auto;
 }
 .table th {
 	font-weight: bold;
