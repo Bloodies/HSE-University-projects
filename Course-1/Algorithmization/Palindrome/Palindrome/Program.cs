@@ -8,43 +8,38 @@ namespace Palindrome
 {
     class Program
     {
-        public static bool Palindrom(string s)
+        /// <summary>
+        /// Сравнение символов слова для нахождения палиндрома
+        /// </summary>
+        /// <param name="word"> Введенное слово </param>
+        /// <returns>
+        /// Возвращает true/false
+        /// true - если палиндром
+        /// false - если нет
+        /// </returns>
+        public static bool Palindrom(string word)
         {
-            int j = s.Length - 1;
+            int j = word.Length - 1;
             for (int i = 0; i < j; i++, j--)
-            {
-                if (s[i] != s[j])
-                {
+                if (word[i] != word[j])
                     return false;
-                }
-            }
             return true;
         }
+
         static void Main()
         {
-            string s;
-            Console.WriteLine("Введите текст:");
-            s = Console.ReadLine();
-            if (Palindrom(s))
-            {
+            Console.Write("Введите текст: ");
+            if (Palindrom(Console.ReadLine()))
                 Console.WriteLine("Этот текст - палиндром");
-            }
             else
-            {
                 Console.WriteLine("Этот текст - не палиндром");
-            }
 
-            Console.WriteLine("Ещё текст? [да/нет]");
-            string restart = Console.ReadLine();
-            Console.WriteLine("   ");
-            if (restart == "да")
-            {
+            Console.WriteLine("\n-----------------------");
+            Console.Write("Ещё текст? [y/n]: ");
+            if (Console.ReadLine() == "y")
                 Main();
-            }
             else
-            {
                 Environment.Exit(0);
-            }
         }
     }
 }

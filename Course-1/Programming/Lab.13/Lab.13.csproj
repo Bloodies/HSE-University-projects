@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="13 Lab.cs" />
+    <Compile Include="Lab-13.cs" />
     <Compile Include="CollectionHandlerEventArgs.cs" />
     <Compile Include="Journal.cs" />
     <Compile Include="JournalEntry.cs" />

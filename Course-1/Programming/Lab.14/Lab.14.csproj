@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="14 Lab.cs" />
+    <Compile Include="Lab-14.cs" />
     <Compile Include="Kingdom.cs" />
     <Compile Include="Monarchy.cs" />
     <Compile Include="MyDictionary.cs" />
