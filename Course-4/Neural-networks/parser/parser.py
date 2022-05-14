@@ -345,6 +345,14 @@ def parser(title_id):
                     'Fantasy': 16, 'Sci-Fi': 17, 'Thriller': 18, 'Family': 19, 'Short': 20,
                     'Sport': 21, 'War': 22, 'Reality-TV': 23, 'Game-Show': 24, 'Documentary': 25,
                     'Talk-Show': 26, 'News': 27, 'Adult': 28}
+    '''
+    genre_format = {'Action': 1, 'Adventure': 2, 'Drama': 3, 'Romance': 3, 'Comedy': 4,
+                    'Crime': 5, 'Mystery': 6, 'Horror': 7, 'Western': 8, 'History': 9, 'Documentary': 9,
+                    'Biography': 10, 'Animation': 11, 'Fantasy': 12, 'Sci-Fi': 12,
+                    'Thriller': 13, 'Music': 14, 'Musical': 14, 'Film-Noir': 15, 'War': 16, 
+                    'Family': 17, 'Short': 18, 'Sport': 19,  'Reality-TV': 20, 
+                    'Game-Show': 21, 'Talk-Show': 22, 'News': 23, 'Adult': 24}
+    '''
 
     url = f'https://www.imdb.com/title/tt{str(title_id)}/'
     session = requests.Session()
