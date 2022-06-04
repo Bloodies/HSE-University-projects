@@ -142,8 +142,6 @@ def convert_date(child_id):
         release_date[2] = 0
 
     return release_date
-
-
 # endregion
 
 
@@ -325,8 +323,6 @@ def take_box_wiki(child_id):
         pass
 
     return budget
-
-
 # endregion
 
 
@@ -337,7 +333,7 @@ def parser(title_id):
     year, mpaa, duration, genre, season, popularity, budget, boxoffice, franchise = '', '', '', '', '', '', '', '', ''
     hour, minute, day, age_limit, oscars, holiday = '', '', '', '', '', ''
 
-    agelimit_format = {'PG-13': 3, 'NC-17': 5, 'PG': 2, 'R': 4, 'G': 1, 'X': 6,
+    agelimit_format = {'G': 1, 'PG': 2, 'PG-13': 3, 'NC-17': 4, 'R': 5, 'X': 6,
                        '0': 1, '6': 2, '12': 3, '14': 4, '16': 5, '18': 6}
     genre_format = {'Action': 1, 'Adventure': 2, 'Drama': 3, 'Comedy': 4, 'Crime': 5,
                     'Romance': 6, 'Mystery': 7, 'Horror': 8, 'History': 9, 'Western': 10,
