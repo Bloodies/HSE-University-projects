@@ -200,7 +200,7 @@ def parse_genre(request):
 
     genre = request.find('div', attrs={'data-testid': 'genres'})    # Поиск поля по аттрибуту
     if genre is not None:                                           # Проверка на пустоту
-        genre = genre.find('span', class_='ipc-chip__text')
+        genre = genre.find('li', class_='ipc-chip__text')
         if genre is not None:
             genre = genre_format[genre.get_text()]                  # Получение текста
 
@@ -420,19 +420,19 @@ def parser(title_id):
     request = session.get(url, headers=headers)     # Создаем сессию
     soup = BeautifulSoup(request.content, 'lxml')   # Читаем страницу
 
+    print(f'{checked_counter}/2000 Progress ({title_id}): \033[31m[processing]\033[0m {url}')
     success = soup.find('li', class_='ipc-inline-list__item')  # Проверяем наличие страницы
     title = soup.find('h1', attrs={'data-testid': 'hero-title-block__title'})
     if title is not None:
         title = title.get_text()  # название фильма
 
     if success is not None:  # страница не пустая или не принадлежит не фильму
-        print(f'{checked_counter}/2000 Progress ({title_id}): \033[31m[processing]\033[0m {url}')
         # print(f'{checked_counter} Progress ({title_id}): [##              ] 1/8 [wiki] {url}')
         # Поиск на вики обязателен так как там информация о франшизе
         parse_wiki(title_id)  # отправляем поиск фильма в вики
 
         # region С помощью regex выбираем значения длительности и возрастного ограничения
-        items_list = soup.find('ul', class_='ipc-inline-list').find_all('li', class_='ipc-inline-list__item')
+        items_list = soup.find('ul', attrs={'data-testid': 'hero-title-block__metadata'}).find_all('li', class_='ipc-inline-list__item')
         for item in items_list:
             hour = re.findall(r'\b\w{1,2}[h]\b', item.get_text()) if not hour else hour         # поиск часов
             minute = re.findall(r'\b\w{1,2}[m]\b', item.get_text()) if not minute else minute   # поиск минут
@@ -442,6 +442,8 @@ def parser(title_id):
                                   item.get_text()) if not mpaa else mpaa  # поиск возрастного рейтинга
         # endregion
 
+        while type(year) not in (str, int):
+            year = year[0] if year else 0
         # print(f'\r{checked_counter} Progress ({title_id}): [####            ] 2/8 [duration] {url}')
         # region Длительность фильма
         duration = parse_duration(hour, minute)
@@ -646,11 +648,25 @@ def parser(title_id):
 def test():
     print(f'\033[31m\033[40m--- TEST PROCESSING ---\033[0m\n')
     # for item_id in ('0468569'): #ids:'10366460',
-    test_set = parser('0038650')
-    print(f'{test_set["budget"]};{test_set["duration"]};{test_set["genre"]};{test_set["age-limit"]};'
-          f'{test_set["franchise"]};{test_set["release-season"]};{test_set["holiday"]};{test_set["director-rating"]};'
-          f'{test_set["directors-awards"]};{test_set["writers-awards"]};{test_set["stars-awards"]};'
-          f'{test_set["oscars"]};{test_set["box-office"]}\n')
+    test_set = parser('0477348')
+    # print(f'{test_set["budget"]};{test_set["duration"]};{test_set["genre"]};{test_set["age-limit"]};'
+    #       f'{test_set["franchise"]};{test_set["release-season"]};{test_set["holiday"]};{test_set["director-rating"]};'
+    #       f'{test_set["directors-awards"]};{test_set["writers-awards"]};{test_set["stars-awards"]};'
+    #       f'{test_set["oscars"]};{test_set["box-office"]}\n')
+    print(f'ID:{test_set["id"]}\t{test_set["year"]}\t{test_set["name"]}\n'
+          f'\tbudget:           {test_set["budget"]}\n'
+          f'\tduration:         {test_set["duration"]}\n'
+          f'\tgenre:            {test_set["genre"]}\n'
+          f'\tage-limit:        {test_set["age-limit"]}\n'
+          f'\tfranchise:        {test_set["franchise"]}\n'
+          f'\trelease-season:   {test_set["release-season"]}\n'
+          f'\tholiday:          {test_set["holiday"]}\n'
+          f'\tdirector-rating:  {test_set["director-rating"]}\n'
+          f'\tdirectors-awards: {test_set["directors-awards"]}\n'
+          f'\twriters-awards:   {test_set["writers-awards"]}\n'
+          f'\tstars-awards:     {test_set["stars-awards"]}\n'
+          f'\toscars:           {test_set["oscars"]}\n'
+          f'\tbox-office:       {test_set["box-office"]}\n')
 
 
 if __name__ == '__main__':
@@ -663,42 +679,42 @@ if __name__ == '__main__':
     driver = webdriver.Chrome(options=chrome_options)  # задаем значения для selenium
 
     # очистка предыдущего парсинга если надо
-    # open(f'./raw_dataset.txt', 'w').close()
+    open(f'./raw_dataset.txt', 'w').close()
 
     if not os.path.exists('./ids.txt'):
         raise SystemExit
 
-    test()
+    # test()
 
-    # counter = 0  # счетчик с какой строки начинать парсить
-    # while counter <= 2000:
-    #     output_dataset, temp_dataset, temp_ids = [], [], []
-    #
-    #     with open(f'./ids.txt', 'r', encoding='utf-8') as temp_file:
-    #         for index, row_idx in enumerate(temp_file, 1):
-    #             if counter <= index < counter + 100:
-    #                 temp_ids.append(row_idx.replace('\n', ''))
-    #
-    #     try:
-    #         # запускаем функцию parser  в несколько потоков с входными данными из файла с id
-    #         temp_dataset = pool.map(parser, temp_ids)
-    #     except (TimeoutError, requests.exceptions.ConnectionError) as e:
-    #         print(e)  # пишем ошибку
-    #         pass
-    #
-    #     for temp_row in temp_dataset:
-    #         if temp_row["id"] in (0, '0', '', None):  # если id фильма 0 то пропускаем
-    #             pass
-    #         else:  # иначе записываем в dataset
-    #             output_dataset.append(temp_row)
-    #
-    #     with open(f'./raw_dataset.txt', 'a', encoding='utf-8') as dataset:
-    #         for subrow in output_dataset:
-    #             dataset.write(f'{subrow}\n')
-    #
-    #     counter += 100
-    #
-    # temp_file.close()
-    # dataset.close()
+    counter = 0  # счетчик с какой строки начинать парсить
+    while counter <= 2000:
+        output_dataset, temp_dataset, temp_ids = [], [], []
+
+        with open(f'./ids.txt', 'r', encoding='utf-8') as temp_file:
+            for index, row_idx in enumerate(temp_file, 1):
+                if counter <= index < counter + 100:
+                    temp_ids.append(row_idx.replace('\n', ''))
+
+        try:
+            # запускаем функцию parser  в несколько потоков с входными данными из файла с id
+            temp_dataset = pool.map(parser, temp_ids)
+        except (TimeoutError, requests.exceptions.ConnectionError) as e:
+            print(e)  # пишем ошибку
+            pass
+
+        for temp_row in temp_dataset:
+            if temp_row["id"] in (0, '0', '', None):  # если id фильма 0 то пропускаем
+                pass
+            else:  # иначе записываем в dataset
+                output_dataset.append(temp_row)
+
+        with open(f'./raw_dataset.txt', 'a', encoding='utf-8') as dataset:
+            for subrow in output_dataset:
+                dataset.write(f'{subrow}\n')
+
+        counter += 100
+
+    temp_file.close()
+    dataset.close()
 
     print(f'\033[7m--- END IN {round((time.time() - start_time), 3)} sec ---\033[0m')

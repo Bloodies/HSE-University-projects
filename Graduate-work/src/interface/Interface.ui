@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>793</width>
+    <height>367</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Предсказание рентабельности кинокартины</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>471</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="11" column="0">
+      <widget class="QLabel" name="lblOscars">
+       <property name="text">
+        <string>Суммарное количество оскаров у съемочной группы</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="lblWrAwards">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Имеются ли у сценариста престижные награды&lt;br&gt;(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)&lt;/br&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="lblStAwards">
+       <property name="text">
+        <string>Имеются ли у актерова престижные награды&lt;br&gt;(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)&lt;/br&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="lblDuration">
+       <property name="text">
+        <string>Продолжительность фильма (В минутах)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="lblMpaa">
+       <property name="text">
+        <string>Возрастное ограничение фильма</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="lblGenre">
+       <property name="text">
+        <string>Основной жанр фильма</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="lblDirAwards">
+       <property name="text">
+        <string>Имеются ли у режиссера престижные награды&lt;br&gt;(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)&lt;/br&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="lblBudget">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Бюджет фильма (Доллары США)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="lblFranchise">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Является ли фильм продолжением кинофраншизы&lt;br&gt;(Является следуещей частью уже вышедшего)&lt;/br&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="lblSeason">
+       <property name="text">
+        <string>Планируемый сезон выхода</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="lblHoliday">
+       <property name="text">
+        <string>Планируется ли выход в период высокой посещаемости</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="lblDirRating">
+       <property name="text">
+        <string>Рейтинг предыдущих работ режиссера</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="tbBudget"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="tbDuration"/>
+     </item>
+     <item row="11" column="1">
+      <widget class="QLineEdit" name="tbOscars"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="cbGenre">
+       <item>
+        <property name="text">
+         <string>Боевик (Action)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Приключение (Adventure)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Драма</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Комедия</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Криминальный фильм</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Мистика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Хоррор</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Исторический</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Документальный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Анимация</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Фантастика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Триллер</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Мюзикл</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="cbMpaa">
+       <item>
+        <property name="text">
+         <string>0+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>12+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>16+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>18+</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="cbFranchise">
+       <item>
+        <property name="text">
+         <string>Нет</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Да</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="cbSeason">
+       <item>
+        <property name="text">
+         <string>Зима</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Весна</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Лето</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Осень</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QComboBox" name="cbHoliday">
+       <item>
+        <property name="text">
+         <string>Нет</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Да</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QComboBox" name="cbDirRating">
+       <item>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>8</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>9</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>10</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QComboBox" name="cbDirAwards">
+       <item>
+        <property name="text">
+         <string>Нет</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Да</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QComboBox" name="cbWrAwards">
+       <item>
+        <property name="text">
+         <string>Нет</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Да</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QComboBox" name="cbStAwards">
+       <item>
+        <property name="text">
+         <string>Нет</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Да</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="btnPredict">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>10</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Рассчитать</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblOutput">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>40</y>
+      <width>291</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
