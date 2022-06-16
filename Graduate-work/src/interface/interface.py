@@ -2,6 +2,7 @@
 
 import numpy
 import sys
+import tensorflow
 import time
 from PyQt5 import QtCore, QtGui, QtWidgets
 from keras.models import load_model
@@ -148,7 +149,12 @@ class Ui_MainWindow(object):
         self.lblOutput = QtWidgets.QLabel(self.centralwidget)
         self.lblOutput.setGeometry(QtCore.QRect(490, 40, 291, 311))
         self.lblOutput.setText("")
+        self.lblOutput.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.lblOutput.setObjectName("lblOutput")
+        self.lblWait = QtWidgets.QLabel(self.centralwidget)
+        self.lblWait.setGeometry(QtCore.QRect(570, 10, 131, 21))
+        self.lblWait.setText("")
+        self.lblWait.setObjectName("lblWait")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -160,14 +166,18 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Предсказание рентабельности кинокартины"))
         self.lblOscars.setText(_translate("MainWindow", "Суммарное количество оскаров у съемочной группы"))
-        self.lblWrAwards.setText(_translate("MainWindow", "<html><head/><body><p>Имеются ли у сценариста престижные награды<br>(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)</br></body></html>"))
-        self.lblStAwards.setText(_translate("MainWindow", "Имеются ли у актерова престижные награды<br>(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)</br>"))
+        self.lblWrAwards.setText(_translate("MainWindow",
+                                            "<html><head/><body><p>Имеются ли у сценариста престижные награды<br>(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)</br></body></html>"))
+        self.lblStAwards.setText(_translate("MainWindow",
+                                            "Имеются ли у актерова престижные награды<br>(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)</br>"))
         self.lblDuration.setText(_translate("MainWindow", "Продолжительность фильма (В минутах)"))
         self.lblMpaa.setText(_translate("MainWindow", "Возрастное ограничение фильма"))
         self.lblGenre.setText(_translate("MainWindow", "Основной жанр фильма"))
-        self.lblDirAwards.setText(_translate("MainWindow", "Имеются ли у режиссера престижные награды<br>(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)</br>"))
+        self.lblDirAwards.setText(_translate("MainWindow",
+                                             "Имеются ли у режиссера престижные награды<br>(«Оскар», «Золотой глобус», SAAG, Critics’ Choice Awards)</br>"))
         self.lblBudget.setText(_translate("MainWindow", "Бюджет фильма (Доллары США)"))
-        self.lblFranchise.setText(_translate("MainWindow", "<html><head/><body><p>Является ли фильм продолжением кинофраншизы<br>(Является следуещей частью уже вышедшего)</br></p></body></html>"))
+        self.lblFranchise.setText(_translate("MainWindow",
+                                             "<html><head/><body><p>Является ли фильм продолжением кинофраншизы<br>(Является следуещей частью уже вышедшего)</br></p></body></html>"))
         self.lblSeason.setText(_translate("MainWindow", "Планируемый сезон выхода"))
         self.lblHoliday.setText(_translate("MainWindow", "Планируется ли выход в период высокой посещаемости"))
         self.lblDirRating.setText(_translate("MainWindow", "Рейтинг предыдущих работ режиссера"))
@@ -243,8 +253,6 @@ class Ui_MainWindow(object):
         season_format = {'Зима': 4, 'Весна': 1, 'Лето': 2, 'Осень': 3}
 
         data1, data2, data3 = False, False, False
-        budget, duration, genre, mpaa, franchise, season, holiday = 0, 0, 0, 0, 0, 0, 0
-        dirrating, dirawards, wrawards, stawards, oscars = 0, 0, 0, 0, 0
 
         if str(data[0]).isdigit():
             if 100000 <= int(data[0]):
@@ -283,6 +291,9 @@ class Ui_MainWindow(object):
             stawards = yesno_format[data[10]]
             oscars = int(data[11])
 
+            self.lblWait.setText('Loading.')
+            time.sleep(1)
+
             # Формирование датасета для предсказания
             output = numpy.array([[mpaa, duration, season, holiday, dirawards, wrawards,
                                    stawards, oscars, genre, franchise, budget],
@@ -309,14 +320,10 @@ class Ui_MainWindow(object):
                                   [4 if mpaa != 4 else 5, duration, season, holiday, dirawards, wrawards,
                                    stawards, oscars, genre, franchise, budget]])
 
-            # print(budget, duration, genre, mpaa, franchise, season, holiday,
-            #       dirrating, dirawards, wrawards, stawards, oscars)
+            predictions = model.predict(output)
+            self.lblWait.setText('')
 
             result = 0
-            self.btnPredict.setText('Ожидание')
-            predictions = model.predict(output)
-            time.sleep(4)
-            self.btnPredict.setText('Рассчитать')
             pred = round((predictions[0, 0]) / 10) * 10
             if pred <= 10:
                 result = 500000
@@ -339,7 +346,6 @@ class Ui_MainWindow(object):
             elif 91 <= pred:
                 result = 40000000
             self.lblOutput.setText(f'Прогнозируемые кассовые сборы: ~${result}')
-            # self.lblOutput.setText(f'Прогнозируемые кассовые сборы{}')
 
 
 if __name__ == "__main__":

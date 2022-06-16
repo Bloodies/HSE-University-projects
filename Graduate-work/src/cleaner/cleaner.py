@@ -76,12 +76,17 @@ def show_heatmap(filename):
 
     plt.clf()
     df = pandas.read_csv(f'./{filename}.txt', sep=';')
+    dfm = df[['budget', 'boxoffice']]
     cols = df.columns[:round(subrow_sum/5)]
     sns.heatmap(df[cols].isnull())
     plt.show()
 
     plt.clf()
-    sns.heatmap(df[cols])
+    sns.heatmap(df[['budget', 'boxoffice']])
+    plt.show()
+
+    plt.clf()
+    sns.heatmap(dfm[cols])
     plt.show()
 
     # plt.clf()

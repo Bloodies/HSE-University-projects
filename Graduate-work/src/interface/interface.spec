@@ -8,7 +8,7 @@ a = Analysis(
     ['interface.py'],
     pathex=[],
     binaries=[],
-    datas=[('NeuroSet', '.')],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

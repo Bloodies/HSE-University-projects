@@ -127,6 +127,7 @@ def parse_wiki(child_id):
         session = requests.Session()
         request = session.get(url, headers=headers)
         soup = BeautifulSoup(request.content, 'lxml')  # Загружаем найденную страницу в более быстрый bs4
+        time.sleep(1)
 
         # region Франшиза
         franchise1 = soup.find('span', attrs={'data-wikidata-property-id': 'P155'})  # узнаем есть ли предыдущие фильмы
@@ -231,6 +232,7 @@ def parse_date(child_id):
     session = requests.Session()
     request = session.get(url, headers=headers)
     soup = BeautifulSoup(request.content, 'lxml')  # Создаем сессию
+    time.sleep(1)
 
     parsed_date = [0, 0]  # Инициализация списка возврощаемых значений
     date = None
@@ -243,9 +245,10 @@ def parse_date(child_id):
 
     data = []
     dates_list = soup.find('table', class_='release-dates-table-test-only')
-    dates_list = dates_list.find_all('tr', class_='ipl-zebra-list__item release-date-item')
-    for item in dates_list:  # Проверка всех дат выхода
-        data.append(item.find('td', class_='release-date-item__date').get_text())  # Получения списка дат
+    if dates_list is not None:
+        dates_list = dates_list.find_all('tr', class_='ipl-zebra-list__item release-date-item')
+        for item in dates_list:  # Проверка всех дат выхода
+            data.append(item.find('td', class_='release-date-item__date').get_text())  # Получения списка дат
 
     qty_most_common = 0
     for j in set(data):
@@ -296,6 +299,7 @@ def parse_crew(child_id, director):
         sub_session = requests.Session()
         sub_request = sub_session.get(sub_url, headers=headers)
         sub_soup = BeautifulSoup(sub_request.content, 'lxml')  # Создаем сессию
+        time.sleep(1)
 
         # Находим рейтинг фильма
         rating = sub_soup.find('div', attrs={'data-testid': 'hero-rating-bar__aggregate-rating__score'})
@@ -316,6 +320,7 @@ def parse_crew(child_id, director):
         session = requests.Session()
         request = session.get(url, headers=headers)
         soup = BeautifulSoup(request.content, 'lxml')   # Создаем сессию
+        time.sleep(1)
 
         works_urls, works_num, works_sum = [], 0, 0
         if director == 1:                               # Если получали данные о директорах
@@ -419,6 +424,7 @@ def parser(title_id):
     session = requests.Session()
     request = session.get(url, headers=headers)     # Создаем сессию
     soup = BeautifulSoup(request.content, 'lxml')   # Читаем страницу
+    time.sleep(1)
 
     print(f'{checked_counter}/2000 Progress ({title_id}): \033[31m[processing]\033[0m {url}')
     success = soup.find('li', class_='ipc-inline-list__item')  # Проверяем наличие страницы
@@ -648,7 +654,7 @@ def parser(title_id):
 def test():
     print(f'\033[31m\033[40m--- TEST PROCESSING ---\033[0m\n')
     # for item_id in ('0468569'): #ids:'10366460',
-    test_set = parser('0477348')
+    test_set = parser('0468569')
     # print(f'{test_set["budget"]};{test_set["duration"]};{test_set["genre"]};{test_set["age-limit"]};'
     #       f'{test_set["franchise"]};{test_set["release-season"]};{test_set["holiday"]};{test_set["director-rating"]};'
     #       f'{test_set["directors-awards"]};{test_set["writers-awards"]};{test_set["stars-awards"]};'
@@ -666,7 +672,11 @@ def test():
           f'\twriters-awards:   {test_set["writers-awards"]}\n'
           f'\tstars-awards:     {test_set["stars-awards"]}\n'
           f'\toscars:           {test_set["oscars"]}\n'
-          f'\tbox-office:       {test_set["box-office"]}\n')
+          f'\tbox-office:       {test_set["box-office"]}\n'
+          f'{test_set["budget"]};{test_set["duration"]};{test_set["genre"]};{test_set["age-limit"]};'
+          f'{test_set["franchise"]};{test_set["release-season"]};{test_set["holiday"]};'
+          f'{test_set["director-rating"]};{test_set["directors-awards"]};{test_set["writers-awards"]};'
+          f'{test_set["stars-awards"]};{test_set["oscars"]};{test_set["box-office"]}')
 
 
 if __name__ == '__main__':
