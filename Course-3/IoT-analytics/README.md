@@ -3,4 +3,4 @@
 
 ## IoT-analytics
 
-### [Результат](https://github.com/Bloodies/HSE-University-projects/blob/Bloodies/Course-3/IoT-analytics/IoT_project.pdf)
+* [Результат](https://github.com/Bloodies/HSE-University-projects/blob/Bloodies/Course-3/IoT-analytics/IoT_project.pdf)
