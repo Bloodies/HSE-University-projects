@@ -1,5 +1,5 @@
-[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO))  
-[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-4)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects) 
 
 Задание взято с сайта с онлайн курсами ([openedu.ru](https://courses.openedu.ru))
 
@@ -20,15 +20,15 @@
 Гарантируется, что размер стека в процессе выполнения команд не превысит 10^6 элементов. 
 __________________
 Формат входного файла  
-В первой строке входного файла содержится ![none](https://github.com/Bloodies/HSE-University-projects/blob/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w4_t1-t2_1.png) — число команд. Каждая последующая строка исходного файла содержит ровно одну команду.
+В первой строке входного файла содержится ![txt_w4_t1-t2_1](https://user-images.githubusercontent.com/45668574/176199785-f1506299-933c-489e-b6e5-2d24e51c2b6d.png) — число команд. Каждая последующая строка исходного файла содержит ровно одну команду.
 
 Формат выходного файла  
 Выведите числа, которые удаляются из стека с помощью команды "−", по одному в каждой строке. Числа нужно выводить в том порядке, в котором они были извлечены из стека. Гарантируется, что изъятий из пустого стека не производится.
 
 Пример
 
-![none](https://github.com/Bloodies/HSE-University-projects/blob/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w4_t2.png)
+![format_w4_t2](https://user-images.githubusercontent.com/45668574/176200302-e9dd8c54-305d-461c-9ac8-ab9e635272ce.png)
 __________________
 Результат
 
-![none](https://github.com/Bloodies/HSE-University-projects/blob/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w4_t2.png)
+![result_w4_t2](https://user-images.githubusercontent.com/45668574/176200278-3a8a6513-fd88-4511-8297-0d4f86130875.png)
