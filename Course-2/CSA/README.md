@@ -3,6 +3,6 @@
 
 ## Computer System Architecture (Assembler)
 
-#### [Lab 1](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/CSA/Lab.1)
-#### [Lab 2](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/CSA/Lab.2)
-#### [Lab 3](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/CSA/Lab.3)
+* [Lab 1](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/CSA/Lab.1)
+* [Lab 2](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/CSA/Lab.2)
+* [Lab 3](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/CSA/Lab.3)
