@@ -3,7 +3,7 @@
 
 ## Introduction
 
-#### Task 1
+#### [Task 1](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-1/Introduction/Task-1)
 > Программа для поиска квадратного корня
-#### Task 2
+#### [Task 2](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-1/Introduction/Task-2)
 > Программа для подсчета числа пи
