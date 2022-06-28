@@ -14,6 +14,8 @@
 #### The course is provided by the website [openedu.ru](https://openedu.ru)
 </details>
 
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
 _______________________
 📁 [Четвертая неделя](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-4 "Week 4")
 <br>⠀┣📁 [Стек](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-4/1.%20Stack%20(%D0%A1%D1%82%D0%B5%D0%BA) "Stack")
