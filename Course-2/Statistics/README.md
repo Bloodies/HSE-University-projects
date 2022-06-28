@@ -3,7 +3,7 @@
 
 ## Statistical and Empirical Methods of Computing
 
-📁Programming
+📁Statistics
 <br>⠀┣📁Lab.1 [Задание](https://github.com/Bloodies/HSE-University-projects/blob/Bloodies/Course-2/Statistics/Lab.1/doc/Lab_1.pdf)
 <br>⠀┣📁Lab.2 [Задание](https://github.com/Bloodies/HSE-University-projects/blob/Bloodies/Course-2/Statistics/Lab.2/doc/Lab_2.pdf)
 <br>⠀┣📁Lab.3 [Задание](https://github.com/Bloodies/HSE-University-projects/blob/Bloodies/Course-2/Statistics/Lab.3/doc/Lab_3.pdf)
