@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-/* Практическое задание №3 (59з)
- * Даны действительные числа х, у.
- * Определить, принадлежит ли точка с координатами (х, у) заштрихованной части плоскости. 
- */
-
+/// <summary>
+/// Практическое задание №3 (59з)
+/// Даны действительные числа х, у.
+/// Определить, принадлежит ли точка с координатами (х, у) заштрихованной части плоскости. 
+/// </summary>
 namespace Task_3
 {
     class Program
@@ -32,6 +32,7 @@ namespace Task_3
             return number;
         }
         #endregion
+
         public static bool Rectangle(double x, double y)
         {
             //проверка точки на принадлежность прямоугольной области
@@ -40,12 +41,14 @@ namespace Task_3
             bool accept = (y >= -2 && y <= 1) && (x >= -1 && x <= 1);
             return accept;
         }
+
         public static bool Triangle(double x, double y)
         {
             //проверка точки на принадлежность треугольным областям
             bool accept = (y > x) && (y > -x);
             return accept;
         }
+
         static void Main()
         {
             Console.Clear();

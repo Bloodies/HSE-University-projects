@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Globalization;
 
-/* Практическое задание №11 (8)
- * Написать метод удаления из графа всех вершин с заданным значением информационного поля.
- */
-
+/// <summary>
+/// Практическое задание №11 (8)
+/// Написать метод удаления из графа всех вершин с заданным значением информационного поля.
+/// </summary>
 namespace Task_11
 {
     #region
@@ -181,6 +181,7 @@ namespace Task_11
                         continue;
                 }
                 #endregion
+
             } while (!true);
         }
     }
