@@ -1,4 +1,4 @@
-[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO))  
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-4)  
 [:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
 
 Задание взято с сайта с онлайн курсами ([openedu.ru](https://courses.openedu.ru))
@@ -13,23 +13,23 @@
 Последовательность A, состоящую из символов из множества «(», «)», «[» и «]», назовем правильной скобочной последовательностью, если выполняется одно из следующих утверждений:
 
 * A — пустая последовательность;
-* первый символ последовательности A — это «(», и в этой последовательности существует такой символ «)», что последовательность можно представить как ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w4_t3_1.png) — правильные скобочные последовательности;
-* первый символ последовательности A — это «[», и в этой последовательности существует такой символ «]», что последовательность можно представить как ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w4_t3_2.png) и  — правильные скобочные последовательности.
+* первый символ последовательности A — это «(», и в этой последовательности существует такой символ «)», что последовательность можно представить как ![txt_w4_t3_1](https://user-images.githubusercontent.com/45668574/176200558-ae74f189-c752-40e6-9599-fc7644b5765c.png) — правильные скобочные последовательности;
+* первый символ последовательности A — это «[», и в этой последовательности существует такой символ «]», что последовательность можно представить как ![txt_w4_t3_2](https://user-images.githubusercontent.com/45668574/176200607-d826ed89-5503-4d36-9430-ab92e0cdcb0d.png) и  — правильные скобочные последовательности.
 
 Так, например, последовательности «(())» и «()[]» являются правильными скобочными последовательностями, а последовательности «[)» и «((» таковыми не являются.
 
 Входной файл содержит несколько строк, каждая из которых содержит последовательность символов «(», «)», «[» и «]». Для каждой из этих строк выясните, является ли она правильной скобочной последовательностью.
 __________________
 Формат входного файла  
-Первая строка входного файла содержит число ![none](https://github.com/Bloodies/HSE-University-projects/blob/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w4_t3_3.png) - число скобочных последовательностей, которые необходимо проверить. Каждая из следующих N строк содержит скобочную последовательность длиной от  до  включительно. В каждой из последовательностей присутствуют только скобки указанных выше видов.
+Первая строка входного файла содержит число ![txt_w4_t3_3](https://user-images.githubusercontent.com/45668574/176200664-ad2d837f-9970-42a5-a178-626c13e9e6b8.png) - число скобочных последовательностей, которые необходимо проверить. Каждая из следующих N строк содержит скобочную последовательность длиной от  до  включительно. В каждой из последовательностей присутствуют только скобки указанных выше видов.
 
 Формат выходного файла  
 Для каждой строки входного файла (кроме первой, в которой записано число таких строк) выведите в выходной файл «YES», если соответствующая последовательность является правильной скобочной последовательностью, или «NO», если не является.
 
 Пример
 
-![none](https://github.com/Bloodies/HSE-University-projects/blob/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w4_t3.png)
+![format_w4_t3](https://user-images.githubusercontent.com/45668574/176200759-7f514c3c-5f88-4cbe-9181-34fa3a82d03e.png)
 __________________
 Результат
 
-![none](https://github.com/Bloodies/HSE-University-projects/blob/master/Course-2/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w4_t3.png)
+![result_w4_t3](https://user-images.githubusercontent.com/45668574/176200727-dba249b2-2607-46f2-88e5-5fb186535d7a.png)
