@@ -7,6 +7,9 @@
 
 Группа: ПИ-18-2 
 
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-1)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
+
 Практические упражнения:
 =====================
 1) Задание "Словарь" (<https://acmp.ru/index.asp?main=task&id_task=291>)
