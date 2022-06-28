@@ -1,3 +1,8 @@
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-3)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
+
+## Computer graphics
+
 Написать программу (язык любой), предоставляющую пользователю возможности:
 - рисовать прямую линию на рабочем поле (любое количество линий) – режим «Создать»,
 - редактировать размер и положение любой из ранее созданных прямых линий – режим «Редактировать»,
