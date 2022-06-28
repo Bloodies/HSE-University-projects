@@ -3,7 +3,9 @@
 
 ## Algorithms and Data Structures
 
-#### [Algorithms-practice-[ITMO]](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D)
-> Пройденный курс, предоставленный ИТМО
-#### [TeamWork.Labs](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/TeamWork.Labs)
-> Групповые работы
+* [Algorithms-practice-[ITMO]](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D)
+
+        Пройденный курс, предоставленный ИТМО
+* [TeamWork.Labs](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/TeamWork.Labs)
+
+        Групповые работы
