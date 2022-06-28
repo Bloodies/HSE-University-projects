@@ -17,7 +17,6 @@ _______________________
 <br>⠀⠀┋⠀┣📁[Statistics (Statistical and Empirical Methods of Computing)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/Statistics "Statistics")
 <br>⠀⠀┋⠀┗📁[[Other]](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/%5BOther%5D "[Other]")
 <br>⠀⠀┣📁[Course-3](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-3 "Course-3")
-<br>⠀⠀┋⠀┣📁[Architecture-design](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-3/Architecture-design "Architecture-design")
 <br>⠀⠀┋⠀┣📁[Computer-graphics](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-3/Computer-graphics "Computer-graphics")
 <br>⠀⠀┋⠀┣📁[IoT-analytics](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-3/IoT-analytics "IoT-analytics")
 <br>⠀⠀┋⠀┣📁[Mobile-development](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-3/Mobile-dev "Mobile-development")
