@@ -8,14 +8,14 @@ _______________________
 ⠀⠀└📁steamapps
 ⠀⠀⠀└📁common
 ⠀⠀⠀⠀└📁Counter-Strike: Global Offensive
-⠀⠀⠀⠀⠀└📁Skills
-⠀⠀⠀⠀⠀⠀└⚠️This folder is empty
+⠀⠀⠀⠀⠀├📁Skills
+⠀⠀⠀⠀⠀│└⚠️This folder is empty
 ⠀⠀⠀⠀⠀└📁 Aim
 ⠀⠀⠀⠀⠀⠀└⚠️This folder is empty
 📁USB (D:)
 └📁CS:GO Cheats
-⠀└⠀✅AimBot
-⠀└⠀✅Bhops
-⠀└⠀✅Anime
+⠀├⠀✅AimBot
+⠀├⠀✅Bhops
+⠀├⠀✅Anime
 ⠀└⠀✅Triggerbot
 asdasd
