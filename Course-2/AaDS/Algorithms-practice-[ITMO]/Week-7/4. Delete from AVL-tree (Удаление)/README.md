@@ -1,5 +1,5 @@
-[:arrow_backward:Назад (Back)](https://github.com/Bloodies/University.Projects/tree/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO))  
-[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/University.Projects)  
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-7)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
 
 Задание взято с сайта с онлайн курсами ([openedu.ru](https://courses.openedu.ru))
 
@@ -33,19 +33,19 @@ __________________
 Формат входного файла  
 Входной файл содержит описание двоичного дерева, а также ключа вершины, которую требуется удалить из дерева.
 
-В первой строке файла находится число ***N*** ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w7_t1-t4_2.png) — число вершин в дереве. В последующих ***N*** строках файла находятся описания вершин дерева. В (***i***+1)-ой строке файла ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_2.png) находится описание ***i***-ой вершины, состоящее из трех чисел ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_3.png) разделенных пробелами — ключа в ***i***-ой вершине ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_4.png), номера левого ребенка ***i***-ой вершины ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_5.png), если левого ребенка нет) и номера правого ребенка ***i***-ой вершины ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_6.png), если правого ребенка нет).
+В первой строке файла находится число ***N*** ![txt_w7_t1-t4_2](https://user-images.githubusercontent.com/45668574/176203572-e2c9a28e-9808-4d7f-ab74-7b1d7784ec82.png) — число вершин в дереве. В последующих ***N*** строках файла находятся описания вершин дерева. В (***i***+1)-ой строке файла ![txt_w6-w7_2](https://user-images.githubusercontent.com/45668574/176202119-ad44b49e-647a-4dc3-8967-ac502ecea7ec.png) находится описание ***i***-ой вершины, состоящее из трех чисел ![txt_w6-w7_3](https://user-images.githubusercontent.com/45668574/176202149-6789ae77-9100-495e-8d70-396c2f2200fc.png) разделенных пробелами — ключа в ***i***-ой вершине ![txt_w6-w7_4](https://user-images.githubusercontent.com/45668574/176202227-1219f87f-a6a4-493a-91d5-48687dd9a20d.png), номера левого ребенка ***i***-ой вершины ![txt_w6-w7_5](https://user-images.githubusercontent.com/45668574/176202256-da154cb8-af38-4301-8fef-76774feb2554.png), если левого ребенка нет) и номера правого ребенка ***i***-ой вершины ![txt_w6-w7_6](https://user-images.githubusercontent.com/45668574/176202277-dfe96e8a-264f-442d-bf84-46f1bf4ddfc9.png), если правого ребенка нет).
 
 Все ключи различны. Гарантируется, что данное дерево является деревом поиска.
 
-В последней строке содержится число ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w7_t3-t4_3.png) — ключ вершины, которую требуется удалить из дерева. Гарантируется, что такая вершина в дереве существует.
+В последней строке содержится число ![txt_w7_t3-t4_3](https://user-images.githubusercontent.com/45668574/176205732-66a797e5-173c-4b40-a49f-a27b732b71e2.png) — ключ вершины, которую требуется удалить из дерева. Гарантируется, что такая вершина в дереве существует.
 
 Формат выходного файла  
 Выведите в том же формате дерево после осуществления операции удаления. Нумерация вершин может быть произвольной при условии соблюдения формата.
 
 Пример
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w7_t4.png)
+![format_w7_t4](https://user-images.githubusercontent.com/45668574/176206817-0504cf86-80a2-492f-8098-b1ce068d9bff.png)
 __________________
 Результат
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w7_t4.png)
+![result_w7_t4](https://user-images.githubusercontent.com/45668574/176206846-575a5f4a-d2ee-4812-9281-b76d2e99b45c.png)
