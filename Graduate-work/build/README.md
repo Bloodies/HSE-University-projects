@@ -1,6 +1,4 @@
-[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects)
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/edit/Bloodies/Graduate-work)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
 
-## Graduate work
-
-        Разработка MVP системы машинного обучения для прогнозирования рентабельности кинобизнеса
-        Development of MVP Machine Learning System for Predicting the Profitability of the Film Business
+Здесь находятся собранные решения (в связи с большим весом, были убраны)
