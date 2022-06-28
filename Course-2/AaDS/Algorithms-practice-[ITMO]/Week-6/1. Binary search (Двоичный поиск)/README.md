@@ -1,5 +1,5 @@
 [:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-6)  
-[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/University.Projects)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects) 
 
 Задание взято с сайта с онлайн курсами ([openedu.ru](https://courses.openedu.ru))
 
