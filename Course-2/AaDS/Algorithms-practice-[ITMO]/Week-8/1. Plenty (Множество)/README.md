@@ -1,5 +1,5 @@
-[:arrow_backward:Назад (Back)](https://github.com/Bloodies/University.Projects/tree/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO))  
-[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/University.Projects)  
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-8)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
 
 Задание взято с сайта с онлайн курсами ([openedu.ru](https://courses.openedu.ru))
 
@@ -13,24 +13,24 @@
 Реализуйте множество с операциями «добавление ключа», «удаление ключа», «проверка существования ключа».
 __________________
 Формат входного файла  
-В первой строке входного файла находится строго положительное целое число операций ***N***, не превышающее ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w8_t1_1.png). В каждой из последующих ***N*** строк находится одна из следующих операций:
+В первой строке входного файла находится строго положительное целое число операций ***N***, не превышающее ![txt_w8_t1_1](https://user-images.githubusercontent.com/45668574/176207274-ad8d2e13-1380-40a9-8209-5b3a3a0a01c7.png). В каждой из последующих ***N*** строк находится одна из следующих операций:
 
 * A ***x*** — добавить элемент ***x*** в множество. Если элемент уже есть в множестве, то ничего делать не надо.
 * D ***x*** — удалить элемент ***x***. Если элемента ***x*** нет, то ничего делать не надо.
 * ? ***x*** — если ключ ***x*** есть в множестве, выведите Y, если нет, то выведите N.
 
-Аргументы указанных выше операций — целые числа, не превышающие по модулю ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w8_t1_2.png).
+Аргументы указанных выше операций — целые числа, не превышающие по модулю ![txt_w8_t1_2](https://user-images.githubusercontent.com/45668574/176207326-a71c9f09-6f34-40f2-b514-eff7d165d886.png).
 
 Формат выходного файла  
 Выведите последовательно результат выполнения всех операций «?». Следуйте формату выходного файла из примера.
 
 Пример
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w9_t3.png)
+![format_w8_t1](https://user-images.githubusercontent.com/45668574/176207414-68d567f4-ad9d-4572-81af-71514b9629e1.png)
 
 Примечание  
 Эту задачу можно решить совершенно разными способами, включая использование различных средств стандартных библиотек (правда, не всех - в стандартных библиотеках некоторых языков программирования используются слишком предсказуемые методы хеширования). Именно по этой причине ее разумно использовать для проверки реализаций хеш-таблиц, которые понадобятся в следующих задачах этой недели. После окончания текущей порции экспериментов, пожалуйста, не забудьте сдать правильное решение, чтобы эта задача была зачтена!
 __________________
 Результат
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w9_t3.png)
+![result_w8_t1](https://user-images.githubusercontent.com/45668574/176207462-b6466679-57e8-4762-968f-ba1bd27a6607.png)
