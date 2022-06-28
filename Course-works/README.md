@@ -5,7 +5,7 @@
 * [Course 1](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-works/Course-1)
 
         Реализация компьютерной игры "Лабиринт"
-        "Labyrinth" Computer Game Implementation	
+        "Labyrinth" Computer Game Implementation
 * [Course 2](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-works/Course-2)
 
         
