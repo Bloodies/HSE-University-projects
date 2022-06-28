@@ -1,5 +1,5 @@
-[:arrow_backward:Назад (Back)](https://github.com/Bloodies/University.Projects/tree/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO))  
-[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/University.Projects)  
+[:arrow_backward:Назад (Back)](https://github.com/Bloodies/HSE-University-projects/tree/Bloodies/Course-2/AaDS/Algorithms-practice-%5BITMO%5D/Week-7)  
+[:rewind:В корневую папку (In root folder)](https://github.com/Bloodies/HSE-University-projects)  
 
 Задание взято с сайта с онлайн курсами ([openedu.ru](https://courses.openedu.ru))
 
@@ -16,16 +16,16 @@
 
 Малый левый поворот осуществляется следующим образом:
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w7_t2_1.png)
+![txt_w7_t2_1](https://user-images.githubusercontent.com/45668574/176204123-961b7337-8194-4622-b1b6-1158e07bc2e8.png)
 
 Заметим, что если до выполнения малого левого поворота был нарушен баланс только корня дерева, то после его выполнения все вершины становятся сбалансированными, за исключением случая, когда у правого ребенка корня баланс до поворота равен −1. В этом случае вместо малого левого поворота выполняется большой левый поворот, который осуществляется так:
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w7_t2_2.png)
+![txt_w7_t2_2](https://user-images.githubusercontent.com/45668574/176204164-969c2164-0390-4684-9b1b-404b76a83c5f.png)
 
 Дано дерево, в котором баланс корня равен 2. Сделайте левый поворот.
 __________________
 Формат входного файла  
-Входной файл содержит описание двоичного дерева. В первой строке файла находится число ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w7_t2_3.png) — число вершин в дереве. В последующих ***N*** строках файла находятся описания вершин дерева. В (***i***+1)-ой строке файла ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_2.png) находится описание ***i***-ой вершины, состоящее из трех чисел ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_3.png) разделенных пробелами — ключа в ***i***-ой вершине ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_4.png), номера левого ребенка ***i***-ой вершины ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_5.png), если левого ребенка нет) и номера правого ребенка ***i***-ой вершины ![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/txt_w6-w7_6.png), если правого ребенка нет).
+Входной файл содержит описание двоичного дерева. В первой строке файла находится число ![txt_w7_t2_3](https://user-images.githubusercontent.com/45668574/176204352-22abd288-12f7-4ab5-a9c9-64f21ab30e67.png) — число вершин в дереве. В последующих ***N*** строках файла находятся описания вершин дерева. В (***i***+1)-ой строке файла ![txt_w6-w7_2](https://user-images.githubusercontent.com/45668574/176202119-ad44b49e-647a-4dc3-8967-ac502ecea7ec.png) находится описание ***i***-ой вершины, состоящее из трех чисел ![txt_w6-w7_3](https://user-images.githubusercontent.com/45668574/176202149-6789ae77-9100-495e-8d70-396c2f2200fc.png) разделенных пробелами — ключа в ***i***-ой вершине ![txt_w6-w7_4](https://user-images.githubusercontent.com/45668574/176202227-1219f87f-a6a4-493a-91d5-48687dd9a20d.png), номера левого ребенка ***i***-ой вершины ![txt_w6-w7_5](https://user-images.githubusercontent.com/45668574/176202256-da154cb8-af38-4301-8fef-76774feb2554.png), если левого ребенка нет) и номера правого ребенка ***i***-ой вершины ![txt_w6-w7_6](https://user-images.githubusercontent.com/45668574/176202277-dfe96e8a-264f-442d-bf84-46f1bf4ddfc9.png), если правого ребенка нет).
 
 Все ключи различны. Гарантируется, что данное дерево является деревом поиска. Баланс корня дерева (вершины с номером 1) равен 2, баланс всех остальных вершин находится в пределах от ***-1*** до ***1***.
 
@@ -34,8 +34,8 @@ __________________
 
 Пример
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/format_w7_t2.png)
+![format_w7_t2](https://user-images.githubusercontent.com/45668574/176204729-a8b20d71-8b0b-4d7f-a162-e3b3659549d3.png)
 __________________
 Результат
 
-![none](https://github.com/Bloodies/University.Projects/blob/master/Course%202/AaDS%20(Algorithms%20and%20data%20structures)/Algorithms%20Practice%20(ITMO)/Resources/result_w7_t2.png)
+![result_w7_t2](https://user-images.githubusercontent.com/45668574/176204768-80a01bb7-7cc8-42c2-8718-4e34546a7969.png)
