@@ -3,7 +3,6 @@ A repository that contains all the projects that were written during the studies
 _______________________
 
 📁Local Disk (C:)
-
 └📁Program Files (x86)
 ⠀└📁steam
 ⠀⠀└📁steamapps
